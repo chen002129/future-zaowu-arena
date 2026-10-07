@@ -12,7 +12,7 @@ permissions:
 
 concurrency:
   group: cloudbase-production
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   deploy-site:
@@ -38,7 +38,7 @@ jobs:
         run: npm install -g @cloudbase/cli
 
       - name: Login CloudBase
-        run: tcb login --apiKeyId "${{ secrets.TCB_SECRET_ID }}" --apiKey "${{ secrets.TCB_SECRET_KEY }}"
+        run: timeout 90s tcb login --apiKeyId "${{ secrets.TCB_SECRET_ID }}" --apiKey "${{ secrets.TCB_SECRET_KEY }}"
 
       - name: Deploy complete site
         run: tcb hosting deploy site / -e "${{ steps.env.outputs.env_id }}"
