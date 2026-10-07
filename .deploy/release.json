@@ -1,5 +1,5 @@
 {
-  "requestedAt": "2026-10-07T13:38:30Z",
+  "requestedAt": "2026-10-07T13:40:30Z",
   "requestedBy": "user-confirmed",
-  "note": "Retry initial CloudBase production release after workflow hardening."
+  "note": "Production release via fresh concurrency lane."
 }
