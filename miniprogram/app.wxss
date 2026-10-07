@@ -1,0 +1,301 @@
+/* ============================================================
+   未来造物赛场 · 全局样式
+   设计规范见 docs/视觉设计规范.md
+   核心：苹果式极简 · 一个强调色 · 等宽数字承载科创感 · 海报即主角
+   ============================================================ */
+
+page {
+  background: #F5F5F7;
+  color: #1D1D1F;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 28rpx;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 等宽数字：全案最核心的手法 —— 数字对齐、精确、有工程感 */
+.mono {
+  font-family: "SF Mono", Menlo, Consolas, "Roboto Mono", monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.wrap { padding: 8rpx 32rpx 200rpx; }
+
+/* ---------------- 品牌区 ---------------- */
+.brand { display: flex; align-items: center; justify-content: space-between; padding: 24rpx 0 28rpx; }
+.bname { font-size: 44rpx; font-weight: 700; letter-spacing: -0.6rpx; }
+.bsub { font-size: 24rpx; color: #86868B; margin-top: 6rpx; }
+
+.logo {
+  width: 40rpx; height: 50rpx;
+  background-image: url('/assets/logo.png');
+  background-size: contain; background-repeat: no-repeat; background-position: center;
+}
+.logo.lg { width: 56rpx; height: 70rpx; }
+/* 深底用白色版（同一份蒙版资产，只换色，不维护两张图） */
+.logo.inv { background-image: url('/assets/logo-white.png'); }
+
+/* ---------------- 实时快讯条 ---------------- */
+.flashbar {
+  display: flex; align-items: center; gap: 14rpx;
+  background: #FFFFFF; border-radius: 20rpx; padding: 22rpx 26rpx;
+  border: 1rpx solid rgba(0, 0, 0, 0.06); margin-bottom: 24rpx;
+}
+.flashdot {
+  width: 12rpx; height: 12rpx; border-radius: 50%; background: #FF3B30; flex: none;
+  box-shadow: 0 0 0 6rpx rgba(255, 59, 48, 0.14);
+}
+.flashtxt { flex: 1; font-size: 26rpx; color: #1D1D1F; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.flashtime { font-size: 22rpx; color: #86868B; flex: none; }
+
+/* ---------------- 搜索 ---------------- */
+.search {
+  display: flex; align-items: center; gap: 14rpx;
+  background: rgba(118, 118, 128, 0.1); border-radius: 18rpx;
+  padding: 0 22rpx; height: 76rpx; margin-bottom: 22rpx;
+}
+.search input { flex: 1; font-size: 28rpx; color: #1D1D1F; }
+.search .ph { font-size: 28rpx; color: #86868B; }
+
+/* ---------------- 筛选 chip ---------------- */
+.chips { display: flex; flex-wrap: wrap; gap: 14rpx; margin-bottom: 26rpx; }
+.chip {
+  font-size: 25rpx; color: #1D1D1F; padding: 11rpx 24rpx;
+  border-radius: 999rpx; border: 1rpx solid rgba(0, 0, 0, 0.12); background: transparent;
+}
+/* 选中态用墨色底白字，而不是蓝色 —— 这一处最能看出「苹果味」 */
+.chip.on { background: #1D1D1F; color: #FFFFFF; border-color: #1D1D1F; }
+
+/* ---------------- 双排序分段控件 ---------------- */
+.sortbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18rpx; }
+.seg { display: flex; background: rgba(118, 118, 128, 0.12); border-radius: 14rpx; padding: 4rpx; }
+.seg .it { font-size: 24rpx; color: #6E6E73; padding: 10rpx 24rpx; border-radius: 11rpx; }
+.seg .it.on { background: #FFFFFF; color: #1D1D1F; font-weight: 600; }
+.segcnt { font-size: 23rpx; color: #86868B; }
+
+/* ---------------- 区块标题 ---------------- */
+.sechead { display: flex; align-items: baseline; justify-content: space-between; margin: 6rpx 0 20rpx; }
+.sechead text:first-child { font-size: 32rpx; font-weight: 650; letter-spacing: -0.3rpx; }
+.sechead text:last-child { font-size: 23rpx; color: #86868B; }
+
+/* ---------------- 赛事卡片 ---------------- */
+.card {
+  background: #FFFFFF; border-radius: 24rpx; overflow: hidden;
+  border: 1rpx solid rgba(0, 0, 0, 0.05); margin-bottom: 26rpx;
+}
+.cover { position: relative; width: 100%; height: 244rpx; overflow: hidden; }
+.cbody { padding: 22rpx 24rpx 24rpx; }
+.ctags { display: flex; flex-wrap: wrap; gap: 10rpx; margin-bottom: 14rpx; }
+.ctag {
+  font-size: 21rpx; color: #6E6E73; background: rgba(118, 118, 128, 0.1);
+  border-radius: 9rpx; padding: 6rpx 14rpx;
+}
+.ctag.src { background: transparent; border: 1rpx dashed rgba(0, 0, 0, 0.2); }
+.ctag.src.solid { border-style: solid; border-color: rgba(10, 132, 255, 0.4); color: #0A84FF; }
+.cmeta { font-size: 23rpx; color: #6E6E73; }
+.cmeta .hl { color: #FF3B30; }
+
+/* 覆盖在海报上的状态角标 */
+.badge {
+  position: absolute; left: 18rpx; top: 18rpx; z-index: 3;
+  font-size: 21rpx; padding: 7rpx 16rpx; border-radius: 9rpx;
+  background: rgba(255, 255, 255, 0.92); color: #1D1D1F;
+}
+.badge.soon { background: #FF3B30; color: #FFFFFF; }
+.badge.ended { background: rgba(60, 60, 67, 0.72); color: #FFFFFF; }
+/* 时效角标：NEW（24h 内新收录）/ 截止变更 —— 放右上，避免与左上状态角标打架 */
+.freshbar { position: absolute; right: 18rpx; top: 18rpx; z-index: 3; display: flex; gap: 10rpx; }
+.fresh {
+  font-size: 20rpx; padding: 7rpx 14rpx; border-radius: 9rpx; letter-spacing: 0.4rpx;
+  background: #0A84FF; color: #FFFFFF; font-weight: 600;
+}
+.fresh.chg { background: #FFFFFF; color: #FF3B30; }
+
+/* ---------------- 海报模板（抓不到海报时的兜底，绝不用灰色占位图） ---------------- */
+.poster {
+  position: absolute; left: 0; top: 0; right: 0; bottom: 0;
+  background: #ECECEF;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.045) 1rpx, transparent 1rpx),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.045) 1rpx, transparent 1rpx);
+  background-size: 28rpx 28rpx;
+}
+.poster.featured { background-image: linear-gradient(135deg, #0A84FF 0%, #5E5CE6 100%); }
+.ptop { position: absolute; left: 18rpx; top: 16rpx; display: flex; align-items: baseline; gap: 10rpx; }
+.pk { font-size: 19rpx; letter-spacing: 2rpx; color: rgba(0, 0, 0, 0.38); }
+.pv { font-size: 23rpx; color: rgba(0, 0, 0, 0.62); }
+.poster.featured .pk { color: rgba(255, 255, 255, 0.72); }
+.poster.featured .pv { color: #FFFFFF; }
+.pbot { position: absolute; left: 18rpx; bottom: 16rpx; right: 60rpx; }
+.ptitle { font-size: 26rpx; font-weight: 650; color: #1D1D1F; line-height: 1.35; }
+.porg { font-size: 21rpx; color: #86868B; margin-top: 4rpx; }
+.poster.featured .ptitle { color: #FFFFFF; }
+.poster.featured .porg { color: rgba(255, 255, 255, 0.8); }
+.pwm {
+  position: absolute; right: 16rpx; bottom: 14rpx; width: 30rpx; height: 38rpx;
+  background-image: url('/assets/logo.png'); background-size: contain;
+  background-repeat: no-repeat; background-position: center; opacity: 0.24;
+}
+.poster.featured .pwm { opacity: 0.5; }
+/* 真实海报覆盖在模板之上；加载失败自动回落到模板 */
+.preal { position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%; z-index: 2; }
+.poster.detail { position: relative; width: 100%; height: 800rpx; border-radius: 20rpx; overflow: hidden; }
+.poster.detail .ptitle { font-size: 34rpx; }
+.pmid {
+  position: absolute; left: 50%; top: 44%; transform: translate(-50%, -50%);
+  width: 100rpx; height: 124rpx;
+  background-image: url('/assets/logo.png'); background-size: contain;
+  background-repeat: no-repeat; background-position: center; opacity: 0.2;
+}
+
+/* ---------------- 按钮 ---------------- */
+.btn {
+  height: 88rpx; line-height: 88rpx; border-radius: 20rpx; font-size: 28rpx;
+  text-align: center; font-weight: 600; padding: 0 32rpx; border: none;
+}
+.btn::after { border: none; }
+.btn.pri { background: #1D1D1F; color: #FFFFFF; }
+.btn.sec { background: #FFFFFF; color: #1D1D1F; border: 1rpx solid rgba(0, 0, 0, 0.12); }
+.btn.sec.on { color: #FF3B30; border-color: rgba(255, 59, 48, 0.35); }
+.btn.blk { width: 100%; }
+
+/* ---------------- 空状态 ---------------- */
+.empty { padding: 140rpx 40rpx; text-align: center; }
+.empty .et { font-size: 30rpx; font-weight: 650; margin-top: 26rpx; }
+.empty .es { font-size: 25rpx; color: #86868B; margin-top: 12rpx; line-height: 1.7; }
+.empty .elogo { width: 60rpx; height: 74rpx; margin: 0 auto; opacity: 0.16;
+  background-image: url('/assets/logo.png'); background-size: contain;
+  background-repeat: no-repeat; background-position: center; }
+
+/* ---------------- 详情页 ---------------- */
+.dwrap { padding: 26rpx 32rpx 220rpx; }
+.dtitle { font-size: 42rpx; font-weight: 700; letter-spacing: -0.6rpx; line-height: 1.3; margin: 6rpx 0 14rpx; }
+.dsub { font-size: 24rpx; color: #86868B; display: flex; align-items: center; flex-wrap: wrap; gap: 10rpx; }
+.dsub .dot { width: 5rpx; height: 5rpx; border-radius: 50%; background: #C7C7CC; }
+
+/* 核验状态行 */
+.verified { display: inline-flex; align-items: center; gap: 10rpx; font-size: 22rpx; color: #0A84FF; }
+.verified.pend { color: #FF9500; }
+.vdot { width: 10rpx; height: 10rpx; border-radius: 50%; background: currentColor; }
+
+/* 倒计时 */
+.cd {
+  margin: 30rpx 0 26rpx; padding: 30rpx 0 26rpx;
+  border-top: 1rpx solid rgba(0, 0, 0, 0.07); border-bottom: 1rpx solid rgba(0, 0, 0, 0.07);
+}
+.cd .lbl { font-size: 23rpx; color: #86868B; }
+.cdnum { font-size: 68rpx; font-weight: 300; letter-spacing: -1.5rpx; margin-top: 8rpx;
+  font-family: "SF Mono", Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.cdnum.red { color: #FF3B30; }
+
+/* 四宫格 */
+.grid2 { display: flex; flex-wrap: wrap; border-radius: 20rpx; overflow: hidden;
+  border: 1rpx solid rgba(0, 0, 0, 0.06); background: #FFFFFF; }
+.gcell { width: 50%; box-sizing: border-box; padding: 24rpx 22rpx; border-bottom: 1rpx solid rgba(0, 0, 0, 0.05); }
+.gcell:nth-child(odd) { border-right: 1rpx solid rgba(0, 0, 0, 0.05); }
+.gcell .k { font-size: 22rpx; color: #86868B; }
+.gcell .v { font-size: 26rpx; margin-top: 8rpx; line-height: 1.5; }
+
+/* 小节 */
+.sect { margin-top: 34rpx; }
+.sect .h4 { font-size: 25rpx; font-weight: 650; color: #1D1D1F; margin-bottom: 12rpx; }
+.sect .p { font-size: 26rpx; color: #6E6E73; line-height: 1.75; }
+
+/* 数据来源链路三步图 */
+.chain { background: #FFFFFF; border-radius: 18rpx; padding: 22rpx 24rpx; border: 1rpx solid rgba(0, 0, 0, 0.06); }
+.chain .n { display: flex; gap: 16rpx; font-size: 24rpx; color: #6E6E73; line-height: 1.6; }
+.chain .n .mk {
+  flex: none; width: 34rpx; height: 34rpx; border-radius: 50%; font-size: 20rpx;
+  text-align: center; line-height: 34rpx; background: rgba(118, 118, 128, 0.16); color: #6E6E73;
+}
+.chain .n.on .mk { background: #0A84FF; color: #FFFFFF; }
+.chain .n.todo .mk { background: #FF9500; color: #FFFFFF; }
+.chain .bar { width: 2rpx; height: 22rpx; background: rgba(0, 0, 0, 0.1); margin: 6rpx 0 6rpx 16rpx; }
+
+.qrbox { width: 256rpx; height: 256rpx; border-radius: 18rpx; background: #FFFFFF;
+  border: 1rpx solid rgba(0, 0, 0, 0.08); }
+.stack { display: flex; flex-wrap: wrap; gap: 12rpx; }
+.stack .s { font-size: 22rpx; color: #6E6E73; background: rgba(118, 118, 128, 0.1);
+  border-radius: 9rpx; padding: 7rpx 14rpx; }
+
+/* 详情页底部操作条 */
+.dbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+  display: flex; gap: 20rpx; padding: 20rpx 32rpx calc(20rpx + env(safe-area-inset-bottom));
+  background: rgba(255, 255, 255, 0.94); border-top: 1rpx solid rgba(0, 0, 0, 0.07);
+}
+.dbar .btn { flex: 1; }
+
+/* ---------------- 时讯页 ---------------- */
+.flashitem { display: flex; gap: 20rpx; padding: 26rpx 0; border-bottom: 1rpx solid rgba(0, 0, 0, 0.06); }
+.flashitem .rail { flex: none; width: 26rpx; display: flex; flex-direction: column; align-items: center; }
+.flashitem .node { width: 14rpx; height: 14rpx; border-radius: 50%; margin-top: 10rpx;
+  background: #0A84FF; box-shadow: 0 0 0 6rpx rgba(10, 132, 255, 0.14); }
+.flashitem .node.hot { background: #FF3B30; box-shadow: 0 0 0 6rpx rgba(255, 59, 48, 0.14); }
+.flashitem .node.man { background: #C7C7CC; box-shadow: none; }
+.flashitem .body { flex: 1; }
+.flashitem .t { font-size: 27rpx; line-height: 1.6; }
+.flashitem .m { font-size: 22rpx; color: #86868B; margin-top: 10rpx; }
+
+.newsitem { background: #FFFFFF; border-radius: 22rpx; padding: 26rpx 26rpx 28rpx;
+  border: 1rpx solid rgba(0, 0, 0, 0.05); margin-bottom: 22rpx; }
+.newsitem .tag { font-size: 20rpx; letter-spacing: 1.4rpx; color: #0A84FF; }
+.newsitem .t { font-size: 29rpx; font-weight: 650; line-height: 1.45; margin: 12rpx 0 10rpx; }
+.newsitem .s { font-size: 24rpx; color: #86868B; line-height: 1.7; }
+
+/* ---------------- 我的 ---------------- */
+.profile { display: flex; align-items: center; gap: 22rpx; background: #FFFFFF;
+  border-radius: 24rpx; padding: 30rpx 26rpx; border: 1rpx solid rgba(0, 0, 0, 0.05); }
+.avatar { width: 96rpx; height: 96rpx; border-radius: 50%; background: #1D1D1F;
+  display: flex; align-items: center; justify-content: center; overflow: hidden; flex: none; }
+.avatar image { width: 100%; height: 100%; }
+.pfname { font-size: 32rpx; font-weight: 650; }
+.pfsub { font-size: 23rpx; color: #86868B; margin-top: 6rpx; }
+.metrics { display: flex; gap: 22rpx; margin-top: 22rpx; }
+.metric { flex: 1; background: #FFFFFF; border-radius: 22rpx; padding: 26rpx;
+  border: 1rpx solid rgba(0, 0, 0, 0.05); }
+.metric .lbl { font-size: 22rpx; color: #86868B; }
+.metric .num { font-size: 46rpx; font-weight: 600; margin-top: 8rpx;
+  font-family: "SF Mono", Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.grouplbl { font-size: 23rpx; color: #86868B; margin: 34rpx 0 14rpx 8rpx; }
+.grouplist { background: #FFFFFF; border-radius: 22rpx; overflow: hidden; border: 1rpx solid rgba(0, 0, 0, 0.05); }
+.row { display: flex; align-items: center; justify-content: space-between;
+  padding: 30rpx 26rpx; border-bottom: 1rpx solid rgba(0, 0, 0, 0.05); font-size: 28rpx; }
+.row:last-child { border-bottom: none; }
+.row .rv { font-size: 24rpx; color: #86868B; }
+
+/* 登录卡 */
+.logincard { background: #FFFFFF; border-radius: 24rpx; padding: 34rpx 28rpx;
+  border: 1rpx solid rgba(0, 0, 0, 0.05); }
+.lgt { font-size: 34rpx; font-weight: 700; letter-spacing: -0.4rpx; }
+.lgs { font-size: 24rpx; color: #86868B; line-height: 1.7; margin: 14rpx 0 26rpx; }
+.lgin { height: 88rpx; background: rgba(118, 118, 128, 0.1); border-radius: 18rpx;
+  padding: 0 24rpx; font-size: 28rpx; margin-bottom: 18rpx; }
+.lgrow { display: flex; gap: 16rpx; }
+.lgrow .lgin { flex: 1; margin-bottom: 0; }
+.lgmsg { font-size: 23rpx; margin-top: 18rpx; color: #86868B; }
+.lgmsg.bad { color: #FF3B30; }
+.lgmsg.ok { color: #34C759; }
+.lgfull { width: 100%; margin-top: 18rpx; }
+
+/* 头像按钮：把原生 button 的默认边框/内边距清掉，只当容器用 */
+.avatarBtn { padding: 0; margin: 0; width: 96rpx; height: 96rpx; background: transparent;
+  line-height: normal; border: none; flex: none; }
+.avatarBtn::after { border: none; }
+.nickinput { font-size: 32rpx; font-weight: 650; height: 48rpx; line-height: 48rpx; }
+
+/* ===== 设备同步码 ===== */
+.ph { color: #86868B; font-size: 28rpx; letter-spacing: 0; }
+.syncrow { display: flex; align-items: center; gap: 16rpx; margin-bottom: 4rpx; }
+.syncinput { flex: 1; height: 88rpx; background: #F2F2F7; border-radius: 18rpx;
+  padding: 0 26rpx; font-size: 28rpx; letter-spacing: 2rpx; }
+.syncbtn { margin: 0; padding: 0 30rpx; font-size: 26rpx; line-height: 86rpx; height: 88rpx;
+  background: #FFFFFF; color: #1D1D1F; border: 1rpx solid rgba(0, 0, 0, 0.12);
+  border-radius: 18rpx; }
+.syncbtn::after { border: none; }
+.syncout { margin-top: 18rpx; padding: 28rpx 22rpx; background: #F2F2F7; border-radius: 18rpx;
+  font-size: 34rpx; font-weight: 600; letter-spacing: 5rpx; text-align: center;
+  word-break: break-all; color: #1D1D1F; }
+
+/* ===== 关注我们（视频号 / 公众号） ===== */
+.oawrap { padding: 26rpx 26rpx 30rpx; display: flex; justify-content: center;
+  overflow: hidden; }

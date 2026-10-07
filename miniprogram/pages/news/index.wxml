@@ -1,0 +1,35 @@
+<view class="wrap">
+  <view class="brand">
+    <view>
+      <view class="bname">时讯</view>
+      <view class="bsub">系统监测 · 截止变更 · 人工发布</view>
+    </view>
+    <view class="logo"></view>
+  </view>
+
+  <view class="sechead">
+    <text>快讯</text>
+    <text>分钟级 · 会过期</text>
+  </view>
+
+  <view>
+    <view class="flashitem" wx:for="{{fl}}" wx:key="txt">
+      <view class="rail"><view class="node {{item.node}}"></view></view>
+      <view class="body">
+        <view class="t">{{item.txt}}</view>
+        <view class="m">{{item.time}} · {{item.src}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="sechead" style="margin-top:48rpx">
+    <text>资讯与攻略</text>
+    <text>长尾 · 常青</text>
+  </view>
+
+  <view class="newsitem" wx:for="{{news}}" wx:key="t">
+    <view class="tag">{{item.tag}}</view>
+    <view class="t">{{item.t}}</view>
+    <view class="s">{{item.s}}</view>
+  </view>
+</view>

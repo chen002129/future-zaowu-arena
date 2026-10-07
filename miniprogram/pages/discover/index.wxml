@@ -1,0 +1,81 @@
+<view class="wrap">
+  <view class="brand">
+    <view>
+      <view class="bname">发现</view>
+      <view class="bsub">为造物者，找赛场</view>
+    </view>
+    <view class="logo"></view>
+  </view>
+
+  <!-- 实时快讯条：点击进入时讯页 -->
+  <view class="flashbar" bindtap="goNews">
+    <view class="flashdot"></view>
+    <view class="flashtxt">{{flashTxt}}</view>
+    <view class="flashtime mono">{{flashTime}}</view>
+  </view>
+
+  <view class="search">
+    <input value="{{q}}" placeholder="搜赛事、主办方、方向" placeholder-class="ph"
+      confirm-type="search" bindinput="onSearch" />
+  </view>
+
+  <view class="chips">
+    <view wx:for="{{chips}}" wx:key="*this" class="chip {{filter===item?'on':''}}"
+      data-t="{{item}}" bindtap="onChip">{{item}}</view>
+  </view>
+
+  <view class="sortbar">
+    <view class="seg">
+      <view class="it {{sort==='fresh'?'on':''}}" data-s="fresh" bindtap="onSort">最新更新</view>
+      <view class="it {{sort==='deadline'?'on':''}}" data-s="deadline" bindtap="onSort">临近截止</view>
+    </view>
+    <view class="segcnt">{{seccnt}}</view>
+  </view>
+
+  <view class="sechead">
+    <text>{{seclbl}}</text>
+    <text>{{list.length}} 场</text>
+  </view>
+
+  <block wx:if="{{list.length}}">
+    <view class="card" wx:for="{{list}}" wx:key="id" data-id="{{item.id}}" bindtap="openDetail">
+      <view class="cover">
+        <!-- 模板海报作底图（抓不到海报时的兜底，风格统一） -->
+        <view class="poster {{item.featured?'featured':''}}">
+          <view class="ptop">
+            <text class="pk">DEADLINE</text>
+            <text class="pv mono">{{item.deadlineText}}</text>
+          </view>
+          <view class="pbot">
+            <view class="ptitle">{{item.title}}</view>
+            <view class="porg">{{item.theme}}</view>
+          </view>
+          <view class="pwm"></view>
+        </view>
+        <!-- 真实海报覆盖其上，加载失败自动回落 -->
+        <image wx:if="{{item.posterOk}}" class="preal" src="{{item.poster}}" mode="aspectFill"
+          data-index="{{index}}" binderror="posterErr" />
+        <view class="badge {{item.badgeCls}}">{{item.badge}}</view>
+        <view class="freshbar">
+          <view wx:if="{{item.fresh}}" class="fresh">NEW</view>
+          <view wx:if="{{item.chg}}" class="fresh chg">截止变更</view>
+        </view>
+      </view>
+      <view class="cbody">
+        <view class="ctags">
+          <view class="ctag" wx:for="{{item.tags}}" wx:for-item="t" wx:for-index="ti" wx:key="*this">{{t}}</view>
+          <view class="ctag">{{item.mode}}</view>
+        </view>
+        <view class="cmeta">
+          <text>{{item.metaPre}}</text><text class="{{item.dateRed?'hl':''}}">{{item.metaDate}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view wx:else class="empty">
+    <view class="elogo"></view>
+    <view class="et">没有匹配的赛场</view>
+    <view class="es">换个方向或关键词试试</view>
+  </view>
+</view>

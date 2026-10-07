@@ -1,0 +1,19 @@
+{
+  "description": "未来造物赛场 · AI 赛事时讯小程序（小程序 + 云函数同仓）",
+  "projectname": "future-zaowu-arena",
+  "appid": "touristappid",
+  "compileType": "miniprogram",
+  "libVersion": "3.5.5",
+  "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "ignoreDevUnusedFiles": false,
+    "checkSiteMap": false
+  },
+  "condition": {}
+}

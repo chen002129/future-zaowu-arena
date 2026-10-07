@@ -3,6 +3,12 @@
  *
  * 用法：node tools/verify.js
  * 通过输出 OK，失败输出问题清单并以非零码退出。
+ *
+ * 检查项来自项目铁律（见 AGENTS.md）：
+ *  - 不收录国外赛事
+ *  - 每场比赛必须有海报文件
+ *  - 截止日期不能缺、格式必须是 YYYY-MM-DD
+ *  - 聚合源一律 pending
  */
 
 const fs = require('fs');
@@ -68,6 +74,7 @@ const MODES = ['线上', '线下', '混合'];
   if (!f.at) push(warns, `[flash ${i}] 缺 at 时间戳`);
 });
 
+/* 汇总 */
 console.log('赛事 ' + d.events.length + ' 条 · 快讯 ' + (d.flashes || []).length + ' 条');
 if (errors.length) {
   console.log('\n✗ 错误 ' + errors.length + ' 项（必须修复）：');

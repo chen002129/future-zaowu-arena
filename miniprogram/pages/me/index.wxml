@@ -1,0 +1,58 @@
+<view class="wrap">
+  <view class="brand">
+    <view>
+      <view class="bname">我的</view>
+      <view class="bsub">未来造物赛场</view>
+    </view>
+    <view class="logo"></view>
+  </view>
+
+  <!-- 设备同步码：收藏只在本机，换设备靠这串码搬运 -->
+  <view class="logincard">
+    <view class="lgt" style="font-size:30rpx">设备间同步</view>
+    <view class="lgs">收藏存在本机。换设备时把收藏打包成一串短码，在新设备粘贴导入即可 —— 不需要账号，也不用联网。</view>
+    <view class="syncrow">
+      <input class="syncinput" value="{{syncIn}}" placeholder="粘贴同步码" placeholder-class="ph"
+        bindinput="onSyncInput" confirm-type="done" bindconfirm="doImportSync" />
+      <button class="syncbtn" bindtap="doImportSync">导入</button>
+    </view>
+    <button class="btn sec lgfull" bindtap="makeSync">生成同步码</button>
+    <view wx:if="{{syncCode}}" class="syncout" bindtap="copySync">{{syncCode}}</view>
+    <view wx:if="{{syncMsg}}" class="lgmsg">{{syncMsg}}</view>
+  </view>
+
+  <view class="metrics">
+    <view class="metric">
+      <view class="lbl">我的收藏</view>
+      <view class="num">{{favCount}}</view>
+    </view>
+  </view>
+
+  <view class="grouplbl">我的赛场</view>
+  <view class="grouplist">
+    <view class="row" bindtap="goFav"><text>我的收藏</text><text class="rv">{{favCount}} ›</text></view>
+    <view class="row"><text>浏览历史</text><text class="rv">›</text></view>
+  </view>
+
+  <!-- 关注我们：视频号主页跳转 / 公众号文章 / 扫码进入时的公众号关注组件 -->
+  <block wx:if="{{hasChannels || showOfficialAccount}}">
+    <view class="grouplbl">关注我们</view>
+    <view class="grouplist">
+      <view wx:if="{{hasFinder}}" class="row" bindtap="openChannels">
+        <text>视频号</text><text class="rv">进入主页 ›</text>
+      </view>
+      <view wx:if="{{hasOaArticle}}" class="row" bindtap="openOaArticle">
+        <text>公众号文章</text><text class="rv">阅读 ›</text>
+      </view>
+      <view wx:if="{{showOfficialAccount}}" class="oawrap">
+        <official-account></official-account>
+      </view>
+    </view>
+  </block>
+
+  <view class="grouplbl">其他</view>
+  <view class="grouplist">
+    <view class="row"><text>意见反馈</text><text class="rv">›</text></view>
+    <view class="row"><text>关于未来造物</text><text class="rv">v0.1 ›</text></view>
+  </view>
+</view>

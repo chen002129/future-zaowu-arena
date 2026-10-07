@@ -1,0 +1,99 @@
+<view class="dwrap" wx:if="{{ready}}">
+
+  <!-- 海报即主角：完整竖版 -->
+  <view class="poster detail {{e.featured?'featured':''}}">
+    <view class="ptop">
+      <text class="pk">DEADLINE</text>
+      <text class="pv mono">{{e.deadlineText}}</text>
+    </view>
+    <view class="pmid"></view>
+    <view class="pbot">
+      <view class="ptitle">{{e.title}}</view>
+      <view class="porg">{{e.organizer || e.themeText}}</view>
+    </view>
+    <image wx:if="{{e.posterOk}}" class="preal" src="{{e.poster}}" mode="aspectFill" binderror="posterErr" />
+  </view>
+
+  <view class="dtitle">{{e.title}}</view>
+  <view class="dsub" wx:if="{{e.organizer || e.city || e.mode}}">
+    <text wx:if="{{e.organizer}}">{{e.organizer}}</text>
+    <view class="dot" wx:if="{{e.organizer && e.city}}"></view>
+    <text wx:if="{{e.city}}">{{e.city}}</text>
+    <view class="dot" wx:if="{{e.city && e.mode}}"></view>
+    <text wx:if="{{e.mode}}">{{e.mode}}</text>
+  </view>
+
+  <!-- 倒计时 -->
+  <view class="cd">
+    <view class="lbl">{{cd.label}}</view>
+    <view class="cdnum {{(!cd.ended && cd.soon)?'red':''}}">{{cd.text}}</view>
+  </view>
+
+  <!-- 四宫格 -->
+  <view class="grid2">
+    <view class="gcell"><view class="k">奖金池</view><view class="v">{{e.prize}}</view></view>
+    <view class="gcell"><view class="k">参赛形式</view><view class="v">{{e.mode}}</view></view>
+    <view class="gcell"><view class="k">报名截止</view><view class="v mono">{{e.deadlineFull}}</view></view>
+    <view class="gcell"><view class="k">地点</view><view class="v">{{e.city}}</view></view>
+  </view>
+
+  <!-- 信息速览：比赛时间 / 组队要求 / 主办方 -->
+  <view class="kvs" wx:if="{{e.dateRange || e.teamSize || e.organizer}}">
+    <view class="kv" wx:if="{{e.dateRange}}"><view class="k">比赛时间</view><view class="v">{{e.dateRange}}</view></view>
+    <view class="kv" wx:if="{{e.teamSize}}"><view class="k">组队要求</view><view class="v">{{e.teamSize}}</view></view>
+    <view class="kv" wx:if="{{e.organizer}}"><view class="k">主办方</view><view class="v">{{e.organizer}}</view></view>
+  </view>
+
+  <!-- 截止时间变更留痕：禁止静默改数字 -->
+  <view class="sect" wx:if="{{e.changed}}">
+    <view class="h4">截止时间变更</view>
+    <view class="p">原截止 <text class="mono">{{e.chgFromText}}</text> → 现截止
+      <text class="mono" style="color:#FF3B30">{{e.deadlineFull}}</text>，为主办方调整，系统已自动同步。</view>
+  </view>
+
+  <!-- 官方时间线 -->
+  <view class="sect" wx:if="{{e.agenda.length}}">
+    <view class="h4">关键时间</view>
+    <view class="tl">
+      <view class="ti {{item.past?'past':''}}" wx:for="{{e.agenda}}" wx:key="index">
+        <view class="dt"></view>
+        <text class="td mono">{{item.d}}</text>
+        <text class="tt">{{item.t}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="sect" wx:if="{{e.tracks.length}}">
+    <view class="h4">赛道</view>
+    <view class="p">{{e.tracksText}}</view>
+  </view>
+
+  <view class="sect" wx:if="{{e.tech.length}}">
+    <view class="h4">技术栈</view>
+    <view class="stack">
+      <view class="s" wx:for="{{e.tech}}" wx:key="*this">{{item}}</view>
+    </view>
+  </view>
+
+  <view class="sect" wx:if="{{e.summary}}">
+    <view class="h4">赛事简介</view>
+    <view class="p">{{e.summary}}</view>
+  </view>
+
+  <!-- 报名二维码：小程序里长按即可识别，比跳外链顺 -->
+  <view class="sect" wx:if="{{e.qr}}">
+    <view class="h4">报名二维码</view>
+    <image class="qrbox" src="{{e.qr}}" mode="aspectFit" show-menu-by-longpress="true" />
+    <view class="p" style="font-size:23rpx;margin-top:12rpx">长按二维码识别，或点下方复制报名链接</view>
+  </view>
+
+  <view class="sect">
+    <view class="h4">信息说明</view>
+    <view class="p">赛事信息仅供参考，报名状态、截止时间、奖金、参赛资格等以主办方官方页面为准。海报与报名二维码版权归原作者所有。最终安排以主办方公布为准。</view>
+  </view>
+</view>
+
+<view class="dbar" wx:if="{{ready}}">
+  <button class="btn sec {{faved?'on':''}}" bindtap="toggleFav">{{faved?'已收藏':'收藏'}}</button>
+  <button class="btn pri" bindtap="copyUrl">复制报名链接</button>
+</view>

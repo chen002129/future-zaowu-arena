@@ -1,0 +1,15 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# dependencies / logs
+node_modules/
+*.log
+
+# WorkBuddy volatile local memory (keep applications.yaml and project identity files)
+.workbuddy/memory/
+
+# Collector temporary inboxes are local review artifacts
+tools/inbox/

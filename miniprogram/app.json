@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/discover/index",
+    "pages/news/index",
+    "pages/fav/index",
+    "pages/me/index",
+    "pages/detail/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "未来造物赛场",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F5F5F7"
+  },
+  "tabBar": {
+    "color": "#86868B",
+    "selectedColor": "#1D1D1F",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      { "pagePath": "pages/discover/index", "text": "发现" },
+      { "pagePath": "pages/news/index", "text": "时讯" },
+      { "pagePath": "pages/fav/index", "text": "收藏" },
+      { "pagePath": "pages/me/index", "text": "我的" }
+    ]
+  },
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}
