@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: cloudbase-production
+  group: cloudbase-production-v2
   cancel-in-progress: true
 
 jobs:
