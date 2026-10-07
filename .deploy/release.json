@@ -1,5 +1,5 @@
 {
-  "requestedAt": null,
-  "requestedBy": null,
-  "note": "Only update this file after the user explicitly says 上线/发布/确认更新."
+  "requestedAt": "2026-10-07T13:35:22Z",
+  "requestedBy": "user-confirmed",
+  "note": "Initial CloudBase production release after credentials were configured."
 }
