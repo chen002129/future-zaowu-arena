@@ -575,8 +575,33 @@ function renderFlashes(){
 }
 
 function renderNews(){
-  document.getElementById('news').innerHTML = NEWS.map(n=>`<div class="newsitem">
-    <div class="ntag">${n.tag}</div><h3>${n.t}</h3><p>${n.s}</p></div>`).join('');
+  document.getElementById('news').innerHTML = NEWS.map((n,i)=>`<div class="newsitem" data-news="${i}">
+    <div class="ntag">${n.tag}${n.readTime?' · '+n.readTime:''}</div><h3>${n.t}</h3><p>${n.s}</p></div>`).join('');
+  document.querySelectorAll('#news .newsitem').forEach(el=>el.onclick=()=>openArticle(Number(el.dataset.news)));
+}
+
+function openArticle(i){
+  const n = NEWS[i]; if(!n) return;
+  curId = null;
+  const pw = document.querySelector('.dposterwrap');
+  const ds = document.getElementById('dsub');
+  const bar = document.querySelector('.dbar');
+  if(pw) pw.style.display='none';
+  if(ds) ds.style.display='none';
+  if(bar) bar.style.display='none';
+  const secs = (n.sections||[]).map(x=>`<div class="sect"><h4>${x.h||''}</h4><p>${x.p||''}</p></div>`).join('');
+  const takes = (n.takeaways||[]).length
+    ? `<div class="sect"><h4>带走这几句话</h4><p>${n.takeaways.map(x=>'• '+x).join('<br><br>')}</p></div>`
+    : '';
+  document.getElementById('dbody').innerHTML = `
+    <div class="sect" style="padding-top:72px">
+      <div class="ntag" style="margin-bottom:12px">${n.tag||'精选专栏'}${n.readTime?' · '+n.readTime:''}</div>
+      <h2 style="font-size:28px;line-height:1.25;letter-spacing:-.6px;margin:0 0 14px">${n.t}</h2>
+      <p style="font-size:16px;line-height:1.8;color:var(--ink2)">${n.lead||n.s||''}</p>
+    </div>
+    ${secs}${takes}
+    <div class="sect"><h4>未来造物观察</h4><p>我们更关心的不是孩子参加了多少比赛，而是他有没有借一次真实任务，把想法变成作品，再把作品放到真实的人和场景里验证。</p></div>`;
+  document.getElementById('detail').classList.add('open');
 }
 
 function renderFav(){
@@ -590,6 +615,12 @@ function renderFav(){
 
 function openDetail(id){
   const e = EV.find(x=>x.id===id); if(!e) return;
+  const pw = document.querySelector('.dposterwrap');
+  const ds = document.getElementById('dsub');
+  const bar = document.querySelector('.dbar');
+  if(pw) pw.style.display='';
+  if(ds) ds.style.display='';
+  if(bar) bar.style.display='';
   curId = id;
   document.getElementById('dposter').innerHTML = poster(e,'sm');
   const wrap = document.querySelector('.dposterwrap');
@@ -627,7 +658,15 @@ function openDetail(id){
   document.getElementById('detail').classList.add('open');
   syncFavBtn(); tick();
 }
-function closeDetail(){ document.getElementById('detail').classList.remove('open'); }
+function closeDetail(){
+  document.getElementById('detail').classList.remove('open');
+  const pw = document.querySelector('.dposterwrap');
+  const ds = document.getElementById('dsub');
+  const bar = document.querySelector('.dbar');
+  if(pw) pw.style.display='';
+  if(ds) ds.style.display='';
+  if(bar) bar.style.display='';
+}
 
 function syncFavBtn(){
   const b = document.getElementById('dfav');
