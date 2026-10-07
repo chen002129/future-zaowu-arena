@@ -1,0 +1,11 @@
+{
+  "provider": "Tencent CloudBase",
+  "envId": "ai-class-signup-d5fwtjd5b150455f",
+  "siteDir": "site",
+  "contentPaths": [
+    "site/data",
+    "site/assets/posters"
+  ],
+  "releaseMode": "manual-gate",
+  "contentMode": "auto-sync"
+}
