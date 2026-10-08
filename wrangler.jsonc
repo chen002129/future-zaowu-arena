@@ -1,0 +1,26 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "future-zaowu-arena",
+  "main": "./worker/src/index.js",
+  "compatibility_date": "2026-10-08",
+  "assets": {
+    "directory": "./site",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "/media/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "future-zaowu-arena"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "MEDIA",
+      "bucket_name": "future-zaowu-arena-media"
+    }
+  ],
+  "vars": {
+    "CONTENT_FALLBACK_PATH": "/data/events.json"
+  }
+}
