@@ -18,6 +18,6 @@ jobs:
       - name: Verify event data
         run: node tools/verify.js
       - name: Verify Worker syntax
-        run: node --check worker/src/index.js
+        run: node --check worker/src/index.mjs
       - name: Verify Wrangler config
         run: node -e "JSON.parse(require('fs').readFileSync('wrangler.jsonc','utf8').replace(/^\s*\/\/.*$/gm,'').replace(/\/\*[\s\S]*?\*\//g,'')); console.log('wrangler config ok')"
