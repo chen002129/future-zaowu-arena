@@ -1,6 +1,6 @@
 {
   "_readme": "未来造物赛场 · 唯一数据源。改这里即可，网页会自动读取。小程序数据由 tools/build-mp-data.js 从本文件生成，请勿手工改两端中的任意一份。",
-  "updatedAt": "2026-10-07T12:45:00.000Z",
+  "updatedAt": "2026-10-09T07:04:12.328Z",
   "chg": {
     "caltech-mathathon": "2026-09-28"
   },
@@ -35,7 +35,7 @@
       "poster": "assets/posters/pe20e9d52bc.jpg",
       "qr": "",
       "up": 1506,
-      "ended": false,
+      "ended": true,
       "dateRange": "09.08 – 10.24",
       "teamSize": "全国高校在校学生；支持单人参赛或 2–5 人自由组队；初赛线上提交创意 Demo 与项目方案",
       "organizer": "天猫",
@@ -57,7 +57,7 @@
           "t": "总决赛 · 48H 黑客松（至 10.24）：晋级队伍线下集结，48 小时现场开发 + 路演"
         }
       ],
-      "updatedAt": "2026-10-06T10:09:04.265Z",
+      "updatedAt": "2026-10-09T07:04:12.328Z",
       "audience": "高校学生",
       "audienceGroup": "高校",
       "level": "进阶",
@@ -87,7 +87,7 @@
       "poster": "assets/posters/pb73295beb6.jpg",
       "qr": "",
       "up": 1219,
-      "ended": false,
+      "ended": true,
       "dateRange": "10.16 – 10.18",
       "teamSize": "2–3 人每组，公开报名后筛选入围",
       "organizer": "TapNow",
@@ -113,7 +113,7 @@
           "t": "评审 / 展映 / 论坛 / 颁奖 / After Party"
         }
       ],
-      "updatedAt": "2026-10-06T14:56:04.265Z",
+      "updatedAt": "2026-10-09T07:04:12.328Z",
       "audience": "AI 影像创作者 / 高校学生",
       "audienceGroup": "高校",
       "level": "进阶",
@@ -502,6 +502,20 @@
   ],
   "flashes": [
     {
+      "auto": true,
+      "hot": false,
+      "txt": "Arena Peak Asia 亚洲黑客松巅峰赛 · 上海站 报名时间已过，状态更新为已截止",
+      "src": "自动状态监测",
+      "at": "2026-10-09T07:04:12.328Z"
+    },
+    {
+      "auto": true,
+      "hot": false,
+      "txt": "天猫AI黑客松·高校挑战赛 报名时间已过，状态更新为已截止",
+      "src": "自动状态监测",
+      "at": "2026-10-09T07:04:12.328Z"
+    },
+    {
       "auto": false,
       "hot": true,
       "txt": "新发现：江苏省高校 AI+科学与工程创新实践黑客松，10 月 10 日中午截止报名",
@@ -822,5 +836,39 @@
       "why": "这是更贴近中小学生年龄层的一类赛事。比“比赛级别”更值得看的是：孩子能否独立解释问题、过程和作品。",
       "official": true
     }
-  ]
+  ],
+  "_watch": {
+    "天猫ai黑客松高校挑战赛": {
+      "fingerprint": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "checkedAt": "2026-10-09T07:04:12.328Z",
+      "url": "https://pages.tmall.com/wow/a/act/tmall/dailygroup/24732/25590/wupr?wh_pid=daily-597100&disableNav=YES&status_bar_transparent=true",
+      "etag": "",
+      "lastModified": ""
+    },
+    "亚洲黑客松巅峰赛上海站": {
+      "fingerprint": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "checkedAt": "2026-10-09T07:04:12.328Z",
+      "url": "https://app.tapnow.ai/",
+      "etag": "W/\"6ac77c92-2e6a\"",
+      "lastModified": "Thu, 08 Oct 2026 11:20:50 GMT"
+    },
+    "深圳-solar-黑客之家-solar-hacker-house-shenzhen": {
+      "fingerprint": "489e5568126f486b6a37f7fdd422bc37ece54cfbcb21fe428fd1f77891d2f212",
+      "checkedAt": "2026-10-09T07:04:12.328Z",
+      "url": "https://luma.com/673y4m0q",
+      "etag": "",
+      "lastModified": ""
+    },
+    "蚂蚁灵波具身大模型挑战赛": {
+      "fingerprint": "6631bf53df7ac396c64f92e380768f4965fd735b05694b806068291551044a58",
+      "checkedAt": "2026-10-09T07:04:12.328Z",
+      "url": "https://tianchi.aliyun.com/",
+      "etag": "W/\"12b89-hKcxdNaAaHNary10PJGBRXnLABM\"",
+      "lastModified": ""
+    },
+    "payathon-2026": {
+      "errorAt": "2026-10-09T07:04:12.328Z",
+      "error": "fetch failed"
+    }
+  }
 }
