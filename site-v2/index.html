@@ -490,6 +490,163 @@ body{background:
   .loaderCard{transform:translateY(-24px)}
 }
 
+
+/* ===== dedicated map page ===== */
+.mapView{padding-bottom:88px}
+.mapPageHero{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:36px;align-items:end;
+  padding:42px 0 26px
+}
+.mapPageHero h1{font-size:clamp(46px,7vw,78px);line-height:.95;letter-spacing:-.058em;margin:0;font-weight:650}
+.mapPageHero h1 em{font-style:normal;color:var(--blue)}
+.mapPageHero p{font-size:13px;line-height:1.75;color:var(--ink2);max-width:500px;margin:18px 0 0}
+.mapHeroStats{display:flex;gap:8px}
+.mapHeroStats div{
+  min-width:92px;padding:13px 12px;border-radius:16px;background:#fff;
+  border:1px solid rgba(47,111,255,.08);box-shadow:0 8px 24px rgba(45,74,130,.055)
+}
+.mapHeroStats b{display:block;font:700 22px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:-.05em}
+.mapHeroStats span{display:block;font-size:9px;color:var(--ink3);margin-top:7px}
+
+.mapGamePanel{
+  border-radius:30px;overflow:hidden;background:
+    radial-gradient(circle at 78% 18%,rgba(255,122,47,.13),transparent 26%),
+    radial-gradient(circle at 16% 22%,rgba(47,111,255,.14),transparent 31%),
+    linear-gradient(160deg,#fafdff,#eef4ff 58%,#fff8f3);
+  border:1px solid rgba(47,111,255,.09);box-shadow:0 28px 85px rgba(42,72,139,.10);
+  position:relative
+}
+.mapHUD{
+  height:58px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid rgba(47,111,255,.07);background:rgba(255,255,255,.54);backdrop-filter:blur(12px)
+}
+.mapLive{display:flex;align-items:center;gap:7px;font:9px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink2);letter-spacing:.09em}
+.mapLive i{width:7px;height:7px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 0 rgba(255,122,47,.23);animation:livePulse 1.8s infinite}
+@keyframes livePulse{70%{box-shadow:0 0 0 10px rgba(255,122,47,0)}}
+.mapHint{font-size:10px;color:var(--ink3)}
+
+.mapWorld{
+  height:min(64vw,590px);min-height:500px;position:relative;overflow:hidden;
+  background-image:
+    linear-gradient(rgba(47,111,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(47,111,255,.035) 1px,transparent 1px);
+  background-size:28px 28px
+}
+.mapWorld:before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 50% 48%,transparent 0 32%,rgba(255,255,255,.16) 58%,rgba(255,255,255,.46) 100%)
+}
+.chinaSketch,.mapRoutes,.mapPins{
+  position:absolute;left:5%;top:7%;width:90%;height:78%
+}
+.chinaSketch{z-index:2;pointer-events:none;filter:drop-shadow(0 16px 24px rgba(45,70,130,.08))}
+.mapRoutes{z-index:3;pointer-events:none;overflow:visible}
+.mapPins{z-index:6;pointer-events:none}
+.realChinaPath{
+  fill:rgba(255,255,255,.72);stroke:#315ec6;stroke-width:1.55;stroke-linejoin:round;
+  vector-effect:non-scaling-stroke;transition:opacity .3s ease,fill .3s ease
+}
+.realChinaPath.taiwan{fill:#fff1e8;stroke:var(--orange)}
+.realChinaLabel{font:10px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#8b593a;font-weight:700}
+.mapRoutePath{fill:none;stroke:url(#routeGradient);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:5 8;opacity:.42;animation:routeTravel 8s linear infinite}
+@keyframes routeTravel{to{stroke-dashoffset:-130}}
+
+.radarSweep{
+  position:absolute;left:50%;top:47%;width:440px;height:440px;margin:-220px 0 0 -220px;border-radius:50%;
+  background:conic-gradient(from 0deg,transparent 0 76%,rgba(47,111,255,.08) 89%,rgba(47,111,255,.24) 99%,transparent 100%);
+  animation:radarSpin 7s linear infinite;z-index:1;pointer-events:none
+}
+@keyframes radarSpin{to{transform:rotate(360deg)}}
+.radarRing{
+  position:absolute;left:50%;top:47%;border-radius:50%;border:1px dashed rgba(47,111,255,.08);
+  transform:translate(-50%,-50%);z-index:1;pointer-events:none
+}
+.radarRing.r1{width:180px;height:180px}.radarRing.r2{width:330px;height:330px}.radarRing.r3{width:500px;height:500px}
+
+.mapBubble{
+  position:absolute;transform:translate(-50%,-50%);pointer-events:auto;border:0;background:transparent;padding:11px;
+  cursor:pointer;z-index:9;-webkit-tap-highlight-color:transparent
+}
+.mapBubbleCore{
+  width:var(--bubble);height:var(--bubble);min-width:35px;min-height:35px;border-radius:50%;
+  display:grid;place-items:center;background:linear-gradient(145deg,#477cff,#2456d7);color:#fff;
+  box-shadow:0 0 0 8px rgba(47,111,255,.09),0 9px 22px rgba(44,79,160,.19);
+  font:700 12px ui-monospace,SFMono-Regular,Menlo,monospace;
+  transition:.28s var(--ease);animation:cityBreath 2.9s ease-in-out infinite
+}
+.mapBubble.hot .mapBubbleCore{
+  background:linear-gradient(145deg,#ff9856,#ff6f28);
+  box-shadow:0 0 0 9px rgba(255,122,47,.10),0 10px 24px rgba(194,92,33,.18)
+}
+@keyframes cityBreath{50%{transform:translateY(-3px) scale(1.04)}}
+.mapBubbleLabel{
+  position:absolute;left:50%;top:calc(100% + 2px);transform:translateX(-50%);white-space:nowrap;
+  padding:4px 7px;border-radius:999px;background:rgba(255,255,255,.92);border:1px solid rgba(47,111,255,.10);
+  font-size:9px;color:var(--ink2);box-shadow:0 5px 14px rgba(40,66,120,.06)
+}
+.mapBubble.active .mapBubbleCore{transform:scale(1.2)!important;animation:none;box-shadow:0 0 0 13px rgba(47,111,255,.12),0 14px 32px rgba(44,79,160,.23)}
+.mapBubble.active .mapBubbleLabel{color:var(--blue);font-weight:750}
+
+.mapFloatCard{
+  position:absolute;left:18px;top:18px;z-index:8;min-width:146px;padding:11px 12px;border-radius:15px;
+  background:rgba(255,255,255,.76);border:1px solid rgba(255,255,255,.82);backdrop-filter:blur(14px);
+  box-shadow:0 10px 28px rgba(43,69,126,.08)
+}
+.mapFloatCard span{font-size:9px;color:var(--ink3)}.mapFloatCard b{display:block;font-size:13px;margin-top:5px}
+
+.mapFocus{
+  position:absolute;left:18px;right:18px;bottom:16px;z-index:12;padding:14px;
+  background:rgba(255,255,255,.90);border:1px solid rgba(47,111,255,.10);border-radius:20px;
+  backdrop-filter:blur(20px);box-shadow:0 18px 50px rgba(43,69,126,.15);
+  transform:translateY(24px);opacity:0;pointer-events:none;transition:.32s var(--ease)
+}
+.mapFocus.on{transform:none;opacity:1;pointer-events:auto}
+.mapFocusHead{display:flex;justify-content:space-between;align-items:end;margin-bottom:10px}
+.mapFocusHead small{display:block;font-size:8px;color:var(--orange);margin-bottom:3px}.mapFocusHead b{font-size:17px}.mapFocusHead span{font:10px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3)}
+.mapFocusRail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,34%);gap:9px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.mapFocusRail::-webkit-scrollbar{display:none}
+.mapMiniCard{
+  scroll-snap-align:start;border:0;background:#f5f8ff;border-radius:15px;padding:12px;text-align:left;min-height:92px;
+  position:relative;overflow:hidden;transition:.25s var(--ease)
+}
+.mapMiniCard:active{transform:scale(.97)}
+.mapMiniCard:after{content:"→";position:absolute;right:11px;bottom:10px}
+.mapMiniCard small{font-size:9px;color:var(--orange)}.mapMiniCard h5{font-size:13px;line-height:1.3;margin:6px 22px 0 0}
+
+.mapBottomBar{
+  min-height:52px;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;
+  background:rgba(255,255,255,.60);border-top:1px solid rgba(47,111,255,.07)
+}
+.mapLegend{display:flex;align-items:center;gap:8px;font-size:9px;color:var(--ink3)}
+.mapLegendDots{display:flex;align-items:end;gap:4px}.mapLegendDots i{display:block;border-radius:50%;background:var(--blue)}
+.mapLegendDots i:nth-child(1){width:7px;height:7px}.mapLegendDots i:nth-child(2){width:11px;height:11px}.mapLegendDots i:nth-child(3){width:16px;height:16px}
+.mapDynamicNote{font:9px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3)}
+
+.mapWorld.focused .realChinaPath{opacity:.55}
+.mapWorld.focused .mapBubble:not(.active){opacity:.28;filter:grayscale(.6)}
+.mapWorld.focused .radarSweep{opacity:.35}
+
+@media(max-width:760px){
+  .mapView{margin:0 -14px;padding:0 14px 92px}
+  .mapPageHero{grid-template-columns:1fr;padding:26px 2px 18px;gap:18px}
+  .mapPageHero h1{font-size:41px}
+  .mapPageHero p{font-size:12.5px;max-width:330px}
+  .mapHeroStats{gap:6px;overflow-x:auto}.mapHeroStats div{min-width:86px;padding:11px}
+  .mapHeroStats b{font-size:19px}
+  .mapGamePanel{margin:0 -2px;border-radius:24px}
+  .mapHUD{height:50px;padding:0 13px}.mapHint{font-size:9px}
+  .mapWorld{height:68vh;min-height:500px;max-height:620px}
+  .chinaSketch,.mapRoutes,.mapPins{left:1%;top:7%;width:98%;height:72%}
+  .radarSweep{width:360px;height:360px;margin:-180px 0 0 -180px}
+  .radarRing.r1{width:150px;height:150px}.radarRing.r2{width:270px;height:270px}.radarRing.r3{width:390px;height:390px}
+  .mapFloatCard{left:12px;top:12px;padding:9px 10px;min-width:128px}
+  .mapFloatCard b{font-size:12px}
+  .mapBubble{padding:13px}.mapBubbleLabel{font-size:8.5px}
+  .mapFocus{left:10px;right:10px;bottom:10px;padding:11px;border-radius:17px}
+  .mapFocusRail{grid-auto-columns:82%}
+  .mapBottomBar{padding:9px 12px;min-height:48px}.mapDynamicNote{font-size:8px}
+}
+
 </style>
 </head>
 <body>
@@ -521,27 +678,12 @@ body{background:
     <button data-jump="deadlineSec">即将截止</button>
     <button data-jump="youthSec">青少年</button>
     <button data-jump="proSec">高校 / 开发者</button>
-    <button data-jump="mapSection">全国地图</button>
   </div>
 
   <section class="playZone" id="playZone">
     <div class="playHead"><h2>滑一滑，抽一张下一场</h2><p>DRAG / SWIPE</p></div>
     <div class="swipeDeck" id="swipeDeck"></div>
     <div class="deckProgress"><span id="deckProgressBar"></span></div>
-  </section>
-
-  <section class="mapSection" id="mapSection">
-    <div class="mapPaper">
-      <svg class="chinaSketch" id="chinaMap" viewBox="0 0 620 420" aria-label="中国赛事热度地图"></svg>
-      <div class="mapPins" id="mapPins"></div>
-      <div class="mapFocus" id="mapFocus">
-        <div class="mapFocusHead"><b id="mapFocusCity">赛场</b><span id="mapFocusCount">0 场</span></div>
-        <div class="mapFocusRail" id="mapFocusRail"></div>
-      </div>
-      <div class="mapLegend"><span class="mapLegendDots"><i></i><i></i><i></i></span><span>赛事数量</span></div>
-      <div class="mapNote">赛事越多，城市气泡越大。点击城市查看这里正在发生的比赛。</div>
-      <svg class="scribble" style="width:110px;height:55px;right:18px;bottom:18px" viewBox="0 0 110 55"><path d="M5 43 C24 11,67 7,98 20 M81 12 L100 20 L87 34"/></svg>
-    </div>
   </section>
 
   <main class="magazine" id="stage"></main>
@@ -552,6 +694,60 @@ body{background:
     <span class="sigtext" id="sigtext">正在同步赛事情报…</span>
   </div>
 
+  </section>
+
+  <section class="appView mapView" id="view-map">
+    <div class="mapPageHero">
+      <div>
+        <div class="kicker">CHINA · LIVE EVENT MAP</div>
+        <h1>全国 AI<br><em>赛场地图。</em></h1>
+        <p>哪里赛事多，哪里就会亮起来。所有城市数量跟着赛事库动态变化。</p>
+      </div>
+      <div class="mapHeroStats">
+        <div><b id="mapCityCount">0</b><span>活跃城市</span></div>
+        <div><b id="mapEventCount">0</b><span>可参加赛事</span></div>
+        <div><b id="mapHotCity">—</b><span>当前最热</span></div>
+      </div>
+    </div>
+
+    <div class="mapGamePanel" id="mapGamePanel">
+      <div class="mapHUD">
+        <div class="mapLive"><i></i><span>LIVE MAP</span></div>
+        <div class="mapHint">点击城市 · 解锁当地赛场</div>
+      </div>
+
+      <div class="mapWorld">
+        <div class="radarSweep"></div>
+        <div class="radarRing r1"></div>
+        <div class="radarRing r2"></div>
+        <div class="radarRing r3"></div>
+
+        <svg class="chinaSketch" id="chinaMap" viewBox="0 0 620 420" aria-label="中国赛事热度地图"></svg>
+        <svg class="mapRoutes" id="mapRoutes" viewBox="0 0 620 420" aria-hidden="true"></svg>
+        <div class="mapPins" id="mapPins"></div>
+
+        <div class="mapFloatCard">
+          <span>全国赛事热度</span>
+          <b id="mapHeatText">正在扫描…</b>
+        </div>
+
+        <div class="mapFocus" id="mapFocus">
+          <div class="mapFocusHead">
+            <div><small>已定位</small><b id="mapFocusCity">赛场</b></div>
+            <span id="mapFocusCount">0 场</span>
+          </div>
+          <div class="mapFocusRail" id="mapFocusRail"></div>
+        </div>
+      </div>
+
+      <div class="mapBottomBar">
+        <div class="mapLegend">
+          <span class="mapLegendDots"><i></i><i></i><i></i></span>
+          <span>气泡越大 · 赛事越多</span>
+        </div>
+        <div class="mapDynamicNote" id="mapDynamicNote">正在读取赛事数据…</div>
+      </div>
+    </div>
   </section>
 
   <section class="appView" id="view-news">
@@ -638,6 +834,7 @@ body{background:
 
 <nav class="mobileDock" id="mobileDock">
   <button class="dockBtn on" data-dock="events"><i>◉</i>赛事</button>
+  <button class="dockBtn" data-dock="map"><i>⌖</i>地图</button>
   <button class="dockBtn" data-dock="news"><i>⌁</i>情报</button>
   <button class="dockBtn" data-dock="fav"><i>◇</i>收藏</button>
   <button class="dockBtn" data-dock="submit"><i>＋</i>投稿</button>
@@ -851,25 +1048,83 @@ function renderMap(){
   loadChinaMap();
   const groups=new Map();
   for(const e of liveEvents()){
-    const key=cityKey(e.city);
-    const pos=cityPosition(e.city);
+    const key=cityKey(e.city), pos=cityPosition(e.city);
     if(!key||!pos)continue;
     const label=(key==='台北'||key==='高雄')?'台湾':key;
     if(!groups.has(label))groups.set(label,[]);
     groups.get(label).push(e);
   }
+
   const entries=[...groups.entries()].map(([label,events])=>{
-    const raw=label==='台湾'?(events[0]?.city||'台湾'):label;
-    return {label,events,count:events.length,pos:label==='台湾'?(()=>{const [x,y]=projectGeo(...CITY_GEO['台湾']);return [x/620*100,y/420*100]})():cityPosition(raw)};
+    let pos;
+    if(label==='台湾'){
+      const [x,y]=projectGeo(...CITY_GEO['台湾']);pos=[x/620*100,y/420*100];
+    }else{
+      pos=cityPosition(events[0].city);
+    }
+    return {label,events,count:events.length,pos};
   }).filter(x=>x.pos).sort((a,b)=>b.count-a.count);
+
+  const total=entries.reduce((n,x)=>n+x.count,0);
   const maxCount=Math.max(1,...entries.map(x=>x.count));
-  pins.innerHTML=entries.map(item=>{
-    const [x,y]=item.pos,size=Math.round(31+(item.count/maxCount)*25);
-    return '<button class="mapBubble" data-city="'+item.label+'" style="left:'+x+'%;top:'+y+'%;--bubble:'+size+'px"><span class="mapBubbleCore">'+item.count+'</span><span class="mapBubbleLabel">'+item.label+' '+item.count+'</span></button>';
+  const top=entries[0];
+
+  const cityCount=document.getElementById('mapCityCount');
+  const eventCount=document.getElementById('mapEventCount');
+  const hotCity=document.getElementById('mapHotCity');
+  const heatTextEl=document.getElementById('mapHeatText');
+  const note=document.getElementById('mapDynamicNote');
+  if(cityCount)animateNumber(cityCount,entries.length);
+  if(eventCount)animateNumber(eventCount,total);
+  if(hotCity)hotCity.textContent=top?top.label:'—';
+  if(heatTextEl)heatTextEl.textContent=top?(top.label+' · '+top.count+' 场正在报名'):'暂无城市赛事';
+  if(note)note.textContent='数据来自当前赛事库 · '+entries.length+' 个城市正在发光';
+
+  pins.innerHTML=entries.map((item,i)=>{
+    const [x,y]=item.pos;
+    const size=Math.round(34+(item.count/maxCount)*28);
+    return '<button class="mapBubble '+(i===0?'hot':'')+'" data-city="'+item.label+'" style="left:'+x+'%;top:'+y+'%;--bubble:'+size+'px">'+
+      '<span class="mapBubbleCore">'+item.count+'</span>'+
+      '<span class="mapBubbleLabel">'+item.label+' '+item.count+'</span>'+
+    '</button>';
   }).join('');
+
+  drawMapRoutes(entries.slice(0,5));
+
   pins.querySelectorAll('.mapBubble').forEach(pin=>pin.onclick=e=>{
-    e.stopPropagation();pins.querySelectorAll('.mapBubble').forEach(x=>x.classList.remove('active'));pin.classList.add('active');
-    const city=pin.dataset.city;showMapCity(city,groups.get(city)||[]);if(navigator.vibrate)navigator.vibrate(8);
+    e.stopPropagation();
+    pins.querySelectorAll('.mapBubble').forEach(x=>x.classList.remove('active'));
+    pin.classList.add('active');
+    document.querySelector('.mapWorld')?.classList.add('focused');
+    const city=pin.dataset.city;
+    showMapCity(city,groups.get(city)||[]);
+    if(navigator.vibrate)navigator.vibrate(8);
+  });
+}
+function animateNumber(el,to){
+  const from=Number(el.textContent)||0,start=performance.now(),dur=430;
+  function tick(now){
+    const p=Math.min(1,(now-start)/dur),v=Math.round(from+(to-from)*(1-Math.pow(1-p,3)));
+    el.textContent=String(v);
+    if(p<1)requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+function drawMapRoutes(entries){
+  const svg=document.getElementById('mapRoutes');if(!svg)return;
+  const ns='http://www.w3.org/2000/svg';
+  svg.innerHTML='<defs><linearGradient id="routeGradient" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2f6fff"/><stop offset="1" stop-color="#ff7a2f"/></linearGradient></defs>';
+  if(entries.length<2)return;
+  const hub=entries[0];
+  const [hx,hy]=[hub.pos[0]/100*620,hub.pos[1]/100*420];
+  entries.slice(1).forEach((item,i)=>{
+    const [x,y]=[item.pos[0]/100*620,item.pos[1]/100*420];
+    const path=document.createElementNS(ns,'path');
+    const mx=(hx+x)/2,my=Math.min(hy,y)-35-(i*9);
+    path.setAttribute('d','M '+hx.toFixed(1)+' '+hy.toFixed(1)+' Q '+mx.toFixed(1)+' '+my.toFixed(1)+' '+x.toFixed(1)+' '+y.toFixed(1));
+    path.setAttribute('class','mapRoutePath');
+    path.style.animationDelay=(-i*1.2)+'s';
+    svg.appendChild(path);
   });
 }
 function showMapCity(city,events){
@@ -885,6 +1140,8 @@ function showMapCity(city,events){
   ).join('');
   rail.querySelectorAll('.mapMiniCard').forEach(c=>c.onclick=()=>openEvent(c.dataset.id));
   focus.classList.add('on');
+  const note=document.getElementById('mapDynamicNote');
+  if(note)note.textContent=city+' 已解锁 · 左右滑动查看 '+events.length+' 场比赛';
 }
 function renderStage(){
   const live=liveEvents();
@@ -903,7 +1160,6 @@ function renderStage(){
   document.querySelectorAll('#stage [data-id]').forEach(el=>el.onclick=()=>openEvent(el.dataset.id));
   renderHeroArt();
   renderSwipeDeck();
-  renderMap();
 }
 function renderArticles(){
   const news=DATA.news||[];
@@ -1074,10 +1330,11 @@ document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>closeLayer(b.
 document.getElementById('submitPageContact').onclick=()=>alert('这里接主办方投稿表单 / 公众号联系入口');
 document.getElementById('searchOpen').onclick=()=>{document.getElementById('searchLayer').classList.add('on');document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('searchInput').focus(),150);search('')};
 document.getElementById('searchInput').oninput=e=>search(e.target.value);
-document.querySelector('.mapPaper')?.addEventListener('click',e=>{
-  if(e.target.closest('.mapPin,.mapFocus')) return;
+document.querySelector('.mapGamePanel')?.addEventListener('click',e=>{
+  if(e.target.closest('.mapBubble,.mapFocus')) return;
   document.querySelectorAll('.mapBubble').forEach(x=>x.classList.remove('active'));
   document.getElementById('mapFocus')?.classList.remove('on');
+  document.querySelector('.mapWorld')?.classList.remove('focused');
 });
 document.getElementById('jumpbar').onclick=e=>{
   const b=e.target.closest('button'); if(!b) return;
@@ -1087,6 +1344,7 @@ document.getElementById('jumpbar').onclick=e=>{
 let ACTIVE_VIEW='events';
 const LOADER_COPY={
   events:'小 F 正在跑去赛场…',
+  map:'正在点亮全国赛场…',
   news:'正在翻今天的情报…',
   fav:'正在把收藏夹拿过来…',
   submit:'正在打开主办方入口…'
@@ -1105,6 +1363,7 @@ async function switchView(view,button){
   const start=performance.now();
   if(view==='fav')renderFavPage();
   if(view==='news')renderArticles();
+  if(view==='map')renderMap();
   const elapsed=performance.now()-start;
   await new Promise(r=>setTimeout(r,Math.max(430-elapsed,220)));
   document.querySelectorAll('.appView').forEach(v=>v.classList.toggle('on',v.id==='view-'+view));
@@ -1125,7 +1384,7 @@ let DATA_SOURCE='fallback';
 function applyData(next,source){
   if(!next || !Array.isArray(next.events)) return false;
   DATA=next; DATA_SOURCE=source; LAST_SYNC=Date.now();
-  renderMeta(); renderStage(); renderArticles(); renderFavPage();
+  renderMeta(); renderStage(); renderArticles(); renderFavPage(); renderMap();
   return true;
 }
 async function refreshContent(){
@@ -1139,7 +1398,7 @@ async function refreshContent(){
     if(!r.ok) throw new Error('fallback '+r.status);
     return applyData(await r.json(),'fallback');
   }catch(e){
-    if(!DATA.events.length){DATA={events:[],flashes:[],news:[]};renderMeta();renderStage();renderArticles();renderFavPage();}
+    if(!DATA.events.length){DATA={events:[],flashes:[],news:[]};renderMeta();renderStage();renderArticles();renderFavPage();renderMap();}
     return false;
   }
 }
