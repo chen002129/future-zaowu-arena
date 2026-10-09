@@ -690,7 +690,7 @@ body{background:
 <body>
 <div class="app">
   <nav class="nav">
-    <div class="brand"><img class="brandLogo" src="assets/future-maker-logo-exact.png" alt=""><span class="brandText"><b>未来造物赛场</b><span>FUTURE MAKER</span></span></div>
+    <div class="brand"><img class="brandLogo" src="assets/future-maker-logo-final.png" alt=""><span class="brandText"><b>未来造物赛场</b><span>FUTURE MAKER</span></span></div>
     <div class="navright">
       <span class="live" id="liveMeta">LIVE</span>
       <button class="iconbtn" id="searchOpen" aria-label="搜索">⌕</button>
@@ -835,7 +835,7 @@ body{background:
 
 <div class="searchLayer" id="searchLayer">
   <div class="searchInner">
-    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo-exact.png" alt=""><span>探索赛场</span></span><button class="close" data-close="search">×</button></div>
+    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo-final.png" alt=""><span>探索赛场</span></span><button class="close" data-close="search">×</button></div>
     <div class="searchBox">
       <input id="searchInput" autocomplete="off" placeholder="输入赛事、城市、方向…">
       <div class="searchHint">例如：上海 / AI Agent / 青少年 / 腾讯</div>
@@ -846,14 +846,14 @@ body{background:
 
 <div class="detailLayer" id="detailLayer">
   <div class="detailInner">
-    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo-exact.png" alt=""><span>赛场详情</span></span><button class="close" data-close="detail">×</button></div>
+    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo-final.png" alt=""><span>赛场详情</span></span><button class="close" data-close="detail">×</button></div>
     <div id="detailContent"></div>
   </div>
 </div>
 
 <div class="articleLayer" id="articleLayer">
   <div class="articleInner">
-    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo-exact.png" alt=""><span>未来造物观察</span></span><button class="close" data-close="article">×</button></div>
+    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo-final.png" alt=""><span>未来造物观察</span></span><button class="close" data-close="article">×</button></div>
     <div id="articleContent"></div>
   </div>
 </div>
@@ -863,7 +863,7 @@ body{background:
   <div class="loaderCard">
     <div class="loaderStage">
       <i class="loaderSpark s1">✦</i>
-      <div class="loaderLogo"><img src="assets/future-maker-logo-exact.png" alt=""></div>
+      <div class="loaderLogo"><img src="assets/future-maker-logo-final.png" alt=""></div>
       <i class="loaderSpark s2">✦</i>
       <div class="loaderDots"><b></b><b></b><b></b></div>
     </div>
@@ -910,8 +910,8 @@ function posterMarkup(e,cls='posterImg'){
   return '';
 }
 function artFallback(e,mode='big'){
-  if(mode==='big') return '<div class="artFallback"><img class="ghostLogo" src="assets/future-maker-logo-exact.png" alt=""><div class="bigDate">'+shortDate(e.deadline)+'</div></div>';
-  return '<div class="tinyFallback"><img src="assets/future-maker-logo-exact.png" alt=""><span>'+shortDate(e.deadline)+'</span></div>';
+  if(mode==='big') return '<div class="artFallback"><img class="ghostLogo" src="assets/future-maker-logo-final.png" alt=""><div class="bigDate">'+shortDate(e.deadline)+'</div></div>';
+  return '<div class="tinyFallback"><img src="assets/future-maker-logo-final.png" alt=""><span>'+shortDate(e.deadline)+'</span></div>';
 }
 function engagement(e){
   return e.engagement||{likes:0,saves:0,views:0,registrationClicks:0,heat:0,liked:false,saved:false};
