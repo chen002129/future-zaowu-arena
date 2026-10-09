@@ -432,18 +432,77 @@ body{background:
   .mapLegend{right:12px;bottom:12px;font-size:8.5px}
 }
 
+
+/* ===== real page navigation ===== */
+.appView{display:none;min-height:calc(100vh - 78px)}
+.appView.on{display:block;animation:pagePop .38s cubic-bezier(.2,.78,.2,1) both}
+@keyframes pagePop{from{opacity:0;transform:translateY(12px) scale(.992)}to{opacity:1;transform:none}}
+.pageHero{padding:54px 0 30px;border-bottom:1px solid rgba(47,111,255,.10);margin-bottom:24px}
+.pageHero.small h1{font-size:clamp(42px,7vw,70px);letter-spacing:-.055em;line-height:.98;margin:0}
+.pageHero.small p{font-size:14px;color:var(--ink2);line-height:1.75;max-width:560px;margin:17px 0 0}
+.flashList{display:grid;gap:8px;margin-bottom:34px}
+.flashItem{display:grid;grid-template-columns:74px 1fr auto;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}
+.flashItem time{font:10px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--orange)}
+.flashItem p{font-size:13px;line-height:1.45;margin:0}.flashItem span{font-size:9px;color:var(--ink3)}
+.emptyFav{padding:70px 20px;text-align:center;border:1px dashed rgba(47,111,255,.20);border-radius:22px;background:rgba(255,255,255,.56)}
+.emptyFav .emptyIcon{font-size:36px;margin-bottom:12px;animation:emptyFloat 3s ease-in-out infinite}
+.emptyFav h3{font-size:18px;margin:0 0 8px}.emptyFav p{font-size:12px;color:var(--ink3);margin:0}
+@keyframes emptyFloat{50%{transform:translateY(-5px) rotate(4deg)}}
+.submitPageCard{position:relative;overflow:hidden;min-height:360px;border-radius:26px;padding:28px;background:linear-gradient(145deg,#fff,#eef4ff);border:1px solid rgba(47,111,255,.10);box-shadow:0 22px 65px rgba(42,70,130,.08)}
+.submitPageCard:after{content:"";position:absolute;width:210px;height:210px;border-radius:50%;right:-70px;bottom:-70px;background:rgba(255,122,47,.10);box-shadow:0 0 0 26px rgba(47,111,255,.035)}
+.submitSticker{display:inline-block;background:var(--orange);color:#fff;font:9px ui-monospace,SFMono-Regular,Menlo,monospace;padding:6px 8px;border-radius:4px;transform:rotate(-3deg)}
+.submitPageCard h2{font-size:42px;line-height:1.02;letter-spacing:-.05em;margin:26px 0 14px;position:relative;z-index:1}
+.submitPageCard p{font-size:14px;line-height:1.8;color:var(--ink2);max-width:560px;position:relative;z-index:1}
+.submitPageBtn{position:relative;z-index:1;margin-top:26px;height:52px;padding:0 20px;border:0;border-radius:14px;background:var(--ink);color:#fff}
+
+/* cute transition loader */
+.viewLoader{position:fixed;inset:0;z-index:180;display:grid;place-items:center;background:rgba(245,248,253,.82);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);opacity:0;pointer-events:none;transition:opacity .18s ease}
+.viewLoader.on{opacity:1;pointer-events:auto}
+.loaderCard{width:176px;text-align:center}
+.loaderStage{height:92px;position:relative;display:grid;place-items:center}
+.loaderLogo{width:50px;height:58px;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 10px 28px rgba(40,67,124,.12);animation:logoHop .72s cubic-bezier(.3,.7,.2,1) infinite}
+.loaderLogo img{width:100%;height:100%;object-fit:cover;display:block}
+.loaderDots{position:absolute;bottom:4px;display:flex;gap:12px;align-items:end}
+.loaderDots b{width:7px;height:7px;border-radius:50%;background:var(--blue);animation:dotBoop .72s ease-in-out infinite}
+.loaderDots b:nth-child(2){background:var(--orange);animation-delay:.12s}.loaderDots b:nth-child(3){animation-delay:.24s}
+.loaderSpark{position:absolute;font-style:normal;color:var(--orange);font-size:12px;animation:spark 1s ease-in-out infinite}
+.loaderSpark.s1{left:35px;top:12px}.loaderSpark.s2{right:34px;top:25px;animation-delay:-.4s;color:var(--blue)}
+.loaderText{font-size:11px;color:var(--ink2);margin-top:5px}
+@keyframes logoHop{0%,100%{transform:translateY(0) rotate(-2deg)}48%{transform:translateY(-17px) rotate(4deg)}62%{transform:translateY(-11px) rotate(1deg)}}
+@keyframes dotBoop{50%{transform:scale(1.5);opacity:.45}}
+@keyframes spark{50%{transform:translateY(-4px) rotate(18deg);opacity:.35}}
+
+/* real China GeoJSON map */
+.chinaSketch{left:5%;top:11%;width:90%;height:73%;overflow:visible}
+.mapPins{left:5%;top:11%;width:90%;height:73%;right:auto;bottom:auto}
+.realChinaPath{fill:#edf3ff;stroke:#315ec6;stroke-width:1.45;stroke-linejoin:round;vector-effect:non-scaling-stroke;filter:drop-shadow(0 5px 10px rgba(40,72,145,.06))}
+.realChinaPath.taiwan{fill:#fff1e8;stroke:var(--orange);stroke-width:1.55}
+.realChinaLabel{font:10px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#76513c;font-weight:650}
+.mapPaper{background:#fff;border-color:rgba(47,111,255,.10)}
+.chinaOutline,.routeLine,.mapProvinceLabel{display:none!important}
+
+@media(max-width:760px){
+  .appView{min-height:calc(100vh - 62px)}
+  .pageHero{padding:30px 2px 20px;margin-bottom:18px}.pageHero.small h1{font-size:39px}.pageHero.small p{font-size:12.5px}
+  .flashItem{grid-template-columns:56px 1fr;gap:8px}.flashItem span{display:none}
+  .submitPageCard{min-height:330px;padding:21px;border-radius:22px}.submitPageCard h2{font-size:34px}
+  .chinaSketch,.mapPins{left:2%;top:13%;width:96%;height:67%}
+  .loaderCard{transform:translateY(-24px)}
+}
+
 </style>
 </head>
 <body>
 <div class="app">
   <nav class="nav">
-    <div class="brand"><img class="brandLogo" src="assets/future-maker-logo.png" alt=""><span class="brandText"><b>未来造物赛场</b><span>FUTURE MAKER</span></span></div>
+    <div class="brand"><img class="brandLogo" src="assets/future-maker-logo-real.png" alt=""><span class="brandText"><b>未来造物赛场</b><span>FUTURE MAKER</span></span></div>
     <div class="navright">
       <span class="live" id="liveMeta">LIVE</span>
       <button class="iconbtn" id="searchOpen" aria-label="搜索">⌕</button>
     </div>
   </nav>
 
+  <section class="appView on" id="view-events">
   <header class="hero">
     <div class="heroArt" id="heroArt"></div>
     <div>
@@ -462,7 +521,7 @@ body{background:
     <button data-jump="deadlineSec">即将截止</button>
     <button data-jump="youthSec">青少年</button>
     <button data-jump="proSec">高校 / 开发者</button>
-    <button data-jump="editorial">未来造物观察</button>
+    <button data-jump="mapSection">全国地图</button>
   </div>
 
   <section class="playZone" id="playZone">
@@ -473,39 +532,14 @@ body{background:
 
   <section class="mapSection" id="mapSection">
     <div class="mapPaper">
-      <svg class="chinaSketch" viewBox="0 0 620 420" aria-hidden="true">
-        <path class="chinaOutline mainland" d="M86 124
-          C111 101,136 89,165 91
-          C184 70,216 68,239 80
-          C263 58,293 56,316 68
-          C337 48,367 49,391 65
-          C414 59,444 69,455 91
-          C480 87,507 102,516 124
-          C539 132,557 151,553 171
-          C573 188,570 208,552 221
-          C556 241,537 257,516 259
-          C507 280,488 290,468 289
-          C461 312,441 326,420 322
-          C408 346,386 356,365 346
-          C347 368,321 374,301 360
-          C281 378,253 374,238 353
-          C215 363,190 351,184 331
-          C157 335,137 317,137 294
-          C113 289,99 270,104 248
-          C82 236,76 215,89 198
-          C72 181,74 160,91 147
-          C78 139,77 130,86 124 Z"/>
-        <path class="chinaOutline island hainan" d="M345 372 C355 364,370 365,379 374 C374 385,359 391,347 385 Z"/>
-        <path class="chinaOutline island taiwan" d="M474 304 C485 309,492 326,489 343 C486 360,477 376,468 381 C461 369,462 350,465 334 C467 322,469 311,474 304 Z"/>
-        <text class="mapProvinceLabel" x="494" y="347">台湾省</text>
-      </svg>
+      <svg class="chinaSketch" id="chinaMap" viewBox="0 0 620 420" aria-label="中国赛事热度地图"></svg>
       <div class="mapPins" id="mapPins"></div>
       <div class="mapFocus" id="mapFocus">
         <div class="mapFocusHead"><b id="mapFocusCity">赛场</b><span id="mapFocusCount">0 场</span></div>
         <div class="mapFocusRail" id="mapFocusRail"></div>
       </div>
       <div class="mapLegend"><span class="mapLegendDots"><i></i><i></i><i></i></span><span>赛事数量</span></div>
-      <div class="mapNote">圆点越大，代表这个城市当前可参加的赛事越多。点城市查看赛事。</div>
+      <div class="mapNote">赛事越多，城市气泡越大。点击城市查看这里正在发生的比赛。</div>
       <svg class="scribble" style="width:110px;height:55px;right:18px;bottom:18px" viewBox="0 0 110 55"><path d="M5 43 C24 11,67 7,98 20 M81 12 L100 20 L87 34"/></svg>
     </div>
   </section>
@@ -518,9 +552,44 @@ body{background:
     <span class="sigtext" id="sigtext">正在同步赛事情报…</span>
   </div>
 
+  </section>
+
+  <section class="appView" id="view-news">
+    <div class="pageHero small">
+      <div class="kicker">FUTURE MAKER · INTELLIGENCE</div>
+      <h1>赛场情报。</h1>
+      <p>赛事更新、截止提醒、值得看的教育与 AI 观察，都放在这里。</p>
+    </div>
+    <div class="flashList" id="newsFlashList"></div>
   <section class="editorial">
     <div class="editorialHead"><h3>未来造物 · 精选专栏</h3><span>EDITORIAL</span></div>
     <div class="articles" id="articles"></div>
+  </section>
+
+
+  </section>
+
+  <section class="appView" id="view-fav">
+    <div class="pageHero small">
+      <div class="kicker">MY ARENA</div>
+      <h1>我的收藏。</h1>
+      <p>把想参加、想继续观察的比赛留在这里。</p>
+    </div>
+    <div id="favPage"></div>
+  </section>
+
+  <section class="appView" id="view-submit">
+    <div class="pageHero small">
+      <div class="kicker">ORGANIZER ENTRY</div>
+      <h1>赛事投稿。</h1>
+      <p>主办方可以把赛事提交给未来造物。审核后动态上架，不需要重新发版。</p>
+    </div>
+    <div class="submitPageCard">
+      <span class="submitSticker">OPEN CALL</span>
+      <h2>把你的赛事<br>放进赛场。</h2>
+      <p>面向中国区 AI、AIGC、智能体、AI Coding、智能硬件等赛事。后端接通后，提交、审核、上线都会走动态流程。</p>
+      <button class="submitPageBtn" id="submitPageContact">联系未来造物 →</button>
+    </div>
   </section>
 
   <footer class="footer">
@@ -531,7 +600,7 @@ body{background:
 
 <div class="searchLayer" id="searchLayer">
   <div class="searchInner">
-    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo.png" alt=""><span>探索赛场</span></span><button class="close" data-close="search">×</button></div>
+    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo-real.png" alt=""><span>探索赛场</span></span><button class="close" data-close="search">×</button></div>
     <div class="searchBox">
       <input id="searchInput" autocomplete="off" placeholder="输入赛事、城市、方向…">
       <div class="searchHint">例如：上海 / AI Agent / 青少年 / 腾讯</div>
@@ -542,27 +611,28 @@ body{background:
 
 <div class="detailLayer" id="detailLayer">
   <div class="detailInner">
-    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo.png" alt=""><span>赛场详情</span></span><button class="close" data-close="detail">×</button></div>
+    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo-real.png" alt=""><span>赛场详情</span></span><button class="close" data-close="detail">×</button></div>
     <div id="detailContent"></div>
   </div>
 </div>
 
 <div class="articleLayer" id="articleLayer">
   <div class="articleInner">
-    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo.png" alt=""><span>未来造物观察</span></span><button class="close" data-close="article">×</button></div>
+    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo-real.png" alt=""><span>未来造物观察</span></span><button class="close" data-close="article">×</button></div>
     <div id="articleContent"></div>
   </div>
 </div>
 
-<div class="searchLayer" id="submitLayer">
-  <div class="searchInner">
-    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo.png" alt=""><span>赛事投稿</span></span><button class="close" data-close="submit">×</button></div>
-    <div class="submitPanel">
-      <div class="kicker">ORGANIZER ENTRY</div>
-      <h2>把你的赛事<br>放进赛场。</h2>
-      <p>面向中国区 AI、AIGC、智能体、AI Coding、智能硬件等赛事。正式后端接通后，主办方提交资料、审核通过即可动态上架，不需要重新发版。</p>
-      <button class="primary" id="submitContact">联系未来造物 →</button>
+
+<div class="viewLoader" id="viewLoader" aria-hidden="true">
+  <div class="loaderCard">
+    <div class="loaderStage">
+      <i class="loaderSpark s1">✦</i>
+      <div class="loaderLogo"><img src="assets/future-maker-logo-real.png" alt=""></div>
+      <i class="loaderSpark s2">✦</i>
+      <div class="loaderDots"><b></b><b></b><b></b></div>
     </div>
+    <div class="loaderText" id="loaderText">正在换个赛场…</div>
   </div>
 </div>
 
@@ -604,8 +674,8 @@ function posterMarkup(e,cls='posterImg'){
   return '';
 }
 function artFallback(e,mode='big'){
-  if(mode==='big') return '<div class="artFallback"><img class="ghostLogo" src="assets/future-maker-logo.png" alt=""><div class="bigDate">'+shortDate(e.deadline)+'</div></div>';
-  return '<div class="tinyFallback"><img src="assets/future-maker-logo.png" alt=""><span>'+shortDate(e.deadline)+'</span></div>';
+  if(mode==='big') return '<div class="artFallback"><img class="ghostLogo" src="assets/future-maker-logo-real.png" alt=""><div class="bigDate">'+shortDate(e.deadline)+'</div></div>';
+  return '<div class="tinyFallback"><img src="assets/future-maker-logo-real.png" alt=""><span>'+shortDate(e.deadline)+'</span></div>';
 }
 function engagement(e){
   return e.engagement||{likes:0,saves:0,views:0,registrationClicks:0,heat:0,liked:false,saved:false};
@@ -718,58 +788,88 @@ function bindSwipeDeck(deck){
   deck.onpointerup=e=>{down=false;deck.classList.remove('dragging');if(moved)e.preventDefault();setTimeout(()=>updateDeckActive(deck),80)};
   deck.onscroll=()=>requestAnimationFrame(()=>updateDeckActive(deck));
 }
+const CITY_GEO={
+  '北京':[116.4074,39.9042],'上海':[121.4737,31.2304],'深圳':[114.0579,22.5431],'厦门':[118.0894,24.4798],
+  '苏州':[120.5853,31.2989],'杭州':[120.1551,30.2741],'南京':[118.7969,32.0603],'成都':[104.0665,30.5728],
+  '武汉':[114.3054,30.5931],'广州':[113.2644,23.1291],'西安':[108.9398,34.3416],'重庆':[106.5516,29.5630],
+  '天津':[117.2000,39.1333],'青岛':[120.3826,36.0671],'长沙':[112.9388,28.2282],'合肥':[117.2272,31.8206],
+  '福州':[119.2965,26.0745],'郑州':[113.6254,34.7466],'济南':[117.1201,36.6512],'宁波':[121.5503,29.8746],
+  '东莞':[113.7518,23.0207],'台湾':[121.0,23.7],'台北':[121.5654,25.0330],'高雄':[120.3014,22.6273]
+};
 function cityKey(raw){
   raw=String(raw||'');
-  const keys=['北京','上海','深圳','厦门','苏州','杭州','南京','成都','武汉','广州','西安','重庆','天津','青岛','长沙','合肥','福州','郑州','济南','宁波','东莞','台湾','台北','高雄'];
+  const keys=Object.keys(CITY_GEO).filter(k=>k!=='台湾');
   return keys.find(k=>raw.includes(k))||null;
 }
+function projectGeo(lon,lat){
+  const minLon=73,maxLon=135,minLat=18,maxLat=54,padX=28,padY=24,w=564,h=360;
+  return [padX+(lon-minLon)/(maxLon-minLon)*w,padY+(maxLat-lat)/(maxLat-minLat)*h];
+}
 function cityPosition(city){
-  const map={
-    '北京':[69,27],'上海':[76,53],'深圳':[64,76],'厦门':[69,68],'苏州':[73,51],'杭州':[72,57],
-    '南京':[69,49],'成都':[43,56],'武汉':[57,56],'广州':[61,73],'西安':[49,43],'重庆':[47,60],
-    '天津':[72,31],'青岛':[73,42],'长沙':[57,64],'合肥':[64,53],'福州':[72,65],'郑州':[59,45],
-    '济南':[67,40],'宁波':[75,59],'东莞':[62,74],'台湾':[80,73],'台北':[81,69],'高雄':[80,77]
-  };
   const key=cityKey(city);
-  return key ? map[key] : null;
+  if(!key)return null;
+  const [x,y]=projectGeo(...CITY_GEO[key]);
+  return [x/620*100,y/420*100];
+}
+function ringPath(ring){
+  if(!ring?.length)return '';
+  return ring.map((p,i)=>{
+    const [x,y]=projectGeo(p[0],p[1]);
+    return (i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);
+  }).join(' ')+' Z';
+}
+async function loadChinaMap(){
+  const svg=document.getElementById('chinaMap'); if(!svg||svg.dataset.loaded)return;
+  try{
+    const r=await fetch('assets/china.geojson',{cache:'force-cache'});
+    if(!r.ok)throw new Error('map '+r.status);
+    const geo=await r.json();
+    const ns='http://www.w3.org/2000/svg';
+    svg.innerHTML='';
+    (geo.features||[]).forEach((feature,fi)=>{
+      const g=feature.geometry||{};
+      const polygons=g.type==='MultiPolygon'?g.coordinates:(g.type==='Polygon'?[g.coordinates]:[]);
+      polygons.forEach(poly=>{
+        const outer=poly?.[0]; if(!outer)return;
+        const p=document.createElementNS(ns,'path');
+        p.setAttribute('d',ringPath(outer));
+        p.setAttribute('class','realChinaPath'+(fi===1?' taiwan':''));
+        svg.appendChild(p);
+      });
+    });
+    const [tx,ty]=projectGeo(121.0,23.7);
+    const label=document.createElementNS(ns,'text');
+    label.setAttribute('x',String(tx+13));label.setAttribute('y',String(ty+3));label.setAttribute('class','realChinaLabel');
+    label.textContent='台湾省';svg.appendChild(label);
+    svg.dataset.loaded='1';
+  }catch(e){
+    svg.innerHTML='<text x="310" y="200" text-anchor="middle" style="font-size:12px;fill:#969aa2">地图加载中…</text>';
+  }
 }
 function renderMap(){
   const pins=document.getElementById('mapPins'); if(!pins) return;
+  loadChinaMap();
   const groups=new Map();
-
   for(const e of liveEvents()){
     const key=cityKey(e.city);
     const pos=cityPosition(e.city);
-    if(!key || !pos) continue;
+    if(!key||!pos)continue;
     const label=(key==='台北'||key==='高雄')?'台湾':key;
-    if(!groups.has(label)) groups.set(label,[]);
+    if(!groups.has(label))groups.set(label,[]);
     groups.get(label).push(e);
   }
-
-  const entries=[...groups.entries()]
-    .map(([label,events])=>({label,events,count:events.length,pos:cityPosition(events[0].city)||cityPosition(label)}))
-    .filter(x=>x.pos)
-    .sort((a,b)=>b.count-a.count);
-
+  const entries=[...groups.entries()].map(([label,events])=>{
+    const raw=label==='台湾'?(events[0]?.city||'台湾'):label;
+    return {label,events,count:events.length,pos:label==='台湾'?(()=>{const [x,y]=projectGeo(...CITY_GEO['台湾']);return [x/620*100,y/420*100]})():cityPosition(raw)};
+  }).filter(x=>x.pos).sort((a,b)=>b.count-a.count);
   const maxCount=Math.max(1,...entries.map(x=>x.count));
-  pins.innerHTML=entries.map((item,i)=>{
-    const [x,y]=item.pos;
-    const size=Math.round(31+(item.count/maxCount)*25);
-    return '<button class="mapBubble" data-city="'+item.label+'" style="left:'+x+'%;top:'+y+'%;--bubble:'+size+'px">'+
-      '<span class="mapBubbleCore">'+item.count+'</span>'+
-      '<span class="mapBubbleLabel">'+item.label+' '+item.count+'</span>'+
-    '</button>';
+  pins.innerHTML=entries.map(item=>{
+    const [x,y]=item.pos,size=Math.round(31+(item.count/maxCount)*25);
+    return '<button class="mapBubble" data-city="'+item.label+'" style="left:'+x+'%;top:'+y+'%;--bubble:'+size+'px"><span class="mapBubbleCore">'+item.count+'</span><span class="mapBubbleLabel">'+item.label+' '+item.count+'</span></button>';
   }).join('');
-
-  pins.querySelectorAll('.mapBubble').forEach(pin=>{
-    pin.onclick=e=>{
-      e.stopPropagation();
-      pins.querySelectorAll('.mapBubble').forEach(x=>x.classList.remove('active'));
-      pin.classList.add('active');
-      const city=pin.dataset.city;
-      showMapCity(city,groups.get(city)||[]);
-      if(navigator.vibrate) navigator.vibrate(8);
-    };
+  pins.querySelectorAll('.mapBubble').forEach(pin=>pin.onclick=e=>{
+    e.stopPropagation();pins.querySelectorAll('.mapBubble').forEach(x=>x.classList.remove('active'));pin.classList.add('active');
+    const city=pin.dataset.city;showMapCity(city,groups.get(city)||[]);if(navigator.vibrate)navigator.vibrate(8);
   });
 }
 function showMapCity(city,events){
@@ -807,12 +907,28 @@ function renderStage(){
 }
 function renderArticles(){
   const news=DATA.news||[];
-  document.getElementById('articles').innerHTML=news.slice(0,3).map((n,i)=>`
+  const articleBox=document.getElementById('articles');
+  if(articleBox) articleBox.innerHTML=news.slice(0,6).map((n,i)=>`
     <article class="article" data-news="${i}">
       <div><small>${n.tag||'精选专栏'} · ${n.readTime||''}</small><h4>${n.t}</h4><p>${n.s||''}</p></div>
       <div class="read">阅读全文 →</div>
     </article>`).join('');
+  const flashBox=document.getElementById('newsFlashList');
+  if(flashBox) flashBox.innerHTML=(DATA.flashes||[]).slice(0,10).map((f,i)=>{
+    const at=f.at?new Date(f.at):null;
+    const tm=at&&!Number.isNaN(at.getTime())?at.toLocaleDateString('zh-CN',{month:'2-digit',day:'2-digit'}):'NOW';
+    return '<div class="flashItem"><time>'+tm+'</time><p>'+(f.txt||'')+'</p><span>'+String(i+1).padStart(2,'0')+'</span></div>';
+  }).join('');
   document.querySelectorAll('.article').forEach(el=>el.onclick=()=>openArticle(Number(el.dataset.news)));
+}
+function renderFavPage(){
+  const box=document.getElementById('favPage');if(!box)return;
+  const saved=DATA.events.filter(e=>favs.has(e.id));
+  if(!saved.length){
+    box.innerHTML='<div class="emptyFav"><div class="emptyIcon">◇</div><h3>收藏夹还是空的</h3><p>看到想参加的比赛，点一下收藏，它会跑到这里。</p></div>';return;
+  }
+  box.innerHTML='<div class="tileGrid">'+saved.map(e=>'<article class="tileCard" data-id="'+e.id+'"><div class="tileArt">'+posterMarkup(e)+artFallback(e,'tiny')+'</div><div class="tileBody"><h4>'+e.title+'</h4><p>'+shortDate(e.deadline)+' 截止 · '+(e.city||'')+'</p><div class="miniSocial">♥ '+engagement(e).likes+'　热度 '+heatText(e)+'</div></div></article>').join('')+'</div>';
+  box.querySelectorAll('[data-id]').forEach(el=>el.onclick=()=>openEvent(el.dataset.id));
 }
 function renderMeta(){
   const live=DATA.events.filter(e=>daysLeft(e.deadline)>=0&&!e.ended).length;
@@ -918,6 +1034,7 @@ async function toggleFav(){
     currentEvent.engagement={...currentEvent.engagement,...data.engagement};
     if(sc) sc.textContent=currentEvent.engagement.saves;
   }
+  renderFavPage();
 }
 async function shareEvent(){
   if(!currentEvent)return;
@@ -953,7 +1070,8 @@ function closeLayer(which){
   if(!document.querySelector('.searchLayer.on,.detailLayer.on,.articleLayer.on,#submitLayer.on')) document.body.style.overflow='';
 }
 document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>closeLayer(b.dataset.close));
-document.getElementById('submitContact').onclick=()=>alert('正式版这里接主办方投稿表单 / 公众号联系入口');
+
+document.getElementById('submitPageContact').onclick=()=>alert('这里接主办方投稿表单 / 公众号联系入口');
 document.getElementById('searchOpen').onclick=()=>{document.getElementById('searchLayer').classList.add('on');document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('searchInput').focus(),150);search('')};
 document.getElementById('searchInput').oninput=e=>search(e.target.value);
 document.querySelector('.mapPaper')?.addEventListener('click',e=>{
@@ -966,28 +1084,48 @@ document.getElementById('jumpbar').onclick=e=>{
   const target=document.getElementById(b.dataset.jump)||document.querySelector('.'+b.dataset.jump);
   target?.scrollIntoView({behavior:'smooth',block:'start'});
 };
-document.getElementById('mobileDock').onclick=e=>{
-  const b=e.target.closest('.dockBtn'); if(!b) return;
-  document.querySelectorAll('.dockBtn').forEach(x=>x.classList.toggle('on',x===b));
-  const v=b.dataset.dock;
-  if(v==='events'){renderStage();window.scrollTo({top:0,behavior:'smooth'});}
-  if(v==='news') document.querySelector('.editorial')?.scrollIntoView({behavior:'smooth'});
-  if(v==='fav'){
-  const saved=DATA.events.filter(e=>favs.has(e.id));
-  document.getElementById('stage').innerHTML='<section class="magSec">'+sectionHead('◎','我的收藏',saved.length+' 场')+'<div class="tileGrid">'+saved.map(e=>'<article class="tileCard" data-id="'+e.id+'"><div class="tileArt">'+posterMarkup(e)+artFallback(e,'tiny')+'</div><div class="tileBody"><h4>'+e.title+'</h4><p>'+shortDate(e.deadline)+' 截止 · '+(e.city||'')+'</p></div></article>').join('')+'</div></section>';
-  document.querySelectorAll('#stage [data-id]').forEach(el=>el.onclick=()=>openEvent(el.dataset.id));
-  document.getElementById('stage')?.scrollIntoView({behavior:'smooth'});
-}
-  if(v==='submit'){document.getElementById('submitLayer').classList.add('on');document.body.style.overflow='hidden';}
+let ACTIVE_VIEW='events';
+const LOADER_COPY={
+  events:'小 F 正在跑去赛场…',
+  news:'正在翻今天的情报…',
+  fav:'正在把收藏夹拿过来…',
+  submit:'正在打开主办方入口…'
 };
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){['search','detail','article','submit'].forEach(closeLayer)}});
+function showViewLoader(view){
+  const loader=document.getElementById('viewLoader');
+  const textEl=document.getElementById('loaderText');
+  if(textEl)textEl.textContent=LOADER_COPY[view]||'正在换个页面…';
+  loader?.classList.add('on');
+}
+function hideViewLoader(){document.getElementById('viewLoader')?.classList.remove('on')}
+async function switchView(view,button){
+  if(view===ACTIVE_VIEW){window.scrollTo({top:0,behavior:'smooth'});return;}
+  showViewLoader(view);
+  if(navigator.vibrate)navigator.vibrate(6);
+  const start=performance.now();
+  if(view==='fav')renderFavPage();
+  if(view==='news')renderArticles();
+  const elapsed=performance.now()-start;
+  await new Promise(r=>setTimeout(r,Math.max(430-elapsed,220)));
+  document.querySelectorAll('.appView').forEach(v=>v.classList.toggle('on',v.id==='view-'+view));
+  document.querySelectorAll('.dockBtn').forEach(x=>x.classList.toggle('on',x===button));
+  ACTIVE_VIEW=view;
+  window.scrollTo({top:0,behavior:'auto'});
+  await new Promise(r=>setTimeout(r,100));
+  hideViewLoader();
+}
+document.getElementById('mobileDock').onclick=e=>{
+  const b=e.target.closest('.dockBtn');if(!b)return;
+  switchView(b.dataset.dock,b);
+};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){['search','detail','article'].forEach(closeLayer)}});
 
 let LAST_SYNC=0;
 let DATA_SOURCE='fallback';
 function applyData(next,source){
   if(!next || !Array.isArray(next.events)) return false;
   DATA=next; DATA_SOURCE=source; LAST_SYNC=Date.now();
-  renderMeta(); renderStage(); renderArticles();
+  renderMeta(); renderStage(); renderArticles(); renderFavPage();
   return true;
 }
 async function refreshContent(){
@@ -1001,7 +1139,7 @@ async function refreshContent(){
     if(!r.ok) throw new Error('fallback '+r.status);
     return applyData(await r.json(),'fallback');
   }catch(e){
-    if(!DATA.events.length){DATA={events:[],flashes:[],news:[]};renderMeta();renderStage();renderArticles();}
+    if(!DATA.events.length){DATA={events:[],flashes:[],news:[]};renderMeta();renderStage();renderArticles();renderFavPage();}
     return false;
   }
 }
