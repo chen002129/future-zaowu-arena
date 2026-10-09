@@ -45,7 +45,7 @@ button{color:inherit}
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
 }
 .brand{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:650;letter-spacing:.02em}
-.brandLogo{width:28px;height:28px;display:block;object-fit:contain;mix-blend-mode:multiply}
+.brandLogo{width:30px;height:34px;display:block;object-fit:contain;object-position:center;mix-blend-mode:normal;flex:0 0 auto}
 .brandText{display:flex;flex-direction:column;gap:1px;line-height:1.02}
 .brandText b{font-size:13px;font-weight:690}
 .brandText span{font:8px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3);letter-spacing:.1em}
@@ -460,8 +460,8 @@ body{background:
 .viewLoader.on{opacity:1;pointer-events:auto}
 .loaderCard{width:176px;text-align:center}
 .loaderStage{height:92px;position:relative;display:grid;place-items:center}
-.loaderLogo{width:50px;height:58px;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 10px 28px rgba(40,67,124,.12);animation:logoHop .72s cubic-bezier(.3,.7,.2,1) infinite}
-.loaderLogo img{width:100%;height:100%;object-fit:cover;display:block}
+.loaderLogo{width:52px;height:62px;border-radius:16px;overflow:visible;background:transparent;filter:drop-shadow(0 10px 22px rgba(40,67,124,.14));animation:logoHop .72s cubic-bezier(.3,.7,.2,1) infinite}
+.loaderLogo img{width:100%;height:100%;object-fit:contain;object-position:center;display:block}
 .loaderDots{position:absolute;bottom:4px;display:flex;gap:12px;align-items:end}
 .loaderDots b{width:7px;height:7px;border-radius:50%;background:var(--blue);animation:dotBoop .72s ease-in-out infinite}
 .loaderDots b:nth-child(2){background:var(--orange);animation-delay:.12s}.loaderDots b:nth-child(3){animation-delay:.24s}
@@ -652,7 +652,7 @@ body{background:
 <body>
 <div class="app">
   <nav class="nav">
-    <div class="brand"><img class="brandLogo" src="assets/future-maker-logo-real.png" alt=""><span class="brandText"><b>未来造物赛场</b><span>FUTURE MAKER</span></span></div>
+    <div class="brand"><img class="brandLogo" src="assets/future-maker-logo-exact.png" alt=""><span class="brandText"><b>未来造物赛场</b><span>FUTURE MAKER</span></span></div>
     <div class="navright">
       <span class="live" id="liveMeta">LIVE</span>
       <button class="iconbtn" id="searchOpen" aria-label="搜索">⌕</button>
@@ -796,7 +796,7 @@ body{background:
 
 <div class="searchLayer" id="searchLayer">
   <div class="searchInner">
-    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo-real.png" alt=""><span>探索赛场</span></span><button class="close" data-close="search">×</button></div>
+    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo-exact.png" alt=""><span>探索赛场</span></span><button class="close" data-close="search">×</button></div>
     <div class="searchBox">
       <input id="searchInput" autocomplete="off" placeholder="输入赛事、城市、方向…">
       <div class="searchHint">例如：上海 / AI Agent / 青少年 / 腾讯</div>
@@ -807,14 +807,14 @@ body{background:
 
 <div class="detailLayer" id="detailLayer">
   <div class="detailInner">
-    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo-real.png" alt=""><span>赛场详情</span></span><button class="close" data-close="detail">×</button></div>
+    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo-exact.png" alt=""><span>赛场详情</span></span><button class="close" data-close="detail">×</button></div>
     <div id="detailContent"></div>
   </div>
 </div>
 
 <div class="articleLayer" id="articleLayer">
   <div class="articleInner">
-    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo-real.png" alt=""><span>未来造物观察</span></span><button class="close" data-close="article">×</button></div>
+    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo-exact.png" alt=""><span>未来造物观察</span></span><button class="close" data-close="article">×</button></div>
     <div id="articleContent"></div>
   </div>
 </div>
@@ -824,7 +824,7 @@ body{background:
   <div class="loaderCard">
     <div class="loaderStage">
       <i class="loaderSpark s1">✦</i>
-      <div class="loaderLogo"><img src="assets/future-maker-logo-real.png" alt=""></div>
+      <div class="loaderLogo"><img src="assets/future-maker-logo-exact.png" alt=""></div>
       <i class="loaderSpark s2">✦</i>
       <div class="loaderDots"><b></b><b></b><b></b></div>
     </div>
@@ -871,8 +871,8 @@ function posterMarkup(e,cls='posterImg'){
   return '';
 }
 function artFallback(e,mode='big'){
-  if(mode==='big') return '<div class="artFallback"><img class="ghostLogo" src="assets/future-maker-logo-real.png" alt=""><div class="bigDate">'+shortDate(e.deadline)+'</div></div>';
-  return '<div class="tinyFallback"><img src="assets/future-maker-logo-real.png" alt=""><span>'+shortDate(e.deadline)+'</span></div>';
+  if(mode==='big') return '<div class="artFallback"><img class="ghostLogo" src="assets/future-maker-logo-exact.png" alt=""><div class="bigDate">'+shortDate(e.deadline)+'</div></div>';
+  return '<div class="tinyFallback"><img src="assets/future-maker-logo-exact.png" alt=""><span>'+shortDate(e.deadline)+'</span></div>';
 }
 function engagement(e){
   return e.engagement||{likes:0,saves:0,views:0,registrationClicks:0,heat:0,liked:false,saved:false};
