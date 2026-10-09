@@ -44,9 +44,11 @@ button{color:inherit}
   background:linear-gradient(to bottom,rgba(238,239,242,.92),rgba(238,239,242,.72),transparent);
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
 }
-.brand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:650;letter-spacing:.02em}
-.mark{width:22px;height:27px;border:1.5px solid currentColor;border-radius:7px 7px 10px 10px;position:relative;transform:rotate(5deg)}
-.mark:after{content:"";position:absolute;left:5px;right:5px;top:6px;height:1.5px;background:currentColor;box-shadow:0 5px currentColor}
+.brand{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:650;letter-spacing:.02em}
+.brandLogo{width:28px;height:28px;display:block;object-fit:contain;mix-blend-mode:multiply}
+.brandText{display:flex;flex-direction:column;gap:1px;line-height:1.02}
+.brandText b{font-size:13px;font-weight:690}
+.brandText span{font:8px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3);letter-spacing:.1em}
 .navright{display:flex;align-items:center;gap:8px}
 .live{font:10px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3);letter-spacing:.08em}
 .live:before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--red);margin-right:6px;vertical-align:1px}
@@ -145,38 +147,63 @@ button{color:inherit}
 .timeline{display:grid;gap:11px}.timeline div{font-size:13px;color:var(--ink2)}.timeline b{display:inline-block;width:118px;font:11px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3);font-weight:400}
 .detailActions{display:flex;gap:10px;position:sticky;bottom:10px;margin:30px 0 8px}
 .detailActions button{height:52px;border:0;border-radius:14px;padding:0 18px;cursor:pointer}.secondary{background:rgba(255,255,255,.70)}.primary{flex:1;background:var(--ink);color:#fff}
+.mobileDock{display:none}.submitPanel{margin-top:70px;padding:24px;border-radius:22px;background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.75)}.submitPanel h2{font-size:30px;letter-spacing:-.04em;margin:0 0 12px}.submitPanel p{font-size:14px;line-height:1.8;color:var(--ink2);margin:0}.submitPanel .primary{width:100%;margin-top:24px}
 .articleBody{padding:70px 0 80px}.articleBody .eyebrow{font:11px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3)}.articleBody h2{font-size:clamp(38px,7vw,72px);line-height:1.02;letter-spacing:-.05em;margin:18px 0 24px;max-width:780px}.articleLead{font-size:18px;line-height:1.8;color:var(--ink2);max-width:720px}.articleSec{max-width:720px;margin:50px 0}.articleSec h4{font-size:14px;margin:0 0 12px}.articleSec p{font-size:15px;line-height:1.9;color:var(--ink2);margin:0}
 @media(max-width:760px){
-  .app{padding:0 18px 100px}
-  .nav{height:66px}
-  .hero{grid-template-columns:1fr;padding:30px 0 34px;gap:20px}
-  .hero h1{font-size:47px;max-width:390px}
-  .heroright p{font-size:13px}
-  .heroMeta{margin-top:14px}
-  .event{min-height:0;grid-template-columns:44px 1fr;padding:28px 0 34px;gap:14px}
-  .index{grid-row:1 / span 2}
-  .core{grid-column:2}
-  .side{grid-column:2;align-self:auto;margin-top:8px}
-  .event h2{font-size:34px}
-  .note{font-size:13px}
-  .articles{grid-template-columns:1fr}
-  .article,.article:first-child{min-height:220px}
-  .article:first-child h4{font-size:29px}
-  .footer{flex-direction:column}
-  .detailInner,.articleInner,.searchInner{padding:14px 18px}
-  .detailHero{padding-top:46px}
-  .detailHero h2{font-size:45px}
-  .detailMeta{grid-template-columns:1fr 1fr}
-  .detailSection{grid-template-columns:1fr;gap:10px}
-  .searchBox{margin-top:48px}
-  .searchBox input{font-size:38px}
+  body{background:linear-gradient(180deg,#f2f3f5 0%,#eceef1 100%)}
+  .app{padding:0 14px 116px;width:100%}
+  .nav{height:62px;margin:0 -2px;padding:0 2px;top:0;background:linear-gradient(to bottom,rgba(242,243,245,.98),rgba(242,243,245,.88),rgba(242,243,245,.70))}
+  .brand{gap:8px}.brandLogo{width:29px;height:29px}.brandText b{font-size:13px}
+  .live{display:none}.iconbtn{width:36px;height:36px;background:rgba(255,255,255,.72)}
+  .hero{grid-template-columns:1fr;padding:21px 2px 23px;gap:13px}
+  .kicker{font-size:9px;margin-bottom:11px;letter-spacing:.12em}
+  .hero h1{font-size:39px;line-height:.98;letter-spacing:-.052em;max-width:330px}
+  .heroright{padding:0}.heroright p{font-size:12.5px;line-height:1.65;max-width:335px}
+  .heroMeta{font-size:10px;margin-top:12px;gap:14px}
+  .toolbar{position:sticky;top:62px;z-index:22;margin:0 -14px 12px;padding:9px 14px 10px;background:rgba(239,240,243,.90);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(23,24,26,.035)}
+  .tabs{gap:5px}.tab{font-size:11.5px;padding:8px 10px;border-radius:9px}.toolbar .count{font-size:10px}
+  .stage{display:grid;gap:12px}
+  .event{display:block;min-height:0;padding:18px 17px 16px;border:0;border-radius:20px;background:rgba(255,255,255,.67);border:1px solid rgba(255,255,255,.78);box-shadow:0 8px 28px rgba(33,40,54,.055)}
+  .event:first-child{border-top:0}.index{display:none}
+  .statusrow{margin-bottom:12px;gap:7px}.state{font-size:10.5px}.updated{font-size:9.5px}
+  .event h2{font-size:23px;line-height:1.14;letter-spacing:-.035em;margin:0}
+  .note{font-size:12.5px;line-height:1.65;margin-top:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .tags{gap:6px;margin-top:14px;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px;scrollbar-width:none}.tags::-webkit-scrollbar{display:none}
+  .tag{font-size:10.5px;padding:5px 7px;white-space:nowrap}
+  .side{margin-top:15px;padding:0}.sidegrid{grid-template-columns:1fr 1fr;border-radius:12px;overflow:hidden;background:rgba(255,255,255,.38)}
+  .cell{min-height:57px;padding:10px 11px}.cell small{font-size:9.5px;margin-bottom:5px}.cell b{font-size:12px}
+  .enter{margin-top:12px;font-size:11px}.arrow{width:30px;height:30px}
+  .signal{position:fixed;left:14px;right:14px;bottom:78px;width:auto;margin:0;padding:10px 11px;border-radius:14px;z-index:35;box-shadow:0 10px 30px rgba(30,40,55,.09)}
+  .siglabel{font-size:9px}.sigtext{font-size:11px}
+  .editorial{margin-top:64px;padding-top:22px}.editorialHead{margin-bottom:14px}
+  .articles{grid-template-columns:1fr;gap:10px}.article,.article:first-child{min-height:190px;padding:17px}
+  .article:first-child h4,.article h4{font-size:24px;line-height:1.12}.article p{font-size:12px}.article .read{font-size:10.5px}
+  .footer{margin-top:70px;padding-bottom:25px;flex-direction:column;gap:8px;font-size:10px}
+  .searchInner,.detailInner,.articleInner{padding:10px 14px 110px}
+  .layerTop{height:54px;position:sticky;top:0;z-index:4;margin:0 -14px;padding:0 14px;background:rgba(241,242,244,.86);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+  .layerTop .brandLogo{width:25px;height:25px}
+  .detailHero{padding:35px 0 28px}.detailHero h2{font-size:39px;line-height:1.02}.detailHero p{font-size:13px;line-height:1.72;margin-top:18px}
+  .detailMeta{grid-template-columns:1fr 1fr;margin-top:22px}.detailMeta .m{padding:12px}.detailMeta small{font-size:9.5px}.detailMeta b{font-size:12px}
+  .detailSection{grid-template-columns:1fr;gap:8px;padding:22px 0}.detailSection h4{font-size:10px}.detailSection p{font-size:13px;line-height:1.75}
+  .timeline b{width:auto;display:block;margin-bottom:3px}
+  .detailActions{position:fixed;left:14px;right:14px;bottom:12px;margin:0;padding:0;z-index:65;filter:drop-shadow(0 10px 22px rgba(24,30,42,.12))}
+  .detailActions button{height:50px;border-radius:14px}
+  .searchBox{margin-top:34px}.searchBox input{font-size:34px}.searchHint{font-size:11px}.searchResults{margin-top:30px}
+  .searchResult{padding:15px 0;align-items:flex-start}.searchResult h4{font-size:16px;line-height:1.35}.searchResult span{font-size:10px;white-space:nowrap}
+  .articleBody{padding:38px 0 90px}.articleBody h2{font-size:38px}.articleLead{font-size:15px}.articleSec{margin:38px 0}.articleSec p{font-size:14px}
+  .mobileDock{display:flex;position:fixed;left:12px;right:12px;bottom:10px;z-index:42;height:58px;border-radius:18px;background:rgba(255,255,255,.84);backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%);border:1px solid rgba(255,255,255,.9);box-shadow:0 14px 40px rgba(30,38,52,.12);padding:4px}
+  .dockBtn{flex:1;border:0;background:transparent;border-radius:14px;font-size:10px;color:var(--ink3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
+  .dockBtn i{font-style:normal;font-size:16px;line-height:1}.dockBtn.on{background:rgba(23,24,26,.06);color:var(--ink)}
+  .submitPanel{margin-top:38px;padding:20px;border-radius:20px;background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.78)}
+  .submitPanel h2{font-size:27px;letter-spacing:-.04em;margin:0 0 12px}.submitPanel p{font-size:13px;line-height:1.75;color:var(--ink2)}
+  .submitPanel .primary{width:100%;height:50px;border:0;border-radius:14px;margin-top:22px}
 }
 </style>
 </head>
 <body>
 <div class="app">
   <nav class="nav">
-    <div class="brand"><span class="mark"></span><span>未来造物赛场</span></div>
+    <div class="brand"><img class="brandLogo" src="assets/future-maker-logo.svg" alt=""><span class="brandText"><b>未来造物赛场</b><span>FUTURE MAKER</span></span></div>
     <div class="navright">
       <span class="live" id="liveMeta">LIVE</span>
       <button class="iconbtn" id="searchOpen" aria-label="搜索">⌕</button>
@@ -226,7 +253,7 @@ button{color:inherit}
 
 <div class="searchLayer" id="searchLayer">
   <div class="searchInner">
-    <div class="layerTop"><span class="brand"><span class="mark"></span>探索赛场</span><button class="close" data-close="search">×</button></div>
+    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo.svg" alt=""><span>探索赛场</span></span><button class="close" data-close="search">×</button></div>
     <div class="searchBox">
       <input id="searchInput" autocomplete="off" placeholder="输入赛事、城市、方向…">
       <div class="searchHint">例如：上海 / AI Agent / 青少年 / 腾讯</div>
@@ -237,17 +264,36 @@ button{color:inherit}
 
 <div class="detailLayer" id="detailLayer">
   <div class="detailInner">
-    <div class="layerTop"><span class="brand"><span class="mark"></span>赛场详情</span><button class="close" data-close="detail">×</button></div>
+    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo.svg" alt=""><span>赛场详情</span></span><button class="close" data-close="detail">×</button></div>
     <div id="detailContent"></div>
   </div>
 </div>
 
 <div class="articleLayer" id="articleLayer">
   <div class="articleInner">
-    <div class="layerTop"><span class="brand"><span class="mark"></span>未来造物观察</span><button class="close" data-close="article">×</button></div>
+    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo.svg" alt=""><span>未来造物观察</span></span><button class="close" data-close="article">×</button></div>
     <div id="articleContent"></div>
   </div>
 </div>
+
+<div class="searchLayer" id="submitLayer">
+  <div class="searchInner">
+    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo.svg" alt=""><span>赛事投稿</span></span><button class="close" data-close="submit">×</button></div>
+    <div class="submitPanel">
+      <div class="kicker">ORGANIZER ENTRY</div>
+      <h2>把你的赛事<br>放进赛场。</h2>
+      <p>面向中国区 AI、AIGC、智能体、AI Coding、智能硬件等赛事。正式后端接通后，主办方提交资料、审核通过即可动态上架，不需要重新发版。</p>
+      <button class="primary" id="submitContact">联系未来造物 →</button>
+    </div>
+  </div>
+</div>
+
+<nav class="mobileDock" id="mobileDock">
+  <button class="dockBtn on" data-dock="events"><i>◉</i>赛事</button>
+  <button class="dockBtn" data-dock="news"><i>⌁</i>情报</button>
+  <button class="dockBtn" data-dock="fav"><i>◇</i>收藏</button>
+  <button class="dockBtn" data-dock="submit"><i>＋</i>投稿</button>
+</nav>
 
 <script>
 let DATA={events:[],flashes:[],news:[]};
@@ -276,8 +322,9 @@ function audienceLabel(e){
   return e.audienceGroup||e.audience||'开放报名';
 }
 function passFilter(e){
-  if(FILTER==='精选') return !e.ended && daysLeft(e.deadline)>=0;
-  if(FILTER==='临近截止') return !e.ended && daysLeft(e.deadline)>=0 && daysLeft(e.deadline)<=14;
+  if(FILTER==='收藏') return favs.has(e.id);
+  if(FILTER==='精选') return daysLeft(e.deadline)>=0;
+  if(FILTER==='临近截止') return daysLeft(e.deadline)>=0 && daysLeft(e.deadline)<=14;
   const a=(e.audienceGroup||'')+(e.audience||'');
   return a.includes(FILTER);
 }
@@ -403,24 +450,57 @@ function search(q){
 }
 function closeLayer(which){
   document.getElementById(which+'Layer').classList.remove('on');
-  if(!document.querySelector('.searchLayer.on,.detailLayer.on,.articleLayer.on')) document.body.style.overflow='';
+  if(!document.querySelector('.searchLayer.on,.detailLayer.on,.articleLayer.on,#submitLayer.on')) document.body.style.overflow='';
 }
 document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>closeLayer(b.dataset.close));
+document.getElementById('submitContact').onclick=()=>alert('正式版这里接主办方投稿表单 / 公众号联系入口');
 document.getElementById('searchOpen').onclick=()=>{document.getElementById('searchLayer').classList.add('on');document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('searchInput').focus(),150);search('')};
 document.getElementById('searchInput').oninput=e=>search(e.target.value);
 document.getElementById('tabs').onclick=e=>{
   const b=e.target.closest('.tab');if(!b)return;
   FILTER=b.dataset.filter;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));renderStage();
 };
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){['search','detail','article'].forEach(closeLayer)}});
+document.getElementById('mobileDock').onclick=e=>{
+  const b=e.target.closest('.dockBtn'); if(!b) return;
+  document.querySelectorAll('.dockBtn').forEach(x=>x.classList.toggle('on',x===b));
+  const v=b.dataset.dock;
+  if(v==='events'){FILTER='精选';document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x.dataset.filter==='精选'));renderStage();window.scrollTo({top:0,behavior:'smooth'});}
+  if(v==='news') document.querySelector('.editorial')?.scrollIntoView({behavior:'smooth'});
+  if(v==='fav'){FILTER='收藏';document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));renderStage();document.querySelector('.stage')?.scrollIntoView({behavior:'smooth'});}
+  if(v==='submit'){document.getElementById('submitLayer').classList.add('on');document.body.style.overflow='hidden';}
+};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){['search','detail','article','submit'].forEach(closeLayer)}});
 
-async function boot(){
+let LAST_SYNC=0;
+let DATA_SOURCE='fallback';
+function applyData(next,source){
+  if(!next || !Array.isArray(next.events)) return false;
+  DATA=next; DATA_SOURCE=source; LAST_SYNC=Date.now();
+  renderMeta(); renderStage(); renderArticles();
+  return true;
+}
+async function refreshContent(){
+  try{
+    const r=await fetch('/api/content',{cache:'no-store'});
+    if(!r.ok) throw new Error('API '+r.status);
+    if(applyData(await r.json(),'api')) return true;
+  }catch(e){}
   try{
     const r=await fetch('data/events.json',{cache:'no-store'});
-    DATA=await r.json();
-  }catch(e){DATA={events:[],flashes:[],news:[]}}
-  renderMeta();renderStage();renderArticles();
+    if(!r.ok) throw new Error('fallback '+r.status);
+    return applyData(await r.json(),'fallback');
+  }catch(e){
+    if(!DATA.events.length){DATA={events:[],flashes:[],news:[]};renderMeta();renderStage();renderArticles();}
+    return false;
+  }
 }
+async function boot(){
+  await refreshContent();
+  setInterval(refreshContent,300000);
+}
+document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState==='visible' && Date.now()-LAST_SYNC>60000) refreshContent();
+});
 boot();
 </script>
 </body>
