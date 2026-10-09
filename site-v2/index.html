@@ -255,12 +255,106 @@ button{color:inherit}
 
   .hotGrid{grid-template-columns:1fr}.hotCard{min-height:112px;padding:14px}.hotRank{font-size:24px}.hotMain h4{font-size:15px}.hotStats b{font-size:19px}
 }
+
+/* ===== playful arena layer ===== */
+:root{--orange:#ff7a2f;--blue2:#dbe7ff;--paper2:#fbfcff}
+body{background:
+  radial-gradient(85% 34% at 15% -2%,rgba(50,109,255,.16),transparent 66%),
+  radial-gradient(60% 26% at 104% 19%,rgba(255,122,47,.10),transparent 68%),
+  #f4f6fa}
+.nav{background:linear-gradient(to bottom,rgba(247,249,252,.95),rgba(247,249,252,.76),transparent)}
+.brandLogo{mix-blend-mode:normal}
+.jumpbar button{background:#fff;border-color:rgba(47,111,255,.14);box-shadow:0 4px 14px rgba(45,76,140,.04)}
+.jumpbar button:nth-child(2n){transform:rotate(-1deg)}
+.jumpbar button:nth-child(3n){transform:rotate(1.2deg)}
+.magHead{border-bottom-color:rgba(47,111,255,.12)}
+.magHead .num{
+  color:#fff;background:var(--orange);border-radius:999px;padding:4px 7px;
+  transform:rotate(-4deg);box-shadow:0 4px 12px rgba(255,122,47,.16)
+}
+.magHead h3{font-weight:700}
+.featured,.deadCard,.tileCard,.hotCard,.article{background:rgba(255,255,255,.88);border-color:rgba(47,111,255,.08)}
+.featured{box-shadow:0 22px 70px rgba(48,80,145,.09)}
+.featureCopy:before{content:"EDITOR'S PICK";display:inline-flex;width:max-content;background:var(--blue);color:#fff;padding:5px 8px;border-radius:4px;font:8px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;transform:rotate(-1.5deg);margin-bottom:10px}
+.signal{background:rgba(255,255,255,.86);border-color:rgba(47,111,255,.10)}
+
+.playZone{margin:4px 0 62px;position:relative}
+.playHead{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:13px}
+.playHead h2{font-size:20px;margin:0;letter-spacing:-.03em}
+.playHead p{font:10px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3);margin:0}
+.swipeDeck{
+  display:grid;grid-auto-flow:column;grid-auto-columns:min(77vw,330px);gap:13px;overflow-x:auto;
+  scroll-snap-type:x mandatory;padding:8px max(0px,calc((100% - 1080px)/2)) 18px 2px;scrollbar-width:none;
+  cursor:grab;overscroll-behavior-x:contain;touch-action:pan-x
+}
+.swipeDeck::-webkit-scrollbar{display:none}.swipeDeck.dragging{cursor:grabbing;scroll-snap-type:none}
+.swipeCard{
+  scroll-snap-align:center;min-height:390px;border-radius:24px;background:#fff;border:1px solid rgba(47,111,255,.10);
+  box-shadow:0 18px 55px rgba(41,72,137,.09);overflow:hidden;position:relative;transform:scale(.94) rotate(var(--tilt,0deg));
+  opacity:.72;transition:transform .34s var(--ease),opacity .34s ease,box-shadow .34s ease;user-select:none
+}
+.swipeCard.active{transform:scale(1) rotate(0);opacity:1;box-shadow:0 24px 70px rgba(41,72,137,.14)}
+.swipePoster{height:235px;position:relative;background:linear-gradient(145deg,#dfe8ff,#fff0e7);overflow:hidden}
+.swipePoster img.posterImg{width:100%;height:100%;object-fit:cover;display:block}
+.swipePoster:after{content:"";position:absolute;inset:0;box-shadow:inset 0 -50px 70px rgba(10,24,58,.12);pointer-events:none}
+.tape{position:absolute;width:72px;height:21px;background:rgba(255,226,144,.70);top:11px;left:50%;transform:translateX(-50%) rotate(-4deg);z-index:4;backdrop-filter:blur(2px);border:1px solid rgba(255,255,255,.4)}
+.swipeBody{padding:16px 16px 18px}.swipeBody .k{font:9px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--orange);letter-spacing:.08em}
+.swipeBody h3{font-size:21px;line-height:1.14;margin:7px 0 9px;letter-spacing:-.03em}
+.swipeBody p{font-size:11px;color:var(--ink3);margin:0}
+.swipeFoot{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+.heatPill{font-size:10px;color:var(--blue);background:rgba(47,111,255,.08);padding:6px 8px;border-radius:999px}
+.swipeArrow{width:31px;height:31px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:#fff}
+.deckProgress{height:3px;background:rgba(47,111,255,.09);border-radius:99px;overflow:hidden;margin-top:2px}
+.deckProgress span{display:block;height:100%;width:20%;background:linear-gradient(90deg,var(--blue),var(--orange));border-radius:inherit;transition:width .3s var(--ease)}
+
+.mapSection{margin:0 0 66px}
+.mapPaper{
+  min-height:430px;background:#fff;border:1px solid rgba(47,111,255,.09);border-radius:26px;position:relative;overflow:hidden;
+  box-shadow:0 18px 55px rgba(41,72,137,.07);
+  background-image:linear-gradient(rgba(47,111,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(47,111,255,.025) 1px,transparent 1px);
+  background-size:22px 22px
+}
+.mapPaper:before{content:"赛场地图";position:absolute;left:18px;top:16px;color:var(--blue);font-weight:750;font-size:18px;letter-spacing:-.03em;z-index:4}
+.mapPaper:after{content:"LIVE MAP · 点击城市";position:absolute;right:18px;top:21px;color:var(--ink3);font:9px ui-monospace,SFMono-Regular,Menlo,monospace;z-index:4}
+.chinaSketch{position:absolute;left:7%;top:14%;width:86%;height:72%;overflow:visible}
+.chinaOutline{fill:rgba(47,111,255,.025);stroke:rgba(34,79,183,.55);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:5 7;vector-effect:non-scaling-stroke;animation:sketchWiggle 7s ease-in-out infinite alternate}
+.routeLine{fill:none;stroke:var(--orange);stroke-width:1.6;stroke-dasharray:7 7;stroke-linecap:round;opacity:.65;animation:dashMove 9s linear infinite}
+@keyframes dashMove{to{stroke-dashoffset:-140}}
+@keyframes sketchWiggle{50%{transform:translateY(1px) rotate(.12deg)}}
+.mapPins{position:absolute;inset:0}
+.mapPin{position:absolute;transform:translate(-50%,-50%);border:0;background:transparent;padding:0;cursor:pointer;z-index:5}
+.pinDot{width:15px;height:15px;border-radius:50% 50% 50% 12%;transform:rotate(-45deg);background:var(--blue);box-shadow:0 0 0 5px rgba(47,111,255,.10);position:relative;animation:pinBob 2.8s ease-in-out infinite}
+.pinDot:after{content:"";position:absolute;width:5px;height:5px;border-radius:50%;background:#fff;left:5px;top:5px}
+.mapPin:nth-child(2n) .pinDot{background:var(--orange);box-shadow:0 0 0 5px rgba(255,122,47,.11);animation-delay:-1s}
+@keyframes pinBob{50%{transform:rotate(-45deg) translate(2px,-3px)}}
+.pinLabel{position:absolute;left:20px;top:-7px;white-space:nowrap;background:#fff;padding:5px 7px;border:1px solid rgba(47,111,255,.12);border-radius:8px;font-size:10px;box-shadow:0 5px 16px rgba(43,65,110,.07);transform:rotate(var(--rot,-2deg))}
+.mapNote{position:absolute;left:19px;bottom:18px;font-size:10px;color:var(--ink3);max-width:190px;line-height:1.55}
+.scribble{position:absolute;pointer-events:none;opacity:.8}
+.scribble path{fill:none;stroke:var(--orange);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:190;stroke-dashoffset:190;animation:drawScribble 2.2s var(--ease) forwards}
+@keyframes drawScribble{to{stroke-dashoffset:0}}
+
+.likeBurst{position:fixed;z-index:120;pointer-events:none;font-size:18px;animation:burstUp .8s var(--ease) forwards}
+@keyframes burstUp{0%{opacity:0;transform:translate(-50%,-20%) scale(.3) rotate(-15deg)}30%{opacity:1;transform:translate(-50%,-70%) scale(1.15) rotate(8deg)}100%{opacity:0;transform:translate(-50%,-180%) scale(.85) rotate(-8deg)}}
+.bump{animation:bump .36s var(--ease)}@keyframes bump{45%{transform:scale(.91)}70%{transform:scale(1.08)}100%{transform:scale(1)}}
+.floatSticker{position:absolute;z-index:3;font-size:9px;font-weight:700;background:var(--orange);color:white;padding:5px 7px;border-radius:3px;transform:rotate(-7deg);animation:stickerFloat 4s ease-in-out infinite}
+@keyframes stickerFloat{50%{transform:translateY(-5px) rotate(-4deg)}}
+
+@media(max-width:760px){
+  .playZone{margin:0 -14px 48px}.playHead{padding:0 14px}.playHead h2{font-size:18px}
+  .swipeDeck{grid-auto-columns:82vw;padding-left:14px;padding-right:14px;gap:11px}
+  .swipeCard{min-height:360px;border-radius:22px}.swipePoster{height:218px}.swipeBody h3{font-size:19px}
+  .deckProgress{margin:0 14px}
+  .mapSection{margin:0 0 50px}.mapPaper{min-height:365px;border-radius:22px}.chinaSketch{left:3%;top:17%;width:94%;height:65%}
+  .mapNote{font-size:9.5px;max-width:155px}.pinLabel{font-size:9px}
+  .featured,.deadCard,.tileCard,.hotCard,.article{border-color:rgba(47,111,255,.08)}
+}
+
 </style>
 </head>
 <body>
 <div class="app">
   <nav class="nav">
-    <div class="brand"><img class="brandLogo" src="assets/future-maker-logo.svg" alt=""><span class="brandText"><b>未来造物赛场</b><span>FUTURE MAKER</span></span></div>
+    <div class="brand"><img class="brandLogo" src="assets/future-maker-logo.png" alt=""><span class="brandText"><b>未来造物赛场</b><span>FUTURE MAKER</span></span></div>
     <div class="navright">
       <span class="live" id="liveMeta">LIVE</span>
       <button class="iconbtn" id="searchOpen" aria-label="搜索">⌕</button>
@@ -288,6 +382,24 @@ button{color:inherit}
     <button data-jump="editorial">未来造物观察</button>
   </div>
 
+  <section class="playZone" id="playZone">
+    <div class="playHead"><h2>滑一滑，抽一张下一场</h2><p>DRAG / SWIPE</p></div>
+    <div class="swipeDeck" id="swipeDeck"></div>
+    <div class="deckProgress"><span id="deckProgressBar"></span></div>
+  </section>
+
+  <section class="mapSection" id="mapSection">
+    <div class="mapPaper">
+      <svg class="chinaSketch" viewBox="0 0 620 380" aria-hidden="true">
+        <path class="chinaOutline" d="M111 123 C142 88,191 70,231 80 C265 49,331 45,369 71 C414 67,452 86,462 117 C500 126,526 159,506 188 C529 218,500 245,468 249 C449 287,413 300,374 286 C349 319,310 328,276 307 C248 332,202 326,183 296 C142 300,113 271,120 236 C84 218,75 184,96 159 C83 143,89 130,111 123 Z"/>
+        <path class="routeLine" d="M170 188 C240 128,337 143,430 206 S474 260,402 274"/>
+      </svg>
+      <div class="mapPins" id="mapPins"></div>
+      <div class="mapNote">不是为了看地图，是为了让你一眼知道：最近的赛场，正在中国哪里发生。</div>
+      <svg class="scribble" style="width:110px;height:55px;right:18px;bottom:18px" viewBox="0 0 110 55"><path d="M5 43 C24 11,67 7,98 20 M81 12 L100 20 L87 34"/></svg>
+    </div>
+  </section>
+
   <main class="magazine" id="stage"></main>
 
   <div class="signal" id="signal">
@@ -309,7 +421,7 @@ button{color:inherit}
 
 <div class="searchLayer" id="searchLayer">
   <div class="searchInner">
-    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo.svg" alt=""><span>探索赛场</span></span><button class="close" data-close="search">×</button></div>
+    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo.png" alt=""><span>探索赛场</span></span><button class="close" data-close="search">×</button></div>
     <div class="searchBox">
       <input id="searchInput" autocomplete="off" placeholder="输入赛事、城市、方向…">
       <div class="searchHint">例如：上海 / AI Agent / 青少年 / 腾讯</div>
@@ -320,21 +432,21 @@ button{color:inherit}
 
 <div class="detailLayer" id="detailLayer">
   <div class="detailInner">
-    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo.svg" alt=""><span>赛场详情</span></span><button class="close" data-close="detail">×</button></div>
+    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo.png" alt=""><span>赛场详情</span></span><button class="close" data-close="detail">×</button></div>
     <div id="detailContent"></div>
   </div>
 </div>
 
 <div class="articleLayer" id="articleLayer">
   <div class="articleInner">
-    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo.svg" alt=""><span>未来造物观察</span></span><button class="close" data-close="article">×</button></div>
+    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo.png" alt=""><span>未来造物观察</span></span><button class="close" data-close="article">×</button></div>
     <div id="articleContent"></div>
   </div>
 </div>
 
 <div class="searchLayer" id="submitLayer">
   <div class="searchInner">
-    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo.svg" alt=""><span>赛事投稿</span></span><button class="close" data-close="submit">×</button></div>
+    <div class="layerTop"><span class="brand"><img class="brandLogo" src="assets/future-maker-logo.png" alt=""><span>赛事投稿</span></span><button class="close" data-close="submit">×</button></div>
     <div class="submitPanel">
       <div class="kicker">ORGANIZER ENTRY</div>
       <h2>把你的赛事<br>放进赛场。</h2>
@@ -382,8 +494,8 @@ function posterMarkup(e,cls='posterImg'){
   return '';
 }
 function artFallback(e,mode='big'){
-  if(mode==='big') return '<div class="artFallback"><img class="ghostLogo" src="assets/future-maker-logo.svg" alt=""><div class="bigDate">'+shortDate(e.deadline)+'</div></div>';
-  return '<div class="tinyFallback"><img src="assets/future-maker-logo.svg" alt=""><span>'+shortDate(e.deadline)+'</span></div>';
+  if(mode==='big') return '<div class="artFallback"><img class="ghostLogo" src="assets/future-maker-logo.png" alt=""><div class="bigDate">'+shortDate(e.deadline)+'</div></div>';
+  return '<div class="tinyFallback"><img src="assets/future-maker-logo.png" alt=""><span>'+shortDate(e.deadline)+'</span></div>';
 }
 function engagement(e){
   return e.engagement||{likes:0,saves:0,views:0,registrationClicks:0,heat:0,liked:false,saved:false};
@@ -459,6 +571,66 @@ function splitHTML(colA,colB){
   return '<section class="magSec" id="proSec">'+sectionHead('05','高校 / 开发者','往真实项目走')+
     '<div class="splitCols"><div class="splitCol"><div class="splitTitle"><b>高校赛事</b><span>COLLEGE</span></div>'+list(colA)+'</div><div class="splitCol"><div class="splitTitle"><b>开发者赛事</b><span>DEVELOPER</span></div>'+list(colB)+'</div></div></section>';
 }
+function renderSwipeDeck(){
+  const list=liveEvents().slice(0,8);
+  const deck=document.getElementById('swipeDeck');
+  if(!deck) return;
+  deck.innerHTML=list.map((e,i)=>{
+    const g=engagement(e),tilts=[-1.8,1.2,-.8,1.7,-1.2,.9][i%6];
+    return '<article class="swipeCard'+(i===0?' active':'')+'" style="--tilt:'+tilts+'deg" data-id="'+e.id+'">'+
+      '<div class="swipePoster"><span class="tape"></span>'+posterMarkup(e)+artFallback(e,'big')+(i===0?'<span class="floatSticker" style="right:12px;bottom:12px">HOT</span>':'')+'</div>'+
+      '<div class="swipeBody"><div class="k">'+status(e).t+' · '+shortDate(e.deadline)+'</div><h3>'+e.title+'</h3><p>'+(e.city||'')+' · '+audienceLabel(e)+'</p>'+
+      '<div class="swipeFoot"><span class="heatPill">热度 '+heatText(e)+' · ♥ '+g.likes+'</span><span class="swipeArrow">→</span></div></div>'+
+    '</article>';
+  }).join('');
+  deck.querySelectorAll('.swipeCard').forEach(el=>el.onclick=()=>openEvent(el.dataset.id));
+  bindSwipeDeck(deck);
+  updateDeckActive(deck);
+}
+function updateDeckActive(deck){
+  const cards=[...deck.querySelectorAll('.swipeCard')];
+  if(!cards.length) return;
+  const center=deck.scrollLeft+deck.clientWidth/2;
+  let best=0,dist=Infinity;
+  cards.forEach((c,i)=>{
+    const d=Math.abs((c.offsetLeft+c.offsetWidth/2)-center);
+    if(d<dist){dist=d;best=i}
+    c.classList.remove('active');
+  });
+  cards[best].classList.add('active');
+  const bar=document.getElementById('deckProgressBar');
+  if(bar) bar.style.width=((best+1)/cards.length*100)+'%';
+}
+function bindSwipeDeck(deck){
+  let down=false,startX=0,startScroll=0,moved=false;
+  deck.onpointerdown=e=>{down=true;moved=false;startX=e.clientX;startScroll=deck.scrollLeft;deck.setPointerCapture?.(e.pointerId);deck.classList.add('dragging')};
+  deck.onpointermove=e=>{if(!down)return;const dx=e.clientX-startX;if(Math.abs(dx)>4)moved=true;deck.scrollLeft=startScroll-dx};
+  deck.onpointerup=e=>{down=false;deck.classList.remove('dragging');if(moved)e.preventDefault();setTimeout(()=>updateDeckActive(deck),80)};
+  deck.onscroll=()=>requestAnimationFrame(()=>updateDeckActive(deck));
+}
+function cityPosition(city){
+  const map={
+    '北京':[69,31],'上海':[74,55],'深圳':[62,76],'厦门':[68,69],'苏州':[71,52],'杭州':[70,58],
+    '南京':[68,50],'成都':[42,55],'武汉':[57,55],'广州':[59,73],'西安':[45,43],'重庆':[46,60],
+    '江苏':[70,50],'线上':[50,45]
+  };
+  const key=Object.keys(map).find(k=>String(city||'').includes(k));
+  return map[key]||[46+Math.random()*18,38+Math.random()*26];
+}
+function renderMap(){
+  const pins=document.getElementById('mapPins');if(!pins)return;
+  const chosen=[]; const seen=new Set();
+  for(const e of liveEvents()){
+    const city=e.city||'线上';
+    const label=Object.keys({'北京':1,'上海':1,'深圳':1,'厦门':1,'苏州':1,'杭州':1,'南京':1,'成都':1,'武汉':1,'广州':1,'西安':1,'重庆':1,'江苏':1}).find(k=>city.includes(k))||city.split(/[·\/、]/)[0]||'线上';
+    if(seen.has(label)) continue; seen.add(label);chosen.push([e,label]);if(chosen.length>=7)break;
+  }
+  pins.innerHTML=chosen.map(([e,label],i)=>{
+    const [x,y]=cityPosition(e.city);
+    return '<button class="mapPin" data-id="'+e.id+'" style="left:'+x+'%;top:'+y+'%;--rot:'+(i%2?2:-2)+'deg"><span class="pinDot"></span><span class="pinLabel">'+label+' · '+status(e).t+'</span></button>';
+  }).join('');
+  pins.querySelectorAll('.mapPin').forEach(p=>p.onclick=()=>openEvent(p.dataset.id));
+}
 function renderStage(){
   const live=liveEvents();
   const featured=live.find(e=>e.featured)||live[0];
@@ -475,6 +647,8 @@ function renderStage(){
     splitHTML(college.length?college:live.slice(0,5),dev.length?dev:live.slice(0,5));
   document.querySelectorAll('#stage [data-id]').forEach(el=>el.onclick=()=>openEvent(el.dataset.id));
   renderHeroArt();
+  renderSwipeDeck();
+  renderMap();
 }
 function renderArticles(){
   const news=DATA.news||[];
@@ -550,12 +724,24 @@ async function recordInteraction(type,eventId){
     return data;
   }catch(e){ return null; }
 }
+function burstLike(btn){
+  const r=btn?.getBoundingClientRect();if(!r)return;
+  ['♥','✦','+1'].forEach((t,i)=>{
+    const n=document.createElement('span');n.className='likeBurst';n.textContent=t;
+    n.style.left=(r.left+r.width/2+(i-1)*18)+'px';n.style.top=(r.top+6)+'px';
+    n.style.animationDelay=(i*.06)+'s';document.body.appendChild(n);setTimeout(()=>n.remove(),950);
+  });
+  btn.classList.remove('bump');void btn.offsetWidth;btn.classList.add('bump');
+  if(navigator.vibrate) navigator.vibrate(16);
+}
 async function toggleLike(){
   if(!currentEvent)return;
+  const likeBtn=document.getElementById('likeBtn');
   const prev=engagement(currentEvent);
   const nextLiked=!prev.liked;
   currentEvent.engagement={...prev,liked:nextLiked,likes:Math.max(0,(prev.likes||0)+(nextLiked?1:-1))};
   document.getElementById('likeBtn').textContent=nextLiked?'已点赞':'点赞';
+  if(nextLiked) burstLike(likeBtn);
   const lc=document.getElementById('likeCount'); if(lc) lc.textContent=currentEvent.engagement.likes;
   const data=await recordInteraction(nextLiked?'like':'unlike',currentEvent.id);
   if(data?.engagement){
