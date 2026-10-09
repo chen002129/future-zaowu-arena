@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>未来造物赛场 · 后台</title>
+<style>
+:root{--bg:#f4f6fa;--ink:#17181a;--ink2:#656b75;--line:#e5e9f1;--blue:#2f6fff;--orange:#ff7a2f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}
+.wrap{width:min(1100px,calc(100% - 28px));margin:auto;padding:28px 0 80px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}.brand{display:flex;align-items:center;gap:10px}.brand img{width:38px;height:46px;object-fit:contain}.brand b{font-size:15px}.brand span{display:block;font-size:9px;color:var(--ink2)}
+.auth{display:flex;gap:8px}.auth input{width:240px;border:1px solid var(--line);border-radius:11px;background:#fff;padding:11px}.auth button,.btn{border:0;border-radius:11px;background:var(--ink);color:#fff;padding:11px 15px;cursor:pointer}
+.hero{display:flex;justify-content:space-between;align-items:end;margin-bottom:20px}.hero h1{font-size:42px;letter-spacing:-.05em;margin:0}.hero p{font-size:12px;color:var(--ink2);margin:6px 0 0}
+.stats{display:flex;gap:8px}.stat{min-width:100px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}.stat b{font-size:24px}.stat span{display:block;font-size:10px;color:var(--ink2);margin-top:5px}
+.grid{display:grid;grid-template-columns:1.3fr .9fr;gap:12px}.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;min-height:520px}.panel h2{font-size:14px;margin:0 0 12px}
+.user{display:grid;grid-template-columns:1fr repeat(4,54px);gap:8px;align-items:center;padding:12px 0;border-top:1px solid var(--line);cursor:pointer}.user:first-child{border-top:0}.user strong{font-size:12px}.user small{display:block;color:var(--ink2);font-size:9px;margin-top:4px}.metric{text-align:center}.metric b{display:block;font-size:13px}.metric span{font-size:8px;color:var(--ink2)}
+.activity{padding:10px 0;border-top:1px solid var(--line);font-size:11px}.activity:first-child{border-top:0}.activity time{color:var(--ink2);font-size:9px}.empty{padding:70px 20px;text-align:center;color:var(--ink2)}
+@media(max-width:760px){.top,.hero{align-items:flex-start;gap:12px;flex-direction:column}.auth{width:100%}.auth input{width:100%}.grid{grid-template-columns:1fr}.hero h1{font-size:34px}.stats{width:100%;overflow:auto}.panel{min-height:0}.user{grid-template-columns:1fr repeat(2,48px)}.user .metric:nth-last-child(-n+2){display:none}}
+</style>
+</head>
+<body><div class="wrap">
+<div class="top">
+  <div class="brand"><img src="../assets/future-maker-logo-final.png" alt=""><div><b>未来造物赛场后台</b><span>FUTURE MAKER · ADMIN</span></div></div>
+  <div class="auth"><input id="token" type="password" placeholder="ADMIN_TOKEN"><button id="load">进入后台</button></div>
+</div>
+<div class="hero"><div><h1>用户行为看板</h1><p>这里只展示产品行为数据：活跃、浏览、点赞、收藏和报名跳转。</p></div>
+<div class="stats"><div class="stat"><b id="people">0</b><span>用户 / 设备</span></div><div class="stat"><b id="logged">0</b><span>登录用户</span></div><div class="stat"><b id="active">0</b><span>今日活跃</span></div></div></div>
+<div class="grid">
+  <section class="panel"><h2>最近活跃</h2><div id="users" class="empty">输入后台 Token 后加载。</div></section>
+  <section class="panel"><h2>行为明细</h2><div id="detail" class="empty">点左边一个用户 / 设备。</div></section>
+</div>
+</div>
+<script>
+const tokenEl=document.getElementById('token');
+tokenEl.value=localStorage.getItem('fml_admin_token')||'';
+function auth(){return {'authorization':'Bearer '+tokenEl.value.trim()}}
+function actorLabel(u){return u.userId?('用户 '+u.userId):('设备 '+String(u.clientId||u.actorKey||'').slice(-8))}
+async function loadUsers(){
+  const t=tokenEl.value.trim(); if(!t)return;
+  localStorage.setItem('fml_admin_token',t);
+  const box=document.getElementById('users');box.textContent='加载中…';
+  try{
+    const r=await fetch('/api/admin/users',{headers:auth()});
+    if(!r.ok)throw new Error(r.status);
+    const data=await r.json(),users=data.users||[];
+    document.getElementById('people').textContent=users.length;
+    document.getElementById('logged').textContent=users.filter(x=>x.loggedIn||x.userId).length;
+    const today=new Date().toDateString();
+    document.getElementById('active').textContent=users.filter(x=>x.lastActiveAt&&new Date(x.lastActiveAt).toDateString()===today).length;
+    box.className='';
+    box.innerHTML=users.length?users.map(u=>'<div class="user" data-actor="'+u.actorKey+'"><div><strong>'+actorLabel(u)+'</strong><small>'+(u.lastActiveAt?new Date(u.lastActiveAt).toLocaleString():'')+'</small></div><div class="metric"><b>'+(u.views||0)+'</b><span>浏览</span></div><div class="metric"><b>'+(u.likes||0)+'</b><span>点赞</span></div><div class="metric"><b>'+(u.saves||0)+'</b><span>收藏</span></div><div class="metric"><b>'+(u.registrationClicks||0)+'</b><span>报名</span></div></div>').join(''):'<div class="empty">还没有行为数据。</div>';
+    box.querySelectorAll('.user').forEach(el=>el.onclick=()=>loadDetail(el.dataset.actor));
+  }catch(e){box.className='empty';box.textContent='后台未部署或 Token 不正确。'}
+}
+async function loadDetail(actor){
+  const box=document.getElementById('detail');box.textContent='加载中…';
+  try{
+    const r=await fetch('/api/admin/users/'+encodeURIComponent(actor),{headers:auth()});
+    if(!r.ok)throw new Error(r.status);
+    const data=await r.json(),list=data.activity||[];
+    box.className='';
+    box.innerHTML=list.length?list.map(a=>'<div class="activity"><b>'+a.action+'</b> · '+a.eventId+'<br><time>'+new Date(a.createdAt).toLocaleString()+'</time></div>').join(''):'<div class="empty">暂无行为记录。</div>';
+  }catch(e){box.className='empty';box.textContent='读取失败。'}
+}
+document.getElementById('load').onclick=loadUsers;
+if(tokenEl.value)loadUsers();
+</script></body></html>
