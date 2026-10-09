@@ -15,6 +15,13 @@
 .user{display:grid;grid-template-columns:1fr repeat(4,54px);gap:8px;align-items:center;padding:12px 0;border-top:1px solid var(--line);cursor:pointer}.user:first-child{border-top:0}.user strong{font-size:12px}.user small{display:block;color:var(--ink2);font-size:9px;margin-top:4px}.metric{text-align:center}.metric b{display:block;font-size:13px}.metric span{font-size:8px;color:var(--ink2)}
 .activity{padding:10px 0;border-top:1px solid var(--line);font-size:11px}.activity:first-child{border-top:0}.activity time{color:var(--ink2);font-size:9px}.empty{padding:70px 20px;text-align:center;color:var(--ink2)}
 @media(max-width:760px){.top,.hero{align-items:flex-start;gap:12px;flex-direction:column}.auth{width:100%}.auth input{width:100%}.grid{grid-template-columns:1fr}.hero h1{font-size:34px}.stats{width:100%;overflow:auto}.panel{min-height:0}.user{grid-template-columns:1fr repeat(2,48px)}.user .metric:nth-last-child(-n+2){display:none}}
+
+.tabs{display:flex;gap:7px;margin:18px 0 12px}.tabs button{border:0;background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 12px;font-size:11px;cursor:pointer}.tabs button.on{background:var(--ink);color:#fff}
+.view{display:none}.view.on{display:block}
+.submission{padding:14px 0;border-top:1px solid var(--line)}.submission:first-child{border-top:0}
+.submissionTop{display:flex;justify-content:space-between;gap:10px}.submission h3{font-size:14px;margin:0}.badge{font-size:9px;padding:4px 7px;border-radius:999px;background:#eef2f8;color:var(--ink2)}.badge.approved{background:#e8f7ef;color:#1e7b4b}.badge.rejected{background:#fdecec;color:#b84040}
+.submissionMeta{font-size:10px;color:var(--ink2);line-height:1.7;margin:8px 0}.submissionActions{display:flex;gap:6px}.submissionActions button{border:1px solid var(--line);background:#fff;border-radius:9px;padding:7px 9px;font-size:10px;cursor:pointer}.submissionActions button.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+@media(max-width:760px){.submissionTop{align-items:flex-start}.submissionActions{flex-wrap:wrap}}
 </style>
 </head>
 <body><div class="wrap">
@@ -24,9 +31,20 @@
 </div>
 <div class="hero"><div><h1>用户行为看板</h1><p>这里只展示产品行为数据：活跃、浏览、点赞、收藏和报名跳转。</p></div>
 <div class="stats"><div class="stat"><b id="people">0</b><span>用户 / 设备</span></div><div class="stat"><b id="logged">0</b><span>登录用户</span></div><div class="stat"><b id="active">0</b><span>今日活跃</span></div></div></div>
-<div class="grid">
-  <section class="panel"><h2>最近活跃</h2><div id="users" class="empty">输入后台 Token 后加载。</div></section>
-  <section class="panel"><h2>行为明细</h2><div id="detail" class="empty">点左边一个用户 / 设备。</div></section>
+<div class="tabs">
+  <button class="on" data-tab="users">用户行为</button>
+  <button data-tab="submissions">赛事投稿 <span id="submissionCount"></span></button>
+</div>
+
+<div class="view on" id="tab-users">
+  <div class="grid">
+    <section class="panel"><h2>最近活跃</h2><div id="users" class="empty">输入后台 Token 后加载。</div></section>
+    <section class="panel"><h2>行为明细</h2><div id="detail" class="empty">点左边一个用户 / 设备。</div></section>
+  </div>
+</div>
+
+<div class="view" id="tab-submissions">
+  <section class="panel"><h2>赛事投稿审核</h2><div id="submissions" class="empty">输入后台 Token 后加载。</div></section>
 </div>
 </div>
 <script>
@@ -34,6 +52,51 @@ const tokenEl=document.getElementById('token');
 tokenEl.value=localStorage.getItem('fml_admin_token')||'';
 function auth(){return {'authorization':'Bearer '+tokenEl.value.trim()}}
 function actorLabel(u){return u.userId?('用户 '+u.userId):('设备 '+String(u.clientId||u.actorKey||'').slice(-8))}
+function statusText(s){return s==='approved'?'已通过':s==='rejected'?'已拒绝':'待审核'}
+async function loadSubmissions(){
+  const box=document.getElementById('submissions');
+  if(!tokenEl.value.trim()){box.className='empty';box.textContent='输入后台 Token 后加载。';return}
+  box.textContent='加载中…';
+  try{
+    const r=await fetch('/api/admin/submissions',{headers:auth()});
+    if(!r.ok)throw new Error(r.status);
+    const data=await r.json(),list=data.submissions||[];
+    document.getElementById('submissionCount').textContent=list.length?'('+list.length+')':'';
+    box.className='';
+    box.innerHTML=list.length?list.map(x=>
+      '<div class="submission">'+
+        '<div class="submissionTop"><h3>'+x.title+'</h3><span class="badge '+(x.status||'pending')+'">'+statusText(x.status)+'</span></div>'+
+        '<div class="submissionMeta">'+
+          (x.organizer?'主办方：'+x.organizer+'<br>':'')+
+          (x.city?'城市：'+x.city+'　':'')+
+          (x.deadline?'截止：'+x.deadline+'<br>':'')+
+          '联系人：'+(x.contact||'—')+'<br>'+
+          (x.officialUrl?'官网：'+x.officialUrl+'<br>':'')+
+          (x.note?'备注：'+x.note+'<br>':'')+
+          '提交：'+(x.createdAt?new Date(x.createdAt).toLocaleString():'—')+
+        '</div>'+
+        '<div class="submissionActions">'+
+          '<button class="primary" data-id="'+x.id+'" data-status="approved">通过</button>'+
+          '<button data-id="'+x.id+'" data-status="rejected">拒绝</button>'+
+          '<button data-id="'+x.id+'" data-status="pending">退回待审</button>'+
+        '</div>'+
+      '</div>'
+    ).join(''):'<div class="empty">暂时还没有赛事投稿。</div>';
+    box.querySelectorAll('[data-status]').forEach(btn=>btn.onclick=()=>reviewSubmission(btn.dataset.id,btn.dataset.status));
+  }catch(e){box.className='empty';box.textContent='读取投稿失败。'}
+}
+async function reviewSubmission(id,status){
+  try{
+    const r=await fetch('/api/admin/submissions',{method:'POST',headers:{...auth(),'content-type':'application/json'},body:JSON.stringify({id,status})});
+    if(!r.ok)throw new Error(r.status);
+    await loadSubmissions();
+  }catch(e){alert('更新状态失败')}
+}
+document.querySelectorAll('.tabs [data-tab]').forEach(btn=>btn.onclick=()=>{
+  document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===btn));
+  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='tab-'+btn.dataset.tab));
+  if(btn.dataset.tab==='submissions')loadSubmissions();
+});
 async function loadUsers(){
   const t=tokenEl.value.trim(); if(!t)return;
   localStorage.setItem('fml_admin_token',t);
@@ -61,6 +124,6 @@ async function loadDetail(actor){
     box.innerHTML=list.length?list.map(a=>'<div class="activity"><b>'+a.action+'</b> · '+a.eventId+'<br><time>'+new Date(a.createdAt).toLocaleString()+'</time></div>').join(''):'<div class="empty">暂无行为记录。</div>';
   }catch(e){box.className='empty';box.textContent='读取失败。'}
 }
-document.getElementById('load').onclick=loadUsers;
-if(tokenEl.value)loadUsers();
+document.getElementById('load').onclick=()=>{loadUsers();loadSubmissions()};
+if(tokenEl.value){loadUsers();loadSubmissions();}
 </script></body></html>
