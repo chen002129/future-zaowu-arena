@@ -626,6 +626,18 @@ function renderFav(){
   document.querySelectorAll('.favrow').forEach(el=>el.textContent = favs.length + ' ›');
 }
 
+function organizerBlock(e){
+  if(!(e.organizer||e.organizerIntro||e.officialUrl||e.contact||e.website||Number.isFinite(e.saveCount)||Number.isFinite(e.followCount))) return '';
+  const url = e.officialUrl || e.website || '';
+  const intro = e.organizerIntro ? '<div class="orgdesc">'+e.organizerIntro+'</div>' : '';
+  const web = url ? '<button class="orglink" type="button" data-org-url="'+url.replace(/\"/g,'&quot;')+'">主办方 / 官方网页 ↗</button>' : '';
+  const contact = e.contact ? '<button class="orglink" type="button" data-org-contact="'+String(e.contact).replace(/\"/g,'&quot;')+'">复制联系方式</button>' : '';
+  const saves = Number.isFinite(e.saveCount) ? '<span><b>'+e.saveCount+'</b> 人收藏</span>' : '';
+  const follows = Number.isFinite(e.followCount) ? '<span><b>'+e.followCount+'</b> 人关注</span>' : '';
+  const proof = (saves||follows) ? '<div class="socialproof">'+saves+follows+'</div>' : '';
+  return '<div class="sect"><h4>主办方</h4><div class="orgcard"><div class="orgname">'+(e.organizer||'赛事主办方')+'</div>'+intro+'<div class="orglinks">'+web+contact+'</div></div>'+proof+'</div>';
+}
+
 function openDetail(id){
   const e = EV.find(x=>x.id===id); if(!e) return;
   const pw = document.querySelector('.dposterwrap');
@@ -667,9 +679,12 @@ function openDetail(id){
     ${(e.tracks||[]).length?`<div class="sect"><h4>赛道</h4><p>${e.tracks.join('；')}</p></div>`:''}
     ${(e.tech||[]).length?`<div class="sect"><h4>技术栈</h4><div class="stack" style="margin-top:2px">${e.tech.map(t=>`<span>${t}</span>`).join('')}</div></div>`:''}
     ${e.summary?`<div class="sect"><h4>赛事简介</h4><p>${e.summary}</p></div>`:''}
+    ${organizerBlock(e)}
     ${e.qr?`<div class="sect"><h4>报名二维码</h4><div><img src="${e.qr}" alt="报名二维码" style="width:128px;height:128px;border-radius:10px;background:#fff;border:.5px solid var(--line)" onerror="this.parentNode.innerHTML='<span style=color:#86868B;font-size:13px>二维码加载失败</span>'"></div></div>`:''}
     <div class="sect"><h4>信息说明</h4><p>赛事信息仅供参考，报名状态、截止时间、奖金、参赛资格等以主办方官方页面为准。海报与报名二维码版权归原作者所有。最终安排以主办方公布为准。</p></div>`;
   document.getElementById('detail').classList.add('open');
+  document.querySelectorAll('[data-org-url]').forEach(b=>b.onclick=()=>openSite(b.dataset.orgUrl));
+  document.querySelectorAll('[data-org-contact]').forEach(b=>b.onclick=()=>copyText(b.dataset.orgContact,'联系方式已复制'));
   syncFavBtn(); tick();
 }
 function closeDetail(){
