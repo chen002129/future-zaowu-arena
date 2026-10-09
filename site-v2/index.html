@@ -147,6 +147,44 @@ button{color:inherit}
 .timeline{display:grid;gap:11px}.timeline div{font-size:13px;color:var(--ink2)}.timeline b{display:inline-block;width:118px;font:11px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3);font-weight:400}
 .detailActions{display:flex;gap:10px;position:sticky;bottom:10px;margin:30px 0 8px}
 .detailActions button{height:52px;border:0;border-radius:14px;padding:0 18px;cursor:pointer}.secondary{background:rgba(255,255,255,.70)}.primary{flex:1;background:var(--ink);color:#fff}
+
+/* ===== magazine sections / art direction ===== */
+.hero{position:relative;overflow:hidden}
+.heroArt{position:absolute;right:0;top:18px;width:44%;height:250px;pointer-events:none;opacity:.96;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;align-items:end;perspective:900px}
+.heroArt .artCard{position:relative;border-radius:18px;overflow:hidden;background:#dfe4eb;border:1px solid rgba(255,255,255,.72);box-shadow:0 18px 45px rgba(32,41,58,.10);transform-origin:bottom center}
+.heroArt .artCard:nth-child(1){height:160px;transform:rotate(-7deg) translateY(18px)}
+.heroArt .artCard:nth-child(2){height:215px;transform:rotate(3deg)}
+.heroArt .artCard:nth-child(3){height:178px;transform:rotate(8deg) translateY(24px)}
+.heroArt .artCard img.posterImg{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.78) contrast(.96)}
+.heroArt .fallbackArt{position:absolute;inset:0;padding:14px;background:linear-gradient(145deg,#f7f7f5,#d9dee7);display:flex;flex-direction:column;justify-content:space-between}
+.heroArt .fallbackArt img{width:34px;height:34px;object-fit:contain;opacity:.18}
+.heroArt .fallbackArt b{font-size:14px;line-height:1.15;letter-spacing:-.02em}
+.heroArt:after{content:"";position:absolute;width:145px;height:145px;border-radius:50%;right:-48px;top:-30px;border:1px solid rgba(47,111,255,.16);box-shadow:inset 0 0 0 18px rgba(255,255,255,.18)}
+.magazine{display:grid;gap:64px}
+.magSec{position:relative;scroll-margin-top:90px}
+.magHead{display:flex;align-items:end;justify-content:space-between;margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.magHead .left{display:flex;align-items:baseline;gap:10px}.magHead .num{font:10px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3)}
+.magHead h3{font-size:20px;margin:0;font-weight:620;letter-spacing:-.025em}.magHead p{margin:0;font-size:11px;color:var(--ink3)}
+.featured{display:grid;grid-template-columns:minmax(280px,.82fr) minmax(0,1.18fr);min-height:420px;background:rgba(255,255,255,.56);border:1px solid rgba(255,255,255,.76);border-radius:24px;overflow:hidden;box-shadow:0 18px 60px rgba(30,38,52,.07);cursor:pointer}
+.featureVisual{position:relative;min-height:420px;background:linear-gradient(145deg,#e7e9ec,#cbd4df);overflow:hidden}
+.featureVisual img.posterImg{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.82) contrast(.96)}
+.featureVisual .artFallback{position:absolute;inset:0;padding:28px;background:linear-gradient(145deg,#eef1f4,#d0d8e2);display:flex;flex-direction:column;justify-content:space-between}
+.artFallback .ghostLogo{width:150px;height:150px;opacity:.075;align-self:flex-end}.artFallback .bigDate{font:72px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:-.08em;color:rgba(23,24,26,.13)}
+.featureCopy{padding:30px 30px 28px;display:flex;flex-direction:column;justify-content:space-between}.featureCopy .eyebrow{font:10px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3);letter-spacing:.08em}
+.featureCopy h2{font-size:clamp(32px,4vw,52px);line-height:1.02;letter-spacing:-.045em;margin:14px 0 16px}.featureCopy .desc{font-size:14px;line-height:1.75;color:var(--ink2);max-width:560px}
+.featureMeta{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:28px}.featureMeta div{background:rgba(255,255,255,.74);padding:12px}.featureMeta small{display:block;font-size:9.5px;color:var(--ink3);margin-bottom:5px}.featureMeta b{font-size:12px}
+.deadlineRail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(210px,1fr);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:4px;scrollbar-width:none}.deadlineRail::-webkit-scrollbar{display:none}
+.deadCard{scroll-snap-align:start;min-height:220px;border-radius:20px;padding:18px;background:rgba(255,255,255,.58);border:1px solid rgba(255,255,255,.76);cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.deadCard:after{content:"";position:absolute;width:100px;height:100px;border-radius:50%;right:-28px;bottom:-28px;background:rgba(232,84,79,.055)}
+.deadCard .date{font:34px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:-.07em}.deadCard .leftDays{font-size:10px;color:var(--red);margin-top:6px}.deadCard h4{font-size:18px;line-height:1.2;letter-spacing:-.025em;margin:18px 0 0;position:relative;z-index:1}.deadCard footer{font-size:10px;color:var(--ink3);position:relative;z-index:1}
+.tileGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.tileCard{min-height:240px;border-radius:20px;background:rgba(255,255,255,.57);border:1px solid rgba(255,255,255,.76);overflow:hidden;cursor:pointer;display:grid;grid-template-rows:132px 1fr}
+.tileArt{position:relative;overflow:hidden;background:linear-gradient(145deg,#e8eaed,#d8dee6)}.tileArt img.posterImg{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.78) contrast(.96)}
+.tileArt .tinyFallback{position:absolute;inset:0;padding:14px;display:flex;justify-content:space-between;align-items:flex-start}.tileArt .tinyFallback img{width:36px;height:36px;opacity:.10}.tileArt .tinyFallback span{font:10px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3)}
+.tileBody{padding:14px 14px 15px}.tileBody h4{font-size:17px;line-height:1.22;letter-spacing:-.02em;margin:0}.tileBody p{font-size:10.5px;color:var(--ink3);margin:9px 0 0}
+.splitCols{display:grid;grid-template-columns:1fr 1fr;gap:12px}.splitCol{border-top:1px solid var(--line)}.splitTitle{display:flex;justify-content:space-between;align-items:center;padding:12px 0;font-size:12px}.splitTitle b{font-size:13px}.splitTitle span{font:9.5px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3)}
+.listEvent{padding:15px 0;border-top:1px solid var(--line);cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:14px}.listEvent h4{font-size:17px;line-height:1.25;margin:0;letter-spacing:-.02em}.listEvent p{font-size:10.5px;color:var(--ink3);margin:7px 0 0}.listEvent .miniDate{font:10px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3);white-space:nowrap}
+.jumpbar{display:flex;gap:7px;overflow-x:auto;margin:0 0 26px;padding-bottom:2px;scrollbar-width:none}.jumpbar::-webkit-scrollbar{display:none}.jumpbar button{border:1px solid rgba(255,255,255,.76);background:rgba(255,255,255,.46);padding:8px 10px;border-radius:999px;font-size:11px;color:var(--ink2);white-space:nowrap}
+
 .mobileDock{display:none}.submitPanel{margin-top:70px;padding:24px;border-radius:22px;background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.75)}.submitPanel h2{font-size:30px;letter-spacing:-.04em;margin:0 0 12px}.submitPanel p{font-size:14px;line-height:1.8;color:var(--ink2);margin:0}.submitPanel .primary{width:100%;margin-top:24px}
 .articleBody{padding:70px 0 80px}.articleBody .eyebrow{font:11px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3)}.articleBody h2{font-size:clamp(38px,7vw,72px);line-height:1.02;letter-spacing:-.05em;margin:18px 0 24px;max-width:780px}.articleLead{font-size:18px;line-height:1.8;color:var(--ink2);max-width:720px}.articleSec{max-width:720px;margin:50px 0}.articleSec h4{font-size:14px;margin:0 0 12px}.articleSec p{font-size:15px;line-height:1.9;color:var(--ink2);margin:0}
 @media(max-width:760px){
@@ -197,6 +235,15 @@ button{color:inherit}
   .submitPanel{margin-top:38px;padding:20px;border-radius:20px;background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.78)}
   .submitPanel h2{font-size:27px;letter-spacing:-.04em;margin:0 0 12px}.submitPanel p{font-size:13px;line-height:1.75;color:var(--ink2)}
   .submitPanel .primary{width:100%;height:50px;border:0;border-radius:14px;margin-top:22px}
+
+  .hero{padding-bottom:20px;min-height:265px}
+  .hero h1{max-width:250px;position:relative;z-index:3}.heroright{max-width:245px;position:relative;z-index:3}
+  .heroArt{right:-40px;top:10px;width:57%;height:210px;opacity:.86}.heroArt .artCard:nth-child(1){height:116px}.heroArt .artCard:nth-child(2){height:155px}.heroArt .artCard:nth-child(3){height:126px}.heroArt:after{width:110px;height:110px;right:-25px}
+  .jumpbar{margin:0 -14px 22px;padding:0 14px 4px}.magazine{gap:46px}.magHead{margin-bottom:13px}.magHead h3{font-size:18px}.magHead p{font-size:10px}
+  .featured{grid-template-columns:1fr;min-height:0;border-radius:22px}.featureVisual{min-height:280px}.featureCopy{padding:18px 17px 17px}.featureCopy h2{font-size:28px;margin:9px 0 10px}.featureCopy .desc{font-size:12.5px}.featureMeta{margin-top:17px}.featureMeta div{padding:10px}.featureMeta small{font-size:9px}.featureMeta b{font-size:11px}
+  .deadlineRail{grid-auto-columns:72%;gap:10px;margin-right:-14px;padding-right:14px}.deadCard{min-height:190px;padding:16px}.deadCard .date{font-size:31px}.deadCard h4{font-size:17px}
+  .tileGrid{grid-template-columns:1fr 1fr;gap:9px}.tileCard{min-height:226px;border-radius:17px;grid-template-rows:118px 1fr}.tileBody{padding:12px}.tileBody h4{font-size:15px}.tileBody p{font-size:9.8px}
+  .splitCols{grid-template-columns:1fr;gap:28px}.listEvent h4{font-size:16px}
 }
 </style>
 </head>
