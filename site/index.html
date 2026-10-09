@@ -355,6 +355,10 @@ body{font-family:var(--sans);background:#E3E5E9;color:var(--ink);display:flex;fl
         <div class="row" onclick="go('fav')"><span>我的收藏</span><span class="rv favrow">0 ›</span></div>
         <div class="row" onclick="toast('浏览历史：MVP 阶段暂未开启')"><span>浏览历史</span><span class="rv">›</span></div>
       </div>
+      <div class="grouplbl">赛事投稿</div>
+      <div class="grouplist">
+        <div class="row" onclick="goSubmit()"><span>主办方提交 / 推荐赛事</span><span class="rv">›</span></div>
+      </div>
       <div class="grouplbl">关注我们</div>
       <div class="followbox">
         <div class="followrow" id="followRow"></div>
@@ -397,8 +401,7 @@ body{font-family:var(--sans);background:#E3E5E9;color:var(--ink);display:flex;fl
 </div>
 
 <script>
-/* 账号体系已移除：本页为纯本地版（浏览 + 收藏 + 设备同步码），
-   不加载任何第三方云服务 SDK、不发任何鉴权请求。 */
+/* 前端保留本地收藏与设备同步；赛事、快讯与专栏将由动态后端提供，接口异常时自动回退本地数据。 */
 
 const TODAY = new Date();
 const NOW = TODAY;
