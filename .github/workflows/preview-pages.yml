@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'preview/**'
+      - 'site/**'
       - '.github/workflows/preview-pages.yml'
   workflow_dispatch:
 
@@ -35,7 +35,7 @@ jobs:
       - name: Upload preview
         uses: actions/upload-pages-artifact@v3
         with:
-          path: preview
+          path: site
 
       - name: Deploy preview
         id: deployment
