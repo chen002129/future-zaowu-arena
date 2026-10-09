@@ -685,6 +685,94 @@ body{background:
   .mapBubbleCore{min-width:30px;min-height:30px}
 }
 
+
+/* ===== Future Maker Intelligence Desk ===== */
+.intelView{padding-bottom:92px}
+.intelHero{
+  display:grid;grid-template-columns:118px minmax(0,1fr) auto;gap:24px;align-items:end;
+  padding:38px 0 34px;border-bottom:1px solid rgba(47,111,255,.10);position:relative
+}
+.intelAgent{
+  width:108px;height:126px;border-radius:26px;background:#fff;display:grid;place-items:center;
+  border:1px solid rgba(47,111,255,.10);box-shadow:0 20px 55px rgba(43,72,135,.10);
+  position:relative;transform:rotate(-2deg);animation:agentHover 4s ease-in-out infinite
+}
+.intelAgent img{width:66px;height:80px;object-fit:contain}
+.agentBadge{position:absolute;left:-6px;top:12px;background:var(--orange);color:#fff;border-radius:4px;padding:5px 7px;font:8px ui-monospace,SFMono-Regular,Menlo,monospace;transform:rotate(-7deg)}
+.agentPulse{position:absolute;right:11px;top:12px;width:8px;height:8px;border-radius:50%;background:#36b37e;box-shadow:0 0 0 0 rgba(54,179,126,.25);animation:agentOnline 1.8s infinite}
+@keyframes agentOnline{70%{box-shadow:0 0 0 9px rgba(54,179,126,0)}}
+@keyframes agentHover{50%{transform:translateY(-5px) rotate(1deg)}}
+.intelIntro h1{font-size:clamp(44px,7vw,72px);line-height:.96;letter-spacing:-.058em;margin:0}.intelIntro h1 em{font-style:normal;color:var(--blue)}
+.agentSpeech{display:flex;align-items:flex-start;gap:8px;margin-top:17px;max-width:580px}
+.speechName{flex:none;background:var(--ink);color:#fff;padding:5px 7px;border-radius:999px;font-size:9px}
+.agentSpeech p{font-size:13px;line-height:1.65;color:var(--ink2);margin:1px 0 0}
+.intelStats{display:flex;gap:7px}
+.intelStats div{min-width:84px;padding:12px;border-radius:16px;background:#fff;border:1px solid rgba(47,111,255,.08)}
+.intelStats b{display:block;font:700 21px ui-monospace,SFMono-Regular,Menlo,monospace}.intelStats span{font-size:9px;color:var(--ink3)}
+
+.intelSection{padding:30px 0 0}
+.intelSectionHead{display:flex;align-items:end;justify-content:space-between;margin-bottom:14px}
+.intelSectionHead>div{display:flex;align-items:center;gap:9px}.intelSectionHead h2{font-size:19px;margin:0;letter-spacing:-.025em}
+.intelSectionHead small{font:9px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3)}
+.intelNo{display:grid;place-items:center;min-width:28px;height:22px;padding:0 6px;background:var(--blue);color:#fff;border-radius:4px;font:9px ui-monospace,SFMono-Regular,Menlo,monospace;transform:rotate(-3deg)}
+.intelNo.alert{background:var(--orange);transform:rotate(3deg)}
+
+.intelTicker{
+  display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,33%);gap:10px;overflow-x:auto;
+  scroll-snap-type:x mandatory;padding:3px 2px 12px;scrollbar-width:none
+}
+.intelTicker::-webkit-scrollbar{display:none}
+.intelSlip{
+  scroll-snap-align:start;min-height:145px;padding:16px;border-radius:4px 16px 16px 16px;background:#fff;
+  border:1px solid rgba(47,111,255,.08);box-shadow:0 12px 30px rgba(42,68,120,.06);
+  position:relative;overflow:hidden;transform:rotate(var(--r,0deg))
+}
+.intelSlip:before{content:"";position:absolute;left:0;top:0;width:5px;height:100%;background:var(--blue)}
+.intelSlip.hot:before{background:var(--orange)}
+.slipTop{display:flex;justify-content:space-between;align-items:center}.slipTop b{font:9px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--orange)}.slipTop span{font-size:9px;color:var(--ink3)}
+.intelSlip p{font-size:14px;line-height:1.5;margin:18px 0 0;color:var(--ink)}
+.slipStamp{position:absolute;right:12px;bottom:11px;border:1px solid rgba(47,111,255,.35);color:var(--blue);padding:4px 6px;border-radius:3px;font:8px ui-monospace,SFMono-Regular,Menlo,monospace;transform:rotate(-7deg);opacity:.78}
+
+.intelFiles{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:11px}
+.intelFile{
+  min-height:260px;border-radius:10px 22px 22px 22px;padding:18px;background:#fff;border:1px solid rgba(47,111,255,.09);
+  position:relative;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;
+  box-shadow:0 16px 42px rgba(42,68,120,.065);transition:.3s var(--ease)
+}
+.intelFile:first-child{min-height:335px;background:linear-gradient(145deg,#fff,#eef4ff)}
+.intelFile:before{content:"";position:absolute;left:16px;top:-9px;width:72px;height:18px;background:#dce7ff;border-radius:7px 7px 0 0}
+.intelFile:nth-child(2):before{background:#ffe2cc}.intelFile:nth-child(3):before{background:#e8e5ff}
+.intelFile:hover{transform:translateY(-4px) rotate(-.5deg)}
+.fileMeta{font:9px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3);margin-top:7px}
+.intelFile h3{font-size:22px;line-height:1.2;letter-spacing:-.03em;margin:15px 0 0}.intelFile:first-child h3{font-size:30px}
+.intelFile p{font-size:12px;line-height:1.65;color:var(--ink2);margin:12px 0 0}
+.fileFoot{display:flex;justify-content:space-between;align-items:center;font-size:10px;color:var(--ink3)}
+.fileArrow{width:31px;height:31px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center}
+
+.intelDeadlines{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.intelDeadline{padding:15px;border-radius:17px;background:#fff;border:1px solid rgba(255,122,47,.10);position:relative;overflow:hidden;cursor:pointer}
+.intelDeadline:after{content:"";position:absolute;width:80px;height:80px;border-radius:50%;right:-28px;bottom:-28px;background:rgba(255,122,47,.06)}
+.intelDeadline .days{font:700 26px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--orange);letter-spacing:-.05em}
+.intelDeadline small{font-size:9px;color:var(--ink3)}.intelDeadline h4{font-size:15px;line-height:1.3;margin:14px 0 4px;position:relative;z-index:1}.intelDeadline p{font-size:9.5px;color:var(--ink3);margin:0}
+
+@media(max-width:760px){
+  .intelView{padding-bottom:92px}
+  .intelHero{grid-template-columns:72px 1fr;padding:26px 2px 24px;gap:14px}
+  .intelAgent{width:70px;height:82px;border-radius:20px}.intelAgent img{width:43px;height:53px}.agentBadge{font-size:7px;padding:4px 5px}
+  .intelIntro h1{font-size:39px}.agentSpeech{margin-top:12px}.agentSpeech p{font-size:12px}
+  .intelStats{grid-column:1 / -1;overflow-x:auto}.intelStats div{min-width:82px}
+  .intelSection{padding-top:25px}.intelSectionHead h2{font-size:17px}
+  .intelTicker{grid-auto-columns:82%;margin-right:-14px;padding-right:14px}.intelSlip{min-height:136px}
+  .intelFiles{grid-template-columns:1fr;gap:9px}.intelFile,.intelFile:first-child{min-height:190px}.intelFile h3,.intelFile:first-child h3{font-size:23px}
+  .intelDeadlines{grid-template-columns:1fr}.intelDeadline{min-height:110px}
+}
+
+
+.submitForm{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:24px;position:relative;z-index:2}
+.submitForm input,.submitForm textarea{border:1px solid rgba(47,111,255,.10);background:rgba(255,255,255,.78);border-radius:12px;padding:12px 13px;outline:0;color:var(--ink);font-size:12px}
+.submitForm textarea{grid-column:1/-1;min-height:90px;resize:vertical}.submitForm .submitPageBtn{grid-column:1/-1;margin-top:2px}.submitStatus{grid-column:1/-1;font-size:10px;color:var(--ink3)}
+@media(max-width:760px){.submitForm{grid-template-columns:1fr}.submitForm textarea,.submitForm .submitPageBtn,.submitStatus{grid-column:1}}
+
 </style>
 </head>
 <body>
@@ -789,19 +877,51 @@ body{background:
     </div>
   </section>
 
-  <section class="appView" id="view-news">
-    <div class="pageHero small">
-      <div class="kicker">FUTURE MAKER · INTELLIGENCE</div>
-      <h1>赛场情报。</h1>
-      <p>赛事更新、截止提醒、值得看的教育与 AI 观察，都放在这里。</p>
+  <section class="appView intelView" id="view-news">
+    <div class="intelHero">
+      <div class="intelAgent">
+        <div class="agentBadge">F-01</div>
+        <img src="assets/future-maker-logo-final.png" alt="">
+        <span class="agentPulse"></span>
+      </div>
+      <div class="intelIntro">
+        <div class="kicker">FUTURE MAKER · INTELLIGENCE DESK</div>
+        <h1>未来造物<br><em>情报局。</em></h1>
+        <div class="agentSpeech">
+          <span class="speechName">小 F</span>
+          <p id="intelSpeech">正在翻今天的新情报…</p>
+        </div>
+      </div>
+      <div class="intelStats">
+        <div><b id="intelNewCount">0</b><span>今日情报</span></div>
+        <div><b id="intelDeadlineCount">0</b><span>临近截止</span></div>
+        <div><b id="intelHotCount">0</b><span>热门赛场</span></div>
+      </div>
     </div>
-    <div class="flashList" id="newsFlashList"></div>
-  <section class="editorial">
-    <div class="editorialHead"><h3>未来造物 · 精选专栏</h3><span>EDITORIAL</span></div>
-    <div class="articles" id="articles"></div>
-  </section>
 
+    <section class="intelSection">
+      <div class="intelSectionHead">
+        <div><span class="intelNo">01</span><h2>刚刚收到</h2></div>
+        <small>LIVE FEED</small>
+      </div>
+      <div class="intelTicker" id="intelTicker"></div>
+    </section>
 
+    <section class="intelSection">
+      <div class="intelSectionHead">
+        <div><span class="intelNo">02</span><h2>桌上的档案</h2></div>
+        <small>OPEN FILE</small>
+      </div>
+      <div class="intelFiles" id="intelFiles"></div>
+    </section>
+
+    <section class="intelSection">
+      <div class="intelSectionHead">
+        <div><span class="intelNo alert">03</span><h2>快到截止线了</h2></div>
+        <small>DEADLINE ALERT</small>
+      </div>
+      <div class="intelDeadlines" id="intelDeadlines"></div>
+    </section>
   </section>
 
   <section class="appView" id="view-fav">
@@ -822,8 +942,18 @@ body{background:
     <div class="submitPageCard">
       <span class="submitSticker">OPEN CALL</span>
       <h2>把你的赛事<br>放进赛场。</h2>
-      <p>面向中国区 AI、AIGC、智能体、AI Coding、智能硬件等赛事。后端接通后，提交、审核、上线都会走动态流程。</p>
-      <button class="submitPageBtn" id="submitPageContact">联系未来造物 →</button>
+      <p>面向中国区 AI、AIGC、智能体、AI Coding、智能硬件等赛事。提交后进入待审核队列，通过后动态上架。</p>
+      <form class="submitForm" id="submitForm">
+        <input name="title" placeholder="赛事名称" required>
+        <input name="organizer" placeholder="主办方">
+        <input name="city" placeholder="城市 / 线上">
+        <input name="deadline" type="date">
+        <input name="officialUrl" placeholder="官方页面">
+        <input name="contact" placeholder="联系人 / 微信 / 手机" required>
+        <textarea name="note" placeholder="补充说明"></textarea>
+        <button class="submitPageBtn" type="submit">提交给未来造物 →</button>
+        <span class="submitStatus" id="submitStatus"></span>
+      </form>
     </div>
   </section>
 
@@ -1263,19 +1393,45 @@ function renderStage(){
 }
 function renderArticles(){
   const news=DATA.news||[];
-  const articleBox=document.getElementById('articles');
-  if(articleBox) articleBox.innerHTML=news.slice(0,6).map((n,i)=>`
-    <article class="article" data-news="${i}">
-      <div><small>${n.tag||'精选专栏'} · ${n.readTime||''}</small><h4>${n.t}</h4><p>${n.s||''}</p></div>
-      <div class="read">阅读全文 →</div>
-    </article>`).join('');
-  const flashBox=document.getElementById('newsFlashList');
-  if(flashBox) flashBox.innerHTML=(DATA.flashes||[]).slice(0,10).map((f,i)=>{
+  const flashes=DATA.flashes||[];
+  const live=liveEvents();
+  const close=live.filter(e=>daysLeft(e.deadline)>=0 && daysLeft(e.deadline)<=14).sort((a,b)=>daysLeft(a.deadline)-daysLeft(b.deadline));
+  const hot=live.filter(e=>(engagement(e).heat||0)>0).sort((a,b)=>(engagement(b).heat||0)-(engagement(a).heat||0));
+
+  const speech=document.getElementById('intelSpeech');
+  if(speech){
+    if(flashes[0]?.txt) speech.textContent='刚抓到一条：'+flashes[0].txt;
+    else if(close[0]) speech.textContent=close[0].title+' 快到截止线了，我帮你盯着。';
+    else speech.textContent='今天暂时没有紧急情报，我继续在后台扫描。';
+  }
+  const newCount=document.getElementById('intelNewCount');
+  const deadlineCount=document.getElementById('intelDeadlineCount');
+  const hotCount=document.getElementById('intelHotCount');
+  if(newCount) animateNumber(newCount,flashes.length);
+  if(deadlineCount) animateNumber(deadlineCount,close.length);
+  if(hotCount) animateNumber(hotCount,hot.length);
+
+  const ticker=document.getElementById('intelTicker');
+  if(ticker) ticker.innerHTML=flashes.slice(0,10).map((f,i)=>{
     const at=f.at?new Date(f.at):null;
     const tm=at&&!Number.isNaN(at.getTime())?at.toLocaleDateString('zh-CN',{month:'2-digit',day:'2-digit'}):'NOW';
-    return '<div class="flashItem"><time>'+tm+'</time><p>'+(f.txt||'')+'</p><span>'+String(i+1).padStart(2,'0')+'</span></div>';
+    const rot=[-.7,.5,-.3,.8][i%4];
+    return '<article class="intelSlip '+(i===0?'hot':'')+'" style="--r:'+rot+'deg"><div class="slipTop"><b>'+(i===0?'NEW':'INTEL')+'</b><span>'+tm+'</span></div><p>'+(f.txt||'')+'</p><span class="slipStamp">已收录</span></article>';
   }).join('');
-  document.querySelectorAll('.article').forEach(el=>el.onclick=()=>openArticle(Number(el.dataset.news)));
+
+  const files=document.getElementById('intelFiles');
+  if(files) files.innerHTML=news.slice(0,6).map((n,i)=>
+    '<article class="intelFile" data-news="'+i+'"><div><div class="fileMeta">'+(n.tag||'深度档案')+' · '+(n.readTime||'')+'</div><h3>'+n.t+'</h3><p>'+(n.s||n.lead||'')+'</p></div><div class="fileFoot"><span>档案 '+String(i+1).padStart(2,'0')+'</span><span class="fileArrow">→</span></div></article>'
+  ).join('');
+
+  const deadlines=document.getElementById('intelDeadlines');
+  if(deadlines) deadlines.innerHTML=close.slice(0,6).map(e=>{
+    const d=daysLeft(e.deadline);
+    return '<article class="intelDeadline" data-id="'+e.id+'"><div class="days">'+(d===0?'TODAY':d+'D')+'</div><small>'+shortDate(e.deadline)+' 截止</small><h4>'+e.title+'</h4><p>'+(e.city||'')+' · '+audienceLabel(e)+'</p></article>';
+  }).join('');
+
+  document.querySelectorAll('.intelFile').forEach(el=>el.onclick=()=>openArticle(Number(el.dataset.news)));
+  document.querySelectorAll('.intelDeadline').forEach(el=>el.onclick=()=>openEvent(el.dataset.id));
 }
 function renderFavPage(){
   const box=document.getElementById('favPage');if(!box)return;
@@ -1427,7 +1583,21 @@ function closeLayer(which){
 }
 document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>closeLayer(b.dataset.close));
 
-document.getElementById('submitPageContact').onclick=()=>alert('这里接主办方投稿表单 / 公众号联系入口');
+document.getElementById('submitForm')?.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const form=e.currentTarget,statusEl=document.getElementById('submitStatus');
+  const data=Object.fromEntries(new FormData(form).entries());
+  if(statusEl)statusEl.textContent='小 F 正在投递…';
+  try{
+    const r=await fetch('/api/submit',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(data)});
+    if(!r.ok)throw new Error('submit '+r.status);
+    const out=await r.json();
+    if(statusEl)statusEl.textContent='已收到 · 编号 '+out.id;
+    form.reset();
+  }catch(err){
+    if(statusEl)statusEl.textContent='当前是预览环境，正式后端上线后这里会直接进入审核队列。';
+  }
+});
 document.getElementById('searchOpen').onclick=()=>{document.getElementById('searchLayer').classList.add('on');document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('searchInput').focus(),150);search('')};
 document.getElementById('searchInput').oninput=e=>search(e.target.value);
 document.querySelector('.mapGamePanel')?.addEventListener('click',e=>{
