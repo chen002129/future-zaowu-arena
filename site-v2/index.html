@@ -647,6 +647,44 @@ body{background:
   .mapBottomBar{padding:9px 12px;min-height:48px}.mapDynamicNote{font-size:8px}
 }
 
+
+/* ===== map declutter / smart clusters ===== */
+.mapBubbleLabel{opacity:0;transform:translate(-50%,5px) scale(.96);pointer-events:none;transition:.22s var(--ease)}
+.mapBubble.hot .mapBubbleLabel,
+.mapBubble.active .mapBubbleLabel,
+.mapBubble.cluster .mapBubbleLabel{opacity:1;transform:translate(-50%,0) scale(1)}
+.mapBubbleCore{min-width:32px;min-height:32px}
+.mapBubble.cluster .mapBubbleCore{
+  background:linear-gradient(145deg,#1f2937,#111827);
+  box-shadow:0 0 0 9px rgba(17,24,39,.07),0 10px 25px rgba(20,28,45,.18)
+}
+.mapBubble.cluster.hot .mapBubbleCore{
+  background:linear-gradient(145deg,#ff9c5c,#ff6f28);
+  box-shadow:0 0 0 10px rgba(255,122,47,.10),0 12px 28px rgba(194,92,33,.18)
+}
+.mapBubble.cluster .mapBubbleLabel{font-weight:720;color:var(--ink)}
+.clusterCityRow{
+  display:flex;gap:7px;overflow-x:auto;padding:1px 0 10px;scrollbar-width:none
+}
+.clusterCityRow::-webkit-scrollbar{display:none}
+.clusterCityBtn{
+  border:1px solid rgba(47,111,255,.12);background:#f7f9ff;border-radius:999px;
+  padding:7px 10px;font-size:10px;white-space:nowrap;color:var(--ink2);
+  transition:.2s var(--ease)
+}
+.clusterCityBtn:active,.clusterCityBtn.on{background:var(--ink);color:#fff;transform:scale(.96)}
+.mapFocus.clusterMode .mapFocusRail{display:none}
+.mapFocus.clusterMode .mapFocusHead{margin-bottom:8px}
+.mapFocus.clusterMode .clusterCityRow{display:flex}
+.clusterCityRow{display:none}
+@media(max-width:760px){
+  .mapBubbleLabel{display:none}
+  .mapBubble.active .mapBubbleLabel,
+  .mapBubble.cluster.active .mapBubbleLabel{display:block;opacity:1}
+  .mapBubble{padding:15px}
+  .mapBubbleCore{min-width:30px;min-height:30px}
+}
+
 </style>
 </head>
 <body>
@@ -736,6 +774,7 @@ body{background:
             <div><small>已定位</small><b id="mapFocusCity">赛场</b></div>
             <span id="mapFocusCount">0 场</span>
           </div>
+          <div class="clusterCityRow" id="clusterCityRow"></div>
           <div class="mapFocusRail" id="mapFocusRail"></div>
         </div>
       </div>
@@ -1043,6 +1082,32 @@ async function loadChinaMap(){
     svg.innerHTML='<text x="310" y="200" text-anchor="middle" style="font-size:12px;fill:#969aa2">地图加载中…</text>';
   }
 }
+function clusterMapEntries(entries){
+  const pending=entries.map(e=>({...e}));
+  const clusters=[];
+  const threshold=8.2; // percentage-space distance; enough to merge dense east-coast cities
+  while(pending.length){
+    const seed=pending.shift();
+    const members=[seed];
+    for(let i=pending.length-1;i>=0;i--){
+      const dx=(pending[i].pos[0]-seed.pos[0])*0.90;
+      const dy=(pending[i].pos[1]-seed.pos[1])*1.15;
+      if(Math.hypot(dx,dy)<threshold){
+        members.push(pending[i]);
+        pending.splice(i,1);
+      }
+    }
+    const total=members.reduce((n,m)=>n+m.count,0);
+    const x=members.reduce((n,m)=>n+m.pos[0]*m.count,0)/Math.max(1,total);
+    const y=members.reduce((n,m)=>n+m.pos[1]*m.count,0)/Math.max(1,total);
+    clusters.push({
+      members,total,count:total,pos:[x,y],
+      label:members.length===1?members[0].label:(members.length+' 城'),
+      events:members.flatMap(m=>m.events)
+    });
+  }
+  return clusters.sort((a,b)=>b.total-a.total);
+}
 function renderMap(){
   const pins=document.getElementById('mapPins'); if(!pins) return;
   loadChinaMap();
@@ -1065,8 +1130,9 @@ function renderMap(){
     return {label,events,count:events.length,pos};
   }).filter(x=>x.pos).sort((a,b)=>b.count-a.count);
 
+  const clusters=clusterMapEntries(entries);
   const total=entries.reduce((n,x)=>n+x.count,0);
-  const maxCount=Math.max(1,...entries.map(x=>x.count));
+  const maxCount=Math.max(1,...clusters.map(x=>x.total));
   const top=entries[0];
 
   const cityCount=document.getElementById('mapCityCount');
@@ -1078,28 +1144,59 @@ function renderMap(){
   if(eventCount)animateNumber(eventCount,total);
   if(hotCity)hotCity.textContent=top?top.label:'—';
   if(heatTextEl)heatTextEl.textContent=top?(top.label+' · '+top.count+' 场正在报名'):'暂无城市赛事';
-  if(note)note.textContent='数据来自当前赛事库 · '+entries.length+' 个城市正在发光';
+  if(note)note.textContent='已自动合并密集城市 · '+entries.length+' 个城市，'+clusters.length+' 个热点';
 
-  pins.innerHTML=entries.map((item,i)=>{
-    const [x,y]=item.pos;
-    const size=Math.round(34+(item.count/maxCount)*28);
-    return '<button class="mapBubble '+(i===0?'hot':'')+'" data-city="'+item.label+'" style="left:'+x+'%;top:'+y+'%;--bubble:'+size+'px">'+
-      '<span class="mapBubbleCore">'+item.count+'</span>'+
-      '<span class="mapBubbleLabel">'+item.label+' '+item.count+'</span>'+
+  pins.innerHTML=clusters.map((cluster,i)=>{
+    const [x,y]=cluster.pos;
+    const size=Math.round(32+(cluster.total/maxCount)*25);
+    const isCluster=cluster.members.length>1;
+    const label=isCluster?(cluster.members.length+'城 · '+cluster.total+'场'):(cluster.members[0].label+' '+cluster.total);
+    return '<button class="mapBubble '+(i===0?'hot ':'')+(isCluster?'cluster':'')+'" data-cluster="'+i+'" style="left:'+x+'%;top:'+y+'%;--bubble:'+size+'px">'+
+      '<span class="mapBubbleCore">'+cluster.total+'</span>'+
+      '<span class="mapBubbleLabel">'+label+'</span>'+
     '</button>';
   }).join('');
 
-  drawMapRoutes(entries.slice(0,5));
+  drawMapRoutes(clusters.slice(0,4).map(c=>({pos:c.pos})));
 
   pins.querySelectorAll('.mapBubble').forEach(pin=>pin.onclick=e=>{
     e.stopPropagation();
     pins.querySelectorAll('.mapBubble').forEach(x=>x.classList.remove('active'));
     pin.classList.add('active');
     document.querySelector('.mapWorld')?.classList.add('focused');
-    const city=pin.dataset.city;
-    showMapCity(city,groups.get(city)||[]);
+    const cluster=clusters[Number(pin.dataset.cluster)];
+    if(!cluster)return;
+    if(cluster.members.length>1){
+      showMapCluster(cluster);
+    }else{
+      const city=cluster.members[0].label;
+      showMapCity(city,groups.get(city)||[]);
+    }
     if(navigator.vibrate)navigator.vibrate(8);
   });
+}
+function showMapCluster(cluster){
+  const focus=document.getElementById('mapFocus');
+  const cityEl=document.getElementById('mapFocusCity');
+  const countEl=document.getElementById('mapFocusCount');
+  const rail=document.getElementById('mapFocusRail');
+  const row=document.getElementById('clusterCityRow');
+  if(!focus||!row||!rail)return;
+  focus.classList.add('on','clusterMode');
+  cityEl.textContent=cluster.members.length+' 个附近城市';
+  countEl.textContent=cluster.total+' 场';
+  row.innerHTML=cluster.members
+    .sort((a,b)=>b.count-a.count)
+    .map(m=>'<button class="clusterCityBtn" data-city="'+m.label+'">'+m.label+' · '+m.count+'</button>')
+    .join('');
+  rail.innerHTML='';
+  row.querySelectorAll('.clusterCityBtn').forEach(btn=>btn.onclick=()=>{
+    row.querySelectorAll('.clusterCityBtn').forEach(x=>x.classList.toggle('on',x===btn));
+    const member=cluster.members.find(m=>m.label===btn.dataset.city);
+    if(member)showMapCity(member.label,member.events,true);
+  });
+  const note=document.getElementById('mapDynamicNote');
+  if(note)note.textContent='这一带城市比较密集 · 先选城市，再看比赛';
 }
 function animateNumber(el,to){
   const from=Number(el.textContent)||0,start=performance.now(),dur=430;
@@ -1127,11 +1224,12 @@ function drawMapRoutes(entries){
     svg.appendChild(path);
   });
 }
-function showMapCity(city,events){
+function showMapCity(city,events,fromCluster=false){
   const focus=document.getElementById('mapFocus');
   const cityEl=document.getElementById('mapFocusCity');
   const countEl=document.getElementById('mapFocusCount');
   const rail=document.getElementById('mapFocusRail');
+  const row=document.getElementById('clusterCityRow');
   if(!focus||!rail)return;
   cityEl.textContent=city;
   countEl.textContent=events.length+' 场';
@@ -1140,6 +1238,8 @@ function showMapCity(city,events){
   ).join('');
   rail.querySelectorAll('.mapMiniCard').forEach(c=>c.onclick=()=>openEvent(c.dataset.id));
   focus.classList.add('on');
+  focus.classList.remove('clusterMode');
+  if(row && !fromCluster)row.innerHTML='';
   const note=document.getElementById('mapDynamicNote');
   if(note)note.textContent=city+' 已解锁 · 左右滑动查看 '+events.length+' 场比赛';
 }
@@ -1333,7 +1433,9 @@ document.getElementById('searchInput').oninput=e=>search(e.target.value);
 document.querySelector('.mapGamePanel')?.addEventListener('click',e=>{
   if(e.target.closest('.mapBubble,.mapFocus')) return;
   document.querySelectorAll('.mapBubble').forEach(x=>x.classList.remove('active'));
-  document.getElementById('mapFocus')?.classList.remove('on');
+  const focus=document.getElementById('mapFocus');
+  focus?.classList.remove('on','clusterMode');
+  const row=document.getElementById('clusterCityRow'); if(row) row.innerHTML='';
   document.querySelector('.mapWorld')?.classList.remove('focused');
 });
 document.getElementById('jumpbar').onclick=e=>{
