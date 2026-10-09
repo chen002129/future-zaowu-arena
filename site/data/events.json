@@ -1,6 +1,6 @@
 {
   "_readme": "未来造物赛场 · 唯一数据源。改这里即可，网页会自动读取。小程序数据由 tools/build-mp-data.js 从本文件生成，请勿手工改两端中的任意一份。",
-  "updatedAt": "2026-10-09T07:04:12.328Z",
+  "updatedAt": "2026-10-09T18:31:34.247Z",
   "chg": {
     "caltech-mathathon": "2026-09-28"
   },
@@ -141,7 +141,7 @@
       "poster": "assets/posters/pf3df860e75.jpg",
       "qr": "",
       "up": 2061,
-      "ended": false,
+      "ended": true,
       "dateRange": "10.09 – 10.11",
       "organizer": "OpenBuild / 登链社区",
       "agenda": [
@@ -158,7 +158,7 @@
           "t": "Colosseum「Crypto World's Fair」全球黑客松截稿"
         }
       ],
-      "updatedAt": "2026-10-06T00:54:04.265Z",
+      "updatedAt": "2026-10-09T18:31:34.247Z",
       "audience": "Web3 / 开发者",
       "audienceGroup": "开发者",
       "level": "高阶",
@@ -190,7 +190,7 @@
       "poster": "assets/posters/pc35c8e47e8.jpg",
       "qr": "",
       "up": 1278,
-      "ended": false,
+      "ended": true,
       "dateRange": "09.14 – 11.02",
       "teamSize": "在校学生（全日制高校或海外同等学历），单人或组队参赛，每队 1-2 人；每人只能参加一支队伍、限定提交一份作品；不限专业背景，可自由组合；决赛作品需成功部署上线",
       "organizer": "腾讯音乐娱乐集团（TME）",
@@ -224,7 +224,7 @@
           "t": "决赛路演及颁奖"
         }
       ],
-      "updatedAt": "2026-10-06T13:57:04.265Z",
+      "updatedAt": "2026-10-09T18:31:34.247Z",
       "audience": "高校学生",
       "audienceGroup": "高校",
       "level": "进阶",
@@ -445,7 +445,8 @@
       "audience": "开发者 / 创业者",
       "audienceGroup": "开发者",
       "level": "进阶",
-      "parentNote": "少见地把“做出来”继续推到“有人愿不愿意付费”，很适合看商业验证。"
+      "parentNote": "少见地把“做出来”继续推到“有人愿不愿意付费”，很适合看商业验证。",
+      "sourceChangedAt": "2026-10-09T18:31:34.247Z"
     },
     {
       "id": "雾客松-2027",
@@ -501,6 +502,27 @@
     }
   ],
   "flashes": [
+    {
+      "auto": true,
+      "hot": true,
+      "txt": "支付宝AI付 PAYATHON 2026 年度黑客松 官方页面刚刚发生更新，关键信息正在复核",
+      "src": "支付宝AI付 · 官方页面监测",
+      "at": "2026-10-09T18:31:34.247Z"
+    },
+    {
+      "auto": true,
+      "hot": false,
+      "txt": "腾讯音乐首届高校AI Hackathon（Build With AI） 报名时间已过，状态更新为已截止",
+      "src": "自动状态监测",
+      "at": "2026-10-09T18:31:34.247Z"
+    },
+    {
+      "auto": true,
+      "hot": false,
+      "txt": "深圳 Solar 黑客之家 Solar Hacker House Shenzhen 报名时间已过，状态更新为已截止",
+      "src": "自动状态监测",
+      "at": "2026-10-09T18:31:34.247Z"
+    },
     {
       "auto": true,
       "hot": false,
@@ -867,8 +889,11 @@
       "lastModified": ""
     },
     "payathon-2026": {
-      "errorAt": "2026-10-09T07:04:12.328Z",
-      "error": "fetch failed"
+      "fingerprint": "bfbc406a262c30c5a6252247de99e4e0ccc3382baa91739cf1004138ebc6061c",
+      "checkedAt": "2026-10-09T18:31:34.247Z",
+      "url": "https://aipay.alipay.com/community/events/payathon-2026",
+      "etag": "W/\"a3870-y4vcfRHMZwS8sPUg4EFdXefgGaE\"",
+      "lastModified": ""
     }
   }
 }
