@@ -1,6 +1,6 @@
 {
   "_readme": "未来造物赛场 · 唯一数据源。改这里即可，网页会自动读取。小程序数据由 tools/build-mp-data.js 从本文件生成，请勿手工改两端中的任意一份。",
-  "updatedAt": "2026-10-09T18:31:34.247Z",
+  "updatedAt": "2026-10-09T20:06:22.084Z",
   "chg": {
     "caltech-mathathon": "2026-09-28"
   },
@@ -862,28 +862,28 @@
   "_watch": {
     "天猫ai黑客松高校挑战赛": {
       "fingerprint": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "checkedAt": "2026-10-09T07:04:12.328Z",
+      "checkedAt": "2026-10-09T20:06:22.084Z",
       "url": "https://pages.tmall.com/wow/a/act/tmall/dailygroup/24732/25590/wupr?wh_pid=daily-597100&disableNav=YES&status_bar_transparent=true",
       "etag": "",
       "lastModified": ""
     },
     "亚洲黑客松巅峰赛上海站": {
       "fingerprint": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "checkedAt": "2026-10-09T07:04:12.328Z",
+      "checkedAt": "2026-10-09T20:06:22.084Z",
       "url": "https://app.tapnow.ai/",
       "etag": "W/\"6ac77c92-2e6a\"",
       "lastModified": "Thu, 08 Oct 2026 11:20:50 GMT"
     },
     "深圳-solar-黑客之家-solar-hacker-house-shenzhen": {
       "fingerprint": "489e5568126f486b6a37f7fdd422bc37ece54cfbcb21fe428fd1f77891d2f212",
-      "checkedAt": "2026-10-09T07:04:12.328Z",
+      "checkedAt": "2026-10-09T20:06:22.084Z",
       "url": "https://luma.com/673y4m0q",
       "etag": "",
       "lastModified": ""
     },
     "蚂蚁灵波具身大模型挑战赛": {
       "fingerprint": "6631bf53df7ac396c64f92e380768f4965fd735b05694b806068291551044a58",
-      "checkedAt": "2026-10-09T07:04:12.328Z",
+      "checkedAt": "2026-10-09T20:06:22.084Z",
       "url": "https://tianchi.aliyun.com/",
       "etag": "W/\"12b89-hKcxdNaAaHNary10PJGBRXnLABM\"",
       "lastModified": ""
