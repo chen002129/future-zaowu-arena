@@ -184,6 +184,14 @@ button{color:inherit}
 .splitCols{display:grid;grid-template-columns:1fr 1fr;gap:12px}.splitCol{border-top:1px solid var(--line)}.splitTitle{display:flex;justify-content:space-between;align-items:center;padding:12px 0;font-size:12px}.splitTitle b{font-size:13px}.splitTitle span{font:9.5px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3)}
 .listEvent{padding:15px 0;border-top:1px solid var(--line);cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:14px}.listEvent h4{font-size:17px;line-height:1.25;margin:0;letter-spacing:-.02em}.listEvent p{font-size:10.5px;color:var(--ink3);margin:7px 0 0}.listEvent .miniDate{font:10px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3);white-space:nowrap}
 .jumpbar{display:flex;gap:7px;overflow-x:auto;margin:0 0 26px;padding-bottom:2px;scrollbar-width:none}.jumpbar::-webkit-scrollbar{display:none}.jumpbar button{border:1px solid rgba(255,255,255,.76);background:rgba(255,255,255,.46);padding:8px 10px;border-radius:999px;font-size:11px;color:var(--ink2);white-space:nowrap}
+.publicHeat{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;font:10.5px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3)}
+.detailHeat{margin-top:0;font-size:12px;gap:16px}.detailHeat b{font-weight:650;color:var(--ink)}
+.hotGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.hotCard{min-height:128px;padding:16px;border-radius:18px;background:rgba(255,255,255,.56);border:1px solid rgba(255,255,255,.75);display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;cursor:pointer}
+.hotRank{font:28px ui-monospace,SFMono-Regular,Menlo,monospace;color:rgba(23,24,26,.12);letter-spacing:-.08em}
+.hotMain h4{font-size:16px;line-height:1.25;margin:0}.hotMain p{font-size:10px;color:var(--ink3);margin:7px 0 0}.hotStats{text-align:right}.hotStats b{display:block;font:22px ui-monospace,SFMono-Regular,Menlo,monospace}.hotStats span{font-size:9px;color:var(--ink3)}.hotStats small{display:block;font-size:9px;color:var(--ink3);margin-top:6px}
+.miniSocial{font:9.5px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3);margin-top:10px}
+
 
 .mobileDock{display:none}.submitPanel{margin-top:70px;padding:24px;border-radius:22px;background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.75)}.submitPanel h2{font-size:30px;letter-spacing:-.04em;margin:0 0 12px}.submitPanel p{font-size:14px;line-height:1.8;color:var(--ink2);margin:0}.submitPanel .primary{width:100%;margin-top:24px}
 .articleBody{padding:70px 0 80px}.articleBody .eyebrow{font:11px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3)}.articleBody h2{font-size:clamp(38px,7vw,72px);line-height:1.02;letter-spacing:-.05em;margin:18px 0 24px;max-width:780px}.articleLead{font-size:18px;line-height:1.8;color:var(--ink2);max-width:720px}.articleSec{max-width:720px;margin:50px 0}.articleSec h4{font-size:14px;margin:0 0 12px}.articleSec p{font-size:15px;line-height:1.9;color:var(--ink2);margin:0}
@@ -244,6 +252,8 @@ button{color:inherit}
   .deadlineRail{grid-auto-columns:72%;gap:10px;margin-right:-14px;padding-right:14px}.deadCard{min-height:190px;padding:16px}.deadCard .date{font-size:31px}.deadCard h4{font-size:17px}
   .tileGrid{grid-template-columns:1fr 1fr;gap:9px}.tileCard{min-height:226px;border-radius:17px;grid-template-rows:118px 1fr}.tileBody{padding:12px}.tileBody h4{font-size:15px}.tileBody p{font-size:9.8px}
   .splitCols{grid-template-columns:1fr;gap:28px}.listEvent h4{font-size:16px}
+
+  .hotGrid{grid-template-columns:1fr}.hotCard{min-height:112px;padding:14px}.hotRank{font-size:24px}.hotMain h4{font-size:15px}.hotStats b{font-size:19px}
 }
 </style>
 </head>
@@ -258,6 +268,7 @@ button{color:inherit}
   </nav>
 
   <header class="hero">
+    <div class="heroArt" id="heroArt"></div>
     <div>
       <div class="kicker">Future Maker · Event Radar</div>
       <h1>正在发生的<br><em>AI 赛场。</em></h1>
@@ -268,18 +279,16 @@ button{color:inherit}
     </div>
   </header>
 
-  <div class="toolbar">
-    <div class="tabs" id="tabs">
-      <button class="tab on" data-filter="精选">精选</button>
-      <button class="tab" data-filter="临近截止">临近截止</button>
-      <button class="tab" data-filter="青少年">青少年</button>
-      <button class="tab" data-filter="高校">高校</button>
-      <button class="tab" data-filter="开发者">开发者</button>
-    </div>
-    <div class="count" id="filterCount">—</div>
+  <div class="jumpbar" id="jumpbar">
+    <button data-jump="featuredSec">本周精选</button>
+    <button data-jump="hotSec">热门赛场</button>
+    <button data-jump="deadlineSec">即将截止</button>
+    <button data-jump="youthSec">青少年</button>
+    <button data-jump="proSec">高校 / 开发者</button>
+    <button data-jump="editorial">未来造物观察</button>
   </div>
 
-  <main class="stage" id="stage"></main>
+  <main class="magazine" id="stage"></main>
 
   <div class="signal" id="signal">
     <span class="sigpulse"></span>
@@ -368,45 +377,104 @@ function money(s){
 function audienceLabel(e){
   return e.audienceGroup||e.audience||'开放报名';
 }
-function passFilter(e){
-  if(FILTER==='收藏') return favs.has(e.id);
-  if(FILTER==='精选') return daysLeft(e.deadline)>=0;
-  if(FILTER==='临近截止') return daysLeft(e.deadline)>=0 && daysLeft(e.deadline)<=14;
-  const a=(e.audienceGroup||'')+(e.audience||'');
-  return a.includes(FILTER);
+function posterMarkup(e,cls='posterImg'){
+  if(e.poster) return '<img class="'+cls+'" src="'+e.poster+'" alt="" loading="lazy" onerror="this.remove()">';
+  return '';
 }
-function stageHTML(e,i){
-  const st=status(e);
-  const tags=(e.tags||[]).slice(0,4);
-  const note=e.parentNote||e.summary||'打开查看完整赛事信息与报名路径。';
-  return `<article class="event" data-id="${e.id}">
-    <div class="index">${String(i+1).padStart(2,'0')}</div>
-    <div class="core">
-      <div class="statusrow"><span class="state ${st.c}">${st.t}</span><span class="sep"></span><span class="updated">DEADLINE ${shortDate(e.deadline)}</span></div>
-      <h2>${e.title}</h2>
-      <p class="note">${note}</p>
-      <div class="tags">${tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-    </div>
-    <div class="side">
-      <div class="sidegrid">
-        <div class="cell"><small>适合</small><b>${audienceLabel(e)}</b></div>
-        <div class="cell"><small>形式</small><b>${e.mode||'待定'}</b></div>
-        <div class="cell"><small>地点</small><b>${e.city||'待定'}</b></div>
-        <div class="cell"><small>奖金 / 权益</small><b>${money(e.prize)}</b></div>
-      </div>
-      <div class="enter"><span>${e.organizer||'主办方信息见详情'}</span><span class="arrow">→</span></div>
-    </div>
-  </article>`;
+function artFallback(e,mode='big'){
+  if(mode==='big') return '<div class="artFallback"><img class="ghostLogo" src="assets/future-maker-logo.svg" alt=""><div class="bigDate">'+shortDate(e.deadline)+'</div></div>';
+  return '<div class="tinyFallback"><img src="assets/future-maker-logo.svg" alt=""><span>'+shortDate(e.deadline)+'</span></div>';
+}
+function engagement(e){
+  return e.engagement||{likes:0,saves:0,views:0,registrationClicks:0,heat:0,liked:false,saved:false};
+}
+function heatText(e){
+  const h=engagement(e).heat||0;
+  if(h>=1000) return (h/1000).toFixed(h>=10000?0:1)+'k';
+  return String(h||0);
+}
+function liveEvents(){
+  return DATA.events.filter(e=>daysLeft(e.deadline)>=0).sort((a,b)=>{
+    const ha=engagement(a).heat||0,hb=engagement(b).heat||0;
+    if(hb!==ha) return hb-ha;
+    return daysLeft(a.deadline)-daysLeft(b.deadline);
+  });
+}
+function groupMatch(e,key){
+  const a=(e.audienceGroup||'')+' '+(e.audience||'');
+  return a.includes(key);
+}
+function renderHeroArt(){
+  const picks=liveEvents().slice(0,3);
+  const el=document.getElementById('heroArt');
+  if(!el) return;
+  el.innerHTML=picks.map(e=>'<div class="artCard">'+posterMarkup(e)+artFallback(e,'tiny')+'</div>').join('');
+}
+function sectionHead(num,title,sub){
+  return '<div class="magHead"><div class="left"><span class="num">'+num+'</span><h3>'+title+'</h3></div><p>'+sub+'</p></div>';
+}
+function featuredHTML(e){
+  if(!e) return '';
+  const st=status(e),g=engagement(e);
+  return '<section class="magSec" id="featuredSec">'+sectionHead('01','本周精选','编辑推荐')+
+    '<article class="featured" data-id="'+e.id+'">'+
+      '<div class="featureVisual">'+posterMarkup(e)+artFallback(e,'big')+'</div>'+
+      '<div class="featureCopy"><div>'+
+        '<div class="eyebrow">'+st.t+' · '+shortDate(e.deadline)+' 截止</div>'+
+        '<h2>'+e.title+'</h2>'+
+        '<div class="desc">'+(e.parentNote||e.summary||'打开查看完整赛事信息。')+'</div>'+
+      '</div><div>'+
+        '<div class="publicHeat"><span>♥ '+g.likes+'</span><span>◇ '+g.saves+'</span><span>↗ 热度 '+heatText(e)+'</span></div>'+
+        '<div class="featureMeta">'+
+          '<div><small>适合</small><b>'+audienceLabel(e)+'</b></div>'+
+          '<div><small>地点</small><b>'+(e.city||'待定')+'</b></div>'+
+          '<div><small>形式</small><b>'+(e.mode||'待定')+'</b></div>'+
+        '</div>'+
+      '</div></div>'+
+    '</article></section>';
+}
+function hotHTML(list){
+  return '<section class="magSec" id="hotSec">'+sectionHead('02','热门赛场','大家正在关注')+
+    '<div class="hotGrid">'+list.slice(0,4).map((e,i)=>{
+      const g=engagement(e);
+      return '<article class="hotCard" data-id="'+e.id+'"><div class="hotRank">'+String(i+1).padStart(2,'0')+'</div><div class="hotMain"><h4>'+e.title+'</h4><p>'+(e.city||'')+' · '+shortDate(e.deadline)+' 截止</p></div><div class="hotStats"><b>'+heatText(e)+'</b><span>热度</span><small>♥ '+g.likes+' · ◇ '+g.saves+'</small></div></article>';
+    }).join('')+'</div></section>';
+}
+function deadlineHTML(list){
+  return '<section class="magSec" id="deadlineSec">'+sectionHead('03','即将截止','别错过窗口')+
+    '<div class="deadlineRail">'+list.slice(0,6).map(e=>{
+      const d=daysLeft(e.deadline),g=engagement(e);
+      return '<article class="deadCard" data-id="'+e.id+'"><div><div class="date">'+shortDate(e.deadline)+'</div><div class="leftDays">'+(d===0?'今天截止':'还剩 '+d+' 天')+'</div><h4>'+e.title+'</h4></div><footer>'+(e.city||'')+' · ♥ '+g.likes+'</footer></article>';
+    }).join('')+'</div></section>';
+}
+function youthHTML(list){
+  return '<section class="magSec" id="youthSec">'+sectionHead('04','青少年赛场','更适合孩子')+
+    '<div class="tileGrid">'+list.slice(0,4).map(e=>{
+      const g=engagement(e);
+      return '<article class="tileCard" data-id="'+e.id+'"><div class="tileArt">'+posterMarkup(e)+artFallback(e,'tiny')+'</div><div class="tileBody"><h4>'+e.title+'</h4><p>'+shortDate(e.deadline)+' 截止 · '+(e.city||'')+'</p><div class="miniSocial">♥ '+g.likes+'　◇ '+g.saves+'</div></div></article>';
+    }).join('')+'</div></section>';
+}
+function splitHTML(colA,colB){
+  const list=(arr)=>arr.slice(0,5).map(e=>'<article class="listEvent" data-id="'+e.id+'"><div><h4>'+e.title+'</h4><p>'+(e.organizer||audienceLabel(e))+' · 热度 '+heatText(e)+'</p></div><span class="miniDate">'+shortDate(e.deadline)+'</span></article>').join('');
+  return '<section class="magSec" id="proSec">'+sectionHead('05','高校 / 开发者','往真实项目走')+
+    '<div class="splitCols"><div class="splitCol"><div class="splitTitle"><b>高校赛事</b><span>COLLEGE</span></div>'+list(colA)+'</div><div class="splitCol"><div class="splitTitle"><b>开发者赛事</b><span>DEVELOPER</span></div>'+list(colB)+'</div></div></section>';
 }
 function renderStage(){
-  const list=DATA.events.filter(passFilter).sort((a,b)=>{
-    const da=daysLeft(a.deadline),db=daysLeft(b.deadline);
-    if(FILTER==='临近截止') return da-db;
-    return new Date(b.updatedAt||0)-new Date(a.updatedAt||0);
-  }).slice(0,FILTER==='精选'?8:30);
-  document.getElementById('filterCount').textContent=list.length+' 场';
-  document.getElementById('stage').innerHTML=list.length?list.map(stageHTML).join(''):'<div style="padding:70px 0;color:var(--ink3)">暂时没有匹配赛事。</div>';
-  document.querySelectorAll('.event').forEach(el=>el.onclick=()=>openEvent(el.dataset.id));
+  const live=liveEvents();
+  const featured=live.find(e=>e.featured)||live[0];
+  const hot=[...live].sort((a,b)=>(engagement(b).heat||0)-(engagement(a).heat||0));
+  const deadline=[...live].sort((a,b)=>daysLeft(a.deadline)-daysLeft(b.deadline)).filter(e=>daysLeft(e.deadline)<=14);
+  const youth=live.filter(e=>groupMatch(e,'青少年'));
+  const college=live.filter(e=>groupMatch(e,'高校'));
+  const dev=live.filter(e=>groupMatch(e,'开发者'));
+  document.getElementById('stage').innerHTML=
+    featuredHTML(featured)+
+    hotHTML(hot)+
+    deadlineHTML(deadline.length?deadline:live.slice(0,5))+
+    youthHTML(youth.length?youth:live.slice(0,4))+
+    splitHTML(college.length?college:live.slice(0,5),dev.length?dev:live.slice(0,5));
+  document.querySelectorAll('#stage [data-id]').forEach(el=>el.onclick=()=>openEvent(el.dataset.id));
+  renderHeroArt();
 }
 function renderArticles(){
   const news=DATA.news||[];
@@ -449,22 +517,66 @@ function openEvent(id){
     ${tracks?`<section class="detailSection"><h4>赛道 / 方向</h4><p>${tracks}</p></section>`:''}
     ${agenda?`<section class="detailSection"><h4>关键时间</h4><div class="timeline">${agenda}</div></section>`:''}
     <section class="detailSection"><h4>判断建议</h4><p>${e.parentNote||'先看孩子是否符合参赛资格，再看作品要求和时间成本。比赛本身只是入口，真正重要的是能不能留下一个完整作品。'}</p></section>
+    <section class="detailSection"><h4>大家的热度</h4><div class="publicHeat detailHeat"><span>♥ <b id="likeCount">${engagement(e).likes}</b> 点赞</span><span>◇ <b id="saveCount">${engagement(e).saves}</b> 收藏</span><span>◌ ${engagement(e).views} 浏览</span><span>↗ 热度 ${heatText(e)}</span></div></section>
     <div class="detailActions">
+      <button class="secondary" id="likeBtn">${engagement(e).liked?'已点赞':'点赞'}</button>
       <button class="secondary" id="favBtn">${saved?'已收藏':'收藏'}</button>
       <button class="secondary" id="shareBtn">分享</button>
       <button class="primary" id="officialBtn">查看官方页面 →</button>
     </div>`;
   document.getElementById('detailLayer').classList.add('on');
   document.body.style.overflow='hidden';
+  document.getElementById('likeBtn').onclick=toggleLike;
   document.getElementById('favBtn').onclick=toggleFav;
   document.getElementById('shareBtn').onclick=shareEvent;
-  document.getElementById('officialBtn').onclick=()=>e.website&&window.open(e.website,'_blank','noopener');
+  document.getElementById('officialBtn').onclick=async()=>{
+    await recordInteraction('registration_click',e.id);
+    if(e.website) window.open(e.website,'_blank','noopener');
+  };
+  recordInteraction('view',e.id);
 }
-function toggleFav(){
+function clientId(){
+  let id=localStorage.getItem('fml_client_id');
+  if(!id){ id=(crypto.randomUUID?crypto.randomUUID():('c_'+Date.now()+'_'+Math.random().toString(36).slice(2))); localStorage.setItem('fml_client_id',id); }
+  return id;
+}
+async function recordInteraction(type,eventId){
+  try{
+    const r=await fetch('/api/interaction',{method:'POST',headers:{'content-type':'application/json','x-client-id':clientId()},body:JSON.stringify({type,eventId})});
+    if(!r.ok) throw new Error('interaction '+r.status);
+    const data=await r.json();
+    const e=DATA.events.find(x=>String(x.id)===String(eventId));
+    if(e&&data.engagement) e.engagement={...(e.engagement||{}),...data.engagement};
+    return data;
+  }catch(e){ return null; }
+}
+async function toggleLike(){
   if(!currentEvent)return;
-  if(favs.has(currentEvent.id))favs.delete(currentEvent.id);else favs.add(currentEvent.id);
+  const prev=engagement(currentEvent);
+  const nextLiked=!prev.liked;
+  currentEvent.engagement={...prev,liked:nextLiked,likes:Math.max(0,(prev.likes||0)+(nextLiked?1:-1))};
+  document.getElementById('likeBtn').textContent=nextLiked?'已点赞':'点赞';
+  const lc=document.getElementById('likeCount'); if(lc) lc.textContent=currentEvent.engagement.likes;
+  const data=await recordInteraction(nextLiked?'like':'unlike',currentEvent.id);
+  if(data?.engagement){
+    currentEvent.engagement={...currentEvent.engagement,...data.engagement};
+    if(lc) lc.textContent=currentEvent.engagement.likes;
+  }
+}
+async function toggleFav(){
+  if(!currentEvent)return;
+  const adding=!favs.has(currentEvent.id);
+  if(adding)favs.add(currentEvent.id);else favs.delete(currentEvent.id);
   localStorage.setItem('fml_v2_favs',JSON.stringify([...favs]));
-  document.getElementById('favBtn').textContent=favs.has(currentEvent.id)?'已收藏':'收藏';
+  document.getElementById('favBtn').textContent=adding?'已收藏':'收藏';
+  const prev=engagement(currentEvent);
+  currentEvent.engagement={...prev,saved:adding,saves:Math.max(0,(prev.saves||0)+(adding?1:-1))};
+  const sc=document.getElementById('saveCount'); if(sc) sc.textContent=currentEvent.engagement.saves;
+  const data=await recordInteraction(adding?'save':'unsave',currentEvent.id);
+  if(data?.engagement){
+    currentEvent.engagement={...currentEvent.engagement,...data.engagement};
+    if(sc) sc.textContent=currentEvent.engagement.saves;
+  }
 }
 async function shareEvent(){
   if(!currentEvent)return;
@@ -503,17 +615,23 @@ document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>closeLayer(b.
 document.getElementById('submitContact').onclick=()=>alert('正式版这里接主办方投稿表单 / 公众号联系入口');
 document.getElementById('searchOpen').onclick=()=>{document.getElementById('searchLayer').classList.add('on');document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('searchInput').focus(),150);search('')};
 document.getElementById('searchInput').oninput=e=>search(e.target.value);
-document.getElementById('tabs').onclick=e=>{
-  const b=e.target.closest('.tab');if(!b)return;
-  FILTER=b.dataset.filter;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));renderStage();
+document.getElementById('jumpbar').onclick=e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  const target=document.getElementById(b.dataset.jump)||document.querySelector('.'+b.dataset.jump);
+  target?.scrollIntoView({behavior:'smooth',block:'start'});
 };
 document.getElementById('mobileDock').onclick=e=>{
   const b=e.target.closest('.dockBtn'); if(!b) return;
   document.querySelectorAll('.dockBtn').forEach(x=>x.classList.toggle('on',x===b));
   const v=b.dataset.dock;
-  if(v==='events'){FILTER='精选';document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x.dataset.filter==='精选'));renderStage();window.scrollTo({top:0,behavior:'smooth'});}
+  if(v==='events'){renderStage();window.scrollTo({top:0,behavior:'smooth'});}
   if(v==='news') document.querySelector('.editorial')?.scrollIntoView({behavior:'smooth'});
-  if(v==='fav'){FILTER='收藏';document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));renderStage();document.querySelector('.stage')?.scrollIntoView({behavior:'smooth'});}
+  if(v==='fav'){
+  const saved=DATA.events.filter(e=>favs.has(e.id));
+  document.getElementById('stage').innerHTML='<section class="magSec">'+sectionHead('◎','我的收藏',saved.length+' 场')+'<div class="tileGrid">'+saved.map(e=>'<article class="tileCard" data-id="'+e.id+'"><div class="tileArt">'+posterMarkup(e)+artFallback(e,'tiny')+'</div><div class="tileBody"><h4>'+e.title+'</h4><p>'+shortDate(e.deadline)+' 截止 · '+(e.city||'')+'</p></div></article>').join('')+'</div></section>';
+  document.querySelectorAll('#stage [data-id]').forEach(el=>el.onclick=()=>openEvent(el.dataset.id));
+  document.getElementById('stage')?.scrollIntoView({behavior:'smooth'});
+}
   if(v==='submit'){document.getElementById('submitLayer').classList.add('on');document.body.style.overflow='hidden';}
 };
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){['search','detail','article','submit'].forEach(closeLayer)}});
