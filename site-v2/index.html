@@ -321,13 +321,56 @@ body{background:
 .routeLine{fill:none;stroke:var(--orange);stroke-width:1.6;stroke-dasharray:7 7;stroke-linecap:round;opacity:.65;animation:dashMove 9s linear infinite}
 @keyframes dashMove{to{stroke-dashoffset:-140}}
 @keyframes sketchWiggle{50%{transform:translateY(1px) rotate(.12deg)}}
-.mapPins{position:absolute;inset:0}
-.mapPin{position:absolute;transform:translate(-50%,-50%);border:0;background:transparent;padding:0;cursor:pointer;z-index:5}
+.mapPins{position:absolute;inset:0;z-index:7;pointer-events:none}
+.chinaSketch{pointer-events:none}
+.mapPaper{touch-action:pan-y}
+.mapPin{
+  pointer-events:auto;min-width:86px;height:46px;
+  display:flex;align-items:center;gap:7px;
+  transform:translate(-12px,-50%);
+  border:0;background:transparent;padding:6px 8px 6px 5px;
+  cursor:pointer;z-index:8;border-radius:16px;
+  -webkit-tap-highlight-color:transparent;
+}
+.mapPin:before{
+  content:"";position:absolute;inset:2px;border-radius:15px;
+  background:rgba(255,255,255,.01);transition:.24s var(--ease)
+}
+.mapPin.active:before{background:rgba(255,255,255,.72);box-shadow:0 8px 25px rgba(44,72,133,.10)}
+.mapPin.active .pinDot{transform:rotate(-45deg) scale(1.18);box-shadow:0 0 0 8px rgba(47,111,255,.12)}
+.mapPin.active .pinLabel{color:var(--blue);font-weight:700}
+.mapFocus{
+  position:absolute;left:14px;right:14px;bottom:14px;z-index:9;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(47,111,255,.10);border-radius:18px;
+  box-shadow:0 14px 36px rgba(40,67,124,.12);
+  padding:12px;transform:translateY(18px);opacity:0;pointer-events:none;
+  transition:.3s var(--ease)
+}
+.mapFocus.on{transform:none;opacity:1;pointer-events:auto}
+.mapFocusHead{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+.mapFocusHead b{font-size:13px}.mapFocusHead span{font:9px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3)}
+.mapFocusRail{display:grid;grid-auto-flow:column;grid-auto-columns:80%;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.mapFocusRail::-webkit-scrollbar{display:none}
+.mapMiniCard{
+  scroll-snap-align:start;border:0;background:#f6f8fc;border-radius:14px;padding:12px;text-align:left;
+  min-height:88px;position:relative;overflow:hidden
+}
+.mapMiniCard:after{content:"→";position:absolute;right:12px;bottom:10px;font-size:15px}
+.mapMiniCard small{font-size:9px;color:var(--orange)}
+.mapMiniCard h5{font-size:13px;line-height:1.3;margin:6px 24px 0 0}
+.mapHintPulse{
+  position:absolute;right:18px;bottom:18px;width:9px;height:9px;border-radius:50%;background:var(--orange);
+  box-shadow:0 0 0 0 rgba(255,122,47,.24);animation:mapHint 2s infinite
+}
+@keyframes mapHint{70%{box-shadow:0 0 0 12px rgba(255,122,47,0)}100%{box-shadow:0 0 0 0 rgba(255,122,47,0)}}
+
+.mapPin{position:absolute}
 .pinDot{width:15px;height:15px;border-radius:50% 50% 50% 12%;transform:rotate(-45deg);background:var(--blue);box-shadow:0 0 0 5px rgba(47,111,255,.10);position:relative;animation:pinBob 2.8s ease-in-out infinite}
 .pinDot:after{content:"";position:absolute;width:5px;height:5px;border-radius:50%;background:#fff;left:5px;top:5px}
 .mapPin:nth-child(2n) .pinDot{background:var(--orange);box-shadow:0 0 0 5px rgba(255,122,47,.11);animation-delay:-1s}
 @keyframes pinBob{50%{transform:rotate(-45deg) translate(2px,-3px)}}
-.pinLabel{position:absolute;left:20px;top:-7px;white-space:nowrap;background:#fff;padding:5px 7px;border:1px solid rgba(47,111,255,.12);border-radius:8px;font-size:10px;box-shadow:0 5px 16px rgba(43,65,110,.07);transform:rotate(var(--rot,-2deg))}
+.pinLabel{position:relative;left:auto;top:auto;white-space:nowrap;background:#fff;padding:5px 7px;border:1px solid rgba(47,111,255,.12);border-radius:8px;font-size:10px;box-shadow:0 5px 16px rgba(43,65,110,.07);transform:rotate(var(--rot,-2deg));z-index:2}
 .mapNote{position:absolute;left:19px;bottom:18px;font-size:10px;color:var(--ink3);max-width:190px;line-height:1.55}
 .scribble{position:absolute;pointer-events:none;opacity:.8}
 .scribble path{fill:none;stroke:var(--orange);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:190;stroke-dashoffset:190;animation:drawScribble 2.2s var(--ease) forwards}
@@ -345,7 +388,7 @@ body{background:
   .swipeCard{min-height:360px;border-radius:22px}.swipePoster{height:218px}.swipeBody h3{font-size:19px}
   .deckProgress{margin:0 14px}
   .mapSection{margin:0 0 50px}.mapPaper{min-height:365px;border-radius:22px}.chinaSketch{left:3%;top:17%;width:94%;height:65%}
-  .mapNote{font-size:9.5px;max-width:155px}.pinLabel{font-size:9px}
+  .mapNote{font-size:9.5px;max-width:155px}.pinLabel{font-size:9px}.mapPin{min-width:78px;height:44px;padding-right:5px}.mapFocus{left:10px;right:10px;bottom:10px}.mapFocusRail{grid-auto-columns:86%}
   .featured,.deadCard,.tileCard,.hotCard,.article{border-color:rgba(47,111,255,.08)}
 }
 
@@ -395,7 +438,12 @@ body{background:
         <path class="routeLine" d="M170 188 C240 128,337 143,430 206 S474 260,402 274"/>
       </svg>
       <div class="mapPins" id="mapPins"></div>
-      <div class="mapNote">不是为了看地图，是为了让你一眼知道：最近的赛场，正在中国哪里发生。</div>
+      <div class="mapFocus" id="mapFocus">
+        <div class="mapFocusHead"><b id="mapFocusCity">赛场</b><span id="mapFocusCount">0 场</span></div>
+        <div class="mapFocusRail" id="mapFocusRail"></div>
+      </div>
+      <div class="mapHintPulse"></div>
+      <div class="mapNote">点一下城市，看看这里正在发生什么。</div>
       <svg class="scribble" style="width:110px;height:55px;right:18px;bottom:18px" viewBox="0 0 110 55"><path d="M5 43 C24 11,67 7,98 20 M81 12 L100 20 L87 34"/></svg>
     </div>
   </section>
@@ -618,18 +666,53 @@ function cityPosition(city){
   return map[key]||[46+Math.random()*18,38+Math.random()*26];
 }
 function renderMap(){
-  const pins=document.getElementById('mapPins');if(!pins)return;
-  const chosen=[]; const seen=new Set();
+  const pins=document.getElementById('mapPins'); if(!pins) return;
+  const groups=new Map();
+  const cityNames=['北京','上海','深圳','厦门','苏州','杭州','南京','成都','武汉','广州','西安','重庆','江苏'];
   for(const e of liveEvents()){
-    const city=e.city||'线上';
-    const label=Object.keys({'北京':1,'上海':1,'深圳':1,'厦门':1,'苏州':1,'杭州':1,'南京':1,'成都':1,'武汉':1,'广州':1,'西安':1,'重庆':1,'江苏':1}).find(k=>city.includes(k))||city.split(/[·\/、]/)[0]||'线上';
-    if(seen.has(label)) continue; seen.add(label);chosen.push([e,label]);if(chosen.length>=7)break;
+    const raw=e.city||'线上';
+    const label=cityNames.find(k=>raw.includes(k))||raw.split(/[·\/、]/)[0]||'线上';
+    if(!groups.has(label)) groups.set(label,[]);
+    groups.get(label).push(e);
   }
-  pins.innerHTML=chosen.map(([e,label],i)=>{
-    const [x,y]=cityPosition(e.city);
-    return '<button class="mapPin" data-id="'+e.id+'" style="left:'+x+'%;top:'+y+'%;--rot:'+(i%2?2:-2)+'deg"><span class="pinDot"></span><span class="pinLabel">'+label+' · '+status(e).t+'</span></button>';
+  const entries=[...groups.entries()].slice(0,8);
+  pins.innerHTML=entries.map(([label,events],i)=>{
+    const [x,y]=cityPosition(events[0].city);
+    return '<button class="mapPin" data-city="'+label+'" style="left:'+x+'%;top:'+y+'%;--rot:'+(i%2?2:-2)+'deg">'+
+      '<span class="pinDot"></span><span class="pinLabel">'+label+' · '+events.length+'场</span></button>';
   }).join('');
-  pins.querySelectorAll('.mapPin').forEach(p=>p.onclick=()=>openEvent(p.dataset.id));
+
+  pins.querySelectorAll('.mapPin').forEach(pin=>{
+    pin.onclick=e=>{
+      e.stopPropagation();
+      pins.querySelectorAll('.mapPin').forEach(x=>x.classList.remove('active'));
+      pin.classList.add('active');
+      const city=pin.dataset.city;
+      showMapCity(city,groups.get(city)||[]);
+      if(navigator.vibrate) navigator.vibrate(8);
+    };
+  });
+
+  const first=entries[0];
+  if(first){
+    const firstPin=pins.querySelector('.mapPin');
+    firstPin?.classList.add('active');
+    showMapCity(first[0],first[1]);
+  }
+}
+function showMapCity(city,events){
+  const focus=document.getElementById('mapFocus');
+  const cityEl=document.getElementById('mapFocusCity');
+  const countEl=document.getElementById('mapFocusCount');
+  const rail=document.getElementById('mapFocusRail');
+  if(!focus||!rail)return;
+  cityEl.textContent=city;
+  countEl.textContent=events.length+' 场';
+  rail.innerHTML=events.map(e=>
+    '<button class="mapMiniCard" data-id="'+e.id+'"><small>'+status(e).t+' · '+shortDate(e.deadline)+'</small><h5>'+e.title+'</h5></button>'
+  ).join('');
+  rail.querySelectorAll('.mapMiniCard').forEach(c=>c.onclick=()=>openEvent(c.dataset.id));
+  focus.classList.add('on');
 }
 function renderStage(){
   const live=liveEvents();
@@ -801,6 +884,11 @@ document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>closeLayer(b.
 document.getElementById('submitContact').onclick=()=>alert('正式版这里接主办方投稿表单 / 公众号联系入口');
 document.getElementById('searchOpen').onclick=()=>{document.getElementById('searchLayer').classList.add('on');document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('searchInput').focus(),150);search('')};
 document.getElementById('searchInput').oninput=e=>search(e.target.value);
+document.querySelector('.mapPaper')?.addEventListener('click',e=>{
+  if(e.target.closest('.mapPin,.mapFocus')) return;
+  document.querySelectorAll('.mapPin').forEach(x=>x.classList.remove('active'));
+  document.getElementById('mapFocus')?.classList.remove('on');
+});
 document.getElementById('jumpbar').onclick=e=>{
   const b=e.target.closest('button'); if(!b) return;
   const target=document.getElementById(b.dataset.jump)||document.querySelector('.'+b.dataset.jump);
