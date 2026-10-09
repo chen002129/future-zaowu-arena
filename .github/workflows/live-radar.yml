@@ -1,0 +1,74 @@
+name: Live AI event radar
+
+on:
+  schedule:
+    - cron: '17 * * * *'
+    - cron: '47 0,6,12,18 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'watch or discover'
+        required: false
+        default: 'discover'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: live-ai-event-radar
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Decide refresh mode
+        id: mode
+        shell: bash
+        run: |
+          MODE="watch"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            MODE="${{ inputs.mode }}"
+          elif [ "${{ github.event.schedule }}" = "47 0,6,12,18 * * *" ]; then
+            MODE="discover"
+          fi
+          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+          echo "Radar mode: $MODE"
+
+      - name: Refresh event data
+        run: |
+          if [ "${{ steps.mode.outputs.mode }}" = "discover" ]; then
+            node tools/live-sync.js --discover
+          else
+            node tools/live-sync.js --watch
+          fi
+
+      - name: Rebuild mini-program data
+        run: node tools/build-mp-data.js
+
+      - name: Verify event data
+        run: node tools/verify.js
+
+      - name: Commit verified changes
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "No data changes."
+            exit 0
+          fi
+          git config user.name "Future Maker Radar"
+          git config user.email "actions@users.noreply.github.com"
+          git add site/data/events.json site/assets/posters miniprogram/miniprogram/data || true
+          git commit -m "Radar: refresh live AI event data"
+          git pull --rebase origin main
+          git push origin HEAD:main
