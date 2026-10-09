@@ -1,0 +1,35 @@
+name: Sync dynamic content to backend
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/data/events.json'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check backend secrets
+        id: gate
+        env:
+          BACKEND_URL: ${{ secrets.BACKEND_URL }}
+          BACKEND_ADMIN_TOKEN: ${{ secrets.BACKEND_ADMIN_TOKEN }}
+        run: |
+          if [ -n "$BACKEND_URL" ] && [ -n "$BACKEND_ADMIN_TOKEN" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Push events / intelligence content
+        if: steps.gate.outputs.ready == 'true'
+        env:
+          BACKEND_URL: ${{ secrets.BACKEND_URL }}
+          BACKEND_ADMIN_TOKEN: ${{ secrets.BACKEND_ADMIN_TOKEN }}
+        run: |
+          curl --fail-with-body --retry 3             -X PUT "$BACKEND_URL/api/admin/content"             -H "Authorization: Bearer $BACKEND_ADMIN_TOKEN"             -H "Content-Type: application/json"             --data-binary @site/data/events.json
+      - name: Backend not configured yet
+        if: steps.gate.outputs.ready != 'true'
+        run: echo "BACKEND_URL / BACKEND_ADMIN_TOKEN not set; skipped sync."
