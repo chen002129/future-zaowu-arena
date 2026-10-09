@@ -44,6 +44,8 @@ jobs:
           MODE="watch"
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             MODE="${{ inputs.mode }}"
+          elif [ "${{ github.event_name }}" = "push" ]; then
+            MODE="discover"
           elif [ "${{ github.event.schedule }}" = "47 0,6,12,18 * * *" ]; then
             MODE="discover"
           fi
@@ -73,7 +75,7 @@ jobs:
           fi
           git config user.name "Future Maker Radar"
           git config user.email "actions@users.noreply.github.com"
-          git add site/data/events.json site/assets/posters miniprogram/miniprogram/data || true
+          git add site/data/events.json site/assets/posters miniprogram/data || true
           git commit -m "Radar: refresh live AI event data"
           git pull --rebase origin main
           git push origin HEAD:main
