@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'site-v2/**'
+      - 'site/data/events.json'
       - '.github/workflows/preview-pages.yml'
   workflow_dispatch:
 
@@ -31,6 +32,9 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true
+
+      - name: Sync current content into preview
+        run: cp site/data/events.json site-v2/data/events.json
 
       - name: Upload preview
         uses: actions/upload-pages-artifact@v3
