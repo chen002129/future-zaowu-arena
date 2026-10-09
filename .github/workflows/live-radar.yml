@@ -1,6 +1,11 @@
 name: Live AI event radar
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/live-sync.js'
+      - '.github/workflows/live-radar.yml'
   schedule:
     - cron: '17 * * * *'
     - cron: '47 0,6,12,18 * * *'
