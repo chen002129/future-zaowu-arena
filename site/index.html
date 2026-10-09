@@ -278,6 +278,68 @@ body{font-family:var(--sans);background:#E3E5E9;color:var(--ink);display:flex;fl
 .orgcard{background:rgba(255,255,255,.66);border:.5px solid rgba(0,0,0,.07);border-radius:15px;padding:15px 16px;margin-bottom:22px}
 .orgname{font-size:15px;font-weight:600;line-height:1.45}.orgdesc{font-size:13px;color:var(--ink2);line-height:1.7;margin-top:8px}.orglinks{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.orglink{border:0;background:rgba(118,118,128,.10);color:var(--ink);font-family:var(--sans);font-size:12px;border-radius:9px;padding:8px 10px;cursor:pointer}
 .socialproof{display:flex;align-items:center;gap:14px;font-size:12px;color:var(--ink3);margin:-10px 0 20px;padding:0 2px}.socialproof b{font-family:var(--mono);font-weight:500;color:var(--ink2)}
+
+/* ===== 交互精修层：不改变现有视觉，只增强层级、运动与触感 ===== */
+:root{--ease-premium:cubic-bezier(.22,.78,.2,1)}
+.card{position:relative;isolation:isolate;transform-origin:center;will-change:transform}
+.card::after{
+  content:"";position:absolute;inset:0;z-index:8;pointer-events:none;opacity:0;
+  background:radial-gradient(220px circle at var(--mx,50%) var(--my,40%),rgba(255,255,255,.30),transparent 62%);
+  transition:opacity .22s ease
+}
+@media(hover:hover){
+  .card:hover::after{opacity:1}
+  .card:hover .poster{transform:scale(1.018)}
+}
+.poster{transition:transform .45s var(--ease-premium)}
+.badge.soon{animation:deadlineBreath 2.8s ease-in-out infinite}
+@keyframes deadlineBreath{50%{box-shadow:0 0 0 5px rgba(255,59,48,.08)}}
+
+#list.motion-swap .card,#favlist.motion-swap .card{animation:none}
+.view{transform-origin:50% 16%}
+.view.view-enter{animation:viewIn .34s var(--ease-premium) both}
+@keyframes viewIn{from{opacity:.25;transform:translateY(8px) scale(.995)}to{opacity:1;transform:none}}
+
+.hero{will-change:transform,opacity;transition:filter .2s ease}
+.hstat{transition:transform .28s var(--ease-premium),box-shadow .28s ease}
+@media(hover:hover){.hstat:hover{transform:translateY(-2px);box-shadow:0 7px 22px rgba(30,40,60,.09)}}
+
+.detail{
+  transform:none;opacity:0;pointer-events:none;
+  clip-path:inset(2.2% 2.2% 2.2% 2.2% round 26px);
+  scale:.965;
+  transform-origin:var(--origin-x,50%) var(--origin-y,50%);
+  transition:opacity .30s ease,scale .42s var(--ease-premium),clip-path .42s var(--ease-premium)
+}
+.detail.open{opacity:1;pointer-events:auto;scale:1;clip-path:inset(0 round 0)}
+.dposter{will-change:transform;transition:box-shadow .22s ease}
+.dhead{transition:background .22s ease,backdrop-filter .22s ease}
+.detail.scrolled .dhead{background:rgba(255,255,255,.76);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.detail.scrolled .dposter{box-shadow:0 9px 28px rgba(0,0,0,.11)}
+
+.newsitem{
+  transition:transform .28s var(--ease-premium),background .22s ease,box-shadow .28s ease;
+  transform-origin:50% 50%
+}
+@media(hover:hover){
+  .newsitem:hover{transform:translateY(-2px);background:rgba(255,255,255,.78);box-shadow:0 10px 30px rgba(30,40,60,.08)}
+}
+.newsitem:active{transform:scale(.988)}
+
+.chip,.sortbar button,.tab,.iconbtn,.btn{transition-duration:.28s;transition-timing-function:var(--ease-premium)}
+.chip:active,.tab:active,.iconbtn:active{transform:scale(.93)}
+.btn:active{transform:scale(.97)}
+.btn.fav-pop{animation:favPop .42s var(--ease-premium)}
+@keyframes favPop{0%{transform:scale(1)}45%{transform:scale(.90)}72%{transform:scale(1.07)}100%{transform:scale(1)}}
+
+.search{transition:background .25s ease,box-shadow .28s var(--ease-premium),transform .28s var(--ease-premium)}
+.search:focus-within{transform:translateY(-1px)}
+
+@media(prefers-reduced-motion:reduce){
+  .badge.soon{animation:none}
+  .detail,.poster,.card,.newsitem,.view,.hero,.hstat{transition:none!important;animation:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -464,18 +526,49 @@ function pad(n){ return String(n).padStart(2,'0'); }
 function renderChips(){
   document.getElementById('chips').innerHTML = FALLBACK.map(c=>`<div class="chip${c===filter?' on':''}" data-f="${c}">${c}</div>`).join('');
 }
+function cardRects(containerId='list'){
+  const out=new Map();
+  document.querySelectorAll('#'+containerId+' .card').forEach(el=>out.set(el.dataset.id,el.getBoundingClientRect()));
+  return out;
+}
+function renderWithMotion(){
+  const old=cardRects('list');
+  render();
+  const list=document.getElementById('list');
+  if(!list || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  list.classList.add('motion-swap');
+  document.querySelectorAll('#list .card').forEach(el=>{
+    const before=old.get(el.dataset.id);
+    if(before){
+      const after=el.getBoundingClientRect();
+      const dx=before.left-after.left, dy=before.top-after.top;
+      el.animate(
+        [{transform:`translate(${dx}px,${dy}px) scale(.995)`,opacity:.72},{transform:'translate(0,0) scale(1)',opacity:1}],
+        {duration:360,easing:'cubic-bezier(.22,.78,.2,1)'}
+      );
+    }else{
+      el.animate([{opacity:0,transform:'translateY(10px) scale(.985)'},{opacity:1,transform:'none'}],
+        {duration:320,easing:'cubic-bezier(.22,.78,.2,1)'});
+    }
+  });
+  setTimeout(()=>list.classList.remove('motion-swap'),380);
+}
 document.getElementById('chips').addEventListener('click', e=>{
   const c = e.target.closest('.chip'); if(!c) return;
   filter = c.dataset.f;
   document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on', x===c));
-  render();
+  renderWithMotion();
 });
-document.getElementById('q').addEventListener('input', render);
+let searchMotionTimer=null;
+document.getElementById('q').addEventListener('input', ()=>{
+  clearTimeout(searchMotionTimer);
+  searchMotionTimer=setTimeout(renderWithMotion,70);
+});
 document.getElementById('sortbar').addEventListener('click', e=>{
   const b = e.target.closest('button'); if(!b) return;
   sort = b.dataset.s;
   document.querySelectorAll('#sortbar button').forEach(x=>x.classList.toggle('on', x===b));
-  render();
+  renderWithMotion();
 });
 
 function match(e){
@@ -551,6 +644,34 @@ function emptyBox(t,s){
     <h3>${t}</h3><p>${s}</p></div>`;
 }
 
+function setDetailOriginFrom(el){
+  const detail=document.getElementById('detail');
+  const app=document.querySelector('.app');
+  if(!detail||!app||!el) return;
+  const r=el.getBoundingClientRect(), a=app.getBoundingClientRect();
+  const x=Math.max(0,Math.min(100,((r.left+r.width/2-a.left)/a.width)*100));
+  const y=Math.max(0,Math.min(100,((r.top+r.height/2-a.top)/a.height)*100));
+  detail.style.setProperty('--origin-x',x+'%');
+  detail.style.setProperty('--origin-y',y+'%');
+}
+function openDetailMotion(el,id){
+  setDetailOriginFrom(el);
+  if(document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.startViewTransition(()=>openDetail(id));
+  }else openDetail(id);
+}
+function bindCardInteractions(sel){
+  document.querySelectorAll(sel).forEach(el=>{
+    el.onclick=()=>openDetailMotion(el,el.dataset.id);
+    el.onpointermove=e=>{
+      if(!window.matchMedia('(hover:hover)').matches) return;
+      const r=el.getBoundingClientRect();
+      el.style.setProperty('--mx',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
+      el.style.setProperty('--my',((e.clientY-r.top)/r.height*100).toFixed(1)+'%');
+    };
+  });
+}
+
 function render(){
   const list = EV.filter(match).sort((a,b)=>{
     const ea=isEnded(a), eb=isEnded(b);
@@ -570,7 +691,7 @@ function render(){
   document.getElementById('seccnt').textContent = `${list.length} 场 · 今日 ${todayN} 更新`;
   document.getElementById('list').innerHTML = list.length ? list.map(card).join('')
     : emptyBox('没有匹配的赛场','换个方向或关键词试试');
-  document.querySelectorAll('#list .card').forEach(el=>el.onclick=()=>openDetail(el.dataset.id));
+  bindCardInteractions('#list .card');
 
   /* 顶部实时条：永远显示最新一条快讯 */
   const f = FLASHES[0] || { txt:'暂无快讯', at:null };
@@ -593,7 +714,12 @@ function renderFlashes(){
 function renderNews(){
   document.getElementById('news').innerHTML = NEWS.map((n,i)=>`<div class="newsitem" data-news="${i}">
     <div class="ntag">${n.tag}${n.readTime?' · '+n.readTime:''}</div><h3>${n.t}</h3><p>${n.s}</p></div>`).join('');
-  document.querySelectorAll('#news .newsitem').forEach(el=>el.onclick=()=>openArticle(Number(el.dataset.news)));
+  document.querySelectorAll('#news .newsitem').forEach(el=>el.onclick=()=>{
+    setDetailOriginFrom(el);
+    const go=()=>openArticle(Number(el.dataset.news));
+    if(document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.startViewTransition(go);
+    else go();
+  });
 }
 
 function openArticle(i){
@@ -624,7 +750,7 @@ function renderFav(){
   const f = EV.filter(e=>favs.includes(e.id));
   document.getElementById('favlist').innerHTML = f.length ? f.map(card).join('')
     : emptyBox('还没有收藏','在赛事详情里点「收藏」<br>截止前会提醒你');
-  document.querySelectorAll('#favlist .card').forEach(el=>el.onclick=()=>openDetail(el.dataset.id));
+  bindCardInteractions('#favlist .card');
   document.querySelectorAll('.favnum').forEach(el=>el.textContent = favs.length);
   document.querySelectorAll('.favrow').forEach(el=>el.textContent = favs.length + ' ›');
 }
@@ -713,6 +839,9 @@ async function toggleFavCurrent(){
   if(adding) favs.push(curId); else favs.splice(i,1);
   localStorage.setItem('zw_favs', JSON.stringify(favs));
   syncFavBtn(); renderFav(); render();
+  const fb=document.getElementById('dfav');
+  if(fb){ fb.classList.remove('fav-pop'); void fb.offsetWidth; fb.classList.add('fav-pop'); }
+  if(navigator.vibrate) navigator.vibrate(adding?12:7);
 
   if(adding) toast('已收藏到本机');
 }
@@ -895,10 +1024,16 @@ async function shareCurrent(){
 
 const VIEWS = {discover:'v-discover', news:'v-news', fav:'v-fav', me:'v-me'};
 function go(v){
-  Object.values(VIEWS).forEach(id=>document.getElementById(id).classList.remove('on'));
-  document.getElementById(VIEWS[v]).classList.add('on');
-  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on', t.dataset.v===v));
-  document.getElementById('main').scrollTop = 0;
+  const apply=()=>{
+    Object.values(VIEWS).forEach(id=>document.getElementById(id).classList.remove('on','view-enter'));
+    const next=document.getElementById(VIEWS[v]);
+    next.classList.add('on','view-enter');
+    document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on', t.dataset.v===v));
+    document.getElementById('main').scrollTop = 0;
+    setTimeout(()=>next.classList.remove('view-enter'),380);
+  };
+  if(document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.startViewTransition(apply);
+  else apply();
 }
 document.getElementById('tabbar').addEventListener('click', e=>{
   const t = e.target.closest('.tab'); if(t) go(t.dataset.v);
@@ -948,6 +1083,32 @@ async function loadContent(){
     bootFail(fallbackErr);
   }
 }
+/* 轻量滚动层级：首屏退场 + 详情海报视差 */
+const mainScroller=document.getElementById('main');
+if(mainScroller){
+  mainScroller.addEventListener('scroll',()=>{
+    const hero=document.querySelector('#v-discover .hero');
+    if(hero && document.getElementById('v-discover').classList.contains('on')){
+      const y=Math.min(110,mainScroller.scrollTop);
+      hero.style.transform=`translateY(${y*.12}px) scale(${1-y*.00035})`;
+      hero.style.opacity=String(1-y/330);
+    }
+  },{passive:true});
+}
+const detailScroller=document.querySelector('.dscroll');
+if(detailScroller){
+  detailScroller.addEventListener('scroll',()=>{
+    const y=Math.max(0,detailScroller.scrollTop);
+    const detail=document.getElementById('detail');
+    detail.classList.toggle('scrolled',y>24);
+    const p=document.getElementById('dposter');
+    if(p && p.offsetParent!==null){
+      const t=Math.min(150,y);
+      p.style.transform=`translateY(${t*.16}px) scale(${1-t*.00042})`;
+    }
+  },{passive:true});
+}
+
 loadContent();
 </script>
 </body>
