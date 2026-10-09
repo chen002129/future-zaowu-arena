@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>未来造物赛场 · AI 赛事时讯</title>
-<meta name="description" content="聚合国内 AI 黑客松与数据竞赛，实时监测报名截止与时间变更。为造物者，找赛场。">
+<meta name="description" content="未来造物整理中国区 AI 赛事与真实成长机会，持续更新报名截止、赛道、主办方与参赛信息。">
 <meta name="theme-color" content="#F5F5F7">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta property="og:type" content="website">
 <meta property="og:title" content="未来造物赛场 · AI 赛事聚合与时讯">
-<meta property="og:description" content="36 场真实 AI 赛事，实时监测报名截止与时间变更。为造物者，找赛场。">
+<meta property="og:description" content="中国区 AI 赛事持续更新，帮孩子与造物者找到值得参加的下一场比赛。">
 <style>
 :root{
   --ink:#1D1D1F; --ink2:#6E6E73; --ink3:#86868B;
@@ -271,6 +271,13 @@ body{font-family:var(--sans);background:#E3E5E9;color:var(--ink);display:flex;fl
 }
 .search{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 
+.herosub{font-size:13px;line-height:1.65;color:var(--ink3);margin-top:11px;max-width:310px}
+.submitcard{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.68);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border:.5px solid rgba(255,255,255,.65);border-radius:16px;padding:15px 16px;margin:20px 0 10px;cursor:pointer;box-shadow:0 2px 10px rgba(30,40,60,.05)}
+.submiticon{width:34px;height:34px;border-radius:11px;background:rgba(10,132,255,.10);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:23px;font-weight:300;flex:none}
+.submittxt{flex:1;min-width:0}.submittitle{font-size:14px;font-weight:600;color:var(--ink)}.submitsub{font-size:11.5px;line-height:1.45;color:var(--ink3);margin-top:3px}.submitarr{font-size:20px;color:var(--ink3);flex:none}
+.orgcard{background:rgba(255,255,255,.66);border:.5px solid rgba(0,0,0,.07);border-radius:15px;padding:15px 16px;margin-bottom:22px}
+.orgname{font-size:15px;font-weight:600;line-height:1.45}.orgdesc{font-size:13px;color:var(--ink2);line-height:1.7;margin-top:8px}.orglinks{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.orglink{border:0;background:rgba(118,118,128,.10);color:var(--ink);font-family:var(--sans);font-size:12px;border-radius:9px;padding:8px 10px;cursor:pointer}
+.socialproof{display:flex;align-items:center;gap:14px;font-size:12px;color:var(--ink3);margin:-10px 0 20px;padding:0 2px}.socialproof b{font-family:var(--mono);font-weight:500;color:var(--ink2)}
 </style>
 </head>
 <body>
@@ -286,6 +293,7 @@ body{font-family:var(--sans);background:#E3E5E9;color:var(--ink);display:flex;fl
       <div class="hero">
         <div class="hb"><span class="logo" style="width:21px;height:26px"></span><span class="hbrand">未来造物赛场</span></div>
         <h1>找到你的<br><em>下一场比赛</em></h1>
+        <p class="herosub">帮孩子找到值得参加的 AI 赛事与真实成长机会</p>
         <div class="hstats" id="heroStats"></div>
       </div>
       <div class="search">
@@ -300,6 +308,11 @@ body{font-family:var(--sans);background:#E3E5E9;color:var(--ink);display:flex;fl
       </div>
       <div class="sechead"><h2 id="seclbl">最新更新</h2><span id="seccnt"></span></div>
       <div id="list"></div>
+      <div class="submitcard" onclick="goSubmit()">
+        <div class="submiticon">＋</div>
+        <div class="submittxt"><div class="submittitle">赛事主办方 / 推荐赛事</div><div class="submitsub">想让一场比赛被更多人看见？提交赛事信息给我们</div></div>
+        <div class="submitarr">›</div>
+      </div>
       <div class="followbar" onclick="goFollow()">
         <div class="fbic"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.6"/><path d="M13.5 13.5h3.2v3.2h-3.2zM19.2 13.5h1.3M13.5 19.2h1.3M17.5 17.5v3.1M20 17.5v3.1"/></svg></div>
         <div class="fbtx"><div class="fbt">关注我们</div><div class="fbs">公众号 / 视频号 · 第一时间收到新赛事</div></div>
@@ -309,10 +322,10 @@ body{font-family:var(--sans);background:#E3E5E9;color:var(--ink);display:flex;fl
 
     <section class="view" id="v-news">
       <div class="brand"><div><div class="bname">时讯</div><div class="bsub">实时快讯 · 深度专栏</div></div></div>
-      <div class="grouplbl">实时快讯 <span id="flashcnt" style="font-family:var(--mono)"></span></div>
-      <div id="flash"></div>
-      <div class="grouplbl" style="margin:18px 0 10px 4px">精选专栏</div>
+      <div class="grouplbl">精选专栏</div>
       <div id="news"></div>
+      <div class="grouplbl" style="margin:20px 0 10px 4px">实时快讯 <span id="flashcnt" style="font-family:var(--mono)"></span></div>
+      <div id="flash"></div>
     </section>
 
     <section class="view" id="v-fav">
@@ -374,7 +387,7 @@ body{font-family:var(--sans);background:#E3E5E9;color:var(--ink);display:flex;fl
       <div class="iconbtn" onclick="closeDetail()">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5l-7 7 7 7"/></svg>
       </div>
-      <div class="iconbtn" style="font-size:13px;font-family:var(--mono);letter-spacing:1px">···</div>
+      <div class="iconbtn" id="dshare" onclick="shareCurrent()" aria-label="分享赛事"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V3"/><path d="M7.5 7.5 12 3l4.5 4.5"/><path d="M5 11v8h14v-8"/></svg></div>
     </div>
     <div class="dbar">
       <button class="btn sec" id="dfav" onclick="toggleFavCurrent()">收藏</button>
