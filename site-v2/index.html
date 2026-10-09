@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>未来造物赛场 · V2</title>
+<meta name="theme-color" content="#F1F2F4">
+<style>
+:root{
+  --bg:#eeeff2;
+  --paper:#f8f8f7;
+  --glass:rgba(255,255,255,.64);
+  --glass-strong:rgba(255,255,255,.82);
+  --ink:#17181a;
+  --ink2:#5f636b;
+  --ink3:#969aa2;
+  --line:rgba(23,24,26,.075);
+  --blue:#2f6fff;
+  --red:#e8544f;
+  --shadow:0 22px 60px rgba(28,34,46,.075);
+  --ease:cubic-bezier(.22,.78,.18,1);
+}
+*{box-sizing:border-box}
+html{background:#e8e9ec}
+body{
+  margin:0;
+  color:var(--ink);
+  background:
+    radial-gradient(70% 35% at 20% 0%,rgba(164,186,224,.16),transparent 72%),
+    radial-gradient(55% 28% at 100% 14%,rgba(210,196,176,.11),transparent 70%),
+    var(--bg);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.26;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+}
+button,input{font:inherit}
+button{color:inherit}
+.app{width:min(100%,1120px);margin:auto;min-height:100vh;padding:0 20px 120px}
+.nav{
+  height:78px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:30;
+  background:linear-gradient(to bottom,rgba(238,239,242,.92),rgba(238,239,242,.72),transparent);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+}
+.brand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:650;letter-spacing:.02em}
+.mark{width:22px;height:27px;border:1.5px solid currentColor;border-radius:7px 7px 10px 10px;position:relative;transform:rotate(5deg)}
+.mark:after{content:"";position:absolute;left:5px;right:5px;top:6px;height:1.5px;background:currentColor;box-shadow:0 5px currentColor}
+.navright{display:flex;align-items:center;gap:8px}
+.live{font:10px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3);letter-spacing:.08em}
+.live:before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--red);margin-right:6px;vertical-align:1px}
+.iconbtn{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.72);background:rgba(255,255,255,.46);backdrop-filter:blur(10px);display:grid;place-items:center;cursor:pointer;transition:.25s var(--ease)}
+.iconbtn:active{transform:scale(.94)}
+.hero{padding:38px 0 42px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.55fr);gap:40px;align-items:end}
+.kicker{font:11px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3);letter-spacing:.14em;text-transform:uppercase;margin-bottom:17px}
+.hero h1{font-size:clamp(42px,7vw,78px);line-height:.96;letter-spacing:-.058em;margin:0;max-width:740px;font-weight:640}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.heroright{padding-bottom:5px}
+.heroright p{margin:0;color:var(--ink2);font-size:14px;line-height:1.75;max-width:330px}
+.heroMeta{display:flex;gap:20px;margin-top:22px;font:11px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3)}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:2px 0 20px}
+.tabs{display:flex;gap:6px;overflow:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  border:0;background:transparent;padding:9px 11px;border-radius:10px;font-size:12px;color:var(--ink3);cursor:pointer;
+  transition:.25s var(--ease);white-space:nowrap
+}
+.tab.on{color:var(--ink);background:rgba(255,255,255,.62);box-shadow:inset 0 0 0 1px rgba(255,255,255,.72)}
+.toolbar .count{font:11px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3);white-space:nowrap}
+.stage{position:relative}
+.event{
+  min-height:430px;border-top:1px solid var(--line);display:grid;grid-template-columns:92px minmax(0,1.15fr) minmax(250px,.6fr);
+  gap:28px;padding:34px 0 40px;cursor:pointer;position:relative;transition:opacity .3s ease;
+}
+.event:first-child{border-top:0}
+.index{font:11px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3);padding-top:7px}
+.core{align-self:start}
+.statusrow{display:flex;gap:8px;align-items:center;margin-bottom:18px}
+.state{font-size:11px;color:#2b7b51}
+.state.soon{color:var(--red)}
+.sep{width:3px;height:3px;border-radius:50%;background:var(--ink3)}
+.updated{font:10px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3)}
+.event h2{font-size:clamp(30px,4.5vw,58px);line-height:1.02;letter-spacing:-.045em;margin:0;max-width:720px;font-weight:620}
+.note{font-size:14px;line-height:1.75;color:var(--ink2);max-width:650px;margin:20px 0 0}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:24px}
+.tag{font-size:11px;color:var(--ink2);padding:6px 8px;border:1px solid var(--line);border-radius:7px;background:rgba(255,255,255,.30)}
+.side{align-self:end;padding-bottom:2px}
+.sidegrid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.cell{padding:13px 12px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:66px}
+.cell small{font-size:10px;color:var(--ink3);display:block;margin-bottom:7px}
+.cell b{font-size:13px;font-weight:560;line-height:1.35}
+.enter{margin-top:15px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--ink2)}
+.arrow{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.48);border:1px solid rgba(255,255,255,.68);transition:.3s var(--ease)}
+.event:hover .arrow{transform:translateX(4px);background:var(--ink);color:#fff}
+.signal{
+  position:sticky;bottom:20px;margin:24px auto 0;width:min(690px,calc(100% - 16px));z-index:18;
+  display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:16px;background:rgba(255,255,255,.62);
+  backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%);
+  border:1px solid rgba(255,255,255,.72);box-shadow:0 12px 34px rgba(30,40,55,.08);
+}
+.sigpulse{width:7px;height:7px;border-radius:50%;background:var(--red);flex:none;animation:pulse 2.2s infinite}
+@keyframes pulse{60%{box-shadow:0 0 0 7px rgba(232,84,79,0)}0%{box-shadow:0 0 0 0 rgba(232,84,79,.25)}}
+.siglabel{font:10px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3);white-space:nowrap}
+.sigtext{font-size:12px;color:var(--ink2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.editorial{margin-top:110px;padding-top:24px;border-top:1px solid var(--line)}
+.editorialHead{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:24px}
+.editorialHead h3{font-size:13px;margin:0;font-weight:560}.editorialHead span{font:10px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3)}
+.articles{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px}
+.article{min-height:270px;padding:20px;border-radius:18px;background:rgba(255,255,255,.48);border:1px solid rgba(255,255,255,.62);display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;transition:.3s var(--ease)}
+.article:first-child{min-height:360px}
+.article:hover{transform:translateY(-3px);background:rgba(255,255,255,.63);box-shadow:var(--shadow)}
+.article small{font:10px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3)}
+.article h4{font-size:22px;line-height:1.25;letter-spacing:-.025em;margin:12px 0 0;font-weight:590}
+.article:first-child h4{font-size:34px;line-height:1.08}
+.article p{font-size:12px;line-height:1.65;color:var(--ink2);margin:14px 0 0}
+.article .read{font-size:11px;color:var(--ink3)}
+.footer{margin-top:100px;padding:26px 0 12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:30px;color:var(--ink3);font-size:11px}
+.searchLayer,.detailLayer,.articleLayer{
+  position:fixed;inset:0;z-index:60;background:rgba(241,242,244,.90);backdrop-filter:blur(28px) saturate(140%);
+  -webkit-backdrop-filter:blur(28px) saturate(140%);opacity:0;pointer-events:none;transition:opacity .28s ease;
+}
+.searchLayer.on,.detailLayer.on,.articleLayer.on{opacity:1;pointer-events:auto}
+.searchInner,.detailInner,.articleInner{width:min(860px,100%);height:100%;margin:auto;padding:20px;overflow:auto}
+.layerTop{display:flex;justify-content:space-between;align-items:center;height:54px}
+.close{width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.65);cursor:pointer}
+.searchBox{margin-top:70px}
+.searchBox input{
+  width:100%;border:0;border-bottom:1px solid rgba(23,24,26,.18);outline:0;background:transparent;
+  font-size:clamp(32px,6vw,62px);letter-spacing:-.045em;padding:0 0 18px;color:var(--ink)
+}
+.searchHint{font-size:12px;color:var(--ink3);margin-top:14px}
+.searchResults{margin-top:44px}
+.searchResult{padding:18px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;cursor:pointer}
+.searchResult h4{font-size:18px;margin:0;font-weight:570}.searchResult span{font-size:11px;color:var(--ink3)}
+.detailHero{padding:70px 0 45px;border-bottom:1px solid var(--line)}
+.detailHero .eyebrow{font:11px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3);margin-bottom:16px}
+.detailHero h2{font-size:clamp(42px,8vw,82px);line-height:.97;letter-spacing:-.055em;margin:0;max-width:780px;font-weight:625}
+.detailHero p{max-width:660px;font-size:15px;line-height:1.8;color:var(--ink2);margin:24px 0 0}
+.detailMeta{display:grid;grid-template-columns:repeat(4,1fr);border-left:1px solid var(--line);margin:28px 0 0;border-top:1px solid var(--line)}
+.detailMeta .m{padding:14px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.detailMeta small{display:block;font-size:10px;color:var(--ink3);margin-bottom:8px}.detailMeta b{font-size:13px}
+.detailSection{padding:28px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:150px 1fr;gap:30px}
+.detailSection h4{font-size:11px;color:var(--ink3);font-weight:500;margin:3px 0}.detailSection p{font-size:14px;line-height:1.82;color:var(--ink2);margin:0}
+.timeline{display:grid;gap:11px}.timeline div{font-size:13px;color:var(--ink2)}.timeline b{display:inline-block;width:118px;font:11px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3);font-weight:400}
+.detailActions{display:flex;gap:10px;position:sticky;bottom:10px;margin:30px 0 8px}
+.detailActions button{height:52px;border:0;border-radius:14px;padding:0 18px;cursor:pointer}.secondary{background:rgba(255,255,255,.70)}.primary{flex:1;background:var(--ink);color:#fff}
+.articleBody{padding:70px 0 80px}.articleBody .eyebrow{font:11px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3)}.articleBody h2{font-size:clamp(38px,7vw,72px);line-height:1.02;letter-spacing:-.05em;margin:18px 0 24px;max-width:780px}.articleLead{font-size:18px;line-height:1.8;color:var(--ink2);max-width:720px}.articleSec{max-width:720px;margin:50px 0}.articleSec h4{font-size:14px;margin:0 0 12px}.articleSec p{font-size:15px;line-height:1.9;color:var(--ink2);margin:0}
+@media(max-width:760px){
+  .app{padding:0 18px 100px}
+  .nav{height:66px}
+  .hero{grid-template-columns:1fr;padding:30px 0 34px;gap:20px}
+  .hero h1{font-size:47px;max-width:390px}
+  .heroright p{font-size:13px}
+  .heroMeta{margin-top:14px}
+  .event{min-height:0;grid-template-columns:44px 1fr;padding:28px 0 34px;gap:14px}
+  .index{grid-row:1 / span 2}
+  .core{grid-column:2}
+  .side{grid-column:2;align-self:auto;margin-top:8px}
+  .event h2{font-size:34px}
+  .note{font-size:13px}
+  .articles{grid-template-columns:1fr}
+  .article,.article:first-child{min-height:220px}
+  .article:first-child h4{font-size:29px}
+  .footer{flex-direction:column}
+  .detailInner,.articleInner,.searchInner{padding:14px 18px}
+  .detailHero{padding-top:46px}
+  .detailHero h2{font-size:45px}
+  .detailMeta{grid-template-columns:1fr 1fr}
+  .detailSection{grid-template-columns:1fr;gap:10px}
+  .searchBox{margin-top:48px}
+  .searchBox input{font-size:38px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <nav class="nav">
+    <div class="brand"><span class="mark"></span><span>未来造物赛场</span></div>
+    <div class="navright">
+      <span class="live" id="liveMeta">LIVE</span>
+      <button class="iconbtn" id="searchOpen" aria-label="搜索">⌕</button>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <div class="kicker">Future Maker · Event Radar</div>
+      <h1>正在发生的<br><em>AI 赛场。</em></h1>
+    </div>
+    <div class="heroright">
+      <p>我们不想再做一张赛事清单。只把真正值得你花时间判断的机会，整理成能快速做决定的赛场。</p>
+      <div class="heroMeta"><span id="liveCount">— 场报名中</span><span id="updatedAt">持续更新</span></div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="tabs" id="tabs">
+      <button class="tab on" data-filter="精选">精选</button>
+      <button class="tab" data-filter="临近截止">临近截止</button>
+      <button class="tab" data-filter="青少年">青少年</button>
+      <button class="tab" data-filter="高校">高校</button>
+      <button class="tab" data-filter="开发者">开发者</button>
+    </div>
+    <div class="count" id="filterCount">—</div>
+  </div>
+
+  <main class="stage" id="stage"></main>
+
+  <div class="signal" id="signal">
+    <span class="sigpulse"></span>
+    <span class="siglabel">NOW</span>
+    <span class="sigtext" id="sigtext">正在同步赛事情报…</span>
+  </div>
+
+  <section class="editorial">
+    <div class="editorialHead"><h3>未来造物 · 精选专栏</h3><span>EDITORIAL</span></div>
+    <div class="articles" id="articles"></div>
+  </section>
+
+  <footer class="footer">
+    <span>未来造物赛场 · 中国区 AI 赛事持续更新</span>
+    <span>主办方投稿 / 信息更正 / 合作联系 → 未来造物</span>
+  </footer>
+</div>
+
+<div class="searchLayer" id="searchLayer">
+  <div class="searchInner">
+    <div class="layerTop"><span class="brand"><span class="mark"></span>探索赛场</span><button class="close" data-close="search">×</button></div>
+    <div class="searchBox">
+      <input id="searchInput" autocomplete="off" placeholder="输入赛事、城市、方向…">
+      <div class="searchHint">例如：上海 / AI Agent / 青少年 / 腾讯</div>
+    </div>
+    <div class="searchResults" id="searchResults"></div>
+  </div>
+</div>
+
+<div class="detailLayer" id="detailLayer">
+  <div class="detailInner">
+    <div class="layerTop"><span class="brand"><span class="mark"></span>赛场详情</span><button class="close" data-close="detail">×</button></div>
+    <div id="detailContent"></div>
+  </div>
+</div>
+
+<div class="articleLayer" id="articleLayer">
+  <div class="articleInner">
+    <div class="layerTop"><span class="brand"><span class="mark"></span>未来造物观察</span><button class="close" data-close="article">×</button></div>
+    <div id="articleContent"></div>
+  </div>
+</div>
+
+<script>
+let DATA={events:[],flashes:[],news:[]};
+let FILTER='精选';
+let currentEvent=null;
+const favs=new Set(JSON.parse(localStorage.getItem('fml_v2_favs')||'[]'));
+
+function daysLeft(d){
+  if(!d) return 9999;
+  return Math.ceil((new Date(d+'T23:59:59')-new Date())/86400000);
+}
+function shortDate(d){return d?d.slice(5).replace('-','.'): '待定'}
+function status(e){
+  const d=daysLeft(e.deadline);
+  if(d<0)return {t:'已截止',c:''};
+  if(d===0)return {t:'今天截止',c:'soon'};
+  if(d<=7)return {t:'剩 '+d+' 天',c:'soon'};
+  return {t:'报名中',c:''};
+}
+function money(s){
+  if(!s)return '见官网';
+  const m=String(s).match(/(?:¥|￥)?[\d,.]+\s*(?:万|万元|元|亿|美元)?/);
+  return m?m[0]:'见官网';
+}
+function audienceLabel(e){
+  return e.audienceGroup||e.audience||'开放报名';
+}
+function passFilter(e){
+  if(FILTER==='精选') return !e.ended && daysLeft(e.deadline)>=0;
+  if(FILTER==='临近截止') return !e.ended && daysLeft(e.deadline)>=0 && daysLeft(e.deadline)<=14;
+  const a=(e.audienceGroup||'')+(e.audience||'');
+  return a.includes(FILTER);
+}
+function stageHTML(e,i){
+  const st=status(e);
+  const tags=(e.tags||[]).slice(0,4);
+  const note=e.parentNote||e.summary||'打开查看完整赛事信息与报名路径。';
+  return `<article class="event" data-id="${e.id}">
+    <div class="index">${String(i+1).padStart(2,'0')}</div>
+    <div class="core">
+      <div class="statusrow"><span class="state ${st.c}">${st.t}</span><span class="sep"></span><span class="updated">DEADLINE ${shortDate(e.deadline)}</span></div>
+      <h2>${e.title}</h2>
+      <p class="note">${note}</p>
+      <div class="tags">${tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+    </div>
+    <div class="side">
+      <div class="sidegrid">
+        <div class="cell"><small>适合</small><b>${audienceLabel(e)}</b></div>
+        <div class="cell"><small>形式</small><b>${e.mode||'待定'}</b></div>
+        <div class="cell"><small>地点</small><b>${e.city||'待定'}</b></div>
+        <div class="cell"><small>奖金 / 权益</small><b>${money(e.prize)}</b></div>
+      </div>
+      <div class="enter"><span>${e.organizer||'主办方信息见详情'}</span><span class="arrow">→</span></div>
+    </div>
+  </article>`;
+}
+function renderStage(){
+  const list=DATA.events.filter(passFilter).sort((a,b)=>{
+    const da=daysLeft(a.deadline),db=daysLeft(b.deadline);
+    if(FILTER==='临近截止') return da-db;
+    return new Date(b.updatedAt||0)-new Date(a.updatedAt||0);
+  }).slice(0,FILTER==='精选'?8:30);
+  document.getElementById('filterCount').textContent=list.length+' 场';
+  document.getElementById('stage').innerHTML=list.length?list.map(stageHTML).join(''):'<div style="padding:70px 0;color:var(--ink3)">暂时没有匹配赛事。</div>';
+  document.querySelectorAll('.event').forEach(el=>el.onclick=()=>openEvent(el.dataset.id));
+}
+function renderArticles(){
+  const news=DATA.news||[];
+  document.getElementById('articles').innerHTML=news.slice(0,3).map((n,i)=>`
+    <article class="article" data-news="${i}">
+      <div><small>${n.tag||'精选专栏'} · ${n.readTime||''}</small><h4>${n.t}</h4><p>${n.s||''}</p></div>
+      <div class="read">阅读全文 →</div>
+    </article>`).join('');
+  document.querySelectorAll('.article').forEach(el=>el.onclick=()=>openArticle(Number(el.dataset.news)));
+}
+function renderMeta(){
+  const live=DATA.events.filter(e=>daysLeft(e.deadline)>=0&&!e.ended).length;
+  document.getElementById('liveCount').textContent=live+' 场报名中';
+  document.getElementById('liveMeta').textContent='LIVE · '+live;
+  if(DATA.updatedAt) document.getElementById('updatedAt').textContent='更新 '+new Date(DATA.updatedAt).toLocaleDateString('zh-CN',{month:'numeric',day:'numeric'});
+  const f=(DATA.flashes||[])[0];
+  document.getElementById('sigtext').textContent=f?f.txt:'持续扫描中国区 AI 赛事';
+}
+function openEvent(id){
+  const e=DATA.events.find(x=>String(x.id)===String(id)); if(!e)return;
+  currentEvent=e;
+  const st=status(e);
+  const agenda=(e.agenda||[]).map(a=>`<div><b>${a.d||''}</b>${a.t||''}</div>`).join('');
+  const tracks=(e.tracks||[]).join('；');
+  const saved=favs.has(e.id);
+  document.getElementById('detailContent').innerHTML=`
+    <section class="detailHero">
+      <div class="eyebrow">${st.t} · ${shortDate(e.deadline)} 截止</div>
+      <h2>${e.title}</h2>
+      <p>${e.parentNote||e.summary||''}</p>
+      <div class="detailMeta">
+        <div class="m"><small>适合人群</small><b>${audienceLabel(e)}</b></div>
+        <div class="m"><small>举办方式</small><b>${e.mode||'待定'}</b></div>
+        <div class="m"><small>地点</small><b>${e.city||'待定'}</b></div>
+        <div class="m"><small>奖金 / 权益</small><b>${e.prize||'见官网'}</b></div>
+      </div>
+    </section>
+    ${e.organizer?`<section class="detailSection"><h4>主办方</h4><p><b style="color:var(--ink)">${e.organizer}</b>${e.organizerIntro?'<br>'+e.organizerIntro:''}</p></section>`:''}
+    ${e.summary?`<section class="detailSection"><h4>赛事简介</h4><p>${e.summary}</p></section>`:''}
+    ${tracks?`<section class="detailSection"><h4>赛道 / 方向</h4><p>${tracks}</p></section>`:''}
+    ${agenda?`<section class="detailSection"><h4>关键时间</h4><div class="timeline">${agenda}</div></section>`:''}
+    <section class="detailSection"><h4>判断建议</h4><p>${e.parentNote||'先看孩子是否符合参赛资格，再看作品要求和时间成本。比赛本身只是入口，真正重要的是能不能留下一个完整作品。'}</p></section>
+    <div class="detailActions">
+      <button class="secondary" id="favBtn">${saved?'已收藏':'收藏'}</button>
+      <button class="secondary" id="shareBtn">分享</button>
+      <button class="primary" id="officialBtn">查看官方页面 →</button>
+    </div>`;
+  document.getElementById('detailLayer').classList.add('on');
+  document.body.style.overflow='hidden';
+  document.getElementById('favBtn').onclick=toggleFav;
+  document.getElementById('shareBtn').onclick=shareEvent;
+  document.getElementById('officialBtn').onclick=()=>e.website&&window.open(e.website,'_blank','noopener');
+}
+function toggleFav(){
+  if(!currentEvent)return;
+  if(favs.has(currentEvent.id))favs.delete(currentEvent.id);else favs.add(currentEvent.id);
+  localStorage.setItem('fml_v2_favs',JSON.stringify([...favs]));
+  document.getElementById('favBtn').textContent=favs.has(currentEvent.id)?'已收藏':'收藏';
+}
+async function shareEvent(){
+  if(!currentEvent)return;
+  const text=currentEvent.title+' · '+(currentEvent.organizer||'未来造物赛场');
+  try{
+    if(navigator.share){await navigator.share({title:currentEvent.title,text,url:location.href});return}
+    await navigator.clipboard.writeText(text+' '+location.href);
+    document.getElementById('shareBtn').textContent='已复制';
+  }catch(e){}
+}
+function openArticle(i){
+  const n=DATA.news[i];if(!n)return;
+  document.getElementById('articleContent').innerHTML=`
+    <article class="articleBody">
+      <div class="eyebrow">${n.tag||'未来造物观察'} · ${n.readTime||''}</div>
+      <h2>${n.t}</h2>
+      <p class="articleLead">${n.lead||n.s||''}</p>
+      ${(n.sections||[]).map(s=>`<section class="articleSec"><h4>${s.h||''}</h4><p>${s.p||''}</p></section>`).join('')}
+    </article>`;
+  document.getElementById('articleLayer').classList.add('on');document.body.style.overflow='hidden';
+}
+function search(q){
+  q=q.trim().toLowerCase();
+  const list=!q?DATA.events.slice(0,8):DATA.events.filter(e=>(e.title+(e.organizer||'')+(e.city||'')+(e.tags||[]).join('')+(e.audience||'')).toLowerCase().includes(q)).slice(0,20);
+  document.getElementById('searchResults').innerHTML=list.map(e=>`
+    <div class="searchResult" data-id="${e.id}">
+      <h4>${e.title}</h4><span>${e.city||''} · ${shortDate(e.deadline)}</span>
+    </div>`).join('');
+  document.querySelectorAll('.searchResult').forEach(el=>el.onclick=()=>{closeLayer('search');openEvent(el.dataset.id)});
+}
+function closeLayer(which){
+  document.getElementById(which+'Layer').classList.remove('on');
+  if(!document.querySelector('.searchLayer.on,.detailLayer.on,.articleLayer.on')) document.body.style.overflow='';
+}
+document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>closeLayer(b.dataset.close));
+document.getElementById('searchOpen').onclick=()=>{document.getElementById('searchLayer').classList.add('on');document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('searchInput').focus(),150);search('')};
+document.getElementById('searchInput').oninput=e=>search(e.target.value);
+document.getElementById('tabs').onclick=e=>{
+  const b=e.target.closest('.tab');if(!b)return;
+  FILTER=b.dataset.filter;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));renderStage();
+};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){['search','detail','article'].forEach(closeLayer)}});
+
+async function boot(){
+  try{
+    const r=await fetch('data/events.json',{cache:'no-store'});
+    DATA=await r.json();
+  }catch(e){DATA={events:[],flashes:[],news:[]}}
+  renderMeta();renderStage();renderArticles();
+}
+boot();
+</script>
+</body>
+</html>
