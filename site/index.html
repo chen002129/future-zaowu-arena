@@ -635,6 +635,7 @@ function openDetail(id){
   if(ds) ds.style.display='';
   if(bar) bar.style.display='';
   curId = id;
+  if(location.hash !== '#event='+encodeURIComponent(id)) history.replaceState(null,'','#event='+encodeURIComponent(id));
   document.getElementById('dposter').innerHTML = poster(e,'sm');
   const wrap = document.querySelector('.dposterwrap');
   if(wrap) wrap.style.background = grad(e);
@@ -673,6 +674,7 @@ function openDetail(id){
 }
 function closeDetail(){
   document.getElementById('detail').classList.remove('open');
+  if(location.hash.startsWith('#event=')) history.replaceState(null,'',location.pathname+location.search);
   const pw = document.querySelector('.dposterwrap');
   const ds = document.getElementById('dsub');
   const bar = document.querySelector('.dbar');
@@ -846,6 +848,33 @@ function goFollow(){
   }, 130);
 }
 
+function goSubmit(){
+  go('me');
+  setTimeout(()=>{
+    const el = document.getElementById('followRow');
+    if(el && el.scrollIntoView) el.scrollIntoView({behavior:'smooth', block:'center'});
+    toast('赛事主办方可通过公众号联系我们，独立投稿表单随后接入');
+  },130);
+}
+
+function eventShareUrl(id){
+  const u = new URL(location.href);
+  u.hash = 'event=' + encodeURIComponent(id);
+  return u.toString();
+}
+function sharedEventId(){
+  const m = location.hash.match(/^#event=(.+)$/);
+  return m ? decodeURIComponent(m[1]) : null;
+}
+async function shareCurrent(){
+  const e = EV.find(x=>x.id===curId); if(!e) return;
+  const url = eventShareUrl(e.id);
+  try{
+    if(navigator.share){ await navigator.share({title:e.title,text:'一起看看这场 AI 赛事：'+e.title,url}); return; }
+  }catch(err){ if(err && err.name==='AbortError') return; }
+  copyText(url,'赛事分享链接已复制');
+}
+
 const VIEWS = {discover:'v-discover', news:'v-news', fav:'v-fav', me:'v-me'};
 function go(v){
   Object.values(VIEWS).forEach(id=>document.getElementById(id).classList.remove('on'));
@@ -865,6 +894,8 @@ function boot(){
   buildFilters();
   renderChips();
   render(); renderNews(); renderFav(); renderFlashes(); renderFollow();
+  const shared = sharedEventId();
+  if(shared && EV.some(e=>e.id===shared)) setTimeout(()=>openDetail(shared),60);
 }
 function applyData(d){
   EV = d.events || [];
