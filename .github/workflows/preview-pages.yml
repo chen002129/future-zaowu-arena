@@ -6,6 +6,7 @@ on:
     paths:
       - 'site-v2/**'
       - 'site/data/events.json'
+      - 'site/assets/posters/cards/**'
       - '.github/workflows/preview-pages.yml'
   workflow_dispatch:
 
@@ -32,7 +33,10 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Sync current content into preview
-        run: cp site/data/events.json site-v2/data/events.json
+        run: |
+          cp site/data/events.json site-v2/data/events.json
+          mkdir -p site-v2/assets/posters/cards
+          if [ -d site/assets/posters/cards ]; then cp -R site/assets/posters/cards/. site-v2/assets/posters/cards/; fi
 
       - name: Upload preview
         uses: actions/upload-pages-artifact@v3
