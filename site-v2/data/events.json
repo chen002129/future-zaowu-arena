@@ -1,6 +1,6 @@
 {
   "_readme": "未来造物赛场 · 唯一数据源。改这里即可，网页会自动读取。小程序数据由 tools/build-mp-data.js 从本文件生成，请勿手工改两端中的任意一份。",
-  "updatedAt": "2026-10-10T06:45:00.000Z",
+  "updatedAt": "2026-10-10T06:52:00.000Z",
   "chg": {
     "caltech-mathathon": "2026-09-28"
   },
@@ -406,9 +406,9 @@
     {
       "id": "payathon-2026",
       "title": "支付宝AI付 PAYATHON 2026 年度黑客松",
-      "src": "支付宝",
-      "tier": "aggregator",
-      "verifyState": "pending",
+      "src": "支付宝 AI 付官方页面",
+      "tier": "official",
+      "verifyState": "verified",
       "mode": "混合",
       "city": "线上参赛（决赛路演城市待主办方公布）",
       "tags": [
@@ -429,7 +429,7 @@
       "tech": [],
       "summary": "活动简介。 支付宝 AI 付 PAYATHON 2026 是支付宝 AI 付主办的年度黑客松，主题为「Build & Bill」，聚焦 AI 产品商业化：给 AI 产品接入支付，用真实收款和交付验证商业价值。总奖池 ¥200,000，五条赛道独立评选，个人或 2-5 人团队均可参赛；9 月启程、12 月决赛，开发者有充足的创作和沉淀时间。 挑战内容。 五条赛道：主赛道 Vibe Pay（AI 应…",
       "website": "https://aipay.alipay.com/community/events/payathon-2026",
-      "poster": "assets/posters/pee8731918d.jpg",
+      "poster": "https://mdn.alipayobjects.com/huamei_xyehqf/afts/img/28I-R7xkcOgAAAAAQCAAAAgADvg4AQFr/original",
       "qr": "",
       "up": 329,
       "ended": false,
@@ -467,9 +467,9 @@
       "audienceGroup": "开发者",
       "level": "进阶",
       "parentNote": "少见地把“做出来”继续推到“有人愿不愿意付费”，很适合看商业验证。",
-      "cardPoster": "assets/posters/cards/ee8731918dc4.jpg",
-      "cardPosterSource": "https://hack123.henryht.sh/images/h/alipay-payathon-2026.jpg",
-      "cardPosterUpdatedAt": "2026-10-10T05:01:30.821Z"
+      "cardPoster": "https://mdn.alipayobjects.com/huamei_xyehqf/afts/img/28I-R7xkcOgAAAAAQCAAAAgADvg4AQFr/original",
+      "cardPosterSource": "https://mdn.alipayobjects.com/huamei_xyehqf/afts/img/28I-R7xkcOgAAAAAQCAAAAgADvg4AQFr/original",
+      "cardPosterUpdatedAt": "2026-10-10T06:52:00.000Z"
     },
     {
       "id": "雾客松-2027",
