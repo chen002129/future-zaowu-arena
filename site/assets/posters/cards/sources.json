@@ -338,5 +338,76 @@
         "score": 12
       }
     ]
+  },
+  {
+    "id": "china-ai-competition-7",
+    "title": "第七届中国人工智能大赛",
+    "picked": "https://ai.xm.gov.cn/static/ai/images/versions-3.0/video-cover-7.png",
+    "sourceSize": "1120x300",
+    "ratio": 3.733,
+    "candidates": [
+      {
+        "url": "https://ai.xm.gov.cn/static/ai/images/versions-3.0/video-cover-7.png",
+        "size": "1120x300",
+        "ratio": 3.733,
+        "error": null,
+        "score": 4.742
+      }
+    ]
+  },
+  {
+    "id": "ai-application-innovation-2026",
+    "title": "第二届全国人工智能应用创新大赛",
+    "picked": "https://aerate.s3.cn-north-1.jdcloud-oss.com/site/6a9e1af0e4b0e7f385d907f8.png",
+    "sourceSize": "434x320",
+    "ratio": 1.356,
+    "candidates": [
+      {
+        "url": "https://aerate.s3.cn-north-1.jdcloud-oss.com/site/6a9e1af0e4b0e7f385d907f8.png",
+        "size": "434x320",
+        "ratio": 1.356,
+        "error": null,
+        "score": 9.471
+      }
+    ]
+  },
+  {
+    "id": "ncccu-ai-2026",
+    "title": "第八届全国高校计算机能力挑战赛 · 人工智能挑战赛",
+    "picked": "https://www.ncccu.org.cn/static/index/images/subject_02.png?v=1.1.02",
+    "sourceSize": "489x276",
+    "ratio": 1.772,
+    "candidates": [
+      {
+        "url": "https://www.ncccu.org.cn/static/index/images/subject_02.png?v=1.1.02",
+        "size": "489x276",
+        "ratio": 1.772,
+        "error": null,
+        "score": 9.203
+      },
+      {
+        "url": "https://ncccu2026.oss-cn-zhangjiakou.aliyuncs.com/ueditor/20260908/bc429ab77dda257cae5a642d95869b96.png",
+        "size": "565x310",
+        "ratio": 1.823,
+        "error": null,
+        "score": 9.225
+      }
+    ]
+  },
+  {
+    "id": "aic-agent-interconnection-2026",
+    "title": "全球校园人工智能算法精英大赛 · 智能体互联主题赛",
+    "picked": "https://www.aicomp.cn/wp-content/uploads/2026/08/%E7%BD%91%E9%A1%B5%E6%A8%AA%E5%9B%BE-2.png",
+    "sourceSize": "932x233",
+    "ratio": 4,
+    "candidates": [
+      {
+        "url": "https://www.aicomp.cn/wp-content/uploads/2026/08/%E7%BD%91%E9%A1%B5%E6%A8%AA%E5%9B%BE-2.png",
+        "size": "932x233",
+        "ratio": 4,
+        "error": null,
+        "score": 12.811
+      }
+    ]
   }
 ]
