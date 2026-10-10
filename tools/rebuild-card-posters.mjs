@@ -9,6 +9,10 @@ const OUT=path.join(ROOT,'site','assets','posters','cards');
 fs.mkdirSync(OUT,{recursive:true});
 
 const SOURCES={
+  'china-ai-competition-7':['https://ai.xm.gov.cn/static/ai/images/versions-3.0/video-cover-7.png'],
+  'ai-application-innovation-2026':['https://aerate.s3.cn-north-1.jdcloud-oss.com/site/6a9e1af0e4b0e7f385d907f8.png'],
+  'ncccu-ai-2026':['https://www.ncccu.org.cn/static/index/images/subject_02.png?v=1.1.02','https://ncccu2026.oss-cn-zhangjiakou.aliyuncs.com/ueditor/20260908/bc429ab77dda257cae5a642d95869b96.png'],
+  'aic-agent-interconnection-2026':['https://www.aicomp.cn/wp-content/uploads/2026/08/%E7%BD%91%E9%A1%B5%E6%A8%AA%E5%9B%BE-2.png'],
   '天猫ai黑客松高校挑战赛':[
     'https://www.aibetas.com/wp-content/uploads/2026/09/tmall_ai_hackathon_university_challenge_2026_cover.png',
     'https://pub-d7a436bb140a401a98a2b96d1850d970.r2.dev/hackathons/covers/%E5%A4%A9%E7%8C%ABai%E9%BB%91%E5%AE%A2%E6%9D%BE-%E9%AB%98%E6%A0%A1%E6%8C%91%E6%88%98%E8%B5%9B-5a7674a103c6.png'
@@ -168,6 +172,12 @@ for(const event of db.events||[]){
     continue;
   }
 
+  if(!event.poster){
+    const originalName='p'+fileName(event.id);
+    const originalOut=path.join(ROOT,'site','assets','posters',originalName);
+    await sharp(picked.buf,{failOn:'none'}).rotate().jpeg({quality:92,mozjpeg:true}).toFile(originalOut);
+    event.poster='assets/posters/'+originalName;
+  }
   event.cardPoster='assets/posters/cards/'+name;
   event.cardPosterSource=picked.url;
   event.cardPosterUpdatedAt=new Date().toISOString();
