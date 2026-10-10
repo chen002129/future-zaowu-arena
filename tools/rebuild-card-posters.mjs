@@ -130,16 +130,19 @@ const report=[];
 let failures=0;
 for(const event of db.events||[]){
   const rows=[];
-  for(const url of SOURCES[event.id]||[]) rows.push(await candidate(url));
+  const remoteSources=[...(SOURCES[event.id]||[])];
+  if(event.cardPosterSource && /^https?:\/\//.test(event.cardPosterSource) && !remoteSources.includes(event.cardPosterSource)) remoteSources.unshift(event.cardPosterSource);
+  for(const url of remoteSources) rows.push(await candidate(url));
   rows.sort((a,b)=>a.score-b.score);
 
-  const local=LOCAL_FALLBACK[event.id]&&path.join(ROOT,LOCAL_FALLBACK[event.id]);
+  const localRel=(event.poster && !/^https?:\/\//.test(event.poster)) ? path.join('site',event.poster.replace(/^assets\//,'assets/')) : LOCAL_FALLBACK[event.id];
+  const local=localRel&&path.join(ROOT,localRel);
   if(local&&fs.existsSync(local)){
     try{
       const buf=fs.readFileSync(local);
       const meta=await sharp(buf,{failOn:'none'}).metadata();
       rows.push({
-        buf,url:'local:'+LOCAL_FALLBACK[event.id],width:meta.width,height:meta.height,
+        buf,url:'local:'+localRel,width:meta.width,height:meta.height,
         ratio:meta.width/meta.height,score:12
       });
     }catch{}
