@@ -60,6 +60,12 @@ jobs:
             node tools/live-sync.js --watch
           fi
 
+      - name: Install image processor
+        run: npm install --no-save --package-lock=false sharp@0.33.5
+
+      - name: Guarantee event card posters
+        run: node tools/rebuild-card-posters.mjs
+
       - name: Rebuild mini-program data
         run: node tools/build-mp-data.js
 
