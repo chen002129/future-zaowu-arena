@@ -1251,7 +1251,7 @@ function heatText(e){
   return String(h||0);
 }
 function liveEvents(){
-  return DATA.events.filter(e=>daysLeft(e.deadline)>=0).sort((a,b)=>{
+  return DATA.events.filter(e=>daysLeft(e.deadline)>=0 && !e.ended).sort((a,b)=>{
     const ha=engagement(a).heat||0,hb=engagement(b).heat||0;
     if(hb!==ha) return hb-ha;
     return daysLeft(a.deadline)-daysLeft(b.deadline);
@@ -1654,7 +1654,7 @@ function renderMeta(){
   const live=DATA.events.filter(e=>daysLeft(e.deadline)>=0&&!e.ended).length;
   document.getElementById('liveCount').textContent=live+' 场报名中';
   document.getElementById('liveMeta').textContent='LIVE · '+live;
-  if(DATA.updatedAt) document.getElementById('updatedAt').textContent='更新 '+new Date(DATA.updatedAt).toLocaleDateString('zh-CN',{month:'numeric',day:'numeric'});
+  if(DATA.updatedAt) document.getElementById('updatedAt').textContent='更新 '+new Date(DATA.updatedAt).toLocaleDateString('zh-CN',{timeZone:DISPLAY_TZ,month:'numeric',day:'numeric'});
   const f=(DATA.flashes||[])[0];
   document.getElementById('sigtext').textContent=f?f.txt:'持续扫描中国区 AI 赛事';
 }
@@ -1667,6 +1667,7 @@ function openEvent(id){
   const saved=favs.has(e.id);
   document.getElementById('detailContent').innerHTML=`
     <section class="detailHero">
+      ${e.poster?`<div class="detailPoster"><img class="posterImg" src="${e.poster}" alt="赛事官方海报" loading="lazy"></div>`:''}
       <div class="eyebrow">${st.t} · ${shortDate(e.deadline)} 截止</div>
       <h2>${e.title}</h2>
       <p>${e.parentNote||e.summary||''}</p>
@@ -1677,6 +1678,7 @@ function openEvent(id){
         <div class="m"><small>奖金 / 权益</small><b>${e.prize||'见官网'}</b></div>
       </div>
     </section>
+    <section class="detailSection"><h4>信息来源</h4><p><b style="color:var(--ink)">${e.tier==='official'||e.verifyState==='verified'?'官方信息 / 已核验':e.verifyState==='pending'?'聚合信息 / 待复核':'来源已记录'}</b>${e.src?'<br>来源：'+e.src:''}</p></section>
     ${e.organizer?`<section class="detailSection"><h4>主办方</h4><p><b style="color:var(--ink)">${e.organizer}</b>${e.organizerIntro?'<br>'+e.organizerIntro:''}</p></section>`:''}
     ${e.summary?`<section class="detailSection"><h4>赛事简介</h4><p>${e.summary}</p></section>`:''}
     ${tracks?`<section class="detailSection"><h4>赛道 / 方向</h4><p>${tracks}</p></section>`:''}
