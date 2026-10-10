@@ -1,6 +1,6 @@
 {
   "_readme": "未来造物赛场 · 唯一数据源。改这里即可，网页会自动读取。小程序数据由 tools/build-mp-data.js 从本文件生成，请勿手工改两端中的任意一份。",
-  "updatedAt": "2026-10-10T05:23:23.966Z",
+  "updatedAt": "2026-10-10T06:45:00.000Z",
   "chg": {
     "caltech-mathathon": "2026-09-28"
   },
@@ -525,6 +525,225 @@
       "cardPoster": "assets/posters/cards/f610346b2a97.jpg",
       "cardPosterSource": "https://hack123.henryht.sh/images/h/wukesong-2027.jpg",
       "cardPosterUpdatedAt": "2026-10-10T05:01:31.109Z"
+    },
+    {
+      "id": "china-ai-competition-7",
+      "title": "第七届中国人工智能大赛",
+      "src": "中国人工智能大赛官网",
+      "tier": "official",
+      "verifyState": "verified",
+      "mode": "混合",
+      "city": "厦门",
+      "tags": [
+        "大模型",
+        "具身智能",
+        "智能体",
+        "AI安全"
+      ],
+      "deadline": "2026-10-18",
+      "prize": "以各赛题官方规则为准",
+      "featured": true,
+      "theme": "数智筑安，竞促发展",
+      "tracks": [
+        "大模型方向",
+        "具身智能方向",
+        "智能体方向"
+      ],
+      "tech": [],
+      "summary": "第七届中国人工智能大赛由厦门市人民政府主办，在国家互联网信息办公室、公安部指导下开展。赛事聚焦大模型、具身智能、智能体三大方向，围绕创新应用与安全保障两条主线设置10道赛题，采用技术赛、案例赛、场景赛等形式。",
+      "website": "https://ai.xm.gov.cn/",
+      "poster": "https://ai.xm.gov.cn/static/ai/images/versions-3.0/video-cover-7.png",
+      "cardPoster": "https://ai.xm.gov.cn/static/ai/images/versions-3.0/video-cover-7.png",
+      "cardPosterSource": "https://ai.xm.gov.cn/static/ai/images/versions-3.0/video-cover-7.png",
+      "cardPosterUpdatedAt": "2026-10-10T06:45:00.000Z",
+      "qr": "",
+      "up": 0,
+      "ended": false,
+      "dateRange": "09 – 11",
+      "teamSize": "面向全国（含港澳台）企业、高校、科研院所；可单独或联合组队报名",
+      "organizer": "厦门市人民政府",
+      "agenda": [
+        {
+          "d": "2026-10-18",
+          "t": "报名与资格审核截止"
+        },
+        {
+          "d": "2026-10 至 2026-11",
+          "t": "技术赛线上开展；案例赛线上路演评审；场景赛在厦门比拼"
+        },
+        {
+          "d": "2026-11-12",
+          "t": "厦门颁奖仪式"
+        }
+      ],
+      "updatedAt": "2026-10-10T06:45:00.000Z",
+      "audience": "企业 / 高校 / 科研机构",
+      "audienceGroup": "开发者",
+      "level": "高阶",
+      "parentNote": "更适合用来观察产业真正把大模型、具身智能和智能体放进哪些真实问题里。"
+    },
+    {
+      "id": "national-ai-application-innovation-2",
+      "title": "第二届全国人工智能应用创新大赛",
+      "src": "全国人工智能应用创新大赛官网",
+      "tier": "official",
+      "verifyState": "verified",
+      "mode": "混合",
+      "city": "全国",
+      "tags": [
+        "AI Agent",
+        "大模型",
+        "产业应用"
+      ],
+      "deadline": "2026-10-20",
+      "prize": "以官方章程及各赛道通知为准",
+      "featured": true,
+      "theme": "让 AI Agent 赋能千行百业",
+      "tracks": [
+        "通用赛道：AI Agent 赋能行业创新",
+        "专项赛道：真实产业需求赛题"
+      ],
+      "tech": [],
+      "summary": "第二届全国人工智能应用创新大赛由中国技术经济学会主办，聚焦 AI Agent、大模型应用和真实业务场景。通用赛道围绕教育、医疗、制造、消费、金融、出海六大领域自主选题，采用校赛—区域赛—全国总决赛三级赛制；专项赛道面向产业真实需求开展攻关。",
+      "website": "https://www.ai-race.com.cn/",
+      "poster": "https://aerate.s3.cn-north-1.jdcloud-oss.com/site/6a9e1af0e4b0e7f385d907f8.png",
+      "cardPoster": "https://aerate.s3.cn-north-1.jdcloud-oss.com/site/6a9e1af0e4b0e7f385d907f8.png",
+      "cardPosterSource": "https://aerate.s3.cn-north-1.jdcloud-oss.com/site/6a9e1af0e4b0e7f385d907f8.png",
+      "cardPosterUpdatedAt": "2026-10-10T06:45:00.000Z",
+      "qr": "",
+      "up": 0,
+      "ended": false,
+      "dateRange": "09 – 全国总决赛",
+      "teamSize": "通用赛道面向全国高校学生，科研机构与企业人士亦可参与；具体组队要求以报名页为准",
+      "organizer": "中国技术经济学会",
+      "agenda": [
+        {
+          "d": "2026-10-20 24:00",
+          "t": "官网报名及当前阶段材料提交截止"
+        },
+        {
+          "d": "后续",
+          "t": "校赛 / 区域赛 / 全国总决赛按官方通知推进"
+        }
+      ],
+      "updatedAt": "2026-10-10T06:45:00.000Z",
+      "audience": "高校学生 / 科研机构 / 企业",
+      "audienceGroup": "高校",
+      "level": "进阶",
+      "parentNote": "AI Agent 不停留在概念层，核心是把真实行业问题做成可验证、能运行的应用方案。"
+    },
+    {
+      "id": "ncccu-ai-2026",
+      "title": "第八届全国高校计算机能力挑战赛 · 人工智能挑战赛",
+      "src": "全国高校计算机能力挑战赛官网",
+      "tier": "official",
+      "verifyState": "verified",
+      "mode": "线上为主",
+      "city": "全国",
+      "tags": [
+        "人工智能",
+        "医学影像",
+        "算法"
+      ],
+      "deadline": "2026-11-13",
+      "prize": "区域赛 / 国赛奖项；团队赛前三名奖金以官网规则为准",
+      "featured": false,
+      "theme": "人工智能挑战赛",
+      "tracks": [
+        "人工智能挑战赛（团队赛）"
+      ],
+      "tech": [],
+      "summary": "2026 年第八届全国高校计算机能力挑战赛设置 Office 高级应用、程序设计、大数据、人工智能、数字媒体创新设计五大赛项。其中人工智能挑战赛为团队作品赛，面向高校在校生，通过区域赛与国赛进行评审。",
+      "website": "https://www.ncccu.org.cn/index/Paper/case1.html",
+      "poster": "https://ncccu2026.oss-cn-zhangjiakou.aliyuncs.com/ueditor/20260703/beeccf11fb0044ef09c4f8e294d1ee25.png",
+      "cardPoster": "https://ncccu2026.oss-cn-zhangjiakou.aliyuncs.com/ueditor/20260703/beeccf11fb0044ef09c4f8e294d1ee25.png",
+      "cardPosterSource": "https://ncccu2026.oss-cn-zhangjiakou.aliyuncs.com/ueditor/20260703/beeccf11fb0044ef09c4f8e294d1ee25.png",
+      "cardPosterUpdatedAt": "2026-10-10T06:45:00.000Z",
+      "qr": "",
+      "up": 0,
+      "ended": false,
+      "dateRange": "07 – 12",
+      "teamSize": "高校在校学生；团队赛每队 1–3 名学生，可设 1 名指导老师",
+      "organizer": "全国高等学校计算机教育研究会",
+      "agenda": [
+        {
+          "d": "2026-11-13",
+          "t": "人工智能挑战赛报名截止"
+        },
+        {
+          "d": "2026-11",
+          "t": "区域赛 / 省赛"
+        },
+        {
+          "d": "2026-12",
+          "t": "国赛 / 决赛及获奖公示"
+        }
+      ],
+      "updatedAt": "2026-10-10T06:45:00.000Z",
+      "audience": "高校在校学生",
+      "audienceGroup": "高校",
+      "level": "进阶",
+      "parentNote": "偏算法与作品评审，适合和黑客松式产品赛对照来看：重点是把模型和任务做扎实。"
+    },
+    {
+      "id": "aic-agent-interconnection-2026",
+      "title": "第八届 AIC 算法大赛 · 智能体互联主题赛",
+      "src": "全球校园人工智能算法精英大赛官网",
+      "tier": "official",
+      "verifyState": "verified",
+      "mode": "混合",
+      "city": "全国 / 总决赛线下",
+      "tags": [
+        "智能体",
+        "AIP",
+        "多智能体协同"
+      ],
+      "deadline": "2026-10-15",
+      "prize": "复赛省级一、二、三等奖；总决赛国赛一、二、三等奖",
+      "featured": true,
+      "theme": "智能体互联",
+      "tracks": [
+        "AIP 智能体互联标准工程落地",
+        "异构协议适配",
+        "多智能体协同调度",
+        "交互安全管控",
+        "垂直行业场景创新"
+      ],
+      "tech": [
+        "AIP",
+        "梧桐智能体互联平台"
+      ],
+      "summary": "第八届全球校园人工智能算法精英大赛算法主题赛“智能体互联”由大赛全国组委会主办、北京邮电大学承办。参赛作品需基于智能体互联协议（AIP）完成工程实现，并接入梧桐智能体互联平台进行注册、发现、互联和访问验证，提交可运行工程代码、技术报告和验证记录。",
+      "website": "https://www.aicomp.cn/notice/notice-3/5153.html",
+      "poster": "https://www.aicomp.cn/wp-content/uploads/2026/09/home_banner_10.webp",
+      "cardPoster": "https://www.aicomp.cn/wp-content/uploads/2026/09/home_banner_10.webp",
+      "cardPosterSource": "https://www.aicomp.cn/wp-content/uploads/2026/09/home_banner_10.webp",
+      "cardPosterUpdatedAt": "2026-10-10T06:45:00.000Z",
+      "qr": "",
+      "up": 0,
+      "ended": false,
+      "dateRange": "08.26 – 11",
+      "teamSize": "全球高校和科研院所在读学生；可单人参赛或组队，每队最多 3 人，可设最多 2 名指导教师",
+      "organizer": "全球校园人工智能算法精英大赛全国组委会 / 北京邮电大学",
+      "agenda": [
+        {
+          "d": "2026-10-15 20:00",
+          "t": "报名及初赛作品提交截止"
+        },
+        {
+          "d": "2026-10 月底前",
+          "t": "复赛线上评审"
+        },
+        {
+          "d": "2026-11 月底前",
+          "t": "全国总决赛线下答辩"
+        }
+      ],
+      "updatedAt": "2026-10-10T06:45:00.000Z",
+      "audience": "高校 / 科研院所在读学生",
+      "audienceGroup": "高校",
+      "level": "高阶",
+      "parentNote": "它不是“做一个聊天机器人”，而是要求不同智能体真正完成标准化互联与协同验证。"
     }
   ],
   "flashes": [
