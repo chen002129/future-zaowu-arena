@@ -773,6 +773,70 @@ body{background:
 .submitForm textarea{grid-column:1/-1;min-height:90px;resize:vertical}.submitForm .submitPageBtn{grid-column:1/-1;margin-top:2px}.submitStatus{grid-column:1/-1;font-size:10px;color:var(--ink3)}
 @media(max-width:760px){.submitForm{grid-template-columns:1fr}.submitForm textarea,.submitForm .submitPageBtn,.submitStatus{grid-column:1}}
 
+
+/* ===== 2026-10-10 reliability fixes: poster, titles, map coordinates ===== */
+.posterImg + .artFallback,
+.posterImg + .tinyFallback{display:none!important}
+
+.swipePoster,
+.featureVisual,
+.tileArt,
+.artCard{
+  background:
+    radial-gradient(circle at 18% 12%,rgba(47,111,255,.10),transparent 36%),
+    linear-gradient(145deg,#edf1f7,#f8f4ef);
+}
+.swipePoster img.posterImg,
+.featureVisual img.posterImg,
+.tileArt img.posterImg,
+.artCard img.posterImg{
+  width:100%;height:100%;object-fit:contain!important;object-position:center;
+  padding:9px;box-sizing:border-box;background:rgba(255,255,255,.40);
+  filter:saturate(.94) contrast(.98)!important
+}
+.swipePoster:after{box-shadow:inset 0 -22px 38px rgba(10,24,58,.055)}
+
+.swipeCard{min-height:430px}
+.swipeBody{padding:16px 17px 19px}
+.swipeBody h3{
+  font-size:19px;line-height:1.22;margin:8px 0 10px;letter-spacing:-.025em;
+  min-height:2.44em;white-space:normal;overflow:visible;word-break:break-word
+}
+.tileBody h4,.hotMain h4,.deadCard h4,.listEvent h4{
+  white-space:normal;overflow:visible;word-break:break-word
+}
+
+.fallbackPoster{position:absolute;inset:0;z-index:1;box-sizing:border-box}
+.swipePoster .artFallback,
+.featureVisual .artFallback{
+  padding:20px!important;background:linear-gradient(145deg,#edf2fb,#f8f2ec)!important;
+  flex-direction:column;justify-content:space-between
+}
+.fallbackTop{display:flex;justify-content:space-between;gap:10px;font:9px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3)}
+.fallbackPoster h4{font-size:22px;line-height:1.14;letter-spacing:-.035em;margin:20px 0;color:var(--ink);max-width:90%}
+.fallbackBottom{display:flex;align-items:center;justify-content:space-between;gap:12px;font:8px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink3)}
+.fallbackBottom .ghostLogo{width:42px!important;height:50px!important;opacity:.18!important;align-self:auto!important}
+.tinyFallback.fallbackPoster{
+  padding:13px!important;background:linear-gradient(145deg,#edf2fb,#f8f2ec)!important;
+  flex-direction:column;justify-content:space-between;align-items:stretch!important
+}
+.tinyFallback.fallbackPoster>div{display:flex;justify-content:space-between;gap:8px;font-size:9px;color:var(--ink3)}
+.tinyFallback.fallbackPoster strong{font-size:13px;line-height:1.18;letter-spacing:-.02em;max-width:86%}
+.tinyFallback.fallbackPoster>img{width:28px!important;height:32px!important;opacity:.16!important;align-self:flex-end}
+
+/* All three layers use the exact same 620:420 coordinate plane. */
+.chinaSketch,.mapRoutes,.mapPins{
+  left:50%!important;top:5.5%!important;width:min(88%,860px)!important;height:auto!important;
+  aspect-ratio:620 / 420!important;transform:translateX(-50%)!important
+}
+.mapPins{bottom:auto!important;right:auto!important}
+@media(max-width:760px){
+  .swipeCard{min-height:408px}
+  .swipePoster{height:226px}
+  .swipeBody h3{font-size:18px;line-height:1.23;min-height:2.46em}
+  .chinaSketch,.mapRoutes,.mapPins{top:8%!important;width:98%!important}
+}
+
 </style>
 </head>
 <body>
@@ -1015,16 +1079,37 @@ let FILTER='精选';
 let currentEvent=null;
 const favs=new Set(JSON.parse(localStorage.getItem('fml_v2_favs')||'[]'));
 
-function daysLeft(d){
-  if(!d) return 9999;
-  return Math.ceil((new Date(d+'T23:59:59')-new Date())/86400000);
+const DISPLAY_TZ='Asia/Shanghai';
+function chinaDateParts(date=new Date()){
+  const parts=new Intl.DateTimeFormat('zh-CN',{
+    timeZone:DISPLAY_TZ,year:'numeric',month:'2-digit',day:'2-digit'
+  }).formatToParts(date);
+  const out={};
+  parts.forEach(p=>{if(p.type!=='literal')out[p.type]=p.value});
+  return {year:Number(out.year),month:Number(out.month),day:Number(out.day)};
 }
-function shortDate(d){return d?d.slice(5).replace('-','.'): '待定'}
+function chinaDateKey(date=new Date()){
+  const p=chinaDateParts(date);
+  return String(p.year)+'-'+String(p.month).padStart(2,'0')+'-'+String(p.day).padStart(2,'0');
+}
+function ymdOrdinal(d){
+  const m=/^(\d{4})-(\d{2})-(\d{2})/.exec(String(d||''));
+  if(!m)return null;
+  return Math.floor(Date.UTC(Number(m[1]),Number(m[2])-1,Number(m[3]))/86400000);
+}
+function daysLeft(d){
+  const target=ymdOrdinal(d);
+  const today=ymdOrdinal(chinaDateKey());
+  if(target==null||today==null)return 9999;
+  return target-today;
+}
+function shortDate(d){return d?String(d).slice(5,10).replace('-','.'): '待定'}
 function status(e){
   const d=daysLeft(e.deadline);
   if(d<0)return {t:'已截止',c:''};
   if(d===0)return {t:'今天截止',c:'soon'};
-  if(d<=7)return {t:'剩 '+d+' 天',c:'soon'};
+  if(d===1)return {t:'明天截止',c:'soon'};
+  if(d<=7)return {t:'还剩 '+d+' 天',c:'soon'};
   return {t:'报名中',c:''};
 }
 function money(s){
@@ -1036,12 +1121,13 @@ function audienceLabel(e){
   return e.audienceGroup||e.audience||'开放报名';
 }
 function posterMarkup(e,cls='posterImg'){
-  if(e.poster) return '<img class="'+cls+'" src="'+e.poster+'" alt="" loading="lazy" onerror="this.remove()">';
+  if(e.poster) return '<img class="'+cls+'" src="'+e.poster+'" alt="'+String(e.title||'赛事海报').replace(/"/g,'&quot;')+'" loading="lazy" onerror="this.style.display=\'none\';if(this.nextElementSibling){this.nextElementSibling.style.setProperty(\'display\',\'flex\',\'important\')}">';
   return '';
 }
 function artFallback(e,mode='big'){
-  if(mode==='big') return '<div class="artFallback"><img class="ghostLogo" src="assets/future-maker-logo.svg" alt=""><div class="bigDate">'+shortDate(e.deadline)+'</div></div>';
-  return '<div class="tinyFallback"><img src="assets/future-maker-logo.svg" alt=""><span>'+shortDate(e.deadline)+'</span></div>';
+  const city=e.city&& !/线上|全国|待公布/.test(e.city)?e.city:'AI 赛场';
+  if(mode==='big') return '<div class="artFallback fallbackPoster"><div class="fallbackTop"><span>'+city+'</span><span>'+shortDate(e.deadline)+'</span></div><h4>'+e.title+'</h4><div class="fallbackBottom"><img class="ghostLogo" src="assets/future-maker-logo.svg" alt=""><span>FUTURE MAKER · EVENT</span></div></div>';
+  return '<div class="tinyFallback fallbackPoster"><div><b>'+city+'</b><span>'+shortDate(e.deadline)+'</span></div><strong>'+e.title+'</strong><img src="assets/future-maker-logo.svg" alt=""></div>';
 }
 function engagement(e){
   return e.engagement||{likes:0,saves:0,views:0,registrationClicks:0,heat:0,liked:false,saved:false};
@@ -1163,8 +1249,17 @@ const CITY_GEO={
   '东莞':[113.7518,23.0207],'台湾':[121.0,23.7],'台北':[121.5654,25.0330],'高雄':[120.3014,22.6273]
 };
 function cityKey(raw){
-  raw=String(raw||'');
-  const keys=Object.keys(CITY_GEO).filter(k=>k!=='台湾');
+  raw=String(raw||'').replace(/\s+/g,'');
+  if(!raw || /线上|全国|待公布|待主办方公布/.test(raw)) return null;
+  if(/台湾|台北|高雄/.test(raw)) return '台湾';
+  const aliases={
+    '北京市':'北京','上海市':'上海','深圳市':'深圳','厦门市':'厦门','苏州市':'苏州','杭州市':'杭州',
+    '南京市':'南京','成都市':'成都','武汉市':'武汉','广州市':'广州','西安市':'西安','重庆市':'重庆',
+    '天津市':'天津','青岛市':'青岛','长沙市':'长沙','合肥市':'合肥','福州市':'福州','郑州市':'郑州',
+    '济南市':'济南','宁波市':'宁波','东莞市':'东莞'
+  };
+  for(const [alias,key] of Object.entries(aliases)) if(raw.includes(alias)) return key;
+  const keys=Object.keys(CITY_GEO).filter(k=>k!=='台湾'&&k!=='台北'&&k!=='高雄');
   return keys.find(k=>raw.includes(k))||null;
 }
 function projectGeo(lon,lat){
@@ -1245,14 +1340,14 @@ function renderMap(){
   for(const e of liveEvents()){
     const key=cityKey(e.city), pos=cityPosition(e.city);
     if(!key||!pos)continue;
-    const label=(key==='台北'||key==='高雄')?'台湾':key;
+    const label=key==='台湾'?'台湾省':key;
     if(!groups.has(label))groups.set(label,[]);
     groups.get(label).push(e);
   }
 
   const entries=[...groups.entries()].map(([label,events])=>{
     let pos;
-    if(label==='台湾'){
+    if(label==='台湾省'){
       const [x,y]=projectGeo(...CITY_GEO['台湾']);pos=[x/620*100,y/420*100];
     }else{
       pos=cityPosition(events[0].city);
@@ -1674,13 +1769,28 @@ async function refreshContent(){
     return false;
   }
 }
+let LAST_DAY_KEY=chinaDateKey();
+function refreshClockState(force=false){
+  const nowKey=chinaDateKey();
+  if(force || nowKey!==LAST_DAY_KEY){
+    LAST_DAY_KEY=nowKey;
+    renderMeta();renderStage();renderArticles();renderFavPage();renderMap();
+  }
+}
 async function boot(){
   await refreshContent();
+  LAST_DAY_KEY=chinaDateKey();
   setInterval(refreshContent,60000);
+  setInterval(()=>refreshClockState(false),30000);
 }
 document.addEventListener('visibilitychange',()=>{
-  if(document.visibilityState==='visible' && Date.now()-LAST_SYNC>30000) refreshContent();
+  if(document.visibilityState==='visible'){
+    refreshClockState(true);
+    if(Date.now()-LAST_SYNC>30000) refreshContent();
+  }
 });
+window.addEventListener('focus',()=>refreshClockState(true));
+window.addEventListener('pageshow',()=>refreshClockState(true));
 boot();
 </script>
 </body>
