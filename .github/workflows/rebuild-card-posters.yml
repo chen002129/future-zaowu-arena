@@ -1,0 +1,46 @@
+name: Rebuild event card posters
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/rebuild-card-posters.mjs'
+      - '.github/workflows/rebuild-card-posters.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rebuild-card-posters
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install image processor
+        run: npm install --no-save --package-lock=false sharp@0.33.5
+      - name: Find and normalize landscape card art
+        run: node tools/rebuild-card-posters.mjs
+      - name: Verify data
+        run: node tools/verify.js
+      - name: Commit card posters
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "No poster changes."
+            exit 0
+          fi
+          git config user.name "Future Maker Visual Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add site/data/events.json site/assets/posters/cards
+          git commit -m "Media: rebuild landscape event card posters"
+          git pull --rebase origin main
+          git push origin HEAD:main
