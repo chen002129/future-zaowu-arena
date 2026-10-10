@@ -1361,8 +1361,12 @@ const CITY_GEO={
   '福州':[119.2965,26.0745],'郑州':[113.6254,34.7466],'济南':[117.1201,36.6512],'宁波':[121.5503,29.8746],
   '东莞':[113.7518,23.0207],'台湾':[121.0,23.7],'台北':[121.5654,25.0330],'高雄':[120.3014,22.6273]
 };
-function cityKey(raw){
-  raw=String(raw||'').replace(/\s+/g,'');
+function cityKey(input){
+  if(input && typeof input==='object'){
+    if(input.scope!=='city' || !Number.isFinite(Number(input.lat)) || !Number.isFinite(Number(input.lng))) return null;
+    return String(input.label||input.city||'').replace(/[市区县]$/,'')||null;
+  }
+  const raw=String(input||'').replace(/\s+/g,'');
   if(!raw || /线上|全国|待公布|待主办方公布/.test(raw)) return null;
   if(/台湾|台北|高雄/.test(raw)) return '台湾';
   const aliases={
@@ -1379,8 +1383,12 @@ function projectGeo(lon,lat){
   const minLon=73,maxLon=135,minLat=18,maxLat=54,padX=28,padY=24,w=564,h=360;
   return [padX+(lon-minLon)/(maxLon-minLon)*w,padY+(maxLat-lat)/(maxLat-minLat)*h];
 }
-function cityPosition(city){
-  const key=cityKey(city);
+function cityPosition(input){
+  if(input && typeof input==='object' && input.scope==='city' && Number.isFinite(Number(input.lat)) && Number.isFinite(Number(input.lng))){
+    const [x,y]=projectGeo(Number(input.lng),Number(input.lat));
+    return [x/620*100,y/420*100];
+  }
+  const key=cityKey(input);
   if(!key)return null;
   const [x,y]=projectGeo(...CITY_GEO[key]);
   return [x/620*100,y/420*100];
@@ -1451,9 +1459,10 @@ function renderMap(){
   loadChinaMap();
   const groups=new Map();
   for(const e of liveEvents()){
-    const key=cityKey(e.city), pos=cityPosition(e.city);
+    const loc=e.location||null;
+    const key=cityKey(loc||e.city), pos=cityPosition(loc||e.city);
     if(!key||!pos)continue;
-    const label=key==='台湾'?'台湾省':key;
+    const label=(loc?.label||key)==='台湾'?'台湾省':(loc?.label||key);
     if(!groups.has(label))groups.set(label,[]);
     groups.get(label).push(e);
   }
@@ -1463,7 +1472,7 @@ function renderMap(){
     if(label==='台湾省'){
       const [x,y]=projectGeo(...CITY_GEO['台湾']);pos=[x/620*100,y/420*100];
     }else{
-      pos=cityPosition(events[0].city);
+      pos=cityPosition(events[0].location||events[0].city);
     }
     return {label,events,count:events.length,pos};
   }).filter(x=>x.pos).sort((a,b)=>b.count-a.count);
