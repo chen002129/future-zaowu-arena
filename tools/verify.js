@@ -51,10 +51,15 @@ const MODES = ['线上', '线下', '混合'];
   if (e.mode && MODES.indexOf(e.mode) < 0) push(warns, tag + ' mode 不在 线上/线下/混合 内：' + e.mode);
   if (e.country && e.country !== '中国') push(errors, tag + ' 是国外赛事（铁律：不收录国外）');
 
-  if (!e.poster) push(warns, tag + ' 无海报字段（将用渐变兜底）');
+  if (!e.poster) push(errors, tag + ' 缺原始海报（铁律：无海报不发布）');
   else {
     const f = path.join(SITE, e.poster);
     if (!fs.existsSync(f)) push(errors, tag + ' 海报文件不存在：' + e.poster);
+  }
+  if (!e.cardPoster) push(errors, tag + ' 缺卡片横版海报（铁律：无卡片海报不发布）');
+  else {
+    const f = path.join(SITE, e.cardPoster);
+    if (!fs.existsSync(f)) push(errors, tag + ' 卡片海报文件不存在：' + e.cardPoster);
   }
   if (e.qr) {
     const f = path.join(SITE, e.qr);
