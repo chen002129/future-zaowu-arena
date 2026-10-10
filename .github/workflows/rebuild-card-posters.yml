@@ -40,7 +40,7 @@ jobs:
           fi
           git config user.name "Future Maker Visual Bot"
           git config user.email "actions@users.noreply.github.com"
-          git add site/data/events.json site/assets/posters/cards
+          git add site/data/events.json site/assets/posters
           git commit -m "Media: rebuild landscape event card posters"
           git pull --rebase origin main
           git push origin HEAD:main
