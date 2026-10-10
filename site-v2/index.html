@@ -866,6 +866,86 @@ body{background:
 @media(max-width:760px){
   .posterGallery .posterImg{max-width:94%!important;max-height:90%!important}
 }
+
+/* ===== poster system v3: unified thumbnail, full poster only in detail ===== */
+.posterGallery,.posterBackdrop{display:none!important}
+.swipePoster,.featureVisual,.tileArt,.artCard{
+  position:relative;
+  background:linear-gradient(145deg,#e9edf4,#f7f4ef);
+  overflow:hidden;
+}
+.swipePoster img.posterImg,
+.featureVisual img.posterImg,
+.tileArt img.posterImg,
+.artCard img.posterImg{
+  position:absolute!important;inset:0!important;
+  width:100%!important;height:100%!important;
+  max-width:none!important;max-height:none!important;
+  padding:0!important;margin:0!important;border-radius:0!important;
+  object-fit:cover!important;
+  object-position:center 28%!important;
+  filter:saturate(.86) contrast(.96) brightness(.98)!important;
+  box-shadow:none!important;background:transparent!important
+}
+.swipePoster img.posterImg[data-ratio="portrait"],
+.featureVisual img.posterImg[data-ratio="portrait"],
+.tileArt img.posterImg[data-ratio="portrait"]{
+  object-position:center 20%!important;
+  transform:scale(1.03)
+}
+.swipePoster img.posterImg[data-ratio="banner"],
+.featureVisual img.posterImg[data-ratio="banner"],
+.tileArt img.posterImg[data-ratio="banner"]{
+  object-position:center!important;
+  transform:scale(1.08)
+}
+.swipePoster:before,.featureVisual:before,.tileArt:before{
+  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.03) 55%,rgba(15,23,42,.14) 100%)
+}
+.swipePoster:after{display:none!important}
+.swipePoster .tape{display:none!important}
+
+.swipeCard{
+  min-height:408px!important;
+  border-radius:22px!important;
+  transform:scale(.965) rotate(var(--tilt,0deg));
+  box-shadow:0 16px 42px rgba(41,72,137,.085)!important
+}
+.swipeCard.active{transform:scale(1) rotate(0)}
+.swipePoster{height:224px!important}
+.swipeBody{padding:15px 16px 17px!important}
+.swipeBody h3{
+  font-size:18.5px!important;line-height:1.24!important;
+  min-height:2.48em!important;max-height:none!important;
+  overflow:visible!important;display:block!important;
+  white-space:normal!important;word-break:break-word!important;
+  margin:7px 0 9px!important
+}
+.swipeBody .k{font-size:9px!important;letter-spacing:.06em!important}
+.swipeBody p{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.swipeFoot{margin-top:12px!important}
+
+/* fallback cover remains a designed cover, but only if the real image fails */
+.posterImg + .artFallback,
+.posterImg + .tinyFallback{display:none!important}
+.swipePoster .fallbackPoster,
+.featureVisual .fallbackPoster,
+.tileArt .fallbackPoster{z-index:1}
+
+/* detail keeps the entire official poster available */
+.detailPoster img.posterImg,.detailHero img.posterImg,.detailVisual img.posterImg{
+  position:relative!important;width:100%!important;height:auto!important;
+  max-height:70vh!important;object-fit:contain!important;object-position:center!important;
+  transform:none!important;filter:none!important;background:#f4f5f7!important
+}
+
+@media(max-width:760px){
+  .swipeCard{min-height:392px!important}
+  .swipePoster{height:214px!important}
+  .swipeBody h3{font-size:18px!important;line-height:1.23!important;min-height:2.46em!important}
+}
+
 </style>
 </head>
 <body>
@@ -1152,11 +1232,9 @@ function audienceLabel(e){
 function posterMarkup(e,cls='posterImg'){
   if(!e.poster) return '';
   const alt=String(e.title||'赛事海报').replace(/"/g,'&quot;');
-  const src=e.poster;
-  return '<span class="posterGallery">'+
-    '<img class="posterBackdrop" src="'+src+'" alt="" aria-hidden="true" loading="lazy">'+
-    '<img class="'+cls+'" src="'+src+'" alt="'+alt+'" loading="lazy" onerror="this.closest(\'.posterGallery\')?.remove();const fb=this.closest(\'.posterGallery\')?.nextElementSibling;if(fb)fb.style.setProperty(\'display\',\'flex\',\'important\')">'+
-  '</span>';
+  return '<img class="'+cls+'" src="'+e.poster+'" alt="'+alt+'" loading="lazy" '+
+    'onload="const r=this.naturalWidth/Math.max(1,this.naturalHeight);this.dataset.ratio=r<.72?\'portrait\':r>2.1?\'banner\':\'landscape\'" '+
+    'onerror="this.style.display=\'none\';if(this.nextElementSibling)this.nextElementSibling.style.setProperty(\'display\',\'flex\',\'important\')">';
 }
 function artFallback(e,mode='big'){
   const city=e.city&& !/线上|全国|待公布/.test(e.city)?e.city:'AI 赛场';
