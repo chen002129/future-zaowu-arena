@@ -1230,9 +1230,10 @@ function audienceLabel(e){
   return e.audienceGroup||e.audience||'开放报名';
 }
 function posterMarkup(e,cls='posterImg'){
-  if(!e.poster) return '';
+  const src=e.cardPoster||e.poster;
+  if(!src) return '';
   const alt=String(e.title||'赛事海报').replace(/"/g,'&quot;');
-  return '<img class="'+cls+'" src="'+e.poster+'" alt="'+alt+'" loading="lazy" '+
+  return '<img class="'+cls+'" src="'+src+'" alt="'+alt+'" loading="lazy" '+
     'onload="const r=this.naturalWidth/Math.max(1,this.naturalHeight);this.dataset.ratio=r<.72?\'portrait\':r>2.1?\'banner\':\'landscape\'" '+
     'onerror="this.style.display=\'none\';if(this.nextElementSibling)this.nextElementSibling.style.setProperty(\'display\',\'flex\',\'important\')">';
 }
