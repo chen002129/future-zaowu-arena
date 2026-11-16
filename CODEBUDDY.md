@@ -24,17 +24,19 @@ This repository is the active Future Maker Arena product.
 - Event content, intelligence, likes, saves, heat and submissions must come from the backend. Do not replace real backend data with fabricated frontend counts.
 
 ### Data
-- Current source-of-truth seed file: `site/data/events.json`
+- Single source of truth: `site/data/events.json`
+- Public live-data mirror: `https://chen002129.github.io/future-zaowu-arena/data/events.json`
 - CloudBase import files: `cloudbase-import/*.jsonl`
-- Frontend preview fallback data: `site-v2/data/events.json`
+- Frontend fallback only: `site-v2/data/events.json`
+- The frontend reads `/api/content` first, GitHub Pages live data second, and local fallback last.
 - China-region AI competitions only.
 - Deadline changes must retain history; never silently overwrite deadline history.
 
 ### Deployment
-- For production, prefer CloudBase because this product needs database, APIs, user interactions and scheduled jobs.
-- Deploy `site-v2/` as the frontend.
-- Keep GitHub connected so future frontend commits can be redeployed automatically.
-- GitHub Pages is only a preview channel, not the production backend.
+- Deploy `site-v2/` as the only active frontend. WorkBuddy can be the user's only manual deployment tool.
+- Event-data refreshes do NOT require a WorkBuddy redeploy: GitHub Actions updates `site/data/events.json`, GitHub Pages exposes it publicly, and the deployed frontend reads it at runtime.
+- CloudBase remains optional for interactions / APIs / admin features; lack of a custom domain does not block live event updates.
+- GitHub Pages is the public live-data + preview channel, not the interaction backend.
 
 ### Before any deployment
 1. Read this file.
