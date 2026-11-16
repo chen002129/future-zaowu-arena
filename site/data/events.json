@@ -1,6 +1,6 @@
 {
   "_readme": "未来造物赛场 · 唯一数据源。改这里即可，网页会自动读取。小程序数据由 tools/build-mp-data.js 从本文件生成，请勿手工改两端中的任意一份。",
-  "updatedAt": "2026-10-10T06:22:15.702Z",
+  "updatedAt": "2026-11-16T22:31:43.886Z",
   "chg": {
     "caltech-mathathon": "2026-09-28"
   },
@@ -64,7 +64,7 @@
       "parentNote": "适合观察“真实产业命题 → Demo → 路演”的完整项目链路。",
       "cardPoster": "assets/posters/cards/e20e9d52bc2a.jpg",
       "cardPosterSource": "https://www.aibetas.com/wp-content/uploads/2026/09/tmall_ai_hackathon_university_challenge_2026_cover.png",
-      "cardPosterUpdatedAt": "2026-10-10T06:23:30.458Z",
+      "cardPosterUpdatedAt": "2026-11-16T22:32:01.127Z",
       "location": {
         "scope": "national",
         "country": "中国",
@@ -132,7 +132,7 @@
       "parentNote": "32 小时限时创作，重点不只是会用模型，而是把表达做完整。",
       "cardPoster": "assets/posters/cards/b73295beb69f.jpg",
       "cardPosterSource": "https://i.ytimg.com/vi/5QXRzH1wF-k/maxresdefault.jpg",
-      "cardPosterUpdatedAt": "2026-10-10T06:23:30.881Z",
+      "cardPosterUpdatedAt": "2026-11-16T22:32:01.600Z",
       "location": {
         "scope": "city",
         "country": "中国",
@@ -189,7 +189,7 @@
       "parentNote": "技术门槛较高，更适合家长和大龄孩子观察前沿开发者如何协作冲刺。",
       "cardPoster": "assets/posters/cards/f3df860e759c.jpg",
       "cardPosterSource": "https://images.lumacdn.com/cdn-cgi/image/format=jpeg,fit=cover,dpr=1,anim=false,background=white,quality=90,width=1200,height=630/event-social/h2/7d678608-4010-4d9e-898e-6361ba4b1689.png",
-      "cardPosterUpdatedAt": "2026-10-10T06:23:31.855Z",
+      "cardPosterUpdatedAt": "2026-11-16T22:32:02.442Z",
       "location": {
         "scope": "city",
         "country": "中国",
@@ -198,7 +198,8 @@
         "lat": 22.5431,
         "lng": 114.0579,
         "label": "深圳"
-      }
+      },
+      "sourceChangedAt": "2026-11-16T22:31:43.886Z"
     },
     {
       "id": "tme-高校ai-hackathon",
@@ -267,7 +268,7 @@
       "parentNote": "从真实音乐用户需求出发，适合看“AI 能不能进入真实产品”的判断方式。",
       "cardPoster": "assets/posters/cards/c35c8e47e894.jpg",
       "cardPosterSource": "https://aitop100app-1251510006.cos.ap-shanghai.myqcloud.com/public/2026/09/16/10/03/19/62123fa5-5dc2-411b-bf60-8f51857dcd37.png",
-      "cardPosterUpdatedAt": "2026-10-10T06:23:38.914Z",
+      "cardPosterUpdatedAt": "2026-11-16T22:32:07.874Z",
       "location": {
         "scope": "tbd",
         "country": "中国",
@@ -304,7 +305,7 @@
       "poster": "assets/posters/p470045a0a2.jpg",
       "qr": "",
       "up": 622,
-      "ended": false,
+      "ended": true,
       "dateRange": "10.13 – 10.17",
       "teamSize": "全球招募 24 位共建者；单人参赛或自由组队，每队最多 3 人，每题上限 2 人",
       "organizer": "Proto Seeds × 1836 钠电×AIDC",
@@ -318,14 +319,14 @@
           "t": "线上路演"
         }
       ],
-      "updatedAt": "2026-10-07T00:53:04.265Z",
+      "updatedAt": "2026-11-16T22:31:43.886Z",
       "audience": "科研 / AI 开发者",
       "audienceGroup": "开发者",
       "level": "高阶",
       "parentNote": "AI for Science 方向，适合关注 AI 与能源、科研问题结合的方式。",
       "cardPoster": "assets/posters/cards/470045a0a28f.jpg",
       "cardPosterSource": "https://pub-d7a436bb140a401a98a2b96d1850d970.r2.dev/hackathons/covers/%E5%88%9D%E7%84%B0-%E9%92%A0%E5%AE%99-%E9%92%A0%E7%94%B5-aidc-%E7%BA%BF%E4%B8%8A%E9%BB%91%E5%AE%A2%E6%9D%BE-season-01-b9bdbd0acdf9.jpg",
-      "cardPosterUpdatedAt": "2026-10-10T06:23:39.145Z",
+      "cardPosterUpdatedAt": "2026-11-16T22:32:08.145Z",
       "location": {
         "scope": "online",
         "country": "中国",
@@ -363,7 +364,7 @@
       "poster": "assets/posters/p13aaf8e8d1.jpg",
       "qr": "",
       "up": 1318,
-      "ended": false,
+      "ended": true,
       "dateRange": "10.30 – 11.01",
       "teamSize": "100+ 支队伍同场竞技，辐射武汉、西安、成都三城，联动西客松、雾客松、成客松",
       "organizer": "Page 0 序章",
@@ -381,14 +382,14 @@
           "t": "苏州线下决赛（3天2夜 48 小时开发）"
         }
       ],
-      "updatedAt": "2026-10-06T13:17:04.265Z",
+      "updatedAt": "2026-11-16T22:31:43.886Z",
       "audience": "高校学生 / AI 开发者",
       "audienceGroup": "开发者",
       "level": "进阶",
       "parentNote": "开放命题 + 48 小时 Demo，适合观察“快速取舍、快速交付”的项目能力。",
       "cardPoster": "assets/posters/cards/13aaf8e8d199.jpg",
       "cardPosterSource": "https://img.36krcdn.com/hsossms/20261010/v2_30c4528092d64da99096e41c4e681b2e@6438729_oswg171423oswg1053oswg495_img_jpg?x-oss-process=image/resize,m_mfit,w_1200,h_800,limit_0/crop,w_1200,h_800,g_center",
-      "cardPosterUpdatedAt": "2026-10-10T06:23:40.051Z",
+      "cardPosterUpdatedAt": "2026-11-16T22:32:09.284Z",
       "location": {
         "scope": "city",
         "country": "中国",
@@ -426,7 +427,7 @@
       "poster": "assets/posters/p0e4ac9f517.jpg",
       "qr": "",
       "up": 381,
-      "ended": false,
+      "ended": true,
       "dateRange": "09.11 – 11.15",
       "teamSize": "每队 2–5 人，指定 1 名队长；每位选手仅限加入一支队伍，不支持重复报名、多队挂靠",
       "organizer": "蚂蚁灵波科技、魔搭社区（ModelScope）、阿里云天池",
@@ -448,14 +449,14 @@
           "t": "上海线下真机黑客马拉松决赛（11月13-15日，场地待公布）"
         }
       ],
-      "updatedAt": "2026-10-07T04:54:04.265Z",
+      "updatedAt": "2026-11-16T22:31:43.886Z",
       "audience": "高校 / 具身智能开发者",
       "audienceGroup": "高校",
       "level": "高阶",
       "parentNote": "从仿真到真机，能直观看到模型能力如何落到真实机器人任务。",
       "cardPoster": "assets/posters/cards/0e4ac9f5175b.jpg",
       "cardPosterSource": "https://pic.imgdb.cn/i/034OwpAsz7RKL3Xaoa5s2v.png",
-      "cardPosterUpdatedAt": "2026-10-10T06:23:41.202Z",
+      "cardPosterUpdatedAt": "2026-11-16T22:32:10.007Z",
       "location": {
         "scope": "city",
         "country": "中国",
@@ -530,10 +531,10 @@
       "audienceGroup": "开发者",
       "level": "进阶",
       "parentNote": "少见地把“做出来”继续推到“有人愿不愿意付费”，很适合看商业验证。",
-      "sourceChangedAt": "2026-10-09T18:31:34.247Z",
+      "sourceChangedAt": "2026-11-16T22:31:43.886Z",
       "cardPoster": "assets/posters/cards/ee8731918dc4.jpg",
       "cardPosterSource": "https://hack123.henryht.sh/images/h/alipay-payathon-2026.jpg",
-      "cardPosterUpdatedAt": "2026-10-10T06:23:42.895Z",
+      "cardPosterUpdatedAt": "2026-11-16T22:32:11.256Z",
       "location": {
         "scope": "online",
         "country": "中国",
@@ -597,7 +598,7 @@
       "parentNote": "开放式 AI 创作赛，适合把长期做的项目拿到真实环境里接受反馈。",
       "cardPoster": "assets/posters/cards/f610346b2a97.jpg",
       "cardPosterSource": "https://hack123.henryht.sh/images/h/wukesong-2027.jpg",
-      "cardPosterUpdatedAt": "2026-10-10T06:23:43.197Z",
+      "cardPosterUpdatedAt": "2026-11-16T22:32:11.544Z",
       "location": {
         "scope": "city",
         "country": "中国",
@@ -637,7 +638,7 @@
       "website": "https://ai.xm.gov.cn/",
       "qr": "",
       "up": 0,
-      "ended": false,
+      "ended": true,
       "dateRange": "10月 – 11.12",
       "teamSize": "企业、高校、科研院所可单独或联合组队",
       "organizer": "厦门市人民政府",
@@ -655,7 +656,7 @@
           "t": "厦门颁奖仪式"
         }
       ],
-      "updatedAt": "2026-10-10T06:22:15.698Z",
+      "updatedAt": "2026-11-16T22:31:43.886Z",
       "audience": "企业 / 高校 / 科研机构",
       "audienceGroup": "开发者",
       "level": "高阶",
@@ -672,7 +673,7 @@
       "poster": "assets/posters/p57c1af35b533.jpg",
       "cardPoster": "assets/posters/cards/57c1af35b533.jpg",
       "cardPosterSource": "https://ai.xm.gov.cn/static/ai/images/versions-3.0/video-cover-7.png",
-      "cardPosterUpdatedAt": "2026-10-10T06:23:45.721Z"
+      "cardPosterUpdatedAt": "2026-11-16T22:32:13.948Z"
     },
     {
       "id": "ai-application-innovation-2026",
@@ -700,7 +701,7 @@
       "website": "https://www.ai-race.com.cn/",
       "qr": "",
       "up": 0,
-      "ended": false,
+      "ended": true,
       "dateRange": "09.18 – 12.20",
       "teamSize": "每队1–5人，其中参赛选手1–3人、指导教师0–2人",
       "organizer": "中国技术经济学会",
@@ -722,7 +723,7 @@
           "t": "全国总决赛"
         }
       ],
-      "updatedAt": "2026-10-10T06:22:15.702Z",
+      "updatedAt": "2026-11-16T22:31:43.886Z",
       "audience": "高校学生 / 科研机构 / 企业人士",
       "audienceGroup": "高校",
       "level": "进阶",
@@ -739,7 +740,7 @@
       "poster": "assets/posters/p18bb3a1d6d7f.jpg",
       "cardPoster": "assets/posters/cards/18bb3a1d6d7f.jpg",
       "cardPosterSource": "https://aerate.s3.cn-north-1.jdcloud-oss.com/site/6a9e1af0e4b0e7f385d907f8.png",
-      "cardPosterUpdatedAt": "2026-10-10T06:23:49.085Z"
+      "cardPosterUpdatedAt": "2026-11-16T22:32:17.302Z"
     },
     {
       "id": "ncccu-ai-2026",
@@ -766,7 +767,7 @@
       "website": "https://www.ncccu.org.cn/index/Paper/case1.html",
       "qr": "",
       "up": 0,
-      "ended": false,
+      "ended": true,
       "dateRange": "10.15 – 11.24",
       "teamSize": "高校在校学生，本研组与高职组分别评奖",
       "organizer": "全国高等学校计算机教育研究会",
@@ -788,7 +789,7 @@
           "t": "国赛"
         }
       ],
-      "updatedAt": "2026-10-10T06:22:15.702Z",
+      "updatedAt": "2026-11-16T22:31:43.886Z",
       "audience": "高校在校学生",
       "audienceGroup": "高校",
       "level": "进阶",
@@ -805,7 +806,7 @@
       "poster": "assets/posters/pbe061177d95b.jpg",
       "cardPoster": "assets/posters/cards/be061177d95b.jpg",
       "cardPosterSource": "https://www.ncccu.org.cn/static/index/images/subject_02.png?v=1.1.02",
-      "cardPosterUpdatedAt": "2026-10-10T06:23:52.432Z"
+      "cardPosterUpdatedAt": "2026-11-16T22:32:19.006Z"
     },
     {
       "id": "aic-agent-interconnection-2026",
@@ -835,7 +836,7 @@
       "website": "https://www.aicomp.cn/tracks/tracks-5/5169.html",
       "qr": "",
       "up": 0,
-      "ended": false,
+      "ended": true,
       "dateRange": "08.27 – 11月底",
       "teamSize": "单人或组队，每队最多3名学生，可设最多2名指导教师",
       "organizer": "全球校园人工智能算法精英大赛全国组委会 / 北京邮电大学",
@@ -853,7 +854,7 @@
           "t": "全国总决赛，线下答辩"
         }
       ],
-      "updatedAt": "2026-10-10T06:22:15.702Z",
+      "updatedAt": "2026-11-16T22:31:43.886Z",
       "audience": "高校 / 科研院所在读学生",
       "audienceGroup": "高校",
       "level": "高阶",
@@ -870,10 +871,108 @@
       "poster": "assets/posters/p5146ac56bb94.jpg",
       "cardPoster": "assets/posters/cards/5146ac56bb94.jpg",
       "cardPosterSource": "https://www.aicomp.cn/wp-content/uploads/2026/08/%E7%BD%91%E9%A1%B5%E6%A8%AA%E5%9B%BE-2.png",
-      "cardPosterUpdatedAt": "2026-10-10T06:23:55.042Z"
+      "cardPosterUpdatedAt": "2026-11-16T22:32:20.916Z"
     }
   ],
   "flashes": [
+    {
+      "auto": true,
+      "hot": false,
+      "txt": "全球校园人工智能算法精英大赛 · 智能体互联主题赛 报名时间已过，状态更新为已截止",
+      "src": "自动状态监测",
+      "at": "2026-11-16T22:31:43.886Z"
+    },
+    {
+      "auto": true,
+      "hot": false,
+      "txt": "第八届全国高校计算机能力挑战赛 · 人工智能挑战赛 报名时间已过，状态更新为已截止",
+      "src": "自动状态监测",
+      "at": "2026-11-16T22:31:43.886Z"
+    },
+    {
+      "auto": true,
+      "hot": false,
+      "txt": "第二届全国人工智能应用创新大赛 报名时间已过，状态更新为已截止",
+      "src": "自动状态监测",
+      "at": "2026-11-16T22:31:43.886Z"
+    },
+    {
+      "auto": true,
+      "hot": false,
+      "txt": "第七届中国人工智能大赛 报名时间已过，状态更新为已截止",
+      "src": "自动状态监测",
+      "at": "2026-11-16T22:31:43.886Z"
+    },
+    {
+      "auto": true,
+      "hot": true,
+      "txt": "支付宝AI付 PAYATHON 2026 年度黑客松 官方页面刚刚发生更新，关键信息正在复核",
+      "src": "支付宝AI付 · 官方页面监测",
+      "at": "2026-11-16T22:31:43.886Z"
+    },
+    {
+      "auto": true,
+      "hot": false,
+      "txt": "首届蚂蚁灵波具身大模型挑战赛 报名时间已过，状态更新为已截止",
+      "src": "自动状态监测",
+      "at": "2026-11-16T22:31:43.886Z"
+    },
+    {
+      "auto": true,
+      "hot": false,
+      "txt": "苏客松 2026（SU2026）苏州 AI 黑客松 报名时间已过，状态更新为已截止",
+      "src": "自动状态监测",
+      "at": "2026-11-16T22:31:43.886Z"
+    },
+    {
+      "auto": true,
+      "hot": false,
+      "txt": "初焰·钠宙｜钠电 × AIDC 线上黑客松 Season 01 报名时间已过，状态更新为已截止",
+      "src": "自动状态监测",
+      "at": "2026-11-16T22:31:43.886Z"
+    },
+    {
+      "auto": true,
+      "hot": true,
+      "txt": "深圳 Solar 黑客之家 Solar Hacker House Shenzhen 官方页面刚刚发生更新，关键信息正在复核",
+      "src": "OpenBuild / 登链社区 · 官方页面监测",
+      "at": "2026-11-16T22:31:43.886Z"
+    },
+    {
+      "auto": true,
+      "hot": false,
+      "txt": "新发现：支付宝「智能体涌现奖」2026 首轮（待核验）",
+      "src": "赛事雷达 · 自动发现",
+      "at": "2026-11-16T22:31:43.886Z"
+    },
+    {
+      "auto": true,
+      "hot": false,
+      "txt": "新发现：科技少年黑客松挑战赛·少年月球建造计划（2026 秋季赛）（待核验）",
+      "src": "赛事雷达 · 自动发现",
+      "at": "2026-11-16T22:31:43.886Z"
+    },
+    {
+      "auto": true,
+      "hot": false,
+      "txt": "新发现：AIY HACK LEAGUE 全球青年AI创客马拉松（待核验）",
+      "src": "赛事雷达 · 自动发现",
+      "at": "2026-11-16T22:31:43.886Z"
+    },
+    {
+      "auto": true,
+      "hot": false,
+      "txt": "新发现：DDC 2026 地瓜机器人黑客松（待核验）",
+      "src": "赛事雷达 · 自动发现",
+      "at": "2026-11-16T22:31:43.886Z"
+    },
+    {
+      "auto": true,
+      "hot": false,
+      "txt": "新发现：2026 AI For Good公益黑客松·秋季赛（待核验）",
+      "src": "赛事雷达 · 自动发现",
+      "at": "2026-11-16T22:31:43.886Z"
+    },
     {
       "auto": true,
       "hot": true,
@@ -1103,6 +1202,71 @@
   ],
   "radar": [
     {
+      "id": "mp-ht-alipay-emerge-2026-ad4430da",
+      "title": "支付宝「智能体涌现奖」2026 首轮",
+      "deadline": "2026-12-06",
+      "city": "线上",
+      "organizer": "支付宝",
+      "website": "https://emerge.alipay.com/",
+      "sourceUrl": "https://emerge.alipay.com/",
+      "reason": "自动发现新赛事，等待主办方官方页面核验",
+      "verifyState": "pending",
+      "discoveredAt": "2026-11-16T22:31:43.886Z",
+      "updatedAt": "2026-11-16T22:31:43.886Z"
+    },
+    {
+      "id": "mp-ht-tech-youth-moon-a2582401",
+      "title": "科技少年黑客松挑战赛·少年月球建造计划（2026 秋季赛）",
+      "deadline": "2026-11-22",
+      "city": "线上",
+      "organizer": "猿编程",
+      "website": "https://mp.weixin.qq.com/s/0Wh7mG4vgPbqaEJQ9qEeZw",
+      "sourceUrl": "https://mp.weixin.qq.com/s/0Wh7mG4vgPbqaEJQ9qEeZw",
+      "reason": "自动发现新赛事，等待主办方官方页面核验",
+      "verifyState": "pending",
+      "discoveredAt": "2026-11-16T22:31:43.886Z",
+      "updatedAt": "2026-11-16T22:31:43.886Z"
+    },
+    {
+      "id": "mp-ht-aiy-hack-league-23f2a1aa",
+      "title": "AIY HACK LEAGUE 全球青年AI创客马拉松",
+      "deadline": "2026-12-07",
+      "city": "线上",
+      "organizer": "AIY HACK LEAGUE",
+      "website": "https://www.webloom.cn/api/s/AIY_2027",
+      "sourceUrl": "https://www.webloom.cn/api/s/AIY_2027",
+      "reason": "自动发现新赛事，等待主办方官方页面核验",
+      "verifyState": "pending",
+      "discoveredAt": "2026-11-16T22:31:43.886Z",
+      "updatedAt": "2026-11-16T22:31:43.886Z"
+    },
+    {
+      "id": "mp-ht-78af8938df31406bb50fd1791c31ea46",
+      "title": "DDC 2026 地瓜机器人黑客松",
+      "deadline": "2026-11-24",
+      "city": "上海",
+      "organizer": "地瓜机器人",
+      "website": "https://hackathon.d-robotics.cc",
+      "sourceUrl": "https://hackathon.d-robotics.cc",
+      "reason": "自动发现新赛事，等待主办方官方页面核验",
+      "verifyState": "pending",
+      "discoveredAt": "2026-11-16T22:31:43.886Z",
+      "updatedAt": "2026-11-16T22:31:43.886Z"
+    },
+    {
+      "id": "mp-ht-2026-ai-for-good-71daacf3",
+      "title": "2026 AI For Good公益黑客松·秋季赛",
+      "deadline": "2026-12-15",
+      "city": "上海",
+      "organizer": "NPI恩派公益",
+      "website": "https://fund.npi.org.cn/community/kols/applys/10/0?program=33",
+      "sourceUrl": "https://fund.npi.org.cn/community/kols/applys/10/0?program=33",
+      "reason": "自动发现新赛事，等待主办方官方页面核验",
+      "verifyState": "pending",
+      "discoveredAt": "2026-11-16T22:31:43.886Z",
+      "updatedAt": "2026-11-16T22:31:43.886Z"
+    },
+    {
       "id": "jiangsu-ai-science-hackathon-2026",
       "title": "2026 江苏省高校 AI+科学与工程创新实践黑客松",
       "deadline": "2026-10-10",
@@ -1234,37 +1398,37 @@
   "_watch": {
     "天猫ai黑客松高校挑战赛": {
       "fingerprint": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "checkedAt": "2026-10-09T20:06:22.084Z",
+      "checkedAt": "2026-11-16T22:31:43.886Z",
       "url": "https://pages.tmall.com/wow/a/act/tmall/dailygroup/24732/25590/wupr?wh_pid=daily-597100&disableNav=YES&status_bar_transparent=true",
       "etag": "",
       "lastModified": ""
     },
     "亚洲黑客松巅峰赛上海站": {
       "fingerprint": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "checkedAt": "2026-10-09T20:06:22.084Z",
+      "checkedAt": "2026-11-16T22:31:43.886Z",
       "url": "https://app.tapnow.ai/",
       "etag": "W/\"6ac77c92-2e6a\"",
       "lastModified": "Thu, 08 Oct 2026 11:20:50 GMT"
     },
     "深圳-solar-黑客之家-solar-hacker-house-shenzhen": {
-      "fingerprint": "489e5568126f486b6a37f7fdd422bc37ece54cfbcb21fe428fd1f77891d2f212",
-      "checkedAt": "2026-10-09T20:06:22.084Z",
+      "fingerprint": "91e784eb56ffe9c2148bbe17196fa19ecb3139dee2c40c01cea66c17335b3d36",
+      "checkedAt": "2026-11-16T22:31:43.886Z",
       "url": "https://luma.com/673y4m0q",
       "etag": "",
       "lastModified": ""
     },
     "蚂蚁灵波具身大模型挑战赛": {
       "fingerprint": "6631bf53df7ac396c64f92e380768f4965fd735b05694b806068291551044a58",
-      "checkedAt": "2026-10-09T20:06:22.084Z",
+      "checkedAt": "2026-11-16T22:31:43.886Z",
       "url": "https://tianchi.aliyun.com/",
       "etag": "W/\"12b89-hKcxdNaAaHNary10PJGBRXnLABM\"",
       "lastModified": ""
     },
     "payathon-2026": {
-      "fingerprint": "bfbc406a262c30c5a6252247de99e4e0ccc3382baa91739cf1004138ebc6061c",
-      "checkedAt": "2026-10-09T18:31:34.247Z",
+      "fingerprint": "3ed303153692b523d1e20b465a4899dd735a3db5560758385d942aca3b5b8cdd",
+      "checkedAt": "2026-11-16T22:31:43.886Z",
       "url": "https://aipay.alipay.com/community/events/payathon-2026",
-      "etag": "W/\"a3870-y4vcfRHMZwS8sPUg4EFdXefgGaE\"",
+      "etag": "W/\"bbf8f-mGhRPQNRHQwH2b2H5AhYNu+Xyyw\"",
       "lastModified": ""
     }
   }
