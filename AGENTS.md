@@ -10,8 +10,9 @@
 ## 目录速览
 
 ```
-site/index.html            网页（单文件应用，UI/渲染逻辑都在这，数据不在）
-site/data/events.json      ★ 唯一数据源（赛事 + 快讯 + 专栏）
+site-v2/index.html         ★ 当前主前端（移动端优先；WorkBuddy / CloudBase 应部署这套）
+site/index.html            旧版前端，仅保留兼容与历史参考，不再作为主 UI
+site/data/events.json      ★ 唯一赛事数据源（赛事 + 快讯 + 专栏）
 site/assets/posters/       海报与报名二维码（本地文件，不热链外站）
 miniprogram/               微信小程序端（页面 + 数据包）
 tools/                     维护脚本（见下）
@@ -21,7 +22,7 @@ docs/                      背景文档（抓取源清单、部署方案、字�
 
 ## 核心机制：数据与代码分离
 
-网页每次打开时 `fetch('data/events.json')` 渲染。**改数据 = 改 JSON，不用动 HTML，不用重新发布**（发布一次的站点会持续读到最新 JSON；若平台缓存 JSON，可用强刷或改文件名破缓存）。
+当前主前端 `site-v2/index.html` 采用三级数据读取：优先 `/api/content`，其次读取 GitHub Pages 的公开实时数据 `https://chen002129.github.io/future-zaowu-arena/data/events.json`，最后才回退到本地 `site-v2/data/events.json`。因此 **改赛事数据 ≠ 重新部署前端**；WorkBuddy 只需要在 UI / 功能变化时重新发布。
 
 `events.json` 结构：
 
@@ -54,9 +55,11 @@ docs/                      背景文档（抓取源清单、部署方案、字�
 4. `node tools/verify.js` → `node tools/build-mp-data.js` → 如需发布见下节
 
 ### 发布
-- 网页：WorkBuddy 的 `workbuddy_sites_deploy`，`directory: site`，`domainPrefix: future-zaowu-arena`，`applicationId: wbapp_p5IqiBBFBjDwpJuLsE7tgl`（覆盖发布，链接不变）
-- **发布后必须 curl 验证**：`curl -s -o /dev/null -w "%{http_code}" https://future-zaowu-arena.app.workbuddy.host/data/events.json`
-- 小程序：数据包变了要重新上传版本（微信离线包机制，无法实时）；账号注册/绑定流程见 `docs/部署方案.md`
+- 主前端目录：`site-v2/`。
+- WorkBuddy 只负责发布主前端；赛事数据由 GitHub Actions 更新 `site/data/events.json`，页面打开时会实时读取 GitHub Pages 数据地址，不要求因数据变化而重新部署 WorkBuddy。
+- GitHub Pages 仅承担公开数据/预览通道，不作为交互后端。
+- 正式发布后至少验证：主页面可打开、实时数据地址可访问、赛事卡片海报可加载、详情页可打开。
+- 小程序：数据包变了仍需重新上传版本（微信离线包机制）。
 
 ## 铁律（违反过的教训，必须遵守）
 
@@ -66,7 +69,7 @@ docs/                      背景文档（抓取源清单、部署方案、字�
 4. **聚合源（HackerTrip 等）给的信息只是线索**。报名状态/截止/奖金/场地/参赛资格/主办方身份六项，发布前须回溯主办方官网核验；核验不了就 `verifyState: "pending"`，**界面上不显示「待核验」字样**（用户明确要求过），但不许把它伪装成已核验。
 5. **不显示数据来源链路**（如「来自 XX 聚合站」），界面上不出现采集痕迹。
 6. **两端同源**：网页和小程序的数据都出自 `site/data/events.json`，改数据后跑 `build-mp-data.js`，不要手改 `miniprogram/data/*.js`。
-7. **改完 site/ 立即发布并 curl 验证**，不要只改本地。
+7. **UI / 功能修改优先改 site-v2/**；纯赛事数据修改只改 `site/data/events.json` 并让自动链路更新，不要为了数据变动重复部署前端。
 8. **不做账号/登录体系**（用户 2026-10-07 明确决定），收藏只存本机 + 设备同步码，别加回任何鉴权。
 9. **`ended` 字段不可信**，判断是否截止以 `deadline` 日期计算为准；已截止赛事应及时下架。
 10. **`.workbuddy/` 是项目数据目录，永远不要删除**。
