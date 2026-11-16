@@ -52,9 +52,21 @@ const MODES = ['线上', '线下', '混合'];
   if (e.country && e.country !== '中国') push(errors, tag + ' 是国外赛事（铁律：不收录国外）');
 
   if (!e.poster) push(errors, tag + ' 缺原始海报（铁律：无海报不发布）');
-  else {
+  else if (/^https?:\/\//.test(e.poster)) {
+    if (!(e.tier === 'official' || e.verifyState === 'verified')) {
+      push(warns, tag + ' 使用远程海报，但赛事尚未标记为官方/已核验');
+    }
+  } else {
     const f = path.join(SITE, e.poster);
-    if (!fs.existsSync(f)) push(errors, tag + ' 海报文件不存在：' + e.poster);
+    if (!fs.existsSync(f)) {
+      const hasVerifiedRemoteFallback = !!e.cardPosterSource && /^https?:\/\//.test(e.cardPosterSource) && (e.tier === 'official' || e.verifyState === 'verified');
+      const hasLocalCard = !!e.cardPoster && fs.existsSync(path.join(SITE, e.cardPoster));
+      if (hasVerifiedRemoteFallback && hasLocalCard) {
+        push(warns, tag + ' 原始海报本地文件缺失，当前使用已核验官方卡片图兜底：' + e.poster);
+      } else {
+        push(errors, tag + ' 海报文件不存在：' + e.poster);
+      }
+    }
   }
   if (!e.cardPoster) push(errors, tag + ' 缺卡片横版海报（铁律：无卡片海报不发布）');
   else {
