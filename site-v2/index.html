@@ -1230,7 +1230,7 @@ function audienceLabel(e){
   return e.audienceGroup||e.audience||'开放报名';
 }
 function posterMarkup(e,cls='posterImg'){
-  const src=e.cardPoster||e.poster;
+  const src=assetUrl(e.cardPoster||e.poster);
   if(!src) return '';
   const alt=String(e.title||'赛事海报').replace(/"/g,'&quot;');
   return '<img class="'+cls+'" src="'+src+'" alt="'+alt+'" loading="lazy" '+
@@ -1676,7 +1676,7 @@ function openEvent(id){
   const saved=favs.has(e.id);
   document.getElementById('detailContent').innerHTML=`
     <section class="detailHero">
-      ${e.poster?`<div class="detailPoster"><img class="posterImg" src="${e.poster}" alt="赛事官方海报" loading="lazy"></div>`:''}
+      ${e.poster?`<div class="detailPoster"><img class="posterImg" src="${assetUrl(e.poster)}" alt="赛事官方海报" loading="lazy"></div>`:''}
       <div class="eyebrow">${st.t} · ${shortDate(e.deadline)} 截止</div>
       <h2>${e.title}</h2>
       <p>${e.parentNote||e.summary||''}</p>
@@ -1870,11 +1870,19 @@ document.getElementById('mobileDock').onclick=e=>{
 };
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){['search','detail','article'].forEach(closeLayer)}});
 
+const LIVE_DATA_URL='https://chen002129.github.io/future-zaowu-arena/data/events.json';
+const LIVE_ASSET_BASE='https://chen002129.github.io/future-zaowu-arena/';
 let LAST_SYNC=0;
 let DATA_SOURCE='fallback';
+let DATA_ASSET_BASE='';
+function assetUrl(src){
+  const v=String(src||'');
+  if(!v || /^(?:https?:)?\/\//i.test(v) || v.startsWith('data:') || v.startsWith('blob:')) return v;
+  return DATA_ASSET_BASE ? DATA_ASSET_BASE + v.replace(/^\.\//,'') : v;
+}
 function applyData(next,source){
   if(!next || !Array.isArray(next.events)) return false;
-  DATA=next; DATA_SOURCE=source; LAST_SYNC=Date.now();
+  DATA=next; DATA_SOURCE=source; DATA_ASSET_BASE=(source==='github-pages'?LIVE_ASSET_BASE:''); LAST_SYNC=Date.now();
   renderMeta(); renderStage(); renderArticles(); renderFavPage(); renderMap();
   return true;
 }
@@ -1883,6 +1891,11 @@ async function refreshContent(){
     const r=await fetch('/api/content',{cache:'no-store'});
     if(!r.ok) throw new Error('API '+r.status);
     if(applyData(await r.json(),'api')) return true;
+  }catch(e){}
+  try{
+    const r=await fetch(LIVE_DATA_URL+'?t='+Date.now(),{cache:'no-store',mode:'cors'});
+    if(!r.ok) throw new Error('live '+r.status);
+    if(applyData(await r.json(),'github-pages')) return true;
   }catch(e){}
   try{
     const r=await fetch('data/events.json',{cache:'no-store'});
