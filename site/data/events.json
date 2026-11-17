@@ -1,6 +1,6 @@
 {
   "_readme": "未来造物赛场 · 唯一数据源。改这里即可，网页会自动读取。小程序数据由 tools/build-mp-data.js 从本文件生成，请勿手工改两端中的任意一份。",
-  "updatedAt": "2026-11-17T07:22:00.000Z",
+  "updatedAt": "2026-11-17T08:24:54.000Z",
   "chg": {
     "caltech-mathathon": "2026-09-28"
   },
@@ -1360,6 +1360,23 @@
   ],
   "radar": [
     {
+      "id": "ercc-2026-ai-future-engineer",
+      "title": "第16届中国教育机器人大赛暨AI+未来工程师全球挑战计划",
+      "website": "https://ercc.org.cn/index/notices/31.html",
+      "sourceUrl": "https://ercc.org.cn/index/notices/31.html",
+      "city": "广东省东莞市松山湖XbotPark机器人基地",
+      "organizer": "中国教育机器人大赛组委会",
+      "deadline": "2026-11-10",
+      "startDate": "2026-11-27",
+      "endDate": "2026-11-29",
+      "audience": "高校、高职、中学、中职在校学生；AI+挑战面向高校学生、研究生及青年创客",
+      "prize": "各赛项一、二、三等奖及证书；AI+挑战设冠亚季军、创新原型奖等，未公布奖金",
+      "reason": "2026-10-21官方第二轮通知已核验赛事、场地、对象、奖项和报名入口；11月10日报名截止，现已过期，仅作为历史赛事线索，不得展示为可报名",
+      "verifyState": "verified-ended",
+      "discoveredAt": "2026-11-17T08:24:54.000Z",
+      "updatedAt": "2026-11-17T08:24:54.000Z"
+    },
+    {
       "id": "china-valley-ai-competition-2026",
       "title": "2026年中国算谷人工智能大赛",
       "deadline": "2026-11-20",
@@ -1439,10 +1456,10 @@
       "city": "全国·线上赛季",
       "organizer": "以官方赛事页为准",
       "deadline": "",
-      "reason": "天池官方赛制写明冬季仿真 2026-09-29 至 12-31、春季仿真+真机 2027-01-01 至 03-31，赛季内持续开放报名；尚未核实精确报名截止及主办方，暂不正式上架",
+      "reason": "阿里云天池官方赛制明确2026-09-24启动报名，2026-09-29至12-31冬季仿真、2027-01-01至03-31春季仿真+真机，赛季内持续开放报名；尚无独立精确截止日及经核实的官方主视觉，保留候选，不将赛季结束日冒充报名截止",
       "verifyState": "pending",
       "discoveredAt": "2026-11-17T05:18:00.000Z",
-      "updatedAt": "2026-11-17T05:18:00.000Z"
+      "updatedAt": "2026-11-17T08:24:54.000Z"
     },
     {
       "id": "mp-ht-alipay-emerge-2026-ad4430da",
