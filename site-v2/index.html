@@ -458,6 +458,12 @@ body{background:
 .submitPageCard h2{font-size:42px;line-height:1.02;letter-spacing:-.05em;margin:26px 0 14px;position:relative;z-index:1}
 .submitPageCard p{font-size:14px;line-height:1.8;color:var(--ink2);max-width:560px;position:relative;z-index:1}
 .submitPageBtn{position:relative;z-index:1;margin-top:26px;height:52px;padding:0 20px;border:0;border-radius:14px;background:var(--ink);color:#fff}
+.submitContactBox{position:relative;z-index:1;margin-top:28px;padding:20px;border-radius:18px;background:rgba(255,255,255,.72);border:1px solid rgba(47,111,255,.10)}
+.submitContactBox small{font-size:10px;color:var(--ink3)}
+.submitContactBox h3{font-size:22px;margin:7px 0 10px}
+.submitContactBox p{margin:0;font-size:13px;line-height:1.75;color:var(--ink2)}
+.submitContactBox .submitPageBtn{margin-top:18px}
+.submitStatus{display:block;margin-top:10px;font-size:11px;color:var(--ink3)}
 
 /* cute transition loader */
 .viewLoader{position:fixed;inset:0;z-index:180;display:grid;place-items:center;background:rgba(245,248,253,.82);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);opacity:0;pointer-events:none;transition:opacity .18s ease}
@@ -1144,23 +1150,19 @@ body{background:
     <div class="pageHero small">
       <div class="kicker">ORGANIZER ENTRY</div>
       <h1>赛事投稿。</h1>
-      <p>主办方可以把赛事提交给未来造物。审核后动态上架，不需要重新发版。</p>
+      <p>暂不走网站审核队列。把赛事资料直接发给未来造物科创，我们核验后进入实时赛事库。</p>
     </div>
     <div class="submitPageCard">
       <span class="submitSticker">OPEN CALL</span>
-      <h2>把你的赛事<br>放进赛场。</h2>
-      <p>面向中国区 AI、AIGC、智能体、AI Coding、智能硬件等赛事。提交后进入待审核队列，通过后动态上架。</p>
-      <form class="submitForm" id="submitForm">
-        <input name="title" placeholder="赛事名称" required>
-        <input name="organizer" placeholder="主办方">
-        <input name="city" placeholder="城市 / 线上">
-        <input name="deadline" type="date">
-        <input name="officialUrl" placeholder="官方页面">
-        <input name="contact" placeholder="联系人 / 微信 / 手机" required>
-        <textarea name="note" placeholder="补充说明"></textarea>
-        <button class="submitPageBtn" type="submit">提交给未来造物 →</button>
+      <h2>把你的赛事<br>发给未来造物。</h2>
+      <p>面向中国区 AI、AIGC、智能体、AI Coding、智能硬件等赛事。请准备：赛事名称、官方链接、报名截止时间、举办地点、主办方、官方海报。</p>
+      <div class="submitContactBox">
+        <small>投稿方式</small>
+        <h3>联系「未来造物科创」工作人员</h3>
+        <p>把上面的赛事资料一次性发过来即可。我们会回到官方来源核验，确认后直接写入赛事库；赛事数据更新后，网站会自动显示，不需要重新部署。</p>
+        <button class="submitPageBtn" id="copySubmitGuide" type="button">复制投稿清单</button>
         <span class="submitStatus" id="submitStatus"></span>
-      </form>
+      </div>
     </div>
   </section>
 
@@ -1877,19 +1879,14 @@ function closeLayer(which){
 }
 document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>closeLayer(b.dataset.close));
 
-document.getElementById('submitForm')?.addEventListener('submit',async e=>{
-  e.preventDefault();
-  const form=e.currentTarget,statusEl=document.getElementById('submitStatus');
-  const data=Object.fromEntries(new FormData(form).entries());
-  if(statusEl)statusEl.textContent='小 F 正在投递…';
+document.getElementById('copySubmitGuide')?.addEventListener('click',async()=>{
+  const text='赛事投稿资料\n1. 赛事名称：\n2. 官方链接：\n3. 报名截止时间：\n4. 举办地点 / 线上：\n5. 主办方：\n6. 官方海报：\n7. 其他补充：';
+  const statusEl=document.getElementById('submitStatus');
   try{
-    const r=await fetch('/api/submit',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(data)});
-    if(!r.ok)throw new Error('submit '+r.status);
-    const out=await r.json();
-    if(statusEl)statusEl.textContent='已收到 · 编号 '+out.id;
-    form.reset();
-  }catch(err){
-    if(statusEl)statusEl.textContent='当前是预览环境，正式后端上线后这里会直接进入审核队列。';
+    await navigator.clipboard.writeText(text);
+    if(statusEl)statusEl.textContent='投稿清单已复制，发给未来造物科创工作人员即可。';
+  }catch(e){
+    if(statusEl)statusEl.textContent='请把赛事名称、官方链接、截止时间、地点、主办方和官方海报发给未来造物科创。';
   }
 });
 document.getElementById('desktopSubmit')?.addEventListener('click',()=>switchView('submit',document.querySelector('[data-dock="submit"]')));
