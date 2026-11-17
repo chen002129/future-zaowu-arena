@@ -167,8 +167,20 @@ for(const event of db.events||[]){
   }
 
   if(!picked){
+    // A previously verified, committed card is safer than inventing a new poster.
+    // Preserve its existing source metadata and let the remaining events update.
+    if(fs.existsSync(out)){
+      try{
+        const meta=await sharp(out,{failOn:'none'}).metadata();
+        if(meta.width===1200 && meta.height===675 && event.cardPosterSource){
+          event.cardPoster='assets/posters/cards/'+name;
+          console.warn('CARD RETAINED',event.title,'existing verified card',event.cardPosterSource);
+          continue;
+        }
+      }catch{}
+    }
     failures++;
-    console.error('CARD FAILED',event.title,lastErr?.message||'no usable source');
+    console.error('CARD FAILED',event.title,lastErr?.message||'no usable source or verified local card');
     continue;
   }
 
