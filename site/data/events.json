@@ -1,6 +1,6 @@
 {
   "_readme": "未来造物赛场 · 唯一数据源。改这里即可，网页会自动读取。小程序数据由 tools/build-mp-data.js 从本文件生成，请勿手工改两端中的任意一份。",
-  "updatedAt": "2026-11-17T17:42:43.982Z",
+  "updatedAt": "2026-11-17T17:45:24.398Z",
   "chg": {
     "caltech-mathathon": "2026-09-28"
   },
@@ -1047,6 +1047,157 @@
         "source": "阿里云天池官方赛事列表",
         "sourceUrl": "https://s.tianchi.aliyun.com/competition/aillmList",
         "verifiedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "huawei-ict-innovation-2026",
+      "title": "第十一届华为 ICT 大赛 · 创新赛",
+      "src": "华为 ICT 大赛官方报名页 / 高校通知交叉核验",
+      "tier": "official",
+      "verifyState": "verified",
+      "mode": "混合",
+      "city": "全国",
+      "tags": [
+        "AI",
+        "智能体",
+        "大模型",
+        "华为ICT",
+        "高校"
+      ],
+      "deadline": "2026-11-30",
+      "prize": "以华为 ICT 大赛官方赛道规则为准",
+      "featured": true,
+      "theme": "AI 技术与 ICT 技术综合应用创新",
+      "tracks": [
+        "创新赛：AI 技术、智能体、大模型、云计算、物联网等综合创新"
+      ],
+      "tech": [
+        "华为人工智能技术",
+        "昇思 MindSpore",
+        "ModelEngine",
+        "Ascend",
+        "AI 大模型"
+      ],
+      "summary": "第十一届华为 ICT 大赛创新赛面向高校学生，强调使用 AI 与 ICT 技术解决真实场景问题，作品需体现应用场景创新、商业落地潜力和完整技术架构，并提交技术文档、代码与演示材料。中国赛报名截止至 2026 年 11 月 30 日。",
+      "website": "https://e.huawei.com/cn/talent/ict-academy/#/ict-contest?compId=85132018",
+      "poster": "https://jwc.hdu.edu.cn/_upload/article/images/a8/24/b3b128a94a01b1c1ab74db37bb47/5462337b-b3f7-495e-9585-a1a2b48edf1c.jpg",
+      "cardPoster": "https://jwc.hdu.edu.cn/_upload/article/images/a8/24/b3b128a94a01b1c1ab74db37bb47/5462337b-b3f7-495e-9585-a1a2b48edf1c.jpg",
+      "cardPosterSource": "https://jwc.hdu.edu.cn/2026/1020/c13482a301689/page.htm",
+      "cardPosterUpdatedAt": "2026-11-17T17:45:24.398Z",
+      "qr": "",
+      "up": 0,
+      "ended": false,
+      "dateRange": "08.31 – 11.30 报名",
+      "teamSize": "高校学生组队参赛；具体人数与互斥赛道规则以官方报名页为准",
+      "organizer": "华为技术有限公司",
+      "agenda": [
+        {
+          "d": "2026-08-31",
+          "t": "中国赛开放报名"
+        },
+        {
+          "d": "2026-11-30",
+          "t": "创新赛报名截止"
+        },
+        {
+          "d": "2026-12",
+          "t": "创新赛初赛"
+        },
+        {
+          "d": "2027-03",
+          "t": "中国总决赛"
+        },
+        {
+          "d": "2027-05",
+          "t": "全球总决赛"
+        }
+      ],
+      "updatedAt": "2026-11-17T17:45:24.398Z",
+      "infoUpdatedAt": "2026-11-17T17:45:24.398Z",
+      "audience": "全国高校在校学生",
+      "audienceGroup": "高校",
+      "level": "进阶",
+      "parentNote": "适合有完整项目能力、希望把 AI 技术做成真实解决方案的高校学生。",
+      "location": {
+        "scope": "national",
+        "country": "中国",
+        "province": null,
+        "city": null,
+        "lat": null,
+        "lng": null,
+        "label": "全国"
+      }
+    },
+    {
+      "id": "national-youth-ai-innovation-11",
+      "title": "第十一届全国青年人工智能创新创业大赛",
+      "src": "哈尔滨工业大学（深圳）官方通知",
+      "tier": "official",
+      "verifyState": "verified",
+      "mode": "混合",
+      "city": "深圳",
+      "tags": [
+        "人工智能",
+        "创新创业",
+        "高校",
+        "青年",
+        "揭榜挂帅"
+      ],
+      "deadline": "2026-11-30",
+      "prize": "各赛道设特等奖、一等奖、二等奖；以组委会最终公布为准",
+      "featured": true,
+      "theme": "人工智能前沿技术创新、产业落地与青年人才培育",
+      "tracks": [
+        "创新赛道",
+        "创业赛道",
+        "揭榜挂帅专项赛"
+      ],
+      "tech": [
+        "大模型",
+        "智能体",
+        "具身智能",
+        "人工智能应用"
+      ],
+      "summary": "由中国人工智能学会主办、哈尔滨工业大学（深圳）承办，面向高校学生、青年科研人员、AI 创业企业及创业个人。主体赛事包含创新赛道与创业赛道，并设置“揭榜挂帅”专项赛。报名截止至 2026 年 11 月 30 日 24:00，初赛在 12 月初进行，总决赛于 12 月末在深圳举行。",
+      "website": "https://carc.hitsz.edu.cn/info/1022/3933.htm",
+      "poster": "https://carc.hitsz.edu.cn/__local/F/CD/65/2C5AFE89536378B2494414C566A_246AD076_12D72.jpg",
+      "cardPoster": "https://carc.hitsz.edu.cn/__local/F/CD/65/2C5AFE89536378B2494414C566A_246AD076_12D72.jpg",
+      "cardPosterSource": "https://carc.hitsz.edu.cn/info/1022/3933.htm",
+      "cardPosterUpdatedAt": "2026-11-17T17:45:24.398Z",
+      "qr": "",
+      "up": 0,
+      "ended": false,
+      "dateRange": "10.29 – 12 月末",
+      "teamSize": "个人或团队；每队 1–7 名成员，其中 1–5 名队员、0–2 名指导老师",
+      "organizer": "中国人工智能学会",
+      "agenda": [
+        {
+          "d": "2026-11-30 24:00",
+          "t": "主体赛事报名截止"
+        },
+        {
+          "d": "2026-12 初",
+          "t": "初赛评审"
+        },
+        {
+          "d": "2026-12 末",
+          "t": "深圳现场总决赛"
+        }
+      ],
+      "updatedAt": "2026-11-17T17:45:24.398Z",
+      "infoUpdatedAt": "2026-11-17T17:45:24.398Z",
+      "audience": "高校学生 / 青年科研人员 / AI 创业者",
+      "audienceGroup": "高校 / 开发者",
+      "level": "进阶",
+      "parentNote": "适合已有 AI 项目或科研成果，希望继续做技术落地、路演与产业对接的团队。",
+      "location": {
+        "scope": "venue",
+        "country": "中国",
+        "province": "广东省",
+        "city": "深圳市",
+        "lat": 22.5431,
+        "lng": 114.0579,
+        "label": "深圳 · 总决赛"
       }
     }
   ],
