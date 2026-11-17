@@ -1,6 +1,6 @@
 {
   "_readme": "未来造物赛场 · 唯一数据源。改这里即可，网页会自动读取。小程序数据由 tools/build-mp-data.js 从本文件生成，请勿手工改两端中的任意一份。",
-  "updatedAt": "2026-11-17T09:18:00.000Z",
+  "updatedAt": "2026-11-17T10:14:00.000Z",
   "chg": {
     "caltech-mathathon": "2026-09-28"
   },
@@ -1367,10 +1367,10 @@
       "organizer": "中国电科（赛事官网）",
       "website": "https://wangxinbei.taiji.com.cn/",
       "sourceUrl": "https://wangxinbei.taiji.com.cn/",
-      "reason": "官方赛事站2026-11-15公告初赛11-16启动；报名截止时间未核实，不能标记可报名，等待核对官方章程与公告。",
+      "reason": "官方赛事站11月15日发布《关于大赛报名截止、评分机制及奖金发放的说明》及初赛启动公告（11月16日初赛启动）；公告正文的具体报名截止尚未提取核验，不标记可报名。待逐条核对官方公告正文、章程及参赛入口。",
       "verifyState": "pending",
       "discoveredAt": "2026-11-17T09:18:00.000Z",
-      "updatedAt": "2026-11-17T09:18:00.000Z"
+      "updatedAt": "2026-11-17T10:14:00.000Z"
     },
     {
       "id": "poreva-open-2026",
@@ -1384,19 +1384,6 @@
       "verifyState": "official_partial",
       "discoveredAt": "2026-11-17T09:18:00.000Z",
       "updatedAt": "2026-11-17T09:18:00.000Z"
-    },
-    {
-      "id": "mp-ht-78af8938df31406bb50fd1791c31ea46",
-      "title": "DDC 2026 地瓜机器人黑客松",
-      "deadline": "2026-11-24",
-      "city": "上海",
-      "organizer": "地瓜机器人",
-      "website": "https://hackathon.d-robotics.cc",
-      "sourceUrl": "https://hackathon.d-robotics.cc",
-      "reason": "发现截止时间变化：2026-11-30 → 2026-11-24，等待官方核验",
-      "verifyState": "pending",
-      "discoveredAt": "2026-11-17T08:30:01.900Z",
-      "updatedAt": "2026-11-17T08:30:01.900Z"
     },
     {
       "id": "ercc-2026-ai-future-engineer",
@@ -1495,10 +1482,13 @@
       "city": "全国·线上赛季",
       "organizer": "开放原子开源基金会 / OpenLET具身智能开源数据集社区",
       "deadline": "",
-      "reason": "天池官方规则确认：2026-09-24启动报名，冬季仿真赛2026-09-29至12-31，春季仿真+真机赛2027-01-01至03-31，赛季内持续开放报名；未设单一报名截止日期，奖金金额待公布。主办：开放原子开源基金会、OpenLET具身智能开源数据集社区。因正式 events 校验要求具体截止日期和海报，暂存 radar，不把赛季结束日伪装成报名截止日。",
+      "reason": "阿里云天池官方赛事规则确认：9月24日启动报名、赛季内持续开放；冬季赛2026-09-29至12-31、春季赛2027-01-01至03-31、真机总决赛2027-05-24至28。官方未给出单一报名截止日，不能将赛季结束日作为截止日；仍待官方主视觉及赛事数据模型支持持续报名。",
       "verifyState": "official_partial",
       "discoveredAt": "2026-11-17T05:18:00.000Z",
-      "updatedAt": "2026-11-17T09:18:00.000Z"
+      "updatedAt": "2026-11-17T10:14:00.000Z",
+      "registrationStatus": "赛季内持续开放报名（天池官方规则明确；无单一截止日）",
+      "dateRange": "2026-09-29 至 2027-03-31；真机总决赛 2027-05-24 至 05-28",
+      "audience": "高校、科研机构、企业研发团队、个人开发者、开源贡献者、创业团队"
     },
     {
       "id": "mp-ht-alipay-emerge-2026-ad4430da",
