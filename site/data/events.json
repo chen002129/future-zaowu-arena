@@ -1,6 +1,6 @@
 {
   "_readme": "未来造物赛场 · 唯一数据源。改这里即可，网页会自动读取。小程序数据由 tools/build-mp-data.js 从本文件生成，请勿手工改两端中的任意一份。",
-  "updatedAt": "2026-11-18T00:25:00+08:00",
+  "updatedAt": "2026-11-17T17:42:43.982Z",
   "chg": {
     "caltech-mathathon": "2026-09-28"
   },
@@ -360,7 +360,7 @@
       ],
       "tech": [],
       "summary": "活动简介。 苏客松（SU2026）是一场为期 3 天 2 夜的苏州线下 AI 黑客松，主题「AIxEverything —— 世界的下一个版本，由我们定义」。100+ 支队伍在苏州同场竞技，48 小时把想法变成 Demo。赛事辐射武汉、西安、成都三城，联动西客松、雾客松、成客松，是「客松」系列跨城共创实验的重要一站。 挑战内容。 开放式命题：围绕「AIxEverything」主题，不限技术栈、不…",
-      "website": "https://www.feishu.cn/share/base/form/shrcniqIssfoG8ctJVRv9A9oEBf?share_link_type=qrcode&ccm_open_type=form_qrcode",
+      "website": "https://weibo.com/2/detail/5351443240584148",
       "poster": "assets/posters/p13aaf8e8d1.jpg",
       "qr": "",
       "up": 1318,
@@ -398,6 +398,16 @@
         "lat": 31.2989,
         "lng": 120.5853,
         "label": "苏州"
+      },
+      "websiteLabel": "查看赛事信息",
+      "registrationMethod": "关注「Page 0 序章」公众号，后台回复「苏客松」；当前赛事已结束",
+      "participation": {
+        "type": "scale",
+        "count": 100,
+        "label": "100+ 支队伍",
+        "source": "Page 0 序章官方信息（经公开赛事页转述）",
+        "sourceUrl": "https://hackertrip.space/hackathon/ht-2026",
+        "verifiedAt": "2026-11-17"
       }
     },
     {
@@ -1029,6 +1039,14 @@
         "lat": null,
         "lng": null,
         "label": "全国 · 线上"
+      },
+      "participation": {
+        "type": "teams",
+        "count": 240,
+        "label": "240 支团队",
+        "source": "阿里云天池官方赛事列表",
+        "sourceUrl": "https://s.tianchi.aliyun.com/competition/aillmList",
+        "verifiedAt": "2026-11-17"
       }
     }
   ],
