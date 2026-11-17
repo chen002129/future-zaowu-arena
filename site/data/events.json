@@ -1,6 +1,6 @@
 {
   "_readme": "未来造物赛场 · 唯一数据源。改这里即可，网页会自动读取。小程序数据由 tools/build-mp-data.js 从本文件生成，请勿手工改两端中的任意一份。",
-  "updatedAt": "2026-11-17T13:22:18.230Z",
+  "updatedAt": "2026-11-18T00:18:00+08:00",
   "chg": {
     "caltech-mathathon": "2026-09-28"
   },
@@ -1030,6 +1030,85 @@
         "lng": null,
         "label": "全国 · 线上"
       }
+    },
+    {
+      "id": "china-valley-ai-competition-2026",
+      "title": "2026年中国算谷人工智能大赛",
+      "src": "中国算谷人工智能大赛官方赛事站",
+      "tier": "official",
+      "sourceTier": "primary",
+      "verifyState": "verified",
+      "mode": "混合",
+      "city": "甘肃庆阳",
+      "country": "中国",
+      "tags": [
+        "人工智能",
+        "智能体",
+        "模型算法",
+        "AI应用"
+      ],
+      "deadline": "2026-11-20",
+      "prize": "四赛道分别设一等奖5万元、二等奖2万元、三等奖5000元、优胜奖2000元（税前）",
+      "featured": false,
+      "theme": "创新实践与创业应用",
+      "tracks": [
+        "智能体与交叉融合创新",
+        "模型算法与科学智能创新",
+        "智能体与数智服务应用",
+        "模型算法与产业智能应用"
+      ],
+      "tech": [
+        "AI Agent",
+        "模型算法"
+      ],
+      "summary": "全国企业及其研发、应用团队，以及学校、科研机构可按赛事规则组队参赛。每队1—3名选手，配1名指导教师或领队。报名与初赛成果提交截止为11月20日24:00；11月21—28日线上初赛与晋级公示；12月4—5日在庆阳职业技术学院举行现场决赛，12月6日颁奖。报名须完成团队报名并正式提交初赛成果，分别取得回执。",
+      "website": "https://cvaic.qyvtc.cn/",
+      "authoritativeUrl": "https://cvaic.qyvtc.cn/competition",
+      "registrationUrl": "https://cvaic.qyvtc.cn/",
+      "poster": "",
+      "posterState": "pending_official_visual",
+      "qr": "",
+      "ended": false,
+      "dateRange": "12.04 – 12.06",
+      "teamSize": "每队1—3名选手，配1名指导教师或领队（另计）",
+      "organizer": "中国算谷人工智能大赛组委会",
+      "agenda": [
+        {
+          "d": "2026-11-01 00:00 至 2026-11-20 24:00",
+          "t": "报名与初赛成果提交"
+        },
+        {
+          "d": "2026-11-21 至 2026-11-28",
+          "t": "线上初赛与晋级公示"
+        },
+        {
+          "d": "2026-11-29 至 2026-12-03 24:00",
+          "t": "晋级团队决赛成果提交与版本冻结"
+        },
+        {
+          "d": "2026-12-04 至 2026-12-05",
+          "t": "庆阳职业技术学院现场决赛"
+        },
+        {
+          "d": "2026-12-06",
+          "t": "颁奖"
+        }
+      ],
+      "updatedAt": "2026-11-18T00:18:00+08:00",
+      "infoUpdatedAt": "2026-11-18T00:18:00+08:00",
+      "lastVerifiedAt": "2026-11-18T00:18:00+08:00",
+      "audience": "全国企业及其研发、应用团队；学校、科研机构按规则组队",
+      "audienceGroup": "开发者",
+      "level": "进阶",
+      "parentNote": "赛事要求团队提交技术报告、演示文稿、演示视频及验证材料；报名与作品提交是两个独立步骤。",
+      "location": {
+        "scope": "venue",
+        "country": "中国",
+        "province": "甘肃省",
+        "city": "庆阳市",
+        "label": "庆阳职业技术学院 · 甘肃庆阳"
+      },
+      "venue": "庆阳职业技术学院，甘肃省庆阳市西峰区长庆大道南段23号"
     }
   ],
   "flashes": [
@@ -1453,39 +1532,6 @@
       "updatedAt": "2026-11-17T08:24:54.000Z"
     },
     {
-      "id": "china-valley-ai-competition-2026",
-      "title": "2026年中国算谷人工智能大赛",
-      "deadline": "2026-11-20",
-      "city": "甘肃省庆阳市",
-      "organizer": "中国算谷人工智能大赛组委会",
-      "website": "https://cvaic.qyvtc.cn/",
-      "sourceUrl": "https://cvaic.qyvtc.cn/rules",
-      "registrationUrl": "https://cvaic.qyvtc.cn/",
-      "mode": "混合",
-      "audience": "全国企业、学校及科研机构；1—3人团队，另配1名指导教师或领队",
-      "prize": "四赛道各设一等奖5万元、二等奖2万元、三等奖5000元、优胜奖2000元（税前）",
-      "dateRange": "2026-11-01 至 2026-12-06",
-      "venue": "庆阳职业技术学院，甘肃省庆阳市西峰区长庆大道南段23号",
-      "location": {
-        "scope": "city",
-        "country": "中国",
-        "province": "甘肃省",
-        "city": "庆阳市",
-        "label": "甘肃庆阳"
-      },
-      "tracks": [
-        "智能体与交叉融合创新",
-        "模型算法与科学智能创新",
-        "智能体与数智服务应用",
-        "模型算法与产业智能应用"
-      ],
-      "reason": "主办方官网已核验报名及初赛提交截止2026-11-20 24:00、12月4—5日现场决赛、12月6日颁奖、参赛对象与奖项；尚缺可验证的官方海报及标准卡片素材，遵守无海报不发布规则，先列入候选",
-      "verifyState": "verified",
-      "posterState": "pending_official_visual",
-      "discoveredAt": "2026-11-17T07:22:00.000Z",
-      "updatedAt": "2026-11-17T07:22:00.000Z"
-    },
-    {
       "id": "tianchi-chip2026-patient-phenotype",
       "title": "CHIP2026 面向生物医学全文的特定患者表型概念识别任务",
       "website": "https://tianchi.aliyun.com/competition/programList",
@@ -1719,6 +1765,35 @@
       "note": "含智能艺术生成、向善智创应用、智能算法等方向；不同赛道与地区报名状态不同，需以活动页为准。",
       "why": "这是更贴近中小学生年龄层的一类赛事。比“比赛级别”更值得看的是：孩子能否独立解释问题、过程和作品。",
       "official": true
+    },
+    {
+      "id": "tianchi-embodied-world-realworld-2026",
+      "title": "2026 具身世界 RealWorld 挑战赛",
+      "website": "https://tianchi.aliyun.com/competition/activeList",
+      "sourceUrl": "https://tianchi.aliyun.com/competition/activeList",
+      "city": "线上/线下形式待核验",
+      "organizer": "阿里云天池赛事页所列主办方待赛题详情核实",
+      "deadline": "",
+      "reason": "阿里云天池官方赛事列表显示该赛题仍标记 Register Now，奖金30万元、赛程至2026-11-30；但列表页未明确报名截止、主办方全称、参赛条件和具体规则。仅保留候选，不能将比赛结束日写成报名截止。",
+      "verifyState": "official_partial",
+      "discoveredVia": "阿里云天池官方赛事列表",
+      "discoveredAt": "2026-11-18T00:18:00+08:00",
+      "updatedAt": "2026-11-18T00:18:00+08:00"
+    },
+    {
+      "id": "wrc-youth-robotics-ai-selection-2026-2027",
+      "title": "2026—2027 世界机器人大赛青少年机器人设计大赛（AI算法/具身智能赛项）",
+      "website": "https://wrc.cie.org.cn/contest/announcement/3691.html",
+      "sourceUrl": "https://wrc.cie.org.cn/contest/announcement/3691.html",
+      "city": "全国多省市",
+      "organizer": "世界机器人大会赛事组织方",
+      "deadline": "",
+      "dateRange": "2026年11月至2027年1月多地选拔赛；各地赛期不同",
+      "reason": "世界机器人大会官网公布了多省市选拔赛日程，包含AI算法挑战、AI智能挑战及具身智能赛项，福建、上海、云南、浙江等地12月仍有比赛。公告是赛程安排，不含统一报名截止、分站报名入口及各地参赛资格细则，故先入候选，不标为可报名。",
+      "verifyState": "official_partial",
+      "discoveredVia": "世界机器人大会官方公告",
+      "discoveredAt": "2026-11-18T00:18:00+08:00",
+      "updatedAt": "2026-11-18T00:18:00+08:00"
     }
   ],
   "_watch": {
