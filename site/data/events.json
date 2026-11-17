@@ -1,6 +1,6 @@
 {
   "_readme": "未来造物赛场 · 唯一数据源。改这里即可，网页会自动读取。小程序数据由 tools/build-mp-data.js 从本文件生成，请勿手工改两端中的任意一份。",
-  "updatedAt": "2026-11-17T17:45:24.398Z",
+  "updatedAt": "2026-11-18T02:30:00+08:00",
   "chg": {
     "caltech-mathathon": "2026-09-28"
   },
@@ -1528,6 +1528,79 @@
     }
   ],
   "radar": [
+    {
+      "id": "sanya-cbd-innovation-2026",
+      "title": "2026首届三亚中央商务区「创翼CBD」创新创业大赛",
+      "city": "海南省三亚市",
+      "deadline": "2026-11-20",
+      "website": "https://cn.dailyeconomic.com/hi/2026/10/20/4024.html",
+      "sourceUrl": "https://cn.dailyeconomic.com/hi/2026/10/20/4024.html",
+      "organizer": "三亚中央商务区（报道来源；赛事组织单位待官方公告核验）",
+      "dateRange": "2026-12-12 决赛",
+      "reason": "转载三亚中央商务区公告称10月19日至11月20日报名，12月12日决赛，设奖金；但赛事不限AI，缺乏官方原始规则和AI赛道证据，作为地方创新赛事线索，不进入正式AI赛事库。",
+      "verifyState": "pending",
+      "discoveredVia": "全国省级赛事源扩展：海南官方学会、全国赛事省赛页及地方赛事公告",
+      "discoveredAt": "2026-11-18T02:30:00+08:00",
+      "updatedAt": "2026-11-18T02:30:00+08:00"
+    },
+    {
+      "id": "hainan-ai-app-innovation-regional-2026",
+      "title": "第二届全国人工智能应用创新大赛 · 海南赛区",
+      "city": "海南省",
+      "website": "https://www.haai.net/index/article/index.html?cate=25",
+      "sourceUrl": "https://www.haai.net/index/article/index.html?cate=25",
+      "organizer": "海南省人工智能学会（赛区通知发布单位）",
+      "deadline": "",
+      "reason": "海南省人工智能学会公告索引列出2026-10-19海南赛区通知，需核验该赛区独立报名期限、比赛时间与规则；全国赛总报名已截止，不标为可报名。",
+      "verifyState": "official_partial",
+      "discoveredVia": "全国省级赛事源扩展：海南官方学会、全国赛事省赛页及地方赛事公告",
+      "discoveredAt": "2026-11-18T02:30:00+08:00",
+      "updatedAt": "2026-11-18T02:30:00+08:00"
+    },
+    {
+      "id": "hainan-aic-2026-regional",
+      "title": "第八届全球校园人工智能算法精英大赛 · 海南赛区",
+      "city": "海南省海口市",
+      "website": "https://www.aicomp.cn/zone",
+      "sourceUrl": "https://www.aicomp.cn/zone",
+      "organizer": "全球校园人工智能算法精英大赛全国组委会及海南赛区组委会",
+      "dateRange": "2026-10-31 至 2026-11-01",
+      "deadline": "",
+      "reason": "全国赛事官网确认海南赛区在海南大学海甸校区于10月31日—11月1日举办，已结束；作为海南官方来源与历史赛线索，不进入可报名赛事。",
+      "verifyState": "verified-ended",
+      "discoveredVia": "全国省级赛事源扩展：海南官方学会、全国赛事省赛页及地方赛事公告",
+      "discoveredAt": "2026-11-18T02:30:00+08:00",
+      "updatedAt": "2026-11-18T02:30:00+08:00"
+    },
+    {
+      "id": "wrc-hainan-youth-2026-dec",
+      "title": "2026—2027世界机器人大赛青少年机器人设计大赛 · 海南省12月选拔赛",
+      "city": "海南省",
+      "website": "https://wrc.cie.org.cn/contest/announcement/3691.html",
+      "sourceUrl": "https://wrc.cie.org.cn/contest/announcement/3691.html",
+      "organizer": "世界机器人大赛组委会",
+      "dateRange": "2026-12-26 至 2026-12-27",
+      "deadline": "",
+      "reason": "世界机器人大会官方省级赛程列出海南12月26—27日选拔赛，尚需核验分站具体赛项、场馆、报名窗口及官方入口，不得把比赛日当报名截止。",
+      "verifyState": "official_partial",
+      "discoveredVia": "全国省级赛事源扩展：海南官方学会、全国赛事省赛页及地方赛事公告",
+      "discoveredAt": "2026-11-18T02:30:00+08:00",
+      "updatedAt": "2026-11-18T02:30:00+08:00"
+    },
+    {
+      "id": "hainan-robotac-2026-second-notice",
+      "title": "第二十六届全国大学生机器人大赛 ROBOTAC 海南赛区暨第二届海南省大学生机器人大赛",
+      "city": "海南省",
+      "deadline": "2026-11-30",
+      "website": "https://www.haai.net/index/article/index.html?cate=25",
+      "sourceUrl": "https://www.haai.net/index/article/index.html?cate=25",
+      "organizer": "海南省人工智能学会（通知发布单位；主办单位待正文核验）",
+      "reason": "海南省人工智能学会公告索引显示2026-11-16第二轮通知，报名截至11月30日24:00。具体参赛对象、比赛时间、奖项、场馆和报名入口需从通知正文及附件核验。",
+      "verifyState": "official_partial",
+      "discoveredVia": "全国省级赛事源扩展：海南官方学会、全国赛事省赛页及地方赛事公告",
+      "discoveredAt": "2026-11-18T02:30:00+08:00",
+      "updatedAt": "2026-11-18T02:30:00+08:00"
+    },
     {
       "id": "china-valley-ai-competition-2026",
       "title": "2026年中国算谷人工智能大赛",
