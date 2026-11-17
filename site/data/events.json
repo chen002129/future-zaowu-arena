@@ -1,6 +1,6 @@
 {
   "_readme": "未来造物赛场 · 唯一数据源。改这里即可，网页会自动读取。小程序数据由 tools/build-mp-data.js 从本文件生成，请勿手工改两端中的任意一份。",
-  "updatedAt": "2026-11-18T02:30:00+08:00",
+  "updatedAt": "2026-11-18T02:38:00+08:00",
   "chg": {
     "caltech-mathathon": "2026-09-28"
   },
@@ -1528,6 +1528,135 @@
     }
   ],
   "radar": [
+    {
+      "id": "aic-eda-taozhineng-2026",
+      "title": "第八届全球校园人工智能算法精英大赛·韬智能杯EDA专项赛",
+      "city": "全国·线上",
+      "website": "https://www.aicomp.cn/",
+      "sourceUrl": "https://www.aicomp.cn/",
+      "deadline": "",
+      "reason": "高校赛事跟踪目录显示该专项赛报名及作品提交11月20日20:00截止；需回到大赛官方专项赛页面确认参赛对象、规则、奖项及独立报名入口。",
+      "verifyState": "pending",
+      "discoveredAt": "2026-11-18T02:38:00+08:00",
+      "updatedAt": "2026-11-18T02:38:00+08:00",
+      "discoveredVia": "全国赛事扩源：海南赛事官网、华为高校站、机器人与算法目录（聚合仅线索）"
+    },
+    {
+      "id": "lin-ce-bci-algorithm-2026",
+      "title": "「临策」侵入式脑机接口算法竞赛",
+      "city": "全国·线上",
+      "website": "https://www.aicpt-memo.cn/index.html",
+      "sourceUrl": "https://www.aicpt-memo.cn/index.html",
+      "deadline": "",
+      "reason": "目录列出运动行为跨天解码、硬膜外脑电运动解码、记忆状态跨个体跨天解码、精细手部运动解码等子赛题；11月20日截止和奖金均待官方核验。",
+      "verifyState": "pending",
+      "discoveredAt": "2026-11-18T02:38:00+08:00",
+      "updatedAt": "2026-11-18T02:38:00+08:00",
+      "discoveredVia": "全国赛事扩源：海南赛事官网、华为高校站、机器人与算法目录（聚合仅线索）"
+    },
+    {
+      "id": "huawei-codearts-changji-2026",
+      "title": "2026华为开发者大赛·智能体创新赛（昌吉学院站）",
+      "city": "新疆维吾尔自治区昌吉回族自治州",
+      "website": "https://www.aicpt-memo.cn/index.html",
+      "sourceUrl": "https://www.aicpt-memo.cn/index.html",
+      "deadline": "",
+      "organizer": "华为开发者大赛（昌吉学院站；待官方核验）",
+      "reason": "赛事目录线索显示11月20日截止；需从华为云开发者赛事和昌吉学院官方通知核验报名入口、赛题与规则。",
+      "verifyState": "pending",
+      "discoveredAt": "2026-11-18T02:38:00+08:00",
+      "updatedAt": "2026-11-18T02:38:00+08:00",
+      "discoveredVia": "全国赛事扩源：海南赛事官网、华为高校站、机器人与算法目录（聚合仅线索）"
+    },
+    {
+      "id": "huawei-codearts-nanjing-engineering-2026",
+      "title": "华为开发者大赛·CodeArts南京工程学院软件实践创新挑战赛",
+      "city": "江苏省南京市",
+      "website": "https://aicpt-memo.cn/",
+      "sourceUrl": "https://aicpt-memo.cn/",
+      "deadline": "",
+      "organizer": "华为开发者大赛（校赛承办方待核验）",
+      "reason": "赛事目录线索显示11月29日报名截止，需核验华为官方活动页、院校通知、参赛对象、AI赛题和奖项，暂不认定可报名。",
+      "verifyState": "pending",
+      "discoveredAt": "2026-11-18T02:38:00+08:00",
+      "updatedAt": "2026-11-18T02:38:00+08:00",
+      "discoveredVia": "全国赛事扩源：海南赛事官网、华为高校站、机器人与算法目录（聚合仅线索）"
+    },
+    {
+      "id": "baidu-paddle-xinghe-2026",
+      "title": "百度星河产业应用创新奖",
+      "city": "全国·线上",
+      "website": "https://zhisai.zyaisoft.cn/deadline/30d",
+      "sourceUrl": "https://zhisai.zyaisoft.cn/deadline/30d",
+      "deadline": "",
+      "organizer": "百度飞桨星河社区（聚合线索待官方核验）",
+      "reason": "聚合目录显示技术算法、智能体、智慧教育、智能硬件等赛道，部分赛道11月28日截止；需查百度官方独立活动页、赛道不同截止时间及报名入口。",
+      "verifyState": "pending",
+      "discoveredAt": "2026-11-18T02:38:00+08:00",
+      "updatedAt": "2026-11-18T02:38:00+08:00",
+      "discoveredVia": "全国赛事扩源：海南赛事官网、华为高校站、机器人与算法目录（聚合仅线索）"
+    },
+    {
+      "id": "maanshan-embodied-realworld-2026",
+      "title": "人形机器人与具身智能实景实训挑战赛",
+      "city": "安徽省马鞍山市",
+      "website": "https://zhisai.zyaisoft.cn/deadline/30d",
+      "sourceUrl": "https://zhisai.zyaisoft.cn/deadline/30d",
+      "deadline": "",
+      "organizer": "马鞍山市人民政府、中国电子学会、世界机器人合作组织（聚合线索待官方核验）",
+      "reason": "聚合目录称五大真实场景13个赛项、11月27日报名截止；官方章程、报名网址、奖项、参赛对象未逐项核实，仅作发现线索。",
+      "verifyState": "pending",
+      "discoveredAt": "2026-11-18T02:38:00+08:00",
+      "updatedAt": "2026-11-18T02:38:00+08:00",
+      "discoveredVia": "全国赛事扩源：海南赛事官网、华为高校站、机器人与算法目录（聚合仅线索）"
+    },
+    {
+      "id": "foshan-precision-embodied-2026",
+      "title": "佛山精密仪器与具身智能创新创业大赛",
+      "city": "广东省佛山市",
+      "website": "https://zhisai.zyaisoft.cn/deadline/30d",
+      "sourceUrl": "https://zhisai.zyaisoft.cn/deadline/30d",
+      "deadline": "",
+      "organizer": "广东省科学院佛山产业技术研究院（聚合源待官方核验）",
+      "reason": "聚合目录线索称具身智能方向、11月20日报名截止、2026年10—12月举办；需取得佛山官方原始通知、报名入口、对象和奖项后上架。",
+      "verifyState": "pending",
+      "discoveredAt": "2026-11-18T02:38:00+08:00",
+      "updatedAt": "2026-11-18T02:38:00+08:00",
+      "discoveredVia": "全国赛事扩源：海南赛事官网、华为高校站、机器人与算法目录（聚合仅线索）"
+    },
+    {
+      "id": "xsquare-embodied-hackathon-shenzhen-2026",
+      "title": "第二届具亮计划·全球具身智能黑客松（深圳站）",
+      "city": "广东省深圳市",
+      "website": "https://zhisai.zyaisoft.cn/deadline/30d",
+      "sourceUrl": "https://zhisai.zyaisoft.cn/deadline/30d",
+      "deadline": "",
+      "organizer": "自变量机器人（XSquare Robot；聚合源信息待官方核验）",
+      "reason": "聚合目录线索称深圳场11月20日报名截止、总奖池100万元；尚未定位官方活动章程、报名入口、赛期和奖金细则，不得把聚合数据当官方已核验。",
+      "verifyState": "pending",
+      "discoveredAt": "2026-11-18T02:38:00+08:00",
+      "updatedAt": "2026-11-18T02:38:00+08:00",
+      "discoveredVia": "全国赛事扩源：海南赛事官网、华为高校站、机器人与算法目录（聚合仅线索）"
+    },
+    {
+      "id": "hainan-ai-office-skills-2026",
+      "title": "海南省首届人工智能办公应用劳动和技能大赛",
+      "city": "海南省",
+      "website": "https://kejigh.com/index.html",
+      "sourceUrl": "https://kejigh.com/index.html",
+      "deadline": "2026-11-15",
+      "dateRange": "2026-12-05 线下决赛",
+      "audience": "法定劳动年龄内的一线在职职工",
+      "tracks": [
+        "AI办公应用综合实战赛",
+        "AI办公应用项目赛"
+      ],
+      "reason": "赛事专题站确认10月15日至11月15日报名、11月9—15日线上选拔、12月5日线下决赛；报名已截止，需继续核对主办单位和具体奖金额度，作为历史赛事候选。",
+      "verifyState": "verified-ended",
+      "discoveredAt": "2026-11-18T02:38:00+08:00",
+      "updatedAt": "2026-11-18T02:38:00+08:00",
+      "discoveredVia": "全国赛事扩源：海南赛事官网、华为高校站、机器人与算法目录（聚合仅线索）"
+    },
     {
       "id": "sanya-cbd-innovation-2026",
       "title": "2026首届三亚中央商务区「创翼CBD」创新创业大赛",
