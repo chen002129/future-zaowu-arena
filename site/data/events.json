@@ -1,6 +1,6 @@
 {
   "_readme": "未来造物赛场 · 唯一数据源。改这里即可，网页会自动读取。小程序数据由 tools/build-mp-data.js 从本文件生成，请勿手工改两端中的任意一份。",
-  "updatedAt": "2026-11-17T10:14:00.000Z",
+  "updatedAt": "2026-11-17T13:19:00.000Z",
   "chg": {
     "caltech-mathathon": "2026-09-28"
   },
@@ -1359,6 +1359,19 @@
     }
   ],
   "radar": [
+    {
+      "id": "ccf-cacc-2026-regional",
+      "title": "第三届CCF算法能力大赛（CACC）区域赛",
+      "deadline": "2026-11-18",
+      "city": "全国多城市",
+      "organizer": "中国计算机学会（CCF）",
+      "website": "https://cacc.ccf.org.cn/",
+      "sourceUrl": "https://www.ccf.org.cn/Media_list/cacc/2026-09-28/935857.shtml",
+      "reason": "CCF官方通知确认2026-09-28至11-18 09:00报名，12月6日全国多城市区域赛；大学生、企业工程师及自由职业者个人参赛，免费报名。属于算法能力竞赛，AI专项关联性及奖金奖项尚未确认，暂不进入正式AI赛事库。",
+      "verifyState": "pending",
+      "discoveredAt": "2026-11-17T13:19:00.000Z",
+      "updatedAt": "2026-11-17T13:19:00.000Z"
+    },
     {
       "id": "chuanzhibei-9-ai-2026",
       "title": "2026第九届传智杯全国大学生数智创新与AI应用大赛",
