@@ -1360,6 +1360,27 @@
   ],
   "radar": [
     {
+      "id": "bayhack-foshan-2026",
+      "title": "BayHack 2026 大湾区黑客松",
+      "website": "https://bayhack.cn/",
+      "sourceUrl": "https://bayhack.cn/",
+      "city": "广东省佛山市",
+      "venue": "智科大厦（佛山）",
+      "mode": "线下",
+      "deadline": "",
+      "dateRange": "2026-12-18 至 2026-12-20",
+      "audience": "大湾区开发者、高校学生、产品与设计人才、早期创业团队",
+      "tracks": [
+        "软件赛道",
+        "硬件赛道"
+      ],
+      "reason": "官方站确认12月18—20日在佛山智科大厦举办、48小时共创、软件和硬件方向及报名入口；Hack123/HackerTrip称11月18日报名截止及30万元奖励，但官方页面未明确证实该截止日期与奖金组成，故不填截止日期、不列正式赛事。",
+      "verifyState": "official_partial",
+      "discoveredVia": "主办方官网；聚合目录仅作为线索",
+      "discoveredAt": "2026-11-17T11:15:00.000Z",
+      "updatedAt": "2026-11-17T11:15:00.000Z"
+    },
+    {
       "id": "cetec-wangxinbei-ai-2026",
       "title": "中国电科「网信杯」人工智能创新大赛",
       "deadline": "",
