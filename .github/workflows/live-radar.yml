@@ -75,13 +75,13 @@ jobs:
       - name: Commit verified changes
         shell: bash
         run: |
-          if git diff --quiet; then
-            echo "No data changes."
+          git add site/data/events.json site/assets/posters miniprogram/data || true
+          if git diff --cached --quiet; then
+            echo "No staged data or poster changes."
             exit 0
           fi
           git config user.name "Future Maker Radar"
           git config user.email "actions@users.noreply.github.com"
-          git add site/data/events.json site/assets/posters miniprogram/data || true
           git commit -m "Radar: refresh live AI event data"
           git pull --rebase origin main
           git push origin HEAD:main
