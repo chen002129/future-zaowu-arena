@@ -1,6 +1,6 @@
 {
   "_readme": "未来造物赛场 · 唯一数据源。改这里即可，网页会自动读取。小程序数据由 tools/build-mp-data.js 从本文件生成，请勿手工改两端中的任意一份。",
-  "updatedAt": "2026-11-17T05:18:00.000Z",
+  "updatedAt": "2026-11-17T07:22:00.000Z",
   "chg": {
     "caltech-mathathon": "2026-09-28"
   },
@@ -1359,6 +1359,39 @@
     }
   ],
   "radar": [
+    {
+      "id": "china-valley-ai-competition-2026",
+      "title": "2026年中国算谷人工智能大赛",
+      "deadline": "2026-11-20",
+      "city": "甘肃省庆阳市",
+      "organizer": "中国算谷人工智能大赛组委会",
+      "website": "https://cvaic.qyvtc.cn/",
+      "sourceUrl": "https://cvaic.qyvtc.cn/rules",
+      "registrationUrl": "https://cvaic.qyvtc.cn/",
+      "mode": "混合",
+      "audience": "全国企业、学校及科研机构；1—3人团队，另配1名指导教师或领队",
+      "prize": "四赛道各设一等奖5万元、二等奖2万元、三等奖5000元、优胜奖2000元（税前）",
+      "dateRange": "2026-11-01 至 2026-12-06",
+      "venue": "庆阳职业技术学院，甘肃省庆阳市西峰区长庆大道南段23号",
+      "location": {
+        "scope": "city",
+        "country": "中国",
+        "province": "甘肃省",
+        "city": "庆阳市",
+        "label": "甘肃庆阳"
+      },
+      "tracks": [
+        "智能体与交叉融合创新",
+        "模型算法与科学智能创新",
+        "智能体与数智服务应用",
+        "模型算法与产业智能应用"
+      ],
+      "reason": "主办方官网已核验报名及初赛提交截止2026-11-20 24:00、12月4—5日现场决赛、12月6日颁奖、参赛对象与奖项；尚缺可验证的官方海报及标准卡片素材，遵守无海报不发布规则，先列入候选",
+      "verifyState": "verified",
+      "posterState": "pending_official_visual",
+      "discoveredAt": "2026-11-17T07:22:00.000Z",
+      "updatedAt": "2026-11-17T07:22:00.000Z"
+    },
     {
       "id": "tianchi-chip2026-patient-phenotype",
       "title": "CHIP2026 面向生物医学全文的特定患者表型概念识别任务",
