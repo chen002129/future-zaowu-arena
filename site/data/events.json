@@ -911,12 +911,12 @@
       "qr": "",
       "up": 0,
       "ended": false,
-      "dateRange": "11.02 – 12.07",
+      "dateRange": "12.05 – 12.07",
       "teamSize": "个人可报名；录取后可组队，每队 2–4 人，支持跨校、跨公司组队",
       "organizer": "地瓜机器人",
       "agenda": [
         {
-          "d": "2026-11-02 至 2026-11-30",
+          "d": "2026-10-01 至 2026-11-30",
           "t": "开放报名并滚动审核"
         },
         {
@@ -941,7 +941,7 @@
         }
       ],
       "updatedAt": "2026-11-17T04:20:00.000Z",
-      "infoUpdatedAt": "2026-11-17T04:20:00.000Z",
+      "infoUpdatedAt": "2026-11-17T06:17:00.000Z",
       "audience": "开发者 / 高校学生 / 产品设计 / Maker",
       "audienceGroup": "开发者",
       "level": "进阶",
@@ -1360,6 +1360,19 @@
   ],
   "radar": [
     {
+      "id": "tianchi-chip2026-patient-phenotype",
+      "title": "CHIP2026 面向生物医学全文的特定患者表型概念识别任务",
+      "website": "https://tianchi.aliyun.com/competition/programList",
+      "sourceUrl": "https://tianchi.aliyun.com/competition/programList",
+      "city": "线上",
+      "organizer": "CHIP 2026（具体主办方待赛题页核实）",
+      "deadline": "",
+      "reason": "天池官方赛事列表标记「立即报名」并展示比赛期至2029-10-03，但该结束日期异常且尚未取得独立赛题规则与报名截止，必须人工核验后才可上架",
+      "verifyState": "pending",
+      "discoveredAt": "2026-11-17T06:17:00.000Z",
+      "updatedAt": "2026-11-17T06:17:00.000Z"
+    },
+    {
       "id": "tianchi-zhihu-table-2026",
       "title": "知乎知学堂大模型挑战赛：复杂表格识别与内容理解",
       "website": "https://s.tianchi.aliyun.com/competition/aillmList",
@@ -1367,10 +1380,10 @@
       "city": "线上",
       "organizer": "待官方赛题详情核验",
       "deadline": "",
-      "reason": "天池官方 AI 大模型赛列表显示比赛期至 2026-12-31、奖金 2 万元、标注立即报名；尚缺单独赛题页、具体报名截止和规则核验",
+      "reason": "天池官方 AI 大模型赛列表目前明确显示「立即报名」、比赛期 2026-08-07 至 2026-12-31、奖金 2 万元；但未找到独立规则页的报名截止、主办单位和参赛条件，继续候选，不等同于确认报名截止为12月31日",
       "verifyState": "pending",
       "discoveredAt": "2026-11-17T05:18:00.000Z",
-      "updatedAt": "2026-11-17T05:18:00.000Z"
+      "updatedAt": "2026-11-17T06:17:00.000Z"
     },
     {
       "id": "tianchi-embodied-extreme-2026",
@@ -1432,19 +1445,6 @@
       "organizer": "AIY HACK LEAGUE",
       "website": "https://www.webloom.cn/api/s/AIY_2027",
       "sourceUrl": "https://www.webloom.cn/api/s/AIY_2027",
-      "reason": "自动发现新赛事，等待主办方官方页面核验",
-      "verifyState": "pending",
-      "discoveredAt": "2026-11-16T22:31:43.886Z",
-      "updatedAt": "2026-11-17T02:50:03.876Z"
-    },
-    {
-      "id": "mp-ht-78af8938df31406bb50fd1791c31ea46",
-      "title": "DDC 2026 地瓜机器人黑客松",
-      "deadline": "2026-11-24",
-      "city": "上海",
-      "organizer": "地瓜机器人",
-      "website": "https://hackathon.d-robotics.cc",
-      "sourceUrl": "https://hackathon.d-robotics.cc",
       "reason": "自动发现新赛事，等待主办方官方页面核验",
       "verifyState": "pending",
       "discoveredAt": "2026-11-16T22:31:43.886Z",
