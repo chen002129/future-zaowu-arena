@@ -1,6 +1,6 @@
 {
   "_readme": "未来造物赛场 · 唯一数据源。改这里即可，网页会自动读取。小程序数据由 tools/build-mp-data.js 从本文件生成，请勿手工改两端中的任意一份。",
-  "updatedAt": "2026-11-17T08:24:54.000Z",
+  "updatedAt": "2026-11-17T08:30:01.900Z",
   "chg": {
     "caltech-mathathon": "2026-09-28"
   },
@@ -64,7 +64,7 @@
       "parentNote": "适合观察“真实产业命题 → Demo → 路演”的完整项目链路。",
       "cardPoster": "assets/posters/cards/e20e9d52bc2a.jpg",
       "cardPosterSource": "https://www.aibetas.com/wp-content/uploads/2026/09/tmall_ai_hackathon_university_challenge_2026_cover.png",
-      "cardPosterUpdatedAt": "2026-11-17T04:14:22.766Z",
+      "cardPosterUpdatedAt": "2026-11-17T08:30:18.985Z",
       "location": {
         "scope": "national",
         "country": "中国",
@@ -132,7 +132,7 @@
       "parentNote": "32 小时限时创作，重点不只是会用模型，而是把表达做完整。",
       "cardPoster": "assets/posters/cards/b73295beb69f.jpg",
       "cardPosterSource": "https://i.ytimg.com/vi/5QXRzH1wF-k/maxresdefault.jpg",
-      "cardPosterUpdatedAt": "2026-11-17T04:14:23.086Z",
+      "cardPosterUpdatedAt": "2026-11-17T08:30:19.248Z",
       "location": {
         "scope": "city",
         "country": "中国",
@@ -189,7 +189,7 @@
       "parentNote": "技术门槛较高，更适合家长和大龄孩子观察前沿开发者如何协作冲刺。",
       "cardPoster": "assets/posters/cards/f3df860e759c.jpg",
       "cardPosterSource": "https://images.lumacdn.com/cdn-cgi/image/format=jpeg,fit=cover,dpr=1,anim=false,background=white,quality=90,width=1200,height=630/event-social/h2/7d678608-4010-4d9e-898e-6361ba4b1689.png",
-      "cardPosterUpdatedAt": "2026-11-17T04:14:24.036Z",
+      "cardPosterUpdatedAt": "2026-11-17T08:30:19.818Z",
       "location": {
         "scope": "city",
         "country": "中国",
@@ -268,7 +268,7 @@
       "parentNote": "从真实音乐用户需求出发，适合看“AI 能不能进入真实产品”的判断方式。",
       "cardPoster": "assets/posters/cards/c35c8e47e894.jpg",
       "cardPosterSource": "https://aitop100app-1251510006.cos.ap-shanghai.myqcloud.com/public/2026/09/16/10/03/19/62123fa5-5dc2-411b-bf60-8f51857dcd37.png",
-      "cardPosterUpdatedAt": "2026-11-17T04:14:31.198Z",
+      "cardPosterUpdatedAt": "2026-11-17T08:30:24.474Z",
       "location": {
         "scope": "tbd",
         "country": "中国",
@@ -326,7 +326,7 @@
       "parentNote": "AI for Science 方向，适合关注 AI 与能源、科研问题结合的方式。",
       "cardPoster": "assets/posters/cards/470045a0a28f.jpg",
       "cardPosterSource": "https://pub-d7a436bb140a401a98a2b96d1850d970.r2.dev/hackathons/covers/%E5%88%9D%E7%84%B0-%E9%92%A0%E5%AE%99-%E9%92%A0%E7%94%B5-aidc-%E7%BA%BF%E4%B8%8A%E9%BB%91%E5%AE%A2%E6%9D%BE-season-01-b9bdbd0acdf9.jpg",
-      "cardPosterUpdatedAt": "2026-11-17T04:14:31.647Z",
+      "cardPosterUpdatedAt": "2026-11-17T08:30:24.688Z",
       "location": {
         "scope": "online",
         "country": "中国",
@@ -389,7 +389,7 @@
       "parentNote": "开放命题 + 48 小时 Demo，适合观察“快速取舍、快速交付”的项目能力。",
       "cardPoster": "assets/posters/cards/13aaf8e8d199.jpg",
       "cardPosterSource": "https://img.36krcdn.com/hsossms/20261010/v2_30c4528092d64da99096e41c4e681b2e@6438729_oswg171423oswg1053oswg495_img_jpg?x-oss-process=image/resize,m_mfit,w_1200,h_800,limit_0/crop,w_1200,h_800,g_center",
-      "cardPosterUpdatedAt": "2026-11-17T04:14:32.721Z",
+      "cardPosterUpdatedAt": "2026-11-17T08:30:26.231Z",
       "location": {
         "scope": "city",
         "country": "中国",
@@ -456,7 +456,7 @@
       "parentNote": "从仿真到真机，能直观看到模型能力如何落到真实机器人任务。",
       "cardPoster": "assets/posters/cards/0e4ac9f5175b.jpg",
       "cardPosterSource": "https://pic.imgdb.cn/i/034OwpAsz7RKL3Xaoa5s2v.png",
-      "cardPosterUpdatedAt": "2026-11-17T04:14:33.879Z",
+      "cardPosterUpdatedAt": "2026-11-17T08:30:26.668Z",
       "location": {
         "scope": "city",
         "country": "中国",
@@ -534,7 +534,7 @@
       "sourceChangedAt": "2026-11-16T22:31:43.886Z",
       "cardPoster": "assets/posters/cards/ee8731918dc4.jpg",
       "cardPosterSource": "https://hack123.henryht.sh/images/h/alipay-payathon-2026.jpg",
-      "cardPosterUpdatedAt": "2026-11-17T04:14:35.241Z",
+      "cardPosterUpdatedAt": "2026-11-17T08:30:27.727Z",
       "location": {
         "scope": "online",
         "country": "中国",
@@ -598,7 +598,7 @@
       "parentNote": "开放式 AI 创作赛，适合把长期做的项目拿到真实环境里接受反馈。",
       "cardPoster": "assets/posters/cards/f610346b2a97.jpg",
       "cardPosterSource": "https://hack123.henryht.sh/images/h/wukesong-2027.jpg",
-      "cardPosterUpdatedAt": "2026-11-17T04:14:35.773Z",
+      "cardPosterUpdatedAt": "2026-11-17T08:30:28.133Z",
       "location": {
         "scope": "city",
         "country": "中国",
@@ -673,7 +673,7 @@
       "poster": "assets/posters/p57c1af35b533.jpg",
       "cardPoster": "assets/posters/cards/57c1af35b533.jpg",
       "cardPosterSource": "https://ai.xm.gov.cn/static/ai/images/versions-3.0/video-cover-7.png",
-      "cardPosterUpdatedAt": "2026-11-17T04:14:39.263Z"
+      "cardPosterUpdatedAt": "2026-11-17T08:30:31.331Z"
     },
     {
       "id": "ai-application-innovation-2026",
@@ -740,7 +740,7 @@
       "poster": "assets/posters/p18bb3a1d6d7f.jpg",
       "cardPoster": "assets/posters/cards/18bb3a1d6d7f.jpg",
       "cardPosterSource": "https://aerate.s3.cn-north-1.jdcloud-oss.com/site/6a9e1af0e4b0e7f385d907f8.png",
-      "cardPosterUpdatedAt": "2026-11-17T04:14:42.558Z"
+      "cardPosterUpdatedAt": "2026-11-17T08:30:38.249Z"
     },
     {
       "id": "ncccu-ai-2026",
@@ -806,7 +806,7 @@
       "poster": "assets/posters/pbe061177d95b.jpg",
       "cardPoster": "assets/posters/cards/be061177d95b.jpg",
       "cardPosterSource": "https://www.ncccu.org.cn/static/index/images/subject_02.png?v=1.1.02",
-      "cardPosterUpdatedAt": "2026-11-17T04:14:44.579Z"
+      "cardPosterUpdatedAt": "2026-11-17T08:30:40.114Z"
     },
     {
       "id": "aic-agent-interconnection-2026",
@@ -871,7 +871,7 @@
       "poster": "assets/posters/p5146ac56bb94.jpg",
       "cardPoster": "assets/posters/cards/5146ac56bb94.jpg",
       "cardPosterSource": "https://www.aicomp.cn/wp-content/uploads/2026/08/%E7%BD%91%E9%A1%B5%E6%A8%AA%E5%9B%BE-2.png",
-      "cardPosterUpdatedAt": "2026-11-17T04:14:46.434Z"
+      "cardPosterUpdatedAt": "2026-11-17T08:30:41.662Z"
     },
     {
       "id": "ddc-2026-d-robotics-hackathon",
@@ -905,9 +905,9 @@
       "summary": "DDC 2026 地瓜机器人黑客松于 2026 年 12 月 5–7 日在上海张江科学会堂举行，为期三天两夜。赛事采用开放主题，要求参赛者以地瓜 RDK 为核心计算平台，结合 AI 辅助开发完成可运行的硬件作品，并现场展示实物与开发过程。支持从零创作、改造已有项目或继续未完成项目。",
       "website": "https://hackathon.d-robotics.cc/",
       "poster": "https://hackathon.d-robotics.cc/expression-20261104/hero-fallback.webp",
-      "cardPoster": "https://hackathon.d-robotics.cc/expression-20261104/hero-fallback.webp",
+      "cardPoster": "assets/posters/cards/78655542e93a.jpg",
       "cardPosterSource": "https://hackathon.d-robotics.cc/expression-20261104/hero-fallback.webp",
-      "cardPosterUpdatedAt": "2026-11-17T04:20:00.000Z",
+      "cardPosterUpdatedAt": "2026-11-17T08:30:42.961Z",
       "qr": "",
       "up": 0,
       "ended": false,
@@ -988,9 +988,9 @@
       "summary": "2026 Qoder 高校创造力大赛面向全国在校大学生（含港澳台本科生与硕博研究生），不限专业。参赛者使用 Qoder 开发完整项目并部署至 Qoder Sites，于 11 月 30 日 18:00 前在天池平台完成作品发布。比赛设置 StudyHack、LifeHack、Hack4Good 三个赛道，强调真实问题、可访问作品和完整使用体验。",
       "website": "https://tianchi.aliyun.com/competition/entrance/532536",
       "poster": "https://img.alicdn.com/imgextra/i1/O1CN012QgtoH1c1Mu70xD3w_!!6000000003540-2-tps-640-640.png",
-      "cardPoster": "https://img.alicdn.com/imgextra/i1/O1CN012QgtoH1c1Mu70xD3w_!!6000000003540-2-tps-640-640.png",
+      "cardPoster": "assets/posters/cards/18a1e83afe0a.jpg",
       "cardPosterSource": "https://img.alicdn.com/imgextra/i1/O1CN012QgtoH1c1Mu70xD3w_!!6000000003540-2-tps-640-640.png",
-      "cardPosterUpdatedAt": "2026-11-17T04:20:00.000Z",
+      "cardPosterUpdatedAt": "2026-11-17T08:30:43.504Z",
       "qr": "",
       "up": 0,
       "ended": false,
@@ -1360,6 +1360,19 @@
   ],
   "radar": [
     {
+      "id": "mp-ht-78af8938df31406bb50fd1791c31ea46",
+      "title": "DDC 2026 地瓜机器人黑客松",
+      "deadline": "2026-11-24",
+      "city": "上海",
+      "organizer": "地瓜机器人",
+      "website": "https://hackathon.d-robotics.cc",
+      "sourceUrl": "https://hackathon.d-robotics.cc",
+      "reason": "发现截止时间变化：2026-11-30 → 2026-11-24，等待官方核验",
+      "verifyState": "pending",
+      "discoveredAt": "2026-11-17T08:30:01.900Z",
+      "updatedAt": "2026-11-17T08:30:01.900Z"
+    },
+    {
       "id": "ercc-2026-ai-future-engineer",
       "title": "第16届中国教育机器人大赛暨AI+未来工程师全球挑战计划",
       "website": "https://ercc.org.cn/index/notices/31.html",
@@ -1472,7 +1485,7 @@
       "reason": "自动发现新赛事，等待主办方官方页面核验",
       "verifyState": "pending",
       "discoveredAt": "2026-11-16T22:31:43.886Z",
-      "updatedAt": "2026-11-17T02:50:03.876Z"
+      "updatedAt": "2026-11-17T08:30:01.900Z"
     },
     {
       "id": "mp-ht-tech-youth-moon-a2582401",
@@ -1485,7 +1498,7 @@
       "reason": "自动发现新赛事，等待主办方官方页面核验",
       "verifyState": "pending",
       "discoveredAt": "2026-11-16T22:31:43.886Z",
-      "updatedAt": "2026-11-17T02:50:03.876Z"
+      "updatedAt": "2026-11-17T08:30:01.900Z"
     },
     {
       "id": "mp-ht-aiy-hack-league-23f2a1aa",
@@ -1498,7 +1511,7 @@
       "reason": "自动发现新赛事，等待主办方官方页面核验",
       "verifyState": "pending",
       "discoveredAt": "2026-11-16T22:31:43.886Z",
-      "updatedAt": "2026-11-17T02:50:03.876Z"
+      "updatedAt": "2026-11-17T08:30:01.900Z"
     },
     {
       "id": "mp-ht-2026-ai-for-good-71daacf3",
@@ -1511,7 +1524,7 @@
       "reason": "自动发现新赛事，等待主办方官方页面核验",
       "verifyState": "pending",
       "discoveredAt": "2026-11-16T22:31:43.886Z",
-      "updatedAt": "2026-11-17T02:50:03.876Z"
+      "updatedAt": "2026-11-17T08:30:01.900Z"
     },
     {
       "id": "jiangsu-ai-science-hackathon-2026",
@@ -1676,6 +1689,13 @@
       "checkedAt": "2026-11-16T22:31:43.886Z",
       "url": "https://aipay.alipay.com/community/events/payathon-2026",
       "etag": "W/\"bbf8f-mGhRPQNRHQwH2b2H5AhYNu+Xyyw\"",
+      "lastModified": ""
+    },
+    "qoder-campus-creativity-2026": {
+      "fingerprint": "44fd7888153ca21da82f29c3aca77369f06e569e48afe094b86b6c2e9c4a4683",
+      "checkedAt": "2026-11-17T08:30:01.900Z",
+      "url": "https://tianchi.aliyun.com/competition/entrance/532536",
+      "etag": "W/\"848d-7wRYjRlM0LTMeC5ut+4AkvQVB7k\"",
       "lastModified": ""
     }
   }

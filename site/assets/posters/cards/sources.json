@@ -409,5 +409,37 @@
         "score": 12.811
       }
     ]
+  },
+  {
+    "id": "ddc-2026-d-robotics-hackathon",
+    "title": "DDC 2026 地瓜机器人黑客松",
+    "picked": "https://hackathon.d-robotics.cc/expression-20261104/hero-fallback.webp",
+    "sourceSize": "844x844",
+    "ratio": 1,
+    "candidates": [
+      {
+        "url": "https://hackathon.d-robotics.cc/expression-20261104/hero-fallback.webp",
+        "size": "844x844",
+        "ratio": 1,
+        "error": null,
+        "score": 3.725
+      }
+    ]
+  },
+  {
+    "id": "qoder-campus-creativity-2026",
+    "title": "2026 Qoder 高校创造力大赛",
+    "picked": "https://img.alicdn.com/imgextra/i1/O1CN012QgtoH1c1Mu70xD3w_!!6000000003540-2-tps-640-640.png",
+    "sourceSize": "640x640",
+    "ratio": 1,
+    "candidates": [
+      {
+        "url": "https://img.alicdn.com/imgextra/i1/O1CN012QgtoH1c1Mu70xD3w_!!6000000003540-2-tps-640-640.png",
+        "size": "640x640",
+        "ratio": 1,
+        "error": null,
+        "score": 4.575
+      }
+    ]
   }
 ]
