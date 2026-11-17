@@ -1,6 +1,6 @@
 {
   "_readme": "未来造物赛场 · 唯一数据源。改这里即可，网页会自动读取。小程序数据由 tools/build-mp-data.js 从本文件生成，请勿手工改两端中的任意一份。",
-  "updatedAt": "2026-11-17T04:20:00.000Z",
+  "updatedAt": "2026-11-17T05:18:00.000Z",
   "chg": {
     "caltech-mathathon": "2026-09-28"
   },
@@ -1359,6 +1359,45 @@
     }
   ],
   "radar": [
+    {
+      "id": "tianchi-zhihu-table-2026",
+      "title": "知乎知学堂大模型挑战赛：复杂表格识别与内容理解",
+      "website": "https://s.tianchi.aliyun.com/competition/aillmList",
+      "sourceUrl": "https://s.tianchi.aliyun.com/competition/aillmList",
+      "city": "线上",
+      "organizer": "待官方赛题详情核验",
+      "deadline": "",
+      "reason": "天池官方 AI 大模型赛列表显示比赛期至 2026-12-31、奖金 2 万元、标注立即报名；尚缺单独赛题页、具体报名截止和规则核验",
+      "verifyState": "pending",
+      "discoveredAt": "2026-11-17T05:18:00.000Z",
+      "updatedAt": "2026-11-17T05:18:00.000Z"
+    },
+    {
+      "id": "tianchi-embodied-extreme-2026",
+      "title": "2026 具身极限挑战赛",
+      "website": "https://tianchi.aliyun.com/competition/programList",
+      "sourceUrl": "https://tianchi.aliyun.com/competition/programList",
+      "city": "线上",
+      "organizer": "待官网赛题详情核验",
+      "deadline": "",
+      "reason": "阿里云天池官方列表显示比赛期 2026-08-06 至 11-30、奖金 30 万元；比赛结束日期不等于报名截止，缺少独立赛题页与报名截止核验",
+      "verifyState": "pending",
+      "discoveredAt": "2026-11-17T05:18:00.000Z",
+      "updatedAt": "2026-11-17T05:18:00.000Z"
+    },
+    {
+      "id": "tianchi-532515-robotics-2026-2027",
+      "title": "2026—2027 具身智能机器人仿真与真机赛（天池 532515）",
+      "website": "https://tianchi.aliyun.com/competition/entrance/532515/introduction",
+      "sourceUrl": "https://tianchi.aliyun.com/competition/entrance/532515/introduction",
+      "city": "全国·线上赛季",
+      "organizer": "以官方赛事页为准",
+      "deadline": "",
+      "reason": "天池官方赛制写明冬季仿真 2026-09-29 至 12-31、春季仿真+真机 2027-01-01 至 03-31，赛季内持续开放报名；尚未核实精确报名截止及主办方，暂不正式上架",
+      "verifyState": "pending",
+      "discoveredAt": "2026-11-17T05:18:00.000Z",
+      "updatedAt": "2026-11-17T05:18:00.000Z"
+    },
     {
       "id": "mp-ht-alipay-emerge-2026-ad4430da",
       "title": "支付宝「智能体涌现奖」2026 首轮",
