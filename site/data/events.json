@@ -1,6 +1,6 @@
 {
   "_readme": "未来造物赛场 · 唯一数据源。改这里即可，网页会自动读取。小程序数据由 tools/build-mp-data.js 从本文件生成，请勿手工改两端中的任意一份。",
-  "updatedAt": "2026-11-17T08:30:01.900Z",
+  "updatedAt": "2026-11-17T09:18:00.000Z",
   "chg": {
     "caltech-mathathon": "2026-09-28"
   },
@@ -1360,6 +1360,32 @@
   ],
   "radar": [
     {
+      "id": "cetec-wangxinbei-ai-2026",
+      "title": "中国电科「网信杯」人工智能创新大赛",
+      "deadline": "",
+      "city": "中国（地点待核实）",
+      "organizer": "中国电科（赛事官网）",
+      "website": "https://wangxinbei.taiji.com.cn/",
+      "sourceUrl": "https://wangxinbei.taiji.com.cn/",
+      "reason": "官方赛事站2026-11-15公告初赛11-16启动；报名截止时间未核实，不能标记可报名，等待核对官方章程与公告。",
+      "verifyState": "pending",
+      "discoveredAt": "2026-11-17T09:18:00.000Z",
+      "updatedAt": "2026-11-17T09:18:00.000Z"
+    },
+    {
+      "id": "poreva-open-2026",
+      "title": "Poreva Open 全球AI蛋白质设计挑战赛（首届）",
+      "deadline": "2026-11-18",
+      "city": "线上（中国主办，全球参赛）",
+      "organizer": "镁伽科技（Megalaxy）",
+      "website": "https://porevaopen.megalaxylab.com/",
+      "sourceUrl": "https://porevaopen.megalaxylab.com/",
+      "reason": "官方赛事站确认注册2026-10-18至11-18；第一轮序列提交至11-18，第二轮提交至12-08，2027年4月公布验证结果。面向科研团队、高校实验室、企业与独立研究者；总榜奖金100万/50万/20万元，具体以官网为准。线上提交，未核验官方可复用海报，暂存候选 radar。",
+      "verifyState": "official_partial",
+      "discoveredAt": "2026-11-17T09:18:00.000Z",
+      "updatedAt": "2026-11-17T09:18:00.000Z"
+    },
+    {
       "id": "mp-ht-78af8938df31406bb50fd1791c31ea46",
       "title": "DDC 2026 地瓜机器人黑客松",
       "deadline": "2026-11-24",
@@ -1463,16 +1489,16 @@
     },
     {
       "id": "tianchi-532515-robotics-2026-2027",
-      "title": "2026—2027 具身智能机器人仿真与真机赛（天池 532515）",
+      "title": "OpenLET 具身智能挑战赛（2026—2027）",
       "website": "https://tianchi.aliyun.com/competition/entrance/532515/introduction",
       "sourceUrl": "https://tianchi.aliyun.com/competition/entrance/532515/introduction",
       "city": "全国·线上赛季",
-      "organizer": "以官方赛事页为准",
+      "organizer": "开放原子开源基金会 / OpenLET具身智能开源数据集社区",
       "deadline": "",
-      "reason": "阿里云天池官方赛制明确2026-09-24启动报名，2026-09-29至12-31冬季仿真、2027-01-01至03-31春季仿真+真机，赛季内持续开放报名；尚无独立精确截止日及经核实的官方主视觉，保留候选，不将赛季结束日冒充报名截止",
-      "verifyState": "pending",
+      "reason": "天池官方规则确认：2026-09-24启动报名，冬季仿真赛2026-09-29至12-31，春季仿真+真机赛2027-01-01至03-31，赛季内持续开放报名；未设单一报名截止日期，奖金金额待公布。主办：开放原子开源基金会、OpenLET具身智能开源数据集社区。因正式 events 校验要求具体截止日期和海报，暂存 radar，不把赛季结束日伪装成报名截止日。",
+      "verifyState": "official_partial",
       "discoveredAt": "2026-11-17T05:18:00.000Z",
-      "updatedAt": "2026-11-17T08:24:54.000Z"
+      "updatedAt": "2026-11-17T09:18:00.000Z"
     },
     {
       "id": "mp-ht-alipay-emerge-2026-ad4430da",
