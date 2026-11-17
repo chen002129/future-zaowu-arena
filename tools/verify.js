@@ -69,7 +69,11 @@ const MODES = ['线上', '线下', '混合'];
     }
   }
   if (!e.cardPoster) push(errors, tag + ' 缺卡片横版海报（铁律：无卡片海报不发布）');
-  else {
+  else if (/^https?:\/\//.test(e.cardPoster)) {
+    if (!(e.tier === 'official' || e.verifyState === 'verified')) {
+      push(warns, tag + ' 使用远程卡片海报，但赛事尚未标记为官方/已核验');
+    }
+  } else {
     const f = path.join(SITE, e.cardPoster);
     if (!fs.existsSync(f)) push(errors, tag + ' 卡片海报文件不存在：' + e.cardPoster);
   }
