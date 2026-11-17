@@ -1026,6 +1026,19 @@ body{background:
   .revealItem{opacity:1!important;transform:none!important}
   .cardGlow:before{display:none}
 }
+
+.allLiveGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.allLiveCard{min-height:265px;border-radius:20px;overflow:hidden;background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.82);cursor:pointer;display:grid;grid-template-rows:150px 1fr;transition:.28s var(--ease)}
+.allLiveCard:hover{transform:translateY(-4px);box-shadow:0 18px 45px rgba(34,50,86,.09)}
+.allLiveArt{position:relative;overflow:hidden;background:#e9edf4}
+.allLiveArt img.posterImg{width:100%;height:100%;object-fit:cover;display:block}
+.allLiveBody{padding:14px}
+.allLiveBody .liveTop{display:flex;justify-content:space-between;gap:10px;font-size:9.5px;color:var(--ink3);margin-bottom:8px}
+.allLiveBody h4{font-size:17px;line-height:1.25;margin:0;letter-spacing:-.02em}
+.allLiveBody p{font-size:10.5px;color:var(--ink3);margin:9px 0 0}
+.historyStrip{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:11px;color:var(--ink3)}
+@media(max-width:900px){.allLiveGrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.allLiveGrid{grid-template-columns:1fr}.allLiveCard{grid-template-rows:190px 1fr}}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
@@ -1058,6 +1071,7 @@ body{background:
   </header>
 
   <div class="jumpbar" id="jumpbar">
+    <button data-jump="allLiveSec">全部报名中</button>
     <button data-jump="featuredSec">本周精选</button>
     <button data-jump="hotSec">热门赛场</button>
     <button data-jump="deadlineSec">即将截止</button>
@@ -1369,22 +1383,35 @@ function featuredHTML(e){
       '</div></div>'+
     '</article></section>';
 }
+function allLiveHTML(list){
+  const ended=DATA.events.filter(e=>daysLeft(e.deadline)<0||e.ended).length;
+  return '<section class="magSec" id="allLiveSec">'+sectionHead('02','全部正在报名',list.length+' 场现在还能参加')+
+    '<div class="allLiveGrid">'+list.map(e=>
+      '<article class="allLiveCard" data-id="'+e.id+'">'+
+        '<div class="allLiveArt">'+posterMarkup(e)+artFallback(e,'tiny')+'</div>'+
+        '<div class="allLiveBody"><div class="liveTop"><span>'+status(e).t+'</span><span>'+shortDate(e.deadline)+' 截止</span></div>'+
+        '<h4>'+e.title+'</h4><p>'+(e.city||'')+' · '+audienceLabel(e)+' · '+participationInfo(e).label+'</p></div>'+
+      '</article>'
+    ).join('')+'</div>'+
+    '<div class="historyStrip">另外还有 '+ended+' 场近期已结束赛事保留在赛事档案中，可搜索查看。</div>'+
+  '</section>';
+}
 function hotHTML(list){
-  return '<section class="magSec" id="hotSec">'+sectionHead('02','值得关注','公开参与 / 编辑判断')+
+  return '<section class="magSec" id="hotSec">'+sectionHead('03','值得关注','公开参与 / 编辑判断')+
     '<div class="hotGrid">'+list.slice(0,4).map((e,i)=>{
       const p=participationInfo(e);
       return '<article class="hotCard" data-id="'+e.id+'"><div class="hotRank">'+String(i+1).padStart(2,'0')+'</div><div class="hotMain"><h4>'+e.title+'</h4><p>'+(e.city||'')+' · '+shortDate(e.deadline)+' 截止</p></div><div class="hotStats"><b>'+p.label+'</b><span>公开信号</span><small>'+(e.participation?.source||'基于赛事信息判断')+'</small></div></article>';
     }).join('')+'</div></section>';
 }
 function deadlineHTML(list){
-  return '<section class="magSec" id="deadlineSec">'+sectionHead('03','即将截止','别错过窗口')+
+  return '<section class="magSec" id="deadlineSec">'+sectionHead('04','即将截止','别错过窗口')+
     '<div class="deadlineRail">'+list.slice(0,6).map(e=>{
       const d=daysLeft(e.deadline),g=engagement(e);
       return '<article class="deadCard" data-id="'+e.id+'"><div><div class="date">'+shortDate(e.deadline)+'</div><div class="leftDays">'+(d===0?'今天截止':'还剩 '+d+' 天')+'</div><h4>'+e.title+'</h4></div><footer>'+(e.city||'')+' · '+participationInfo(e).label+'</footer></article>';
     }).join('')+'</div></section>';
 }
 function youthHTML(list){
-  return '<section class="magSec" id="youthSec">'+sectionHead('04','青少年赛场','更适合孩子')+
+  return '<section class="magSec" id="youthSec">'+sectionHead('05','青少年赛场','更适合孩子')+
     '<div class="tileGrid">'+list.slice(0,4).map(e=>{
       const g=engagement(e);
       return '<article class="tileCard" data-id="'+e.id+'"><div class="tileArt">'+posterMarkup(e)+artFallback(e,'tiny')+'</div><div class="tileBody"><h4>'+e.title+'</h4><p>'+shortDate(e.deadline)+' 截止 · '+(e.city||'')+'</p><div class="miniSocial">'+participationInfo(e).label+'</div></div></article>';
@@ -1392,7 +1419,7 @@ function youthHTML(list){
 }
 function splitHTML(colA,colB){
   const list=(arr)=>arr.slice(0,5).map(e=>'<article class="listEvent" data-id="'+e.id+'"><div><h4>'+e.title+'</h4><p>'+(e.organizer||audienceLabel(e))+' · '+participationInfo(e).label+'</p></div><span class="miniDate">'+shortDate(e.deadline)+'</span></article>').join('');
-  return '<section class="magSec" id="proSec">'+sectionHead('05','高校 / 开发者','往真实项目走')+
+  return '<section class="magSec" id="proSec">'+sectionHead('06','高校 / 开发者','往真实项目走')+
     '<div class="splitCols"><div class="splitCol"><div class="splitTitle"><b>高校赛事</b><span>COLLEGE</span></div>'+list(colA)+'</div><div class="splitCol"><div class="splitTitle"><b>开发者赛事</b><span>DEVELOPER</span></div>'+list(colB)+'</div></div></section>';
 }
 function renderSwipeDeck(){
@@ -1719,6 +1746,7 @@ function renderStage(){
   const college=live.filter(e=>groupMatch(e,'高校'));
   const dev=live.filter(e=>groupMatch(e,'开发者'));
   document.getElementById('stage').innerHTML=
+    allLiveHTML(live)+
     featuredHTML(featured)+
     hotHTML(hot)+
     deadlineHTML(deadline.length?deadline:live.slice(0,5))+
