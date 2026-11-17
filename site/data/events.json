@@ -1360,6 +1360,22 @@
   ],
   "radar": [
     {
+      "id": "chuanzhibei-9-ai-2026",
+      "title": "2026第九届传智杯全国大学生数智创新与AI应用大赛",
+      "deadline": "",
+      "city": "全国高校赛点（具体赛点待核验）",
+      "organizer": "传智杯大赛组委会（组织单位详见官网）",
+      "website": "https://www.boxuegu.com/match/",
+      "sourceUrl": "https://www.boxuegu.com/match/",
+      "registrationUrl": "https://www.boxuegu.com/match/",
+      "audience": "全国在校大学生",
+      "dateRange": "2026年7—11月报名与校内选拔；11月省赛；12月国赛",
+      "reason": "赛事官网明确第九届2026年7—11月为报名期、11月省赛、12月国赛，且提供注册报名入口；高校官方通知确认AI应用赛项。未取得官方统一精确报名截止日、具体AI赛项章程及奖项，故仅入候选，不标为可报名。",
+      "verifyState": "official_partial",
+      "discoveredAt": "2026-11-17T12:20:00.000Z",
+      "updatedAt": "2026-11-17T12:20:00.000Z"
+    },
+    {
       "id": "bayhack-foshan-2026",
       "title": "BayHack 2026 大湾区黑客松",
       "website": "https://bayhack.cn/",
