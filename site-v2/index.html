@@ -995,6 +995,37 @@ body{background:
   .cityMarker .label{display:none}
   .cityMarker .dot{width:31px;height:31px}
 }
+
+/* ===== subtle motion layer ===== */
+@media (prefers-reduced-motion:no-preference){
+  .featured,.tileCard,.hotCard,.deadCard,.article,.swipeCard{
+    transform-style:preserve-3d;
+    will-change:transform;
+  }
+  .featured .featureVisual img.posterImg,
+  .tileArt img.posterImg,
+  .swipePoster img.posterImg{
+    transition:transform .45s var(--ease),filter .45s var(--ease);
+  }
+  .featured:hover .featureVisual img.posterImg,
+  .tileCard:hover .tileArt img.posterImg,
+  .swipeCard:hover .swipePoster img.posterImg{transform:scale(1.035)}
+  .revealItem{opacity:0;transform:translateY(18px) scale(.985);transition:opacity .58s var(--ease),transform .58s var(--ease)}
+  .revealItem.revealed{opacity:1;transform:none}
+  .magnetic{transition:transform .18s ease}
+}
+.cardGlow{position:relative;overflow:hidden}
+.cardGlow:before{
+  content:"";position:absolute;inset:-1px;pointer-events:none;z-index:0;opacity:0;
+  background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),rgba(47,111,255,.10),transparent 62%);
+  transition:opacity .28s ease
+}
+.cardGlow:hover:before{opacity:1}
+.cardGlow>*{position:relative;z-index:1}
+@media(max-width:760px){
+  .revealItem{opacity:1!important;transform:none!important}
+  .cardGlow:before{display:none}
+}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
